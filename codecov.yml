@@ -1,0 +1,49 @@
+coverage:
+  precision: 2
+  round: down
+  range: "0...100"
+  status:
+    project:
+      default: off
+      app:
+        flags: app
+      modals:
+        flags: modals
+      navigation-ios:
+        flags: navigation-ios
+      redux:
+        flags: redux
+      safe-area:
+        flags: safe-area
+      sheet-modals-ios:
+        flags: sheet-modals-ios
+      tabs-ios:
+        flags: tabs-ios
+
+comment:
+  layout: "reach, diff, flags, files"
+  behavior: default
+  require_changes: false
+
+flags:
+  app:
+    paths:
+      - packages/app/
+  modals:
+    paths:
+      - packages/modals/
+  navigation-ios:
+    paths:
+      - packages/navigation-ios/
+  redux:
+    paths:
+      - packages/redux/
+  safe-area:
+    paths:
+      - packages/safe-area/
+  sheet-modals-ios:
+    paths:
+      - packages/sheet-modals-ios/
+  tabs-ios:
+    paths:
+      - packages/tabs-ios/

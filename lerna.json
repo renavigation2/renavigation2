@@ -1,0 +1,26 @@
+{
+  "packages": [
+    "examples/*",
+    "packages/*"
+  ],
+  "ignoreChanges": [
+    "**/package.json",
+    "**/__tests__/**",
+    "**/*.md",
+    "**/Podfile.lock",
+    "**/yarn.lock",
+    "**/.vscode/**",
+    "**/.vscode/**"
+  ],
+  "version": "4.3.4",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "command": {
+    "version": {
+      "allowBranch": [
+        "master",
+        "develop"
+      ]
+    }
+  }
+}

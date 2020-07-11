@@ -1,0 +1,16 @@
+{
+  "folders": [
+    {
+      "name": "renavigation",
+      "path": "."
+    },
+    {
+      "name": "RenavigationExample",
+      "path": "examples/RenavigationExample"
+    }
+  ],
+  "settings": {
+    "javascript.format.enable": false,
+    "javascript.validate.enable": false
+  }
+}

@@ -1,0 +1,498 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [4.3.4](https://github.com/gabrielbull/renavigation/compare/v4.3.3...v4.3.4) (2020-06-03)
+
+
+### Bug Fixes
+
+* **sheet-modals-ios:** more performance improvements to sheet modals ([feabb76](https://github.com/gabrielbull/renavigation/commit/feabb7623b4009502c5313139eb0c6338be7f57e))
+
+
+
+
+
+## [4.3.3](https://github.com/gabrielbull/renavigation/compare/v4.3.2...v4.3.3) (2020-06-03)
+
+
+### Bug Fixes
+
+* **sheet-modals-ios:** fixed performance issue with animating top property instead of translateY ([136ed9a](https://github.com/gabrielbull/renavigation/commit/136ed9a8afde3c803ff8cebc2170dcf0950636ce))
+* **tabs-ios:** fixed tabs selected/unselected tints not working ([e5ba922](https://github.com/gabrielbull/renavigation/commit/e5ba922700b8a8aff352d049e1d8a5767b3b9790))
+
+
+
+
+
+## [4.3.2](https://github.com/gabrielbull/renavigation/compare/v4.3.1...v4.3.2) (2020-06-03)
+
+
+### Bug Fixes
+
+* **sheet-modals-ios:** fixed issue with sheet modals making tab bar not have correct height ([4e24189](https://github.com/gabrielbull/renavigation/commit/4e24189407a8f61b3b539f733a2c922f44abe2af))
+
+
+
+
+
+## [4.3.1](https://github.com/gabrielbull/renavigation/compare/v4.3.0...v4.3.1) (2020-06-03)
+
+
+### Bug Fixes
+
+* **tabs-ios:** force rerender when tabs options change ([5a0b616](https://github.com/gabrielbull/renavigation/commit/5a0b6168dbc386caa6dd3e01052d971cfcdce22c))
+
+
+
+
+
+# [4.3.0](https://github.com/gabrielbull/renavigation/compare/v4.2.1...v4.3.0) (2020-06-03)
+
+
+### Bug Fixes
+
+* **app:** fixed bug that would use lifecycle twice ([a7563a1](https://github.com/gabrielbull/renavigation/commit/a7563a139a58d77db42f925e495c338bd23d6e3e))
+
+
+### Features
+
+* **tabs:** update api to match new ios and android ones ([8e73c6b](https://github.com/gabrielbull/renavigation/commit/8e73c6be360ce89af6898e7baf5b383314dd66eb))
+* **tabs-android:** update api to match ios one ([b23d95c](https://github.com/gabrielbull/renavigation/commit/b23d95c9ffe56026d569fce6bf59e91cb8e6256e))
+* **tabs-ios:** switched to native components ([b770996](https://github.com/gabrielbull/renavigation/commit/b77099658c3301db2229cb0439f9edc26d4d676f))
+
+
+
+
+
+## [4.2.1](https://github.com/gabrielbull/renavigation/compare/v4.2.0...v4.2.1) (2020-05-02)
+
+
+### Bug Fixes
+
+* fixed default value of useParams and useRef hooks ([48f030c](https://github.com/gabrielbull/renavigation/commit/48f030c83dd237dbe03afca6360ed217d321b2b1))
+* **history:** prevent history from going to a negative index ([240041f](https://github.com/gabrielbull/renavigation/commit/240041fc3cdb4debf9dea18c07f390d9e8d9288d))
+
+
+
+
+
+# [4.2.0](https://github.com/gabrielbull/renavigation/compare/v4.1.1...v4.2.0) (2020-03-13)
+
+
+### Features
+
+* **navigation-ios:** added NavigationBarPressHandler to allow presses to scroll back to top ([f9b41b7](https://github.com/gabrielbull/renavigation/commit/f9b41b758ad1213f9ff48aa2180e47baf3c52391))
+* **sheet-modal-ios:** added onPress prop to PannableView ([f2604b9](https://github.com/gabrielbull/renavigation/commit/f2604b967c36c330d345fad66adfaf556d4e7cb6))
+* **tabs-ios:** added TabPressHandler to allow navigation on extra tab presses ([3cd77d8](https://github.com/gabrielbull/renavigation/commit/3cd77d8cc722407807a30aaf9bbf675e4eff3ce1))
+
+
+
+
+
+## [4.1.1](https://github.com/gabrielbull/renavigation/compare/v4.1.0...v4.1.1) (2020-03-11)
+
+
+### Bug Fixes
+
+* **sheet-modals-ios:** fixed issue with lifecycle when panning ([af673b6](https://github.com/gabrielbull/renavigation/commit/af673b6d50972399a08c82d0a3bf0f566e8077bd))
+
+
+
+
+
+# [4.1.0](https://github.com/gabrielbull/renavigation/compare/v4.0.3...v4.1.0) (2020-02-27)
+
+
+### Features
+
+* added useParams hook ([ee29184](https://github.com/gabrielbull/renavigation/commit/ee291843a1045b6bf0525f764a375c1fbcd7a502))
+
+
+
+
+
+## [4.0.3](https://github.com/gabrielbull/renavigation/compare/v4.0.2...v4.0.3) (2020-02-26)
+
+
+### Bug Fixes
+
+* fixed useLifecycleEffect initial event getting fired when deps change ([dbf1a13](https://github.com/gabrielbull/renavigation/commit/dbf1a13653edf57ff9ce968734c666a990b1b171))
+
+
+
+
+
+## [4.0.2](https://github.com/gabrielbull/renavigation/compare/v4.0.1...v4.0.2) (2020-02-26)
+
+
+### Bug Fixes
+
+* fixed issue with useLifecycleEffect not triggering inital event ([36cf37e](https://github.com/gabrielbull/renavigation/commit/36cf37e537e7d7d734d4d6b6caae37da9350b197))
+
+
+
+
+
+## [4.0.1](https://github.com/gabrielbull/renavigation/compare/v4.0.0...v4.0.1) (2020-02-26)
+
+
+### Bug Fixes
+
+* **tabs-ios:** export missing component props ([9968415](https://github.com/gabrielbull/renavigation/commit/99684151fe78fcb302472610359d9b78ddd056b5))
+
+
+
+
+
+# [4.0.0](https://github.com/gabrielbull/renavigation/compare/v3.0.2...v4.0.0) (2020-02-26)
+
+
+### Bug Fixes
+
+* fixed build and lint process not working ([315bbde](https://github.com/gabrielbull/renavigation/commit/315bbded6207398348330d929d23c52bc76d32ca))
+
+
+### Features
+
+* improved lifecycle hooks and added app lifecycle hooks ([ecc4e53](https://github.com/gabrielbull/renavigation/commit/ecc4e531376405005425cb41560eed4bd6a082b2))
+
+
+### BREAKING CHANGES
+
+* bottom-navigation-android renamed to tabs-android, tab-view-ios renamed to tabs-ios, navigation-ui-android renamed to navigation-android, navigation-view-ios renamed to navigation-ios
+
+
+
+
+
+## [3.0.2](https://github.com/gabrielbull/renavigation/compare/v3.0.1...v3.0.2) (2020-02-21)
+
+
+### Bug Fixes
+
+* **insets:** fixed value not being added to extra insets ([1e2b9df](https://github.com/gabrielbull/renavigation/commit/1e2b9df6e0370e50391af0ee64afab186e066ed7))
+
+
+
+
+
+## [3.0.1](https://github.com/gabrielbull/renavigation/compare/v3.0.0...v3.0.1) (2020-02-21)
+
+
+### Bug Fixes
+
+* **insets:** fixed issue that would cause unecessary re-renders ([51e0bea](https://github.com/gabrielbull/renavigation/commit/51e0beae288fb92182fdf11fba23b3413e03fb80))
+* **tabs-ios:** fixed bug ([ac14e33](https://github.com/gabrielbull/renavigation/commit/ac14e330e57ddabb910f032dbc565f990e1495e0))
+
+
+
+
+
+# [3.0.0](https://github.com/gabrielbull/renavigation/compare/v2.1.7...v3.0.0) (2020-02-20)
+
+
+### Code Refactoring
+
+* **sheet-modal-ios:** replaced statusBarStyle with onStatusBarReset callback ([1f2a2c6](https://github.com/gabrielbull/renavigation/commit/1f2a2c6283812051452cde33c43e23b03d0139d2))
+
+
+### BREAKING CHANGES
+
+* **sheet-modal-ios:** statusBarStyle is no longer available and is replaced with onStatusBarReset
+
+
+
+
+
+## [2.1.7](https://github.com/gabrielbull/renavigation/compare/v2.1.6...v2.1.7) (2020-02-13)
+
+
+### Bug Fixes
+
+* **navigation-ios:** action button and text button now extends base component ([bf69e04](https://github.com/gabrielbull/renavigation/commit/bf69e04b32bbd20f485d93ba452bab7137034641))
+
+
+
+
+
+## [2.1.6](https://github.com/gabrielbull/renavigation/compare/v2.1.5...v2.1.6) (2020-02-13)
+
+
+### Bug Fixes
+
+* **modals:** fixed issue with useState hook not returning current state in setState function ([5221574](https://github.com/gabrielbull/renavigation/commit/522157404f28a0667e9ffcd020c32e219988ee94))
+* **navigation-android:** fixed issue with useState hook not returning current state in setState function ([684334a](https://github.com/gabrielbull/renavigation/commit/684334a23b1659a4b0546945549ecbe89054b801))
+* **navigation-ios:** fixed issue with useState hook not returning current state in setState function ([584406f](https://github.com/gabrielbull/renavigation/commit/584406f4ec6177f2571ae4ba26905682bd58f45a))
+* **sheet-modals-ios:** fixed issue with useState hook not returning current state in setState function ([29a2311](https://github.com/gabrielbull/renavigation/commit/29a2311f1d348b85ed8adbf6c8502ec46769cab6))
+
+
+
+
+
+## [2.1.5](https://github.com/gabrielbull/renavigation/compare/v2.1.4...v2.1.5) (2020-02-05)
+
+
+### Bug Fixes
+
+* **navigation-android:** fixed issue with navigating back to non-existing screen ([97b34be](https://github.com/gabrielbull/renavigation/commit/97b34befe0dff0e2577d772905869b74b3528aee))
+
+
+
+
+
+## [2.1.4](https://github.com/gabrielbull/renavigation/compare/v2.1.3...v2.1.4) (2020-02-01)
+
+
+### Bug Fixes
+
+* fixed instances of using useEffect instead of useLayoutEffect ([9c47659](https://github.com/gabrielbull/renavigation/commit/9c47659023f7ea6d505cdaa32cb18606bb776495))
+
+
+
+
+
+## [2.1.3](https://github.com/gabrielbull/renavigation/compare/v2.1.2...v2.1.3) (2020-01-30)
+
+
+### Bug Fixes
+
+* **sheet-modals-ios:** replaced @react-native-community/status-bar by core StatusBar ([ee9b7c7](https://github.com/gabrielbull/renavigation/commit/ee9b7c777ae03db5aabbec082a607d9f4d6d9358))
+
+
+
+
+
+## [2.1.2](https://github.com/gabrielbull/renavigation/compare/v2.1.1...v2.1.2) (2020-01-25)
+
+
+### Bug Fixes
+
+* **navigation-android:** fixed a few issues with navigation ([222ee74](https://github.com/gabrielbull/renavigation/commit/222ee745e8edb39ce3b0126fcd75bf205e0a95d4))
+* **navigation-android:** fixed issue with navigation-react-native ([747470e](https://github.com/gabrielbull/renavigation/commit/747470ea3aff2de098c2c8c0aa89e7f4a82aade2))
+* **navigation-android:** fixed issue with reset and replace ([77e7e31](https://github.com/gabrielbull/renavigation/commit/77e7e31910bd457d6bd48fee0a8001baa2fbb880))
+* **navigation-android:** removed part that block the ui on transition ([4bb30d7](https://github.com/gabrielbull/renavigation/commit/4bb30d70f4c897ad641d2e9c96f8ec46bc482919))
+* **sheet-modals-ios:** fixed dependency cycle ([805e6ab](https://github.com/gabrielbull/renavigation/commit/805e6abfb9dc011fdce9433b3f177a6dac90f361))
+* **sheet-modals-ios:** fixed wrong import path ([c3d2224](https://github.com/gabrielbull/renavigation/commit/c3d222493a04424d4bb13304ac2778bcefbef4cc))
+* locked react-native-screens to stable version ([f651cbb](https://github.com/gabrielbull/renavigation/commit/f651cbb22b18bb27b2c17fa7b83287a359ac2f43))
+
+
+
+
+
+## [2.1.1](https://github.com/gabrielbull/renavigation/compare/v2.1.0...v2.1.1) (2020-01-17)
+
+
+### Bug Fixes
+
+* **navigation-android:** fixed issue with lifecycle ([7b77fa3](https://github.com/gabrielbull/renavigation/commit/7b77fa3672ec3a5a04d4c410ffcea60121ea93ac))
+
+
+
+
+
+# [2.1.0](https://github.com/gabrielbull/renavigation/compare/v2.0.2...v2.1.0) (2020-01-17)
+
+
+### Features
+
+* **example:** improved styling ([1420ce0](https://github.com/gabrielbull/renavigation/commit/1420ce0c7e925cceadff87f49a37bde7e6a7a8b7))
+
+
+
+
+
+## [2.0.2](https://github.com/gabrielbull/renavigation/compare/v2.0.1...v2.0.2) (2020-01-11)
+
+
+### Bug Fixes
+
+* **navigation-android:** fixed issue with persisting history ([e0ead5f](https://github.com/gabrielbull/renavigation/commit/e0ead5f96234e31013f98d9c352a3b236a1de93b))
+* **navigation-android:** fixed issue with question mark in paths ([0efd6bf](https://github.com/gabrielbull/renavigation/commit/0efd6bf18690f4d4b53b26b5c468a30e78705160))
+
+
+
+
+
+## [2.0.1](https://github.com/gabrielbull/renavigation/compare/v2.0.0...v2.0.1) (2020-01-11)
+
+
+### Bug Fixes
+
+* **sheet-modals-ios:** fixed useState function having previous deprecated name ([6786b2d](https://github.com/gabrielbull/renavigation/commit/6786b2d6b0a91329700feb73f5a1fe2cc63f0244))
+
+
+
+
+
+# [2.0.0](https://github.com/gabrielbull/renavigation/compare/v1.1.7...v2.0.0) (2020-01-11)
+
+
+### Features
+
+* added fallbackcomponent on multiple packages ([844aacd](https://github.com/gabrielbull/renavigation/commit/844aacd0111d89c1091987716da80f87d28da21f))
+
+
+### BREAKING CHANGES
+
+* unified types and api
+
+
+
+
+
+## [1.1.7](https://github.com/gabrielbull/renavigation/compare/v1.1.6...v1.1.7) (2020-01-11)
+
+
+### Bug Fixes
+
+* reverted breaking changes affecting version 1.1.x ([2322f62](https://github.com/gabrielbull/renavigation/commit/2322f62fc21a0e689925d69ea5c173718a9909d3))
+
+
+
+
+
+## [1.1.6](https://github.com/gabrielbull/renavigation/compare/v1.1.5...v1.1.6) (2020-01-11)
+
+**Note:** Version bump only for package renavigation
+
+
+
+
+
+## [1.1.5](https://github.com/gabrielbull/renavigation/compare/v1.1.4...v1.1.5) (2020-01-10)
+
+
+### Bug Fixes
+
+* **navigation-android:** fixed issue with routes path containing question mark ([3a1d588](https://github.com/gabrielbull/renavigation/commit/3a1d588aef4452c6b537cccc7da4344a4916c314))
+
+
+
+
+
+## [1.1.4](https://github.com/gabrielbull/renavigation/compare/v1.1.3...v1.1.4) (2020-01-09)
+
+**Note:** Version bump only for package renavigation
+
+
+
+
+
+## [1.1.3](https://github.com/gabrielbull/renavigation/compare/v1.1.2...v1.1.3) (2020-01-09)
+
+**Note:** Version bump only for package renavigation
+
+
+
+
+
+## [1.1.2](https://github.com/gabrielbull/renavigation/compare/v1.1.1...v1.1.2) (2020-01-06)
+
+
+### Bug Fixes
+
+* **sheet-modals-ios:** export missing types ([9fcdbb3](https://github.com/gabrielbull/renavigation/commit/9fcdbb3f28f23149dff257a4df41cf8d646a9eba))
+
+
+
+
+
+## [1.1.1](https://github.com/gabrielbull/renavigation/compare/v1.1.0...v1.1.1) (2020-01-06)
+
+
+### Bug Fixes
+
+* fixed typings directories being ignored on npm ([07b45a6](https://github.com/gabrielbull/renavigation/commit/07b45a6217e85dc68049147b7df6656efb1a5ea9))
+
+
+
+
+
+# [1.1.0](https://github.com/gabrielbull/renavigation/compare/v1.1.0-alpha.0...v1.1.0) (2020-01-04)
+
+**Note:** Version bump only for package renavigation
+
+
+
+
+
+## [1.0.8](https://github.com/gabrielbull/renavigation/compare/v1.0.7...v1.0.8) (2019-12-19)
+
+
+### Bug Fixes
+
+* Fixed issues with location is undefined ([801e086](https://github.com/gabrielbull/renavigation/commit/801e086f3f715048d99c4329a07ed71204877bac))
+
+
+
+
+
+## [1.0.7](https://github.com/renavigation/renavigation/compare/v1.0.6...v1.0.7) (2019-12-05)
+
+
+### Bug Fixes
+
+* **sheet-modals-ios:** Fixed issue with sheet modals remove/removeAll not resolving when no entries are found ([b44e108](https://github.com/renavigation/renavigation/commit/b44e1084830b258151d17c6f17cfa22298e45295))
+
+
+
+
+
+## [1.0.6](https://github.com/renavigation/renavigation/compare/v1.0.5...v1.0.6) (2019-12-05)
+
+
+### Bug Fixes
+
+* **history:** Allow history to have no active entry ([bad0d5c](https://github.com/renavigation/renavigation/commit/bad0d5c5e695a191eeaf28e65cebd7278e3980c3))
+* **sheet-modals-ios:** Fixed issue with sheet modals animations when navigation multiple screens at a time ([9a921d1](https://github.com/renavigation/renavigation/commit/9a921d19817c2f1a6644c4b61d06cd858171d127))
+
+
+
+
+
+## [1.0.5](https://github.com/renavigation/renavigation/compare/v1.0.4...v1.0.5) (2019-12-05)
+
+
+### Bug Fixes
+
+* **activity-view-ios:** Fixed issue with typings on activity view component ([b6164fc](https://github.com/renavigation/renavigation/commit/b6164fcc172ec493f2f7df6d61067336af73a844))
+
+
+
+
+
+## [1.0.4](https://github.com/renavigation/renavigation/compare/v1.0.3...v1.0.4) (2019-12-05)
+
+**Note:** Version bump only for package renavigation
+
+
+
+
+
+## [1.0.3](https://github.com/renavigation/renavigation/compare/v1.0.2...v1.0.3) (2019-12-04)
+
+
+### Bug Fixes
+
+* **sheet-modals-ios:** Fixed issue with history in sheet modals not being up to date ([#8](https://github.com/renavigation/renavigation/issues/8)) ([0b0f975](https://github.com/renavigation/renavigation/commit/0b0f975a5297341f154d9d88eabc1adcee8f35ad))
+
+
+
+
+
+## [1.0.2](https://github.com/renavigation/renavigation/compare/v1.0.2-alpha.0...v1.0.2) (2019-12-02)
+
+**Note:** Version bump only for package renavigation
+
+
+
+
+
+## [1.0.1](https://github.com/renavigation/renavigation/compare/v1.0.0...v1.0.1) (2019-12-01)
+
+
+### Bug Fixes
+
+* Fixed issues with typescript react configuration ([7bb9c4f](https://github.com/renavigation/renavigation/commit/7bb9c4f90ea7ccc2c8d6d762d02a720e8d45b991))
