@@ -18,10 +18,11 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'import/namespace': 'off',
     'import/named': 'off',
     'import/no-cycle': [2, { maxDepth: 1 }],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
-    'react/prop-types': 'off',
+    'react/prop-types': 'off'
   }
 }

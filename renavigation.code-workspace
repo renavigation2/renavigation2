@@ -7,6 +7,9 @@
     {
       "name": "RenavigationExample",
       "path": "examples/RenavigationExample"
+    },
+    {
+      "path": "packages/history"
     }
   ],
   "settings": {
