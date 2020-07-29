@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 4.8.0 (2020-07-29)
+
+
+### Bug Fixes
+
+* **modals:** Use RCTKeyWindow instead of extending UIViewController to present modals ([7e70491](https://github.com/renavigation2/renavigation2/commit/7e70491edac9d482327b211b75a4dfcf13095c70))
+
+
+### Features
+
+* **history:** Added createPersistentMemoryHistory to create a persistent history ([42a76b6](https://github.com/renavigation2/renavigation2/commit/42a76b6935fe9eb04b874cb5ff428f623673cfe9))
+* **history:** Refactored MemoryHistory into NativeHistory ([6363c82](https://github.com/renavigation2/renavigation2/commit/6363c829247d1579c1c19d93003360739addfc4e))
+* **modals:** Added iOS modals ([9001ee7](https://github.com/renavigation2/renavigation2/commit/9001ee7910fd2f38a93b2950acaa85d81c68257c))
+
+
+
+
+
 # 4.7.0 (2020-07-29)
 
 

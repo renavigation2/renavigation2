@@ -1,6 +1,6 @@
 {
   "name": "RenavigationExample",
-  "version": "4.7.0",
+  "version": "4.8.0",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -11,7 +11,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@renavigation2/modals": "^4.7.0",
+    "@renavigation2/modals": "^4.8.0",
     "react": "^16.13.1",
     "react-native": "^0.63.2"
   },
