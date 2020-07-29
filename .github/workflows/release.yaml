@@ -68,7 +68,7 @@ jobs:
 
     - name: Create releases
       run: |
-        "npx lerna version -y -m \"chore(release): publish\" --changelog-preset angular --conventional-commits --create-release github"
+        npx lerna version -y -m "chore(release): publish" --changelog-preset angular --conventional-commits --create-release github
         rm .npmrc && echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
         npx lerna publish from-package
         rm .npmrc && echo "//npm.pkg.github.com/:_authToken=$USER_GITHUB_TOKEN" > .npmrc
