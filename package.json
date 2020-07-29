@@ -18,14 +18,14 @@
     "watch": "sh scripts/watch.sh"
   },
   "dependencies": {
-    "codecov": "^3.7.0",
+    "codecov": "^3.7.2",
     "concurrently": "^5.2.0",
     "lerna": "^3.22.1",
-    "npm-check-updates": "^7.0.1",
+    "npm-check-updates": "^7.0.2",
     "patch-package": "^6.2.2",
-    "react-native": "^0.63.0"
+    "react-native": "^0.63.2"
   },
   "devDependencies": {
-    "@types/react-native": "^0.62.17"
+    "@types/react-native": "^0.63.2"
   }
 }
