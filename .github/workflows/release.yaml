@@ -69,10 +69,11 @@ jobs:
     - name: Create releases
       run: |
         npx lerna version -y -m "chore(release): publish" --changelog-preset angular --conventional-commits --create-release github
-        rm .npmrc && echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
-        npx lerna publish from-package
-        rm .npmrc && echo "//npm.pkg.github.com/:_authToken=$USER_GITHUB_TOKEN" > .npmrc
-        npx lerna publish from-package --registry https://npm.pkg.github.com/renavigation2
+        echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+        npx lerna publish -y from-package
+        rm .npmrc
+        echo "//npm.pkg.github.com/:_authToken=$USER_GITHUB_TOKEN" > .npmrc
+        npx lerna publish -y from-package --registry https://npm.pkg.github.com/renavigation2
       env:
         GH_TOKEN: ${{ secrets.USER_GITHUB_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
