@@ -58,7 +58,7 @@ class RNRModalsContainer: UIView, UIAdaptivePresentationControllerDelegate {
     func doPresentPageSheet(subview: RNRModal) {
         if (self._reactSubviews.contains(subview) && !subview.presented) {
             subview.presented = true
-            UIViewController.topMost().present(subview.controller, animated: subview.animated)
+            RCTKeyWindow()?.rootViewController?.present(subview.controller, animated: subview.animated)
         }
     }
 
