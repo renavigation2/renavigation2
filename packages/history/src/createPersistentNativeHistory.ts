@@ -1,4 +1,4 @@
-import { MemoryHistory } from './typings/MemoryHistory'
+import { NativeHistory } from './typings/NativeHistory'
 import { InitialEntry } from './typings/InitialEntry'
 import { Location } from './typings/Location'
 import { readOnly } from './typings/readOnly'
@@ -23,13 +23,14 @@ import { Migrate } from './typings/Migrate'
 import { DataReconciler } from './typings/DataReconciler'
 import { Transform } from './typings/Transform'
 import { SerializedHistory } from './typings/SerializedHistory'
+import { PartialLocation } from './typings/PartialLocation'
 
-export type PersistentMemoryHistoryOptions = {
+export type PersistentNativeHistoryOptions = {
   defaultEntries?: InitialEntry[]
   defaultIndex?: number
   version?: number
   storage: WebStorage | AsyncStorage | LocalForageStorage | Storage
-  key: string
+  storageKey: string
   migrate?: Migrate
   dataReconciler?: false | DataReconciler
   transforms?: Transform[]
@@ -39,14 +40,14 @@ export type PersistentMemoryHistoryOptions = {
  * Persistent memory history stores the current location in storage.
  */
 export async function createPersistentMemoryHistory(
-  options: PersistentMemoryHistoryOptions
-): Promise<MemoryHistory> {
+  options: PersistentNativeHistoryOptions
+): Promise<NativeHistory> {
   const {
     defaultEntries,
     defaultIndex,
     version,
     storage,
-    key,
+    storageKey,
     migrate,
     dataReconciler,
     transforms
@@ -84,7 +85,7 @@ export async function createPersistentMemoryHistory(
   }
 
   try {
-    const result = await storage.getItem(key)
+    const result = await storage.getItem(storageKey)
     if (result) {
       const data = JSON.parse(result)
       if (migrate && data.data) {
@@ -122,7 +123,7 @@ export async function createPersistentMemoryHistory(
 
     warning(
       location.pathname.charAt(0) === '/',
-      `Relative pathnames are not supported in createPersistentMemoryHistory({ defaultEntries }) (invalid entry: ${JSON.stringify(
+      `Relative pathnames are not supported in createPersistentNativeHistory({ defaultEntries }) (invalid entry: ${JSON.stringify(
         entry
       )})`
     )
@@ -174,8 +175,8 @@ export async function createPersistentMemoryHistory(
     }
 
     warning(
-      location.pathname.charAt(0) === '/',
-      `Relative pathnames are not supported in memory history.push(${JSON.stringify(
+      nextLocation.pathname.charAt(0) === '/',
+      `Relative pathnames are not supported in native history.push(${JSON.stringify(
         to
       )})`
     )
@@ -195,8 +196,8 @@ export async function createPersistentMemoryHistory(
     }
 
     warning(
-      location.pathname.charAt(0) === '/',
-      `Relative pathnames are not supported in memory history.replace(${JSON.stringify(
+      nextLocation.pathname.charAt(0) === '/',
+      `Relative pathnames are not supported in native history.replace(${JSON.stringify(
         to
       )})`
     )
@@ -221,7 +222,40 @@ export async function createPersistentMemoryHistory(
     }
   }
 
-  const history: MemoryHistory = {
+  function reset(next: PartialLocation[], nextIndex: number) {
+    const nextAction = Action.Reset
+
+    function retry() {
+      reset(next, index)
+    }
+
+    const nextEntries = next.map((entry) => {
+      const location = readOnly<Location>({
+        pathname: '/',
+        search: '',
+        hash: '',
+        state: null,
+        key: createKey(),
+        ...(typeof entry === 'string' ? parsePath(entry) : entry)
+      })
+      warning(
+        location.pathname.charAt(0) === '/',
+        `Relative pathnames are not supported in native history.reset(entries) (invalid entry: ${JSON.stringify(
+          entry
+        )})`
+      )
+
+      return location
+    })
+
+    if (allowTx(nextAction, nextEntries[nextIndex], retry)) {
+      entries.splice(0, entries.length, ...nextEntries)
+      index = nextIndex
+      applyTx(nextAction, entries[nextIndex])
+    }
+  }
+
+  const history: NativeHistory = {
     get index() {
       return index
     },
@@ -231,10 +265,14 @@ export async function createPersistentMemoryHistory(
     get location() {
       return location
     },
+    get entries() {
+      return entries
+    },
     createHref,
     push,
     replace,
     go,
+    reset,
     back() {
       go(-1)
     },
@@ -259,7 +297,7 @@ export async function createPersistentMemoryHistory(
           }
         })
       }
-      await storage.setItem(key, JSON.stringify({ data, version }))
+      await storage.setItem(storageKey, JSON.stringify({ data, version }))
     } catch (err) {}
   }
 

@@ -1,4 +1,4 @@
-import { MemoryHistory } from './typings/MemoryHistory'
+import { NativeHistory } from './typings/NativeHistory'
 import { InitialEntry } from './typings/InitialEntry'
 import { Location } from './typings/Location'
 import { readOnly } from './typings/readOnly'
@@ -13,8 +13,9 @@ import { Listener } from './typings/Listener'
 import { To } from './typings/To'
 import { createPath } from './utils/createPath'
 import { State } from './typings/State'
+import { PartialLocation } from './typings/PartialLocation'
 
-export type MemoryHistoryOptions = {
+export type NativeHistoryOptions = {
   initialEntries?: InitialEntry[]
   initialIndex?: number
 }
@@ -25,10 +26,10 @@ export type MemoryHistoryOptions = {
  *
  * @see https://github.com/ReactTraining/history/tree/master/docs/api-reference.md#creatememoryhistory
  */
-export function createMemoryHistory(
-  options: MemoryHistoryOptions = {}
-): MemoryHistory {
-  const { initialEntries = ['/'], initialIndex } = options
+export function createNativeHistory(
+  options: NativeHistoryOptions = {}
+): NativeHistory {
+  const { initialEntries = [], initialIndex } = options
   const entries: Location[] = initialEntries.map((entry) => {
     const location = readOnly<Location>({
       pathname: '/',
@@ -41,7 +42,7 @@ export function createMemoryHistory(
 
     warning(
       location.pathname.charAt(0) === '/',
-      `Relative pathnames are not supported in createMemoryHistory({ initialEntries }) (invalid entry: ${JSON.stringify(
+      `Relative pathnames are not supported in createNativeHistory({ initialEntries }) (invalid entry: ${JSON.stringify(
         entry
       )})`
     )
@@ -92,8 +93,8 @@ export function createMemoryHistory(
     }
 
     warning(
-      location.pathname.charAt(0) === '/',
-      `Relative pathnames are not supported in memory history.push(${JSON.stringify(
+      nextLocation.pathname.charAt(0) === '/',
+      `Relative pathnames are not supported in native history.push(${JSON.stringify(
         to
       )})`
     )
@@ -113,8 +114,8 @@ export function createMemoryHistory(
     }
 
     warning(
-      location.pathname.charAt(0) === '/',
-      `Relative pathnames are not supported in memory history.replace(${JSON.stringify(
+      nextLocation.pathname.charAt(0) === '/',
+      `Relative pathnames are not supported in native history.replace(${JSON.stringify(
         to
       )})`
     )
@@ -139,7 +140,40 @@ export function createMemoryHistory(
     }
   }
 
-  const history: MemoryHistory = {
+  function reset(next: PartialLocation[], nextIndex: number) {
+    const nextAction = Action.Reset
+
+    function retry() {
+      reset(next, index)
+    }
+
+    const nextEntries = next.map((entry) => {
+      const location = readOnly<Location>({
+        pathname: '/',
+        search: '',
+        hash: '',
+        state: null,
+        key: createKey(),
+        ...(typeof entry === 'string' ? parsePath(entry) : entry)
+      })
+      warning(
+        location.pathname.charAt(0) === '/',
+        `Relative pathnames are not supported in native history.reset(entries) (invalid entry: ${JSON.stringify(
+          entry
+        )})`
+      )
+
+      return location
+    })
+
+    if (allowTx(nextAction, nextEntries[nextIndex], retry)) {
+      entries.splice(0, entries.length, ...nextEntries)
+      index = nextIndex
+      applyTx(nextAction, entries[nextIndex])
+    }
+  }
+
+  const history: NativeHistory = {
     get index() {
       return index
     },
@@ -149,10 +183,14 @@ export function createMemoryHistory(
     get location() {
       return location
     },
+    get entries() {
+      return entries
+    },
     createHref,
     push,
     replace,
     go,
+    reset,
     back() {
       go(-1)
     },

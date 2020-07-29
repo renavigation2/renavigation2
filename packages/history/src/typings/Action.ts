@@ -24,5 +24,11 @@ export enum Action {
    * A REPLACE indicates the entry at the current index in the history stack
    * being replaced by a new one.
    */
-  Replace = 'REPLACE'
+  Replace = 'REPLACE',
+
+  /**
+   * A RESET indicates all entries and the current index in the history stack
+   * being replaced by a new ones.
+   */
+  Reset = 'RESET'
 }
