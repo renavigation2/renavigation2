@@ -67,7 +67,6 @@ jobs:
       run: |
         echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
         echo "//npm.pkg.github.com/:_authToken=$USER_GITHUB_TOKEN" > .npmrc
-        echo 'registry=https://npm.pkg.github.com/renavigation2' >> .npmrc  
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         USER_GITHUB_TOKEN: ${{ secrets.USER_GITHUB_TOKEN }}
@@ -76,6 +75,7 @@ jobs:
       run: yarn build
 
     - name: Create releases
-      run: "npx lerna publish -y -m \"chore(release): publish\" --changelog-preset angular --conventional-commits --create-release github"
+      run: |
+        "npx lerna publish -y -m \"chore(release): publish\" --changelog-preset angular --conventional-commits --create-release github --registry \"https://npm.pkg.github.com/renavigation2\""
       env:
         GH_TOKEN: ${{ secrets.USER_GITHUB_TOKEN }}
