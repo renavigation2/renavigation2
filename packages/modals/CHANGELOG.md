@@ -8,12 +8,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **modals:** Use RCTKeyWindow instead of extending UIViewController to present modals ([7e70491](https://github.com/gabrielbull/renavigation2/commit/7e70491edac9d482327b211b75a4dfcf13095c70))
+* **modals:** Use RCTKeyWindow instead of extending UIViewController to present modals ([7e70491](https://github.com/renavigation2/renavigation2/commit/7e70491edac9d482327b211b75a4dfcf13095c70))
 
 
 ### Features
 
-* **modals:** Added iOS modals ([9001ee7](https://github.com/gabrielbull/renavigation2/commit/9001ee7910fd2f38a93b2950acaa85d81c68257c))
+* **modals:** Added iOS modals ([9001ee7](https://github.com/renavigation2/renavigation2/commit/9001ee7910fd2f38a93b2950acaa85d81c68257c))
 
 
 
@@ -40,9 +40,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **modals:** Use RCTKeyWindow instead of extending UIViewController to present modals ([7e70491](https://github.com/gabrielbull/renavigation2/commit/7e70491edac9d482327b211b75a4dfcf13095c70))
+* **modals:** Use RCTKeyWindow instead of extending UIViewController to present modals ([7e70491](https://github.com/renavigation2/renavigation2/commit/7e70491edac9d482327b211b75a4dfcf13095c70))
 
 
 ### Features
 
-* **modals:** Added iOS modals ([9001ee7](https://github.com/gabrielbull/renavigation2/commit/9001ee7910fd2f38a93b2950acaa85d81c68257c))
+* **modals:** Added iOS modals ([9001ee7](https://github.com/renavigation2/renavigation2/commit/9001ee7910fd2f38a93b2950acaa85d81c68257c))

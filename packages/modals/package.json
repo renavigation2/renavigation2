@@ -8,13 +8,13 @@
   "react-native": "src/index",
   "source": "src/index",
   "keywords": [],
-  "repository": "https://github.com/gabrielbull/renavigation2",
+  "repository": "https://github.com/renavigation2/renavigation2",
   "author": "Gabriel Bull <me@gabrielbull.com> (https://github.com/gabrielbull)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gabrielbull/renavigation2/issues"
+    "url": "https://github.com/renavigation2/renavigation2/issues"
   },
-  "homepage": "https://github.com/gabrielbull/renavigation2#readme",
+  "homepage": "https://github.com/renavigation2/renavigation2#readme",
   "files": [
     "src",
     "lib",
