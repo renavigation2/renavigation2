@@ -10,6 +10,9 @@
     },
     {
       "path": "packages/history"
+    },
+    {
+      "path": "packages/modals"
     }
   ],
   "settings": {

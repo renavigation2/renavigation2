@@ -18,6 +18,15 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/ban-types': [
+      'error',
+      {
+        extendDefaults: true,
+        types: {
+          '{}': false
+        }
+      }
+    ],
     'import/namespace': 'off',
     'import/named': 'off',
     'import/no-cycle': [2, { maxDepth: 1 }],
