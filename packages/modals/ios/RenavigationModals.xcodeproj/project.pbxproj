@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C07D908C24BB4CBE00B37DDB /* PageSheetContainerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07D908324BB4CBE00B37DDB /* PageSheetContainerManager.swift */; };
-		C07D908D24BB4CBE00B37DDB /* PageSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07D908424BB4CBE00B37DDB /* PageSheetView.swift */; };
-		C07D908E24BB4CBE00B37DDB /* PageSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07D908624BB4CBE00B37DDB /* PageSheetViewController.swift */; };
-		C07D908F24BB4CBE00B37DDB /* PageSheetContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07D908724BB4CBE00B37DDB /* PageSheetContainer.swift */; };
-		C07D909024BB4CBE00B37DDB /* UIViewController+TopMostController.m in Sources */ = {isa = PBXBuildFile; fileRef = C07D908824BB4CBE00B37DDB /* UIViewController+TopMostController.m */; };
-		C07D909124BB4CBE00B37DDB /* PageSheetViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C07D908924BB4CBE00B37DDB /* PageSheetViewManager.m */; };
-		C07D909224BB4CBE00B37DDB /* PageSheetContainerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C07D908A24BB4CBE00B37DDB /* PageSheetContainerManager.m */; };
-		C07D909324BB4CBE00B37DDB /* PageSheetViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07D908B24BB4CBE00B37DDB /* PageSheetViewManager.swift */; };
+		C09FEF7024D1C0B800F79BC4 /* RNRModalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C09FEF6924D1C0B800F79BC4 /* RNRModalManager.m */; };
+		C09FEF7124D1C0B800F79BC4 /* RNRModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FEF6A24D1C0B800F79BC4 /* RNRModalController.swift */; };
+		C09FEF7224D1C0B800F79BC4 /* RNRModalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FEF6B24D1C0B800F79BC4 /* RNRModalManager.swift */; };
+		C09FEF7324D1C0B800F79BC4 /* RNRModalsContainerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FEF6C24D1C0B800F79BC4 /* RNRModalsContainerManager.swift */; };
+		C09FEF7424D1C0B800F79BC4 /* RNRModalsContainerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C09FEF6D24D1C0B800F79BC4 /* RNRModalsContainerManager.m */; };
+		C09FEF7524D1C0B900F79BC4 /* RNRModalsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FEF6E24D1C0B800F79BC4 /* RNRModalsContainer.swift */; };
+		C09FEF7624D1C0B900F79BC4 /* RNRModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FEF6F24D1C0B800F79BC4 /* RNRModal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,15 +30,13 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRenavigationModals.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRenavigationModals.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C07D908324BB4CBE00B37DDB /* PageSheetContainerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSheetContainerManager.swift; sourceTree = "<group>"; };
-		C07D908424BB4CBE00B37DDB /* PageSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSheetView.swift; sourceTree = "<group>"; };
-		C07D908524BB4CBE00B37DDB /* UIViewController+TopMostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TopMostController.h"; sourceTree = "<group>"; };
-		C07D908624BB4CBE00B37DDB /* PageSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSheetViewController.swift; sourceTree = "<group>"; };
-		C07D908724BB4CBE00B37DDB /* PageSheetContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSheetContainer.swift; sourceTree = "<group>"; };
-		C07D908824BB4CBE00B37DDB /* UIViewController+TopMostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TopMostController.m"; sourceTree = "<group>"; };
-		C07D908924BB4CBE00B37DDB /* PageSheetViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageSheetViewManager.m; sourceTree = "<group>"; };
-		C07D908A24BB4CBE00B37DDB /* PageSheetContainerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageSheetContainerManager.m; sourceTree = "<group>"; };
-		C07D908B24BB4CBE00B37DDB /* PageSheetViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSheetViewManager.swift; sourceTree = "<group>"; };
+		C09FEF6924D1C0B800F79BC4 /* RNRModalManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRModalManager.m; sourceTree = "<group>"; };
+		C09FEF6A24D1C0B800F79BC4 /* RNRModalController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModalController.swift; sourceTree = "<group>"; };
+		C09FEF6B24D1C0B800F79BC4 /* RNRModalManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModalManager.swift; sourceTree = "<group>"; };
+		C09FEF6C24D1C0B800F79BC4 /* RNRModalsContainerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModalsContainerManager.swift; sourceTree = "<group>"; };
+		C09FEF6D24D1C0B800F79BC4 /* RNRModalsContainerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRModalsContainerManager.m; sourceTree = "<group>"; };
+		C09FEF6E24D1C0B800F79BC4 /* RNRModalsContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModalsContainer.swift; sourceTree = "<group>"; };
+		C09FEF6F24D1C0B800F79BC4 /* RNRModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModal.swift; sourceTree = "<group>"; };
 		F4FF95D5245B92E700C19C63 /* RenavigationModals-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RenavigationModals-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,15 +62,13 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				C07D908724BB4CBE00B37DDB /* PageSheetContainer.swift */,
-				C07D908A24BB4CBE00B37DDB /* PageSheetContainerManager.m */,
-				C07D908324BB4CBE00B37DDB /* PageSheetContainerManager.swift */,
-				C07D908424BB4CBE00B37DDB /* PageSheetView.swift */,
-				C07D908624BB4CBE00B37DDB /* PageSheetViewController.swift */,
-				C07D908924BB4CBE00B37DDB /* PageSheetViewManager.m */,
-				C07D908B24BB4CBE00B37DDB /* PageSheetViewManager.swift */,
-				C07D908524BB4CBE00B37DDB /* UIViewController+TopMostController.h */,
-				C07D908824BB4CBE00B37DDB /* UIViewController+TopMostController.m */,
+				C09FEF6F24D1C0B800F79BC4 /* RNRModal.swift */,
+				C09FEF6A24D1C0B800F79BC4 /* RNRModalController.swift */,
+				C09FEF6924D1C0B800F79BC4 /* RNRModalManager.m */,
+				C09FEF6B24D1C0B800F79BC4 /* RNRModalManager.swift */,
+				C09FEF6E24D1C0B800F79BC4 /* RNRModalsContainer.swift */,
+				C09FEF6D24D1C0B800F79BC4 /* RNRModalsContainerManager.m */,
+				C09FEF6C24D1C0B800F79BC4 /* RNRModalsContainerManager.swift */,
 				F4FF95D5245B92E700C19C63 /* RenavigationModals-Bridging-Header.h */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
@@ -136,14 +131,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C07D908F24BB4CBE00B37DDB /* PageSheetContainer.swift in Sources */,
-				C07D909324BB4CBE00B37DDB /* PageSheetViewManager.swift in Sources */,
-				C07D908C24BB4CBE00B37DDB /* PageSheetContainerManager.swift in Sources */,
-				C07D909024BB4CBE00B37DDB /* UIViewController+TopMostController.m in Sources */,
-				C07D909224BB4CBE00B37DDB /* PageSheetContainerManager.m in Sources */,
-				C07D908D24BB4CBE00B37DDB /* PageSheetView.swift in Sources */,
-				C07D908E24BB4CBE00B37DDB /* PageSheetViewController.swift in Sources */,
-				C07D909124BB4CBE00B37DDB /* PageSheetViewManager.m in Sources */,
+				C09FEF7124D1C0B800F79BC4 /* RNRModalController.swift in Sources */,
+				C09FEF7624D1C0B900F79BC4 /* RNRModal.swift in Sources */,
+				C09FEF7224D1C0B800F79BC4 /* RNRModalManager.swift in Sources */,
+				C09FEF7324D1C0B800F79BC4 /* RNRModalsContainerManager.swift in Sources */,
+				C09FEF7024D1C0B800F79BC4 /* RNRModalManager.m in Sources */,
+				C09FEF7524D1C0B900F79BC4 /* RNRModalsContainer.swift in Sources */,
+				C09FEF7424D1C0B800F79BC4 /* RNRModalsContainerManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
