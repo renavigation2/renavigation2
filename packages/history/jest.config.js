@@ -3,5 +3,5 @@ module.exports = {
   coverageDirectory: './coverage/',
   collectCoverageFrom: ['src/**/*.ts?(x)'],
   cacheDirectory: '.jest/cache',
-  testMatch: ['**/__tests__/**/*Test.ts?(x)']
+  testMatch: ['**/__tests__/**/*.test.ts?(x)']
 }
