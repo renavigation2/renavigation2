@@ -27,7 +27,6 @@
     "build": "bob build",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "release": "release-it",
-    "postpublish": "npm publish --access public",
     "test": "jest",
     "typescript": "tsc --noEmit",
     "watch": "nodemon -L -e ts,tsx,js,jsx --watch src --exec yarn build"
