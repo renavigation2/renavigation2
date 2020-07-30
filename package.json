@@ -7,14 +7,15 @@
     ]
   },
   "scripts": {
-    "build": "sh scripts/build.sh",
     "clean": "sh scripts/clean.sh",
     "lint": "lerna run lint --ignore RenavigationExample -- --max-warnings 0",
     "install": "patch-package",
+    "prepare": "lerna run prepare",
     "postinstall": "sh scripts/postinstall.sh",
     "test": "lerna run test --ignore RenavigationExample --",
     "typescript": "lerna run typescript --ignore RenavigationExample --",
     "update-dependencies": "sh scripts/update-dependencies.sh",
+    "version": "yarn install",
     "watch": "sh scripts/watch.sh"
   },
   "dependencies": {
@@ -26,6 +27,10 @@
     "react-native": "^0.63.2"
   },
   "devDependencies": {
-    "@types/react-native": "^0.63.2"
+    "@commitlint/config-conventional": "^9.1.1",
+    "@commitlint/config-lerna-scopes": "^9.1.1",
+    "@types/react-native": "^0.63.2",
+    "commitlint": "^9.1.0",
+    "husky": "^4.2.5"
   }
 }

@@ -64,7 +64,7 @@ jobs:
         yarn install --immutable
 
     - name: Build
-      run: yarn build
+      run: yarn prepare
 
     - name: Create releases
       run: |

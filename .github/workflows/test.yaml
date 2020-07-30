@@ -46,7 +46,7 @@ jobs:
         yarn install --immutable
 
     - name: Build
-      run: yarn build
+      run: yarn prepare
 
     - name: Compile typescript
       run: yarn typescript
@@ -94,7 +94,7 @@ jobs:
         yarn install --immutable
 
     - name: Build
-      run: yarn build
+      run: yarn prepare
 
     - name: Run linter
       run: yarn lint --max-warnings 0
@@ -142,7 +142,7 @@ jobs:
         yarn install --immutable
 
     - name: Build
-      run: yarn build
+      run: yarn prepare
 
     - name: Run unit tests
       run: yarn test -w 1 --forceExit
@@ -151,3 +151,54 @@ jobs:
       run: ./node_modules/.bin/codecov
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+  commitlint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Install node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14
+  
+    - name: Get yarn cache directory
+      id: yarn-cache
+      run: echo "::set-output name=dir::$(yarn config get globalFolder | sed 's/\/berry$//')"
+
+    - name: Cache yarn
+      uses: actions/cache@v2
+      with:
+        path: |
+          ${{ steps.yarn-cache.outputs.dir }}
+          .yarn/cache
+          .yarn/build-state.yml
+          .yarn/install-state.gz
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+
+    - name: Cache node_modules
+      uses: actions/cache@v2
+      id: node_modules
+      with:
+        path: |
+          **/node_modules
+        key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-node_modules-
+
+    - name: Install node_modules
+      if: steps.node_modules.outputs.cache-hit != 'true'
+      run: |
+        yarn install --immutable
+
+    - name: Run commitlint
+      uses: wagoid/commitlint-github-action@v1
+      with:
+        failOnWarnings: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.USER_GITHUB_TOKEN }}
