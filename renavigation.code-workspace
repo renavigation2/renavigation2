@@ -13,6 +13,9 @@
     },
     {
       "path": "packages/modals"
+    },
+    {
+      "path": "packages/navigation"
     }
   ],
   "settings": {
