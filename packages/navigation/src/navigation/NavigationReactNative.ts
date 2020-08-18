@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/display-name */
 import { Platform } from 'react-native'
@@ -16,12 +17,13 @@ import BackHandlerContext from './BackHandlerContext'
 import ModalBackHandler from './ModalBackHandler'
 import CoordinatorLayout from './CoordinatorLayout'
 import CollapsingBar from './CollapsingBar'
+import ActionBar from './ActionBar'
 import useNavigating from './useNavigating'
 import useNavigated from './useNavigated'
 import useUnloading from './useUnloading'
 import useUnloaded from './useUnloaded'
 
-const NavigationBarIOS = Platform.OS === 'ios' ? NavigationBar : () => null
+const NavigationBarIOS: any = Platform.OS === 'ios' ? NavigationBar : () => null
 const TitleBarIOS = Platform.OS === 'ios' ? TitleBar : () => null
 const RightBarIOS = Platform.OS === 'ios' ? RightBar : () => null
 const LeftBarIOS = Platform.OS === 'ios' ? LeftBar : () => null
@@ -57,6 +59,7 @@ export {
   ModalBackHandler,
   CoordinatorLayout,
   CollapsingBar,
+  ActionBar,
   useNavigating,
   useNavigated,
   useUnloading,

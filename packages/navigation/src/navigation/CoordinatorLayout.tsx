@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/display-name */
 import React from 'react'
@@ -6,9 +7,7 @@ import NavigationBar from './NavigationBar'
 import SearchBar from './SearchBar'
 
 const CoordinatorLayout = ({ overlap, children }: any) => {
-  const { clonedChildren, searchBar } = React.Children.toArray(children).reduce<
-    any
-  >(
+  const { clonedChildren, searchBar } = React.Children.toArray(children).reduce(
     (val: any, child: any) => {
       if (child.type === NavigationBar) {
         const barChildren = React.Children.toArray(child.props.children)

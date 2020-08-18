@@ -1,7 +1,8 @@
+/* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/display-name */
 const createBackHandler = () => {
-  const listeners: any = []
+  const listeners: any[] = []
   const addEventListener = (eventName: any, handler: any) => {
     if (listeners.indexOf(handler) === -1) listeners.push(handler)
     return { remove: () => removeEventListener(eventName, handler) }

@@ -1,21 +1,24 @@
+/* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/display-name */
 import React from 'react'
-import { requireNativeComponent } from 'react-native'
+import { requireNativeComponent, Platform, View } from 'react-native'
 
-const SharedElement = ({ transition, ...props }: any) => {
-  const enterTransition =
-    typeof transition !== 'function' ? transition : transition(true)
-  const exitTransition =
-    typeof transition !== 'function' ? transition : transition(false)
-  return (
+const SharedElement = ({ transition, ...props }: any) =>
+  Platform.OS == 'android' ? (
     <NVSharedElement
-      enterTransition={enterTransition}
-      exitTransition={exitTransition}
+      enterTransition={
+        typeof transition !== 'function' ? transition : transition(true)
+      }
+      exitTransition={
+        typeof transition !== 'function' ? transition : transition(false)
+      }
       {...props}
     />
+  ) : (
+    <View {...props} />
   )
-}
+
 const NVSharedElement = requireNativeComponent<any>('NVSharedElement')
 
 export default SharedElement
