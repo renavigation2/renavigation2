@@ -16,6 +16,9 @@
     },
     {
       "path": "packages/navigation"
+    },
+    {
+      "path": "packages/router"
     }
   ],
   "settings": {

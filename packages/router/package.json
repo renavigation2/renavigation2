@@ -1,0 +1,62 @@
+{
+  "name": "@renavigation2/router",
+  "version": "4.11.0",
+  "description": "Declarative routing for React",
+  "main": "lib/commonjs/index",
+  "module": "lib/module/index",
+  "types": "lib/typescript/index.d.ts",
+  "react-native": "src/index",
+  "source": "src/index",
+  "keywords": [],
+  "repository": "https://github.com/renavigation2/renavigation2",
+  "author": "React Training <hello@reacttraining.com>",
+  "contributors": [
+    "Gabriel Bull <me@gabrielbull.com> (https://github.com/gabrielbull)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/renavigation2/renavigation2/issues"
+  },
+  "homepage": "https://github.com/renavigation2/renavigation2#readme",
+  "files": [
+    "lib",
+    "!**/__tests__"
+  ],
+  "scripts": {
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "prepare": "bob build",
+    "test": "jest",
+    "typescript": "tsc --noEmit",
+    "watch": "nodemon -L -e ts,tsx,js,jsx --watch src --exec bob build"
+  },
+  "dependencies": {
+    "@renavigation2/history": "^4.11.0"
+  },
+  "devDependencies": {
+    "@react-native-community/bob": "^0.16.2",
+    "@types/jest": "^26.0.10",
+    "@typescript-eslint/eslint-plugin": "^3.9.1",
+    "@typescript-eslint/parser": "^3.9.1",
+    "babel-preset-jest": "^26.3.0",
+    "eslint": "^7.7.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.0",
+    "jest": "^26.4.0",
+    "metro-react-native-babel-preset": "^0.62.0",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
+    "typescript": "^3.9.7"
+  },
+  "@react-native-community/bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      "typescript"
+    ]
+  }
+}
