@@ -1,7 +1,5 @@
-import { Params } from '../typings/Params'
-import { readOnly } from '../utils/readOnly'
+import { Params, readOnly, RouteContextObject } from '@renavigation2/router'
 import { createContext } from 'react'
-import { RouteContextObject } from '../typings/RouteContextObject'
 
 export const ModalsRouteContext = createContext<RouteContextObject>({
   outlet: null,

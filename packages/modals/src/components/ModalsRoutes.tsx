@@ -8,14 +8,16 @@ import React, {
   useState
 } from 'react'
 import { readOnly, NativeHistory, Location } from '@renavigation2/history'
-import { createRoutesFromChildren } from '../utils/createRoutesFromChildren'
+import {
+  createRoutesFromChildren,
+  RoutesProps,
+  joinPaths,
+  matchRoutes,
+  Params,
+  RouteMatch
+} from '@renavigation2/router'
 import { ModalsRouteContext } from '../context/ModalsRouteContext'
-import { RoutesProps } from '../typings/RoutesProps'
-import { joinPaths } from '../utils/joinsPaths'
-import { matchRoutes } from '../utils/matchRoutes'
-import { Params } from '../typings/Params'
 import { ModalRenderer } from './ModalRenderer'
-import { RouteMatch } from '../typings/RouteMatch'
 import { NativeModalsContainer } from '../native/NativeModalsContainer'
 import { ModalsNavigatorContext } from '../context/ModalsNavigatorContext'
 

@@ -1,7 +1,7 @@
 import { Location, Action } from '@renavigation2/history'
 import { useContext, useCallback, useMemo } from 'react'
 import { ModalLocationContext } from '../context/ModalLocationContext'
-import { Navigator } from '../typings/Navigator'
+import { Navigator } from '@renavigation2/router'
 import { useModals } from './useModals'
 
 export interface ModalContextObject {
