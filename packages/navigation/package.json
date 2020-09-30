@@ -19,6 +19,7 @@
     "android",
     "lib",
     "ios",
+    "src",
     "renavigation-navigation.podspec",
     "!**/__tests__"
   ],
