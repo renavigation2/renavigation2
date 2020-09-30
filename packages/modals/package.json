@@ -18,6 +18,7 @@
   "files": [
     "lib",
     "ios",
+    "src",
     "renavigation-modals.podspec",
     "!**/__tests__"
   ],
