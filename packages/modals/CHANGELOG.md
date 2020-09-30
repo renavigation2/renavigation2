@@ -14,6 +14,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
+# [4.12.0](https://github.com/renavigation2/renavigation2/compare/v4.11.0...v4.12.0) (2020-09-30)
+
+
+### Bug Fixes
+
+* **modals:** Removed unused dependency ([035200c](https://github.com/renavigation2/renavigation2/commit/035200ce046f3403cb634580cb2f61291f5acc00))
+
+
+
+
+
 # 4.11.0 (2020-07-29)
 
 

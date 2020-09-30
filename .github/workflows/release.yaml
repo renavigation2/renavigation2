@@ -68,6 +68,7 @@ jobs:
     - name: Create releases
       run: |
         npx lerna version -y -m "chore(release): publish" --changelog-preset angular --conventional-commits --create-release github
+        git stash
       env:
         GH_TOKEN: ${{ secrets.USER_GITHUB_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
