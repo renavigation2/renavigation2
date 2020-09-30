@@ -1,1 +1,1 @@
-it.todo('write some tests')
+it.todo('write a test')
