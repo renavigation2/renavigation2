@@ -27,6 +27,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
+# [4.12.0](https://github.com/renavigation2/renavigation2/compare/v4.11.0...v4.12.0) (2020-09-30)
+
+**Note:** Version bump only for package RenavigationExample
+
+
+
+
+
 # 4.11.0 (2020-07-29)
 
 
