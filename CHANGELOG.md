@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.12.0](https://github.com/renavigation2/renavigation2/compare/v4.11.0...v4.12.0) (2020-09-30)
+
+
+### Bug Fixes
+
+* **modals:** Removed unused dependency ([035200c](https://github.com/renavigation2/renavigation2/commit/035200ce046f3403cb634580cb2f61291f5acc00))
+
+
+### Features
+
+* **navigation:** Added new iOS version of navigation native code ([c951649](https://github.com/renavigation2/renavigation2/commit/c9516490be4d75b1e143bf646afa97fc441c885d))
+* **navigation:** Forked grahammendick/navigation.git ([698eff0](https://github.com/renavigation2/renavigation2/commit/698eff0d848cc3f4c3ec48efa3986850cf630b70))
+* **router:** Added common router package ([d6a1bdc](https://github.com/renavigation2/renavigation2/commit/d6a1bdc17afcb246d69129593745d1bcb7a2851e))
+
+
+
+
+
 # 4.11.0 (2020-07-29)
 
 
