@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.12.1](https://github.com/renavigation2/renavigation2/compare/v4.12.0...v4.12.1) (2020-09-30)
+
+
+### Bug Fixes
+
+* **history:** Keep src folder in releases for react native ([26f091b](https://github.com/renavigation2/renavigation2/commit/26f091b0e1bf204d1e99b998cf2a5fc67196169e))
+* **modals:** Keep src folder in releases for react native ([cc90847](https://github.com/renavigation2/renavigation2/commit/cc908472b168f4ca618f6df040224c3d63ac9607))
+* **modals:** Keep src folder in releases for react native ([327c263](https://github.com/renavigation2/renavigation2/commit/327c263044dbccdeb9e947602270d9fa19bec96c))
+* **navigation:** Keep src folder in releases for react native ([f3969d4](https://github.com/renavigation2/renavigation2/commit/f3969d4e8d04330a2bd0e43174bdbf52834dd1ff))
+* **navigation:** Keep src folder in releases for react native ([cd7766d](https://github.com/renavigation2/renavigation2/commit/cd7766d351df86ca5bb0e89430ff2220e413e013))
+* **router:** Keep src folder in releases for react native ([fc39ed3](https://github.com/renavigation2/renavigation2/commit/fc39ed3c96b7402b40d2233d35823b467fa81c78))
+
+
+
+
+
 # [4.12.0](https://github.com/renavigation2/renavigation2/compare/v4.11.0...v4.12.0) (2020-09-30)
 
 

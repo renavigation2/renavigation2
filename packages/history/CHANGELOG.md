@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.12.1](https://github.com/renavigation2/renavigation2/compare/v4.12.0...v4.12.1) (2020-09-30)
+
+
+### Bug Fixes
+
+* **history:** Keep src folder in releases for react native ([26f091b](https://github.com/renavigation2/renavigation2/commit/26f091b0e1bf204d1e99b998cf2a5fc67196169e))
+
+
+
+
+
 # 4.11.0 (2020-07-29)
 
 
