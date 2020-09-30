@@ -1,0 +1,31 @@
+diff --git a/node_modules/navigation/navigation.d.ts b/node_modules/navigation/navigation.d.ts
+index ac48413..a56e224 100644
+--- a/node_modules/navigation/navigation.d.ts
++++ b/node_modules/navigation/navigation.d.ts
+@@ -180,7 +180,7 @@ export interface HistoryManager {
+     /**
+      * Gets a Url from the anchor or location
+      */
+-    getUrl(hrefElement: HTMLAnchorElement | Location): string;
++    getUrl(hrefElement: HTMLAnchorElement | any): string;
+     /**
+      * Removes browser history event listeners
+      */
+@@ -228,7 +228,7 @@ export class HashHistoryManager implements HistoryManager {
+     /**
+      * Gets a Url from the anchor or location
+      */
+-    getUrl(hrefElement: HTMLAnchorElement | Location): string;
++    getUrl(hrefElement: HTMLAnchorElement | any): string;
+     /**
+      * Removes a listener for the hashchange event
+      */
+@@ -275,7 +275,7 @@ export class HTML5HistoryManager implements HistoryManager {
+     /**
+      * Gets a Url from the anchor or location
+      */
+-    getUrl(hrefElement: HTMLAnchorElement | Location): string;
++    getUrl(hrefElement: HTMLAnchorElement | any): string;
+     /**
+      * Removes a listener for the popstate event
+      */
