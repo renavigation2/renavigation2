@@ -8,16 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* RenavigationExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RenavigationExampleTests.m */; };
-		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* RenavigationExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RenavigationExampleTests.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8426F3D06A2D89743CDBD8DA /* libPods-RenavigationExample-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC37D8ADCAA0BEE97D1E899E /* libPods-RenavigationExample-tvOS.a */; };
 		9D64E0D02DCE2314AC1A5C9F /* libPods-RenavigationExample-RenavigationExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FDBF022B46CF8DDBD5AF02 /* libPods-RenavigationExample-RenavigationExampleTests.a */; };
+		C043BB3B251706560006B8D3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C043BB3A251706560006B8D3 /* AppDelegate.m */; };
 		D89F03A37F1BA973EBEA974A /* libPods-RenavigationExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD97F6F5C1E14CEB2F71BD3 /* libPods-RenavigationExample.a */; };
 		EA0D080BF6AF50CC760E8499 /* libPods-RenavigationExample-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F406B9F5D4332D4918FA902 /* libPods-RenavigationExample-tvOSTests.a */; };
 /* End PBXBuildFile section */
@@ -47,7 +46,6 @@
 		11E49794D92E7554FC9B1908 /* Pods-RenavigationExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RenavigationExample.release.xcconfig"; path = "Target Support Files/Pods-RenavigationExample/Pods-RenavigationExample.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* RenavigationExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RenavigationExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = RenavigationExample/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = RenavigationExample/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RenavigationExample/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RenavigationExample/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RenavigationExample/main.m; sourceTree = "<group>"; };
@@ -62,6 +60,7 @@
 		A319D63492992D0A0666C97E /* Pods-RenavigationExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RenavigationExample.debug.xcconfig"; path = "Target Support Files/Pods-RenavigationExample/Pods-RenavigationExample.debug.xcconfig"; sourceTree = "<group>"; };
 		A8FDBF022B46CF8DDBD5AF02 /* libPods-RenavigationExample-RenavigationExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RenavigationExample-RenavigationExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC37D8ADCAA0BEE97D1E899E /* libPods-RenavigationExample-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RenavigationExample-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C043BB3A251706560006B8D3 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = RenavigationExample/AppDelegate.m; sourceTree = "<group>"; };
 		C068D70924B970A100E119C5 /* RenavigationExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RenavigationExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		C068D70A24B970A100E119C5 /* RenavigationExample-tvOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RenavigationExample-tvOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		DAA7985A8673A1AE3A94F650 /* Pods-RenavigationExample-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RenavigationExample-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-RenavigationExample-tvOSTests/Pods-RenavigationExample-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,7 +128,7 @@
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
-				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				C043BB3A251706560006B8D3 /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
@@ -572,7 +571,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				C043BB3B251706560006B8D3 /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,7 +581,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */,
-				2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 class RNRModal: UIView, UIAdaptivePresentationControllerDelegate {
-    var controller: UIViewController
+    var controller: UIViewController = RNRModalController()
     var presented = false
     var animated = true
     @objc var onWillAppear: RCTDirectEventBlock?
@@ -8,7 +8,6 @@ class RNRModal: UIView, UIAdaptivePresentationControllerDelegate {
     @objc var onDidDisappear: RCTDirectEventBlock?
 
     override init(frame: CGRect) {
-        controller = RNRModalController()
         super.init(frame: frame)
         controller.view = self
         controller.presentationController?.delegate = self

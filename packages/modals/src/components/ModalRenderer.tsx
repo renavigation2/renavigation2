@@ -7,14 +7,16 @@ import React, {
 } from 'react'
 import { ModalsOptionsContext } from '../context/ModalsOptionsContext'
 import { NativeModal } from '../native/NativeModal'
-import { RouteObject } from '../typings/RouteObject'
+import {
+  RouteObject,
+  LifecycleEventType,
+  LifecycleEventHandler
+} from '@renavigation2/router'
 import { ModalPresentation } from '../native/ModalPresentation'
 import { ModalLocationContext } from '../context/ModalLocationContext'
 import { ModalsNavigatorContext } from '../context/ModalsNavigatorContext'
 import { NativeHistory, Location, Action } from '@renavigation2/history'
 import { ModalSetDismissibleContext } from '../context/ModalSetDismissibleContext'
-import { LifecycleEventType } from '../typings/LifecycleEventType'
-import { LifecycleEventHandler } from '../typings/LifecycleEventHandler'
 import { ModalLifecycleContext } from '../context/ModalLifecycleContext'
 
 interface Props {

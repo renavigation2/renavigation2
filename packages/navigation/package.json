@@ -1,0 +1,77 @@
+{
+  "name": "@renavigation2/navigation",
+  "version": "4.11.0",
+  "description": "Renavigation Navigation",
+  "main": "lib/commonjs/index",
+  "module": "lib/module/index",
+  "types": "lib/typescript/index.d.ts",
+  "react-native": "src/index",
+  "source": "src/index",
+  "keywords": [],
+  "repository": "https://github.com/renavigation2/renavigation2",
+  "author": "Graham Mendick",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/renavigation2/renavigation2/issues"
+  },
+  "homepage": "https://github.com/renavigation2/renavigation2#readme",
+  "files": [
+    "android",
+    "lib",
+    "ios",
+    "renavigation-navigation.podspec",
+    "!**/__tests__"
+  ],
+  "scripts": {
+    "fork-navigation": "sh scripts/fork-navigation.sh",
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "prepare": "bob build",
+    "test": "jest",
+    "typescript": "tsc --noEmit",
+    "watch": "nodemon -L -e ts,tsx,js,jsx --watch src --exec bob build"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "dependencies": {
+    "@renavigation2/history": "^4.11.0",
+    "@renavigation2/router": "^4.11.0",
+    "navigation": "^5.3.1",
+    "navigation-react": "^4.1.1"
+  },
+  "devDependencies": {
+    "@react-native-community/bob": "^0.16.2",
+    "@types/jest": "^26.0.14",
+    "@types/react": "^16.9.49",
+    "@types/react-native": "0.63.19",
+    "@types/react-test-renderer": "^16.9.3",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
+    "babel-preset-jest": "^26.3.0",
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "jest": "^26.4.2",
+    "metro-react-native-babel-preset": "^0.63.0",
+    "nodemon": "^2.0.4",
+    "pod-install": "^0.1.12",
+    "prettier": "^2.1.2",
+    "react": "^16.13.1",
+    "react-native": "^0.63.2",
+    "react-test-renderer": "^16.13.1",
+    "typescript": "^4.0.3"
+  },
+  "@react-native-community/bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      "typescript"
+    ]
+  }
+}
