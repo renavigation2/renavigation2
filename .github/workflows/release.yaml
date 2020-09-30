@@ -74,16 +74,6 @@ jobs:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         USER_GITHUB_TOKEN: ${{ secrets.USER_GITHUB_TOKEN }}
 
-    - name: Publish to NPM
-      run: |
-        echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
-        npx lerna publish -y from-package
-        rm .npmrc
-      env:
-        GH_TOKEN: ${{ secrets.USER_GITHUB_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        USER_GITHUB_TOKEN: ${{ secrets.USER_GITHUB_TOKEN }}
-
     - name: Publish to Github Repository
       run: |
         echo "//npm.pkg.github.com/:_authToken=$USER_GITHUB_TOKEN" > .npmrc
