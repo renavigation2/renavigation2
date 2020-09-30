@@ -20,6 +20,7 @@
   "homepage": "https://github.com/renavigation2/renavigation2#readme",
   "files": [
     "lib",
+    "src",
     "!**/__tests__"
   ],
   "scripts": {
