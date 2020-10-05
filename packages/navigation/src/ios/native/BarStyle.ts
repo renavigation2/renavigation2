@@ -3,9 +3,9 @@ import { NativeModules } from 'react-native'
 const RNRNavigationBarStyle = NativeModules.RNRNavigationBarStyle
 
 export enum BarStyle {
-  Default = RNRNavigationBarStyle.default,
-  Black = RNRNavigationBarStyle.black,
-  BlackTranslucent = RNRNavigationBarStyle.blackTranslucent
+  'default' = RNRNavigationBarStyle.default,
+  'black' = RNRNavigationBarStyle.black,
+  'black-translucent' = RNRNavigationBarStyle.blackTranslucent
 }
 
 export type BarStyleValue = keyof typeof BarStyle
