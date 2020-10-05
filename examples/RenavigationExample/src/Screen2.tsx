@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 import { ScrollView, Text, View } from 'react-native'
-import { Button } from './common/Button'
+import { Button } from './components/Button'
 import {
   NavigationScreen,
   useDidAppearEffect,
