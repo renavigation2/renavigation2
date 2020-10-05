@@ -4,40 +4,40 @@ class RNRNavigationBlurEffect: NSObject {
     func constantsToExport() -> [AnyHashable: Any] {
         if #available(iOS 13.0, *) {
             return [
+                "prominent": UIBlurEffect.Style.prominent.rawValue,
+                "dark": UIBlurEffect.Style.dark.rawValue,
                 "extraLight": UIBlurEffect.Style.extraLight.rawValue,
                 "light": UIBlurEffect.Style.light.rawValue,
-                "dark": UIBlurEffect.Style.dark.rawValue,
                 "regular": UIBlurEffect.Style.regular.rawValue,
-                "prominent": UIBlurEffect.Style.prominent.rawValue,
-                "systemUltraThinMaterial": UIBlurEffect.Style.systemUltraThinMaterial.rawValue,
-                "systemThinMaterial": UIBlurEffect.Style.systemThinMaterial.rawValue,
-                "systemMaterial": UIBlurEffect.Style.systemMaterial.rawValue,
-                "systemThickMaterial": UIBlurEffect.Style.systemThickMaterial.rawValue,
                 "systemChromeMaterial": UIBlurEffect.Style.systemChromeMaterial.rawValue,
-                "systemUltraThinMaterialLight": UIBlurEffect.Style.systemUltraThinMaterialLight.rawValue,
-                "systemThinMaterialLight": UIBlurEffect.Style.systemThinMaterialLight.rawValue,
-                "systemMaterialLight": UIBlurEffect.Style.systemMaterialLight.rawValue,
-                "systemThickMaterialLight": UIBlurEffect.Style.systemThickMaterialLight.rawValue,
+                "systemChromeMaterialDark": UIBlurEffect.Style.systemChromeMaterialDark.rawValue,
                 "systemChromeMaterialLight": UIBlurEffect.Style.systemChromeMaterialLight.rawValue,
-                "systemUltraThinMaterialDark": UIBlurEffect.Style.systemUltraThinMaterialDark.rawValue,
-                "systemThinMaterialDark": UIBlurEffect.Style.systemThinMaterialDark.rawValue,
+                "systemMaterial": UIBlurEffect.Style.systemMaterial.rawValue,
                 "systemMaterialDark": UIBlurEffect.Style.systemMaterialDark.rawValue,
+                "systemMaterialLight": UIBlurEffect.Style.systemMaterialLight.rawValue,
+                "systemThickMaterial": UIBlurEffect.Style.systemThickMaterial.rawValue,
                 "systemThickMaterialDark": UIBlurEffect.Style.systemThickMaterialDark.rawValue,
-                "systemChromeMaterialDark": UIBlurEffect.Style.systemChromeMaterialDark.rawValue
+                "systemThickMaterialLight": UIBlurEffect.Style.systemThickMaterialLight.rawValue,
+                "systemThinMaterial": UIBlurEffect.Style.systemThinMaterial.rawValue,
+                "systemThinMaterialDark": UIBlurEffect.Style.systemThinMaterialDark.rawValue,
+                "systemThinMaterialLight": UIBlurEffect.Style.systemThinMaterialLight.rawValue,
+                "systemUltraThinMaterial": UIBlurEffect.Style.systemUltraThinMaterial.rawValue,
+                "systemUltraThinMaterialDark": UIBlurEffect.Style.systemUltraThinMaterialDark.rawValue,
+                "systemUltraThinMaterialLight": UIBlurEffect.Style.systemUltraThinMaterialLight.rawValue,
             ]
         } else if #available(iOS 10.0, *) {
             return [
+                "prominent": UIBlurEffect.Style.prominent.rawValue,
+                "dark": UIBlurEffect.Style.dark.rawValue,
                 "extraLight": UIBlurEffect.Style.extraLight.rawValue,
                 "light": UIBlurEffect.Style.light.rawValue,
-                "dark": UIBlurEffect.Style.dark.rawValue,
                 "regular": UIBlurEffect.Style.regular.rawValue,
-                "prominent": UIBlurEffect.Style.prominent.rawValue
             ]
         } else {
             return [
+                "dark": UIBlurEffect.Style.dark.rawValue,
                 "extraLight": UIBlurEffect.Style.extraLight.rawValue,
                 "light": UIBlurEffect.Style.light.rawValue,
-                "dark": UIBlurEffect.Style.dark.rawValue
             ]
         }
     }
@@ -47,4 +47,3 @@ class RNRNavigationBlurEffect: NSObject {
         true
     }
 }
-

@@ -8,7 +8,6 @@ class RNRNavigationScenesManager: RCTViewManager, RCTInvalidating {
 
     override func view() -> UIView! {
         navigationScenes = RNRNavigationScenes()
-        navigationScenes?.bridge = bridge
         return navigationScenes
     }
 
@@ -17,20 +16,20 @@ class RNRNavigationScenesManager: RCTViewManager, RCTInvalidating {
     }
 
     @objc func pop(_ node: NSNumber, animated: Bool) {
-        DispatchQueue.main.async {
-            (self.bridge.uiManager.view(
+        DispatchQueue.main.async { [self] in
+            (bridge.uiManager.view(
                     forReactTag: node
             ) as? RNRNavigationScenes)?.pop(animated: animated)
         }
     }
 
     @objc func popTo(_ node: NSNumber, viewNode: NSNumber, animated: Bool) {
-        DispatchQueue.main.async {
-            let view = (self.bridge.uiManager.view(
+        DispatchQueue.main.async { [self] in
+            let view = (bridge.uiManager.view(
                     forReactTag: viewNode
             ) as? RNRNavigationScene)
             if view != nil {
-                (self.bridge.uiManager.view(
+                (bridge.uiManager.view(
                         forReactTag: node
                 ) as? RNRNavigationScenes)?.popTo(view!, animated: animated)
             }
@@ -38,6 +37,5 @@ class RNRNavigationScenesManager: RCTViewManager, RCTInvalidating {
     }
 
     func invalidate() {
-        navigationScenes?.invalidate()
     }
 }

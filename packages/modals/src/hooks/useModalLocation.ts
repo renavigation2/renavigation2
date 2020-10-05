@@ -13,13 +13,13 @@ import invariant from 'tiny-invariant'
  *
  * @see https://reactrouter.com/api/useLocation
  */
-export function useModalsLocation(): Location {
+export function useModalLocation(): Location {
   const inRouterContext = useContext(ModalLocationContext).location != null
   invariant(
     inRouterContext,
     // TODO: This error is probably because they somehow have 2 versions of the
     // router loaded. We can help them understand how to avoid that.
-    `useLocation() may be used only in the context of a <Router> component.`
+    `useModalLocation() may be used only in the context of a <ModalsRouter> component.`
   )
   return useContext(ModalLocationContext).location as Location
 }

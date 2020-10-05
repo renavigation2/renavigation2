@@ -2953,6 +2953,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@npmcli/node-gyp@npm:^1.0.0":
+  version: 1.0.1
+  resolution: "@npmcli/node-gyp@npm:1.0.1"
+  checksum: 7544256f2712743d4b86ad5302a06656e0a351ff00d91a98ae58e64fef38a7e5bc89d7d2eda6c40d3fe6da17bd83e50d24c78a6232692c76bfaeee8df3371f21
+  languageName: node
+  linkType: hard
+
 "@npmcli/promise-spawn@npm:^1.1.0, @npmcli/promise-spawn@npm:^1.2.0":
   version: 1.2.0
   resolution: "@npmcli/promise-spawn@npm:1.2.0"
@@ -2963,14 +2970,15 @@ __metadata:
   linkType: hard
 
 "@npmcli/run-script@npm:^1.3.0":
-  version: 1.6.0
-  resolution: "@npmcli/run-script@npm:1.6.0"
+  version: 1.7.2
+  resolution: "@npmcli/run-script@npm:1.7.2"
   dependencies:
+    "@npmcli/node-gyp": ^1.0.0
     "@npmcli/promise-spawn": ^1.2.0
     infer-owner: ^1.0.4
     node-gyp: ^7.1.0
     read-package-json-fast: ^1.1.3
-  checksum: 616e4c6a2a73cb6480a5ee19ab841eebc549792efe45e75d9fd6d67fd8c3d294d549594e4753b4f4829569717b36366c498259ae4b60166386aee15f7fafaeca
+  checksum: c10829395e0068679dc386d6f1789e414254fd5f6b86ce84ab2eb404340a6efef9d564930dd4aa0839e975e572284f7a7e658481dc8b566337295bea90522fdd
   languageName: node
   linkType: hard
 
@@ -3312,7 +3320,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@renavigation2/history@^4.11.0, @renavigation2/history@workspace:packages/history":
+"@renavigation2/history@^4.12.1, @renavigation2/history@workspace:packages/history":
   version: 0.0.0-use.local
   resolution: "@renavigation2/history@workspace:packages/history"
   dependencies:
@@ -3325,7 +3333,7 @@ __metadata:
     eslint-config-prettier: ^6.12.0
     eslint-plugin-import: ^2.22.1
     eslint-plugin-prettier: ^3.1.4
-    eslint-plugin-react: ^7.21.2
+    eslint-plugin-react: ^7.21.3
     eslint-plugin-react-hooks: ^4.1.2
     jest: ^26.4.2
     metro-react-native-babel-preset: ^0.63.0
@@ -3335,15 +3343,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@renavigation2/modals@^4.12.0, @renavigation2/modals@workspace:packages/modals":
+"@renavigation2/modals@^4.12.1, @renavigation2/modals@workspace:packages/modals":
   version: 0.0.0-use.local
   resolution: "@renavigation2/modals@workspace:packages/modals"
   dependencies:
     "@react-native-community/bob": ^0.16.2
-    "@renavigation2/history": ^4.11.0
-    "@renavigation2/router": ^4.12.0
+    "@renavigation2/history": ^4.12.1
+    "@renavigation2/router": ^4.12.1
     "@types/jest": ^26.0.14
-    "@types/react": ^16.9.49
+    "@types/react": ^16.9.50
     "@types/react-native": 0.63.23
     "@types/react-test-renderer": ^16.9.3
     "@typescript-eslint/eslint-plugin": ^4.3.0
@@ -3353,7 +3361,7 @@ __metadata:
     eslint-config-prettier: ^6.12.0
     eslint-plugin-import: ^2.22.1
     eslint-plugin-prettier: ^3.1.4
-    eslint-plugin-react: ^7.21.2
+    eslint-plugin-react: ^7.21.3
     eslint-plugin-react-hooks: ^4.1.2
     jest: ^26.4.2
     metro-react-native-babel-preset: ^0.63.0
@@ -3371,15 +3379,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@renavigation2/navigation@^4.12.0, @renavigation2/navigation@workspace:packages/navigation":
+"@renavigation2/navigation@^4.12.1, @renavigation2/navigation@workspace:packages/navigation":
   version: 0.0.0-use.local
   resolution: "@renavigation2/navigation@workspace:packages/navigation"
   dependencies:
     "@react-native-community/bob": ^0.16.2
-    "@renavigation2/history": ^4.11.0
-    "@renavigation2/router": ^4.12.0
+    "@renavigation2/history": ^4.12.1
+    "@renavigation2/router": ^4.12.1
     "@types/jest": ^26.0.14
-    "@types/react": ^16.9.49
+    "@types/react": ^16.9.50
     "@types/react-native": 0.63.23
     "@types/react-test-renderer": ^16.9.3
     "@typescript-eslint/eslint-plugin": ^4.3.0
@@ -3389,7 +3397,7 @@ __metadata:
     eslint-config-prettier: ^6.12.0
     eslint-plugin-import: ^2.22.1
     eslint-plugin-prettier: ^3.1.4
-    eslint-plugin-react: ^7.21.2
+    eslint-plugin-react: ^7.21.3
     eslint-plugin-react-hooks: ^4.1.2
     jest: ^26.4.2
     metro-react-native-babel-preset: ^0.63.0
@@ -3408,12 +3416,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@renavigation2/router@^4.12.0, @renavigation2/router@workspace:packages/router":
+"@renavigation2/router@^4.12.1, @renavigation2/router@workspace:packages/router":
   version: 0.0.0-use.local
   resolution: "@renavigation2/router@workspace:packages/router"
   dependencies:
     "@react-native-community/bob": ^0.16.2
-    "@renavigation2/history": ^4.11.0
+    "@renavigation2/history": ^4.12.1
     "@types/jest": ^26.0.14
     "@typescript-eslint/eslint-plugin": ^4.3.0
     "@typescript-eslint/parser": ^4.3.0
@@ -3422,7 +3430,7 @@ __metadata:
     eslint-config-prettier: ^6.12.0
     eslint-plugin-import: ^2.22.1
     eslint-plugin-prettier: ^3.1.4
-    eslint-plugin-react: ^7.21.2
+    eslint-plugin-react: ^7.21.3
     eslint-plugin-react-hooks: ^4.1.2
     jest: ^26.4.2
     metro-react-native-babel-preset: ^0.63.0
@@ -3682,13 +3690,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^16.9.49":
-  version: 16.9.49
-  resolution: "@types/react@npm:16.9.49"
+"@types/react@npm:*, @types/react@npm:^16.9.50":
+  version: 16.9.50
+  resolution: "@types/react@npm:16.9.50"
   dependencies:
     "@types/prop-types": "*"
     csstype: ^3.0.2
-  checksum: cf5dabe1e9c893a19a338002ac4bf5a86c9bc3cd88eb07aece54e6d2e5af35debe2a8c72d211ad9133391543ce115219cd7c7f2a6f649b81caf4548e1cc99061
+  checksum: 3941c4f31cf5a44d376a8ca2b5e5df1ab6af0588da88f8975dc3dac55f3345a7634d599c1a808726723509611b0536943622fbc9162afff2ad869677672b877a
   languageName: node
   linkType: hard
 
@@ -3975,10 +3983,10 @@ __metadata:
     "@babel/core": ^7.11.6
     "@babel/runtime": ^7.11.2
     "@react-native-community/eslint-config": ^2.0.0
-    "@renavigation2/modals": ^4.12.0
-    "@renavigation2/navigation": ^4.12.0
+    "@renavigation2/modals": ^4.12.1
+    "@renavigation2/navigation": ^4.12.1
     "@types/jest": ^26.0.14
-    "@types/react": ^16.9.49
+    "@types/react": ^16.9.50
     "@types/react-native": ^0.63.23
     "@types/react-test-renderer": ^16.9.3
     "@types/redux-logger": ^3.0.8
@@ -3988,7 +3996,7 @@ __metadata:
     eslint: ^7.10.0
     eslint-config-prettier: ^6.12.0
     eslint-plugin-prettier: ^3.1.4
-    eslint-plugin-react: ^7.21.2
+    eslint-plugin-react: ^7.21.3
     eslint-plugin-react-hooks: ^4.1.2
     jest: ^26.4.2
     metro-react-native-babel-preset: ^0.63.0
@@ -5171,9 +5179,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001135":
-  version: 1.0.30001137
-  resolution: "caniuse-lite@npm:1.0.30001137"
-  checksum: 8cc7405638f4d89a77a6db51f4162bb539c6f180f8c1151d3a8efd3c2e634214b6b1897d74c93c00908d5b7ad33a16f92696be053f391747819ba68945e82f12
+  version: 1.0.30001142
+  resolution: "caniuse-lite@npm:1.0.30001142"
+  checksum: e8988ac35f495d4179eee1aee0862930e1c01aea17f4dfad7284a56fae642b074452569778306920e4df08f7efc4dbced86744906ccf686c3c5729239120e8ae
   languageName: node
   linkType: hard
 
@@ -6591,41 +6599,41 @@ __metadata:
   linkType: hard
 
 "es-abstract@npm:^1.17.0, es-abstract@npm:^1.17.0-next.1, es-abstract@npm:^1.17.5":
-  version: 1.17.6
-  resolution: "es-abstract@npm:1.17.6"
+  version: 1.17.7
+  resolution: "es-abstract@npm:1.17.7"
   dependencies:
     es-to-primitive: ^1.2.1
     function-bind: ^1.1.1
     has: ^1.0.3
     has-symbols: ^1.0.1
-    is-callable: ^1.2.0
-    is-regex: ^1.1.0
-    object-inspect: ^1.7.0
+    is-callable: ^1.2.2
+    is-regex: ^1.1.1
+    object-inspect: ^1.8.0
     object-keys: ^1.1.1
-    object.assign: ^4.1.0
+    object.assign: ^4.1.1
     string.prototype.trimend: ^1.0.1
     string.prototype.trimstart: ^1.0.1
-  checksum: 637ad488bdcbc538dfb35ee30cdbe5e48ecf68c5145a368c8f1be346e83d2555e416709e9382eb9902e542da94763cdd2152d87dbbb01b5b39919c1329bd0bb4
+  checksum: e8dfb81bbabcde46d2309436f107d3e795e4bcb83d78614e0c65ca7baac50522603e363be1b81ad5b1943c93fc02ed550198a7dd0580a671a6171960f2490a97
   languageName: node
   linkType: hard
 
 "es-abstract@npm:^1.18.0-next.0":
-  version: 1.18.0-next.0
-  resolution: "es-abstract@npm:1.18.0-next.0"
+  version: 1.18.0-next.1
+  resolution: "es-abstract@npm:1.18.0-next.1"
   dependencies:
     es-to-primitive: ^1.2.1
     function-bind: ^1.1.1
     has: ^1.0.3
     has-symbols: ^1.0.1
-    is-callable: ^1.2.0
+    is-callable: ^1.2.2
     is-negative-zero: ^2.0.0
     is-regex: ^1.1.1
     object-inspect: ^1.8.0
     object-keys: ^1.1.1
-    object.assign: ^4.1.0
+    object.assign: ^4.1.1
     string.prototype.trimend: ^1.0.1
     string.prototype.trimstart: ^1.0.1
-  checksum: 1b2264251b11d77edb3005700d1d21f04d388f3d880b8c044b460f3dd0621a1568e0b637f8d0a3ff901e7c74ecda7922bf8a8e45b0bb7fd8d5cc7e343746d463
+  checksum: f1e37567e49a54c09050aa3371cac601a789441f4fa9730f2c2d386aadad547d6c303bb41e7f5cb5286b616104d6c13450f33b712f664939a09729dd5e45c963
   languageName: node
   linkType: hard
 
@@ -6850,9 +6858,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react@npm:^7.20.0, eslint-plugin-react@npm:^7.21.2":
-  version: 7.21.2
-  resolution: "eslint-plugin-react@npm:7.21.2"
+"eslint-plugin-react@npm:^7.20.0, eslint-plugin-react@npm:^7.21.3":
+  version: 7.21.3
+  resolution: "eslint-plugin-react@npm:7.21.3"
   dependencies:
     array-includes: ^3.1.1
     array.prototype.flatmap: ^1.2.3
@@ -6867,7 +6875,7 @@ __metadata:
     string.prototype.matchall: ^4.0.2
   peerDependencies:
     eslint: ^3 || ^4 || ^5 || ^6 || ^7
-  checksum: 48ec4da08a53b5d73ce66132a73a9553b7c4300c23ecbb3e14f4c9df8bbaca2b5bff559adecd7014e217ce7eb445f99ba4a6683ce6c958ee78769b992bd183f4
+  checksum: 8a126d405448534821126dd636a1aee8df3a4f49b3fcec8944ac8500cdb5119bccaf9e209512f20e73879ddce08f657deb32fdae2f92e6393614de61fed1cca8
   languageName: node
   linkType: hard
 
@@ -7932,11 +7940,11 @@ fsevents@^1.2.7:
   linkType: hard
 
 "git-url-parse@npm:^11.1.2":
-  version: 11.2.0
-  resolution: "git-url-parse@npm:11.2.0"
+  version: 11.3.0
+  resolution: "git-url-parse@npm:11.3.0"
   dependencies:
     git-up: ^4.0.0
-  checksum: e9919fd1240917f74241a60b571a93e748a9e24648caf96f7b4183bbf44ff7de133a3554e1c3fda6a23e5b3b12ea2316e0f692c03e12ee590cae0a05ebcd5b66
+  checksum: 86155163c8e33c0268d2741c65bc01eecf82c6d9818759de65993b04ca2baa7009a6a77dd1dfdb527510e24dac558f3cb4d134e41a88d0374c2fd39b0676ef84
   languageName: node
   linkType: hard
 
@@ -8750,7 +8758,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"is-callable@npm:^1.1.4, is-callable@npm:^1.2.0":
+"is-callable@npm:^1.1.4, is-callable@npm:^1.2.2":
   version: 1.2.2
   resolution: "is-callable@npm:1.2.2"
   checksum: c35d37cc46c997d6417d7254733c8a3b1146f18121197c5600f601c56fb27abd1b372b0b9c41ea9a69d30556a2a0fd85e396da8eb8bc4af2e5ad8c5232fcd433
@@ -9034,7 +9042,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"is-regex@npm:^1.1.0, is-regex@npm:^1.1.1":
+"is-regex@npm:^1.1.1":
   version: 1.1.1
   resolution: "is-regex@npm:1.1.1"
   dependencies:
@@ -11324,8 +11332,8 @@ fsevents@^1.2.7:
   linkType: hard
 
 "minipass-fetch@npm:^1.3.0":
-  version: 1.3.1
-  resolution: "minipass-fetch@npm:1.3.1"
+  version: 1.3.2
+  resolution: "minipass-fetch@npm:1.3.2"
   dependencies:
     encoding: ^0.1.12
     minipass: ^3.1.0
@@ -11334,7 +11342,7 @@ fsevents@^1.2.7:
   dependenciesMeta:
     encoding:
       optional: true
-  checksum: ffe46ab023059abab1781514c3e18ba52b52c49f48047e304af43bdc18aef20f3645a1f3fe14eb21a0c31dc1251612c8ae872313f80c2d91f0909f5424c7724a
+  checksum: f1d48470b6dd8dd722559b62e533f5c534a475cbd8268d8a547ada6ffb251e719e7d394ad6f8ae5117d645861608dc30b7e32de44b3e9c2c5a3f36fab64bcaf0
   languageName: node
   linkType: hard
 
@@ -12068,7 +12076,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"object-inspect@npm:^1.7.0, object-inspect@npm:^1.8.0":
+"object-inspect@npm:^1.8.0":
   version: 1.8.0
   resolution: "object-inspect@npm:1.8.0"
   checksum: 4da23a188b3811d75fcd6e7916471465f94e4752159e064f9621040945d375dca1afa092a000a398267d81b4f40bf33cfdbe1e99eff98f1972155efe055f80c8
@@ -12091,7 +12099,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"object.assign@npm:^4.1.0":
+"object.assign@npm:^4.1.0, object.assign@npm:^4.1.1":
   version: 4.1.1
   resolution: "object.assign@npm:4.1.1"
   dependencies:
@@ -14285,13 +14293,13 @@ fsevents@^1.2.7:
   linkType: hard
 
 "simple-plist@npm:^1.0.0":
-  version: 1.1.0
-  resolution: "simple-plist@npm:1.1.0"
+  version: 1.1.1
+  resolution: "simple-plist@npm:1.1.1"
   dependencies:
     bplist-creator: 0.0.8
     bplist-parser: 0.2.0
     plist: ^3.0.1
-  checksum: 5034858157f0c4ac3a35c310e411307048df205932a56809244a8143f441466918ac7063e017c54a040ce372a617664d426460fd943113501a647f241db8641c
+  checksum: 594a6f539179ad18349907f97e09263a8dadc34f8558c459f4838b3e6884f1a637685829a7f754b9e5f92e707b7783a9455dca654d16cff599a2704adf7d612c
   languageName: node
   linkType: hard
 
@@ -15951,13 +15959,13 @@ typescript@^4.0.3:
   linkType: hard
 
 "whatwg-url@npm:^8.0.0":
-  version: 8.2.2
-  resolution: "whatwg-url@npm:8.2.2"
+  version: 8.3.0
+  resolution: "whatwg-url@npm:8.3.0"
   dependencies:
     lodash.sortby: ^4.7.0
     tr46: ^2.0.2
     webidl-conversions: ^6.1.0
-  checksum: 3200508d0b79cfee888fb36bf26873e0583608d59be5e7486959de492c5d1aa649f8457930d0be6920d1c9b2fbd4238af45c5bd57f7fa12bb0b03483f9ccb56b
+  checksum: f5735046ef21d5bac4e81313184eac071825b61130f81c70a956fd900938cd282dcf4ed6ccceebed8fcfc0ed76060070d9d16e26d240ef19c1a335487542f42c
   languageName: node
   linkType: hard
 
@@ -16277,9 +16285,9 @@ typescript@^4.0.3:
   linkType: hard
 
 "yargs-parser@npm:20.x":
-  version: 20.2.0
-  resolution: "yargs-parser@npm:20.2.0"
-  checksum: d707279bded5a5e1dec5ce8c22d8b9adadd8da1c2a3e0f87c297d13284973fdeb10de8d93df950465036a23fa98bc2c3d26e2d2fc4c9c75f1f6b24db65da489f
+  version: 20.2.1
+  resolution: "yargs-parser@npm:20.2.1"
+  checksum: c4945ade7d792bde00e3f68930f56f1fdd531e501c4ecf944c524c1541c5fe2468c27b4f76b0b459009ef09e338750d01810732f99f0a1fa061af4126cf5f53e
   languageName: node
   linkType: hard
 

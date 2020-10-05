@@ -1,18 +1,21 @@
 import React, { useCallback } from 'react'
-import { ScrollView, Text, View } from 'react-native'
-import { Button } from './common/Button'
+import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import { Button } from './components/Button'
 import {
   NavigationScreen,
   useNavigation,
   useLocation,
   NavigationBarItem
 } from '@renavigation2/navigation'
+import { useModals, useModal } from '@renavigation2/modals'
 
 interface Props {}
 
 export const Screen3: React.FC<Props> = ({}) => {
   const { go, reset, push, replace } = useNavigation()
   const { state } = useLocation()
+  const { presentModal, dismissModal } = useModals()
+  const modal = useModal()
 
   const goBackToStart = useCallback(() => {
     go(-2)
@@ -30,12 +33,31 @@ export const Screen3: React.FC<Props> = ({}) => {
     replace('/screen3', { value: 'hello world' })
   }, [replace])
 
+  const _presentModal = useCallback(() => {
+    presentModal('/screen3')
+  }, [presentModal])
+
+  const dismiss = useCallback(() => {
+    modal.dismiss()
+  }, [modal])
+
   return (
     <NavigationScreen
       navigationBarItem={
         <NavigationBarItem
           title={state ? (state.value as string) : '😱 Screen 3'}
           largeTitleDisplayMode="always"
+          leftContent={
+            modal ? (
+              <TouchableOpacity onPress={dismiss}>
+                <Text
+                  style={{ fontSize: 17, fontWeight: '500', color: '#007AFF' }}
+                >
+                  Dismiss
+                </Text>
+              </TouchableOpacity>
+            ) : null
+          }
         />
       }
     >
@@ -79,10 +101,20 @@ export const Screen3: React.FC<Props> = ({}) => {
             justifyContent: 'flex-start',
             flexDirection: 'row',
             marginTop: 8,
-            marginBottom: 32
+            marginBottom: 8
           }}
         >
           <Button onPress={replaceScreen3}>Replace screen 3</Button>
+        </View>
+        <View
+          style={{
+            justifyContent: 'flex-start',
+            flexDirection: 'row',
+            marginTop: 8,
+            marginBottom: 32
+          }}
+        >
+          <Button onPress={_presentModal}>Present 2nd modal</Button>
         </View>
 
         <Text>

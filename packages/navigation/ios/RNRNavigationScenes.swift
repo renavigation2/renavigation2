@@ -2,7 +2,6 @@ class RNRNavigationScenes: UIView, UINavigationControllerDelegate {
     var navigationController: UINavigationController?
     var scenes: [RNRNavigationScene] = []
     var shouldPresent: [RNRNavigationScene] = []
-    var bridge: RCTBridge?
 
     @objc var onWillShowView: RCTDirectEventBlock?
 
@@ -34,11 +33,11 @@ class RNRNavigationScenes: UIView, UINavigationControllerDelegate {
     }
 
     func pop(animated: Bool) {
-        navigationController!.popViewController(animated: animated)
+        navigationController?.popViewController(animated: animated)
     }
 
     func popTo(_ view: RNRNavigationScene, animated: Bool) {
-        navigationController!.popToViewController(view.controller, animated: animated)
+        navigationController?.popToViewController(view.controller, animated: animated)
     }
 
     override func willMove(toSuperview newSuperview: UIView?) {
@@ -46,13 +45,6 @@ class RNRNavigationScenes: UIView, UINavigationControllerDelegate {
         if newSuperview is RNRNavigation {
             navigationController = (newSuperview as! RNRNavigation).navigationController
             navigationController?.delegate = self
-        }
-    }
-
-    override func willMove(toWindow newWindow: UIWindow?) {
-        super.willMove(toWindow: newWindow)
-        if newWindow == nil {
-            cleanUp()
         }
     }
 
@@ -111,23 +103,6 @@ class RNRNavigationScenes: UIView, UINavigationControllerDelegate {
             if scene != nil && scene!.reactTag != nil {
                 onWillShowView!(["view": scene!.reactTag!])
             }
-        }
-    }
-
-    func cleanUp() {
-        scenes.forEach({ scene in
-            scene.controller.dismiss(animated: false)
-        })
-        navigationController?.popToRootViewController(animated: false)
-        navigationController?.delegate = nil
-        navigationController = nil
-        scenes.removeAll()
-        shouldPresent.removeAll()
-    }
-
-    func invalidate() {
-        DispatchQueue.main.sync {
-            cleanUp()
         }
     }
 }

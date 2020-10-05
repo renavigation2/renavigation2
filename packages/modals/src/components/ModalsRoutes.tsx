@@ -5,9 +5,18 @@ import React, {
   MutableRefObject,
   createRef,
   useCallback,
-  useState
+  useState,
+  memo,
+  useReducer,
+  useLayoutEffect
 } from 'react'
-import { readOnly, NativeHistory, Location } from '@renavigation2/history'
+import {
+  readOnly,
+  NativeHistory,
+  Location,
+  Update,
+  Action
+} from '@renavigation2/history'
 import {
   createRoutesFromChildren,
   RoutesProps,
@@ -17,118 +26,138 @@ import {
   RouteMatch
 } from '@renavigation2/router'
 import { ModalsRouteContext } from '../context/ModalsRouteContext'
-import { ModalRenderer } from './ModalRenderer'
-import { NativeModalsContainer } from '../native/NativeModalsContainer'
+import { ModalRouteRenderer } from './ModalRouteRenderer'
 import { ModalsNavigatorContext } from '../context/ModalsNavigatorContext'
+import { Modals, ModalsRef } from '../native/Modals'
 
-export const ModalsRoutes: React.FC<RoutesProps> = ({
-  basename = '',
-  children
-}) => {
-  const container = useRef<any>()
+export const MemoizedConnectedModalsRoutes: React.FC<
+  RoutesProps & { history: NativeHistory }
+> = ({ history, basename = '', children }) => {
+  const [{ action }, dispatch] = useReducer(
+    (_: Update, action: Update) => action,
+    {
+      action: history.action,
+      location: history.location
+    }
+  )
+
+  useLayoutEffect(() => history.listen(dispatch), [history])
+
+  const modals = useRef<ModalsRef>()
   const routes = createRoutesFromChildren(children)
 
-  const { navigator } = useContext(ModalsNavigatorContext)
   const matches: { match: RouteMatch; location: Location }[][] = useMemo(() => {
     const matches: { match: RouteMatch; location: Location }[][] = []
-    ;(navigator as NativeHistory).entries.forEach((entry) => {
+    history.entries.slice(0, history.index + 1).forEach((entry) => {
       const m = matchRoutes(routes, entry, basename)
       if (m) {
         matches.push(m.map((match) => ({ match, location: entry })))
       }
     })
     return matches
-  }, [navigator, routes, basename])
+  }, [history, routes, basename])
 
-  const keyMap: { [key: string]: number } = {}
-  const prevElements = useRef<Array<React.ReactElement | null>>([])
-  const dismissing = useRef<string[]>([])
   const nativeRefs = useRef<{ [key: string]: MutableRefObject<any> }>({})
   const [, forceUpdate] = useState(0)
 
-  const history = useRef<NativeHistory>(navigator as NativeHistory)
-  history.current = navigator as NativeHistory
-  const handleDidDisappear = useCallback((location: Location) => {
-    prevElements.current = prevElements.current.filter(
-      (e: any) => e.props.children.props.location.key !== location.key
-    )
-    dismissing.current = dismissing.current.filter((k) => k !== location.key)
-    delete nativeRefs.current[location.key]
-    let match = false
-    history.current.entries.forEach((entry, index) => {
-      if (entry.key === location.key) {
-        match = true
+  const prevElements = useRef<Array<React.ReactElement | null>>([])
 
-        const nextIndex =
-          history.current.index >= index ? index - 1 : history.current.index
-        const entries = history.current.entries.filter(
-          (entry) => entry.key !== location.key
+  const matchesRef = useRef(matches)
+  matchesRef.current = matches
+
+  const onDidDismiss = useCallback(
+    (location: Location) => {
+      prevElements.current = prevElements.current.filter(
+        (item) => item?.props.children.props.location.key !== location.key
+      )
+      const entries = history.entries.filter(
+        (entry) => entry.key !== location.key
+      )
+      if (entries.length !== history.entries.length) {
+        history.reset(
+          entries,
+          history.index >= entries.length - 1
+            ? history.index - 1
+            : history.index
         )
-        history.current.reset(entries, nextIndex)
+      } else {
+        forceUpdate((i) => i + 1)
       }
-    })
-    if (!match) forceUpdate((i) => i + 1)
-  }, [])
+    },
+    [history]
+  )
 
-  let elements: Array<React.ReactElement | null> = matches.map((matches) => {
-    const element = matches.reduceRight(
-      (outlet, { match: { params, pathname, route }, location }) => {
-        const p = joinPaths([basename, pathname])
-        if (keyMap[p] === undefined) keyMap[p] = 0
-        else keyMap[p] = keyMap[p] + 1
-        if (!nativeRefs.current[location.key]) {
-          nativeRefs.current[location.key] = createRef()
-        }
-        return (
-          <ModalsRouteContext.Provider
-            value={{
-              outlet,
-              params: readOnly<Params>({ ...params }),
-              pathname: p,
-              route
+  let elements: Array<React.ReactElement | null> = matches.map(
+    (matches, index) => {
+      const match = matches[0]
+      const {
+        match: { params, pathname, route },
+        location
+      } = match
+      const p = joinPaths([basename, pathname])
+      if (!nativeRefs.current[location.key]) {
+        nativeRefs.current[location.key] = createRef()
+      }
+      return (
+        <ModalsRouteContext.Provider
+          value={{
+            outlet: null,
+            params: readOnly<Params>({ ...params }),
+            pathname: p,
+            route
+          }}
+          key={index}
+        >
+          <ModalRouteRenderer
+            location={location}
+            route={{
+              ...route,
+              // weird that react-router returns the Route component and not the element here?
+              element: (route.element as any).props.element
             }}
-            key={`${p}.${keyMap[p]}`}
-          >
-            <ModalRenderer
-              location={location}
-              route={{
-                ...route,
-                // weird that react-router returns the Route component and not the element here?
-                element: (route.element as any).props.element
-              }}
-              nativeRef={nativeRefs.current[location.key]}
-              onDidDisappear={handleDidDisappear}
-            />
-          </ModalsRouteContext.Provider>
-        )
-      },
-      null as React.ReactElement | null
-    )
-    return element
-  })
+            nativeRef={nativeRefs.current[location.key]}
+            onDidDismiss={onDidDismiss}
+            animated={action !== Action.Reset}
+          />
+        </ModalsRouteContext.Provider>
+      )
+    }
+  )
 
-  prevElements.current.forEach((prevElement: any, index) => {
-    const location = prevElement.props.children.props.location
-    const element = elements.find(
-      (element: any) =>
-        element?.props.children.props.location.key === location.key
-    )
-    if (!element && dismissing.current.indexOf(location.key) === -1) {
-      dismissing.current.push(location.key)
-      elements = [
-        ...elements.slice(0, index),
-        prevElement,
-        ...elements.slice(index)
-      ]
-      if (container.current) {
-        container.current.dismiss(nativeRefs.current[location.key])
+  const prevIndex = useRef(history.index)
+
+  if (history.index < prevIndex.current) {
+    elements = [...elements, ...prevElements.current.slice(elements.length)]
+  }
+
+  const index = history.index
+  useLayoutEffect(() => {
+    if (index < prevIndex.current) {
+      const key = elements[prevIndex.current]?.props.children.props.location.key
+      if (nativeRefs.current[key] && nativeRefs.current[key].current) {
+        modals.current!.dismiss(nativeRefs.current[key])
       }
     }
-  })
+    prevIndex.current = index
+  }, [index, elements, history])
 
   prevElements.current = elements
 
+  return <Modals ref={modals}>{elements}</Modals>
+}
+
+const ConnectedModalsRoutes = memo(MemoizedConnectedModalsRoutes, () => true)
+
+export const ModalsRoutes: React.FC<RoutesProps> = (props) => {
+  const { navigator } = useContext(ModalsNavigatorContext)
+
+  const history = useRef<NativeHistory>(navigator as NativeHistory)
+  history.current = navigator as NativeHistory
+
   return (
-    <NativeModalsContainer ref={container}>{elements}</NativeModalsContainer>
+    <ConnectedModalsRoutes
+      {...props}
+      history={history.current as NativeHistory}
+    />
   )
 }
