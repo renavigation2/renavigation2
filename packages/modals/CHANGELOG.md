@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.13.0](https://github.com/renavigation2/renavigation2/compare/v4.12.1...v4.13.0) (2020-10-05)
+
+
+### Features
+
+* **modals:** Added support for more than 1 modal ([1237e4f](https://github.com/renavigation2/renavigation2/commit/1237e4f1425ceee68b0257d0a3e1cfb119e0dc58))
+
+
+
+
+
 ## [4.12.1](https://github.com/renavigation2/renavigation2/compare/v4.12.0...v4.12.1) (2020-09-30)
 
 
