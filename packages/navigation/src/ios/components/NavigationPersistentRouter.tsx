@@ -26,6 +26,7 @@ export interface NavigationPersistentRouterProps {
   dataReconciler?: false | DataReconciler
   transforms?: Transform[]
   navigationBar?: React.ReactElement<NavigationBarProps>
+  isInteractivePopGestureEnabled?: boolean
 }
 
 export const NavigationPersistentRouter: React.FC<NavigationPersistentRouterProps> = ({
@@ -38,7 +39,8 @@ export const NavigationPersistentRouter: React.FC<NavigationPersistentRouterProp
   dataReconciler,
   transforms,
   children,
-  navigationBar
+  navigationBar,
+  isInteractivePopGestureEnabled
 }) => {
   const [history, setHistory] = useState<NativeHistory>()
 
@@ -82,6 +84,7 @@ export const NavigationPersistentRouter: React.FC<NavigationPersistentRouterProp
       location={state === undefined ? history.location : state.location}
       navigator={history}
       navigationBar={navigationBar}
+      isInteractivePopGestureEnabled={isInteractivePopGestureEnabled}
     >
       {children}
     </NavigationRouterBase>
