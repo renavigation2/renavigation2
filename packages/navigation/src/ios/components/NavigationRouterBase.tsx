@@ -12,6 +12,7 @@ export interface NavigationRouterBaseProps {
   navigator: NativeHistory
   static?: boolean
   navigationBar?: React.ReactElement<NavigationBarProps>
+  isInteractivePopGestureEnabled?: boolean
 }
 
 export const NavigationRouterBase: React.FC<NavigationRouterBaseProps> = ({
@@ -20,7 +21,8 @@ export const NavigationRouterBase: React.FC<NavigationRouterBaseProps> = ({
   action,
   location,
   static: staticProp = false,
-  navigationBar
+  navigationBar,
+  isInteractivePopGestureEnabled
 }) => {
   return (
     <NavigationNavigatorContext.Provider
@@ -31,7 +33,10 @@ export const NavigationRouterBase: React.FC<NavigationRouterBaseProps> = ({
         static: staticProp
       }}
     >
-      <Navigation navigationBar={navigationBar}>
+      <Navigation
+        navigationBar={navigationBar}
+        isInteractivePopGestureEnabled={isInteractivePopGestureEnabled}
+      >
         <NavigationRoutes>{children}</NavigationRoutes>
       </Navigation>
     </NavigationNavigatorContext.Provider>

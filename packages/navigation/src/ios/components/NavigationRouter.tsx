@@ -12,13 +12,15 @@ export interface NavigationRouterProps {
   initialEntries?: InitialEntry[]
   initialIndex?: number
   navigationBar?: React.ReactElement<NavigationBarProps>
+  isInteractivePopGestureEnabled?: boolean
 }
 
 export const NavigationRouter: React.FC<NavigationRouterProps> = ({
   initialEntries,
   initialIndex,
   children,
-  navigationBar
+  navigationBar,
+  isInteractivePopGestureEnabled
 }) => {
   const historyRef = useRef<NativeHistory>()
   if (historyRef.current == null) {
@@ -39,6 +41,7 @@ export const NavigationRouter: React.FC<NavigationRouterProps> = ({
       location={state.location}
       navigator={history}
       navigationBar={navigationBar}
+      isInteractivePopGestureEnabled={isInteractivePopGestureEnabled}
     >
       {children}
     </NavigationRouterBase>
