@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.2](https://github.com/renavigation2/renavigation2/compare/v4.14.1...v4.14.2) (2020-10-08)
+
+
+### Bug Fixes
+
+* **history:** Fixed issues typing location state ([5fe2561](https://github.com/renavigation2/renavigation2/commit/5fe25615aa5b0a228a99f0d58d64e98064b6b2f6))
+* **modals:** Fixed issues typing location state ([6658f45](https://github.com/renavigation2/renavigation2/commit/6658f45de7b7a0f4973d995131074c7d71cacf3c))
+* **navigation:** Fixed issues typing location state ([c26319a](https://github.com/renavigation2/renavigation2/commit/c26319a093c01a35381d07c107e65051ce661670))
+* **router:** Fixed issue with matchPath function ([f7aa897](https://github.com/renavigation2/renavigation2/commit/f7aa897b1fd4f7c53feafeedf3c69fca7acc0305))
+* **router:** Fixed issues typing params ([db66cb6](https://github.com/renavigation2/renavigation2/commit/db66cb6b219d71a2e9782a693e0643e7a4c4067a))
+
+
+
+
+
 ## [4.14.1](https://github.com/renavigation2/renavigation2/compare/v4.14.0...v4.14.1) (2020-10-08)
 
 

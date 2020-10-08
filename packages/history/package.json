@@ -1,6 +1,6 @@
 {
   "name": "@renavigation2/history",
-  "version": "4.12.1",
+  "version": "4.14.2",
   "description": "Manage session history with JavaScript",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
