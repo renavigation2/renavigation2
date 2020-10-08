@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.1](https://github.com/renavigation2/renavigation2/compare/v4.14.0...v4.14.1) (2020-10-08)
+
+
+### Bug Fixes
+
+* **navigation:** Added state type to useLocation ([179fc2b](https://github.com/renavigation2/renavigation2/commit/179fc2be2d2131242b6d1f1aebd00aca2ac60b33))
+
+
+
+
+
 # [4.14.0](https://github.com/renavigation2/renavigation2/compare/v4.13.0...v4.14.0) (2020-10-08)
 
 
