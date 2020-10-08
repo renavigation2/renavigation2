@@ -2,7 +2,6 @@ import { PathPattern } from '../typings/PathPattern'
 import { PathMatch } from '../typings/PathMatch'
 import { compilePath } from './compilePath'
 import { safelyDecodeURIComponent } from './safelyDecodeURIComponent'
-import { Params } from '../typings/Params'
 
 /**
  * Performs pattern matching on a URL pathname and returns information about
@@ -29,7 +28,7 @@ export function matchPath(
   const params = paramNames.reduce((memo, paramName, index) => {
     memo[paramName] = safelyDecodeURIComponent(values[index], paramName)
     return memo
-  }, {} as Params)
+  }, {} as any)
 
   return { path, pathname: matchedPathname, params }
 }
