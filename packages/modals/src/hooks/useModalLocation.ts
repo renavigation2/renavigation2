@@ -1,4 +1,4 @@
-import { Location } from '@renavigation2/history'
+import { Location, State } from '@renavigation2/history'
 import { useContext } from 'react'
 import { ModalLocationContext } from '../context/ModalLocationContext'
 import invariant from 'tiny-invariant'
@@ -13,7 +13,7 @@ import invariant from 'tiny-invariant'
  *
  * @see https://reactrouter.com/api/useLocation
  */
-export function useModalLocation(): Location {
+export function useModalLocation<S extends State = State>(): Location<S> {
   const inRouterContext = useContext(ModalLocationContext).location != null
   invariant(
     inRouterContext,
@@ -21,5 +21,5 @@ export function useModalLocation(): Location {
     // router loaded. We can help them understand how to avoid that.
     `useModalLocation() may be used only in the context of a <ModalsRouter> component.`
   )
-  return useContext(ModalLocationContext).location as Location
+  return useContext(ModalLocationContext).location as Location<S>
 }

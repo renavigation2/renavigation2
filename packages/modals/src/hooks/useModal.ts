@@ -1,18 +1,18 @@
-import { Location, Action } from '@renavigation2/history'
+import { Location, Action, State } from '@renavigation2/history'
 import { useContext, useCallback, useMemo } from 'react'
 import { ModalLocationContext } from '../context/ModalLocationContext'
 import { Navigator } from '@renavigation2/router'
 import { useModals } from './useModals'
 
-export interface ModalContextObject {
+export interface ModalContextObject<S extends State = State> {
   action: Action
-  location: Location
+  location: Location<S>
   navigator: Navigator
   static: boolean
   dismiss: () => void
 }
 
-export function useModal(): ModalContextObject {
+export function useModal<S extends State = State>(): ModalContextObject<S> {
   const context = useContext(ModalLocationContext)
   const { dismissModal } = useModals()
 
@@ -22,5 +22,5 @@ export function useModal(): ModalContextObject {
 
   const final = useMemo(() => ({ ...context, dismiss }), [context, dismiss])
 
-  return final as ModalContextObject
+  return final as ModalContextObject<S>
 }
