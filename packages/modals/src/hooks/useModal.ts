@@ -4,7 +4,7 @@ import { ModalLocationContext } from '../context/ModalLocationContext'
 import { Navigator } from '@renavigation2/router'
 import { useModals } from './useModals'
 
-export interface ModalContextObject<S extends State = State> {
+export interface ModalContextObject<S = State> {
   action: Action
   location: Location<S>
   navigator: Navigator
@@ -12,7 +12,7 @@ export interface ModalContextObject<S extends State = State> {
   dismiss: () => void
 }
 
-export function useModal<S extends State = State>(): ModalContextObject<S> {
+export function useModal<S = State>(): ModalContextObject<S> {
   const context = useContext(ModalLocationContext)
   const { dismissModal } = useModals()
 
