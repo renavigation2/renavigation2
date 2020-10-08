@@ -13,7 +13,7 @@ import invariant from 'tiny-invariant'
  *
  * @see https://reactrouter.com/api/useLocation
  */
-export function useModalLocation<S extends State = State>(): Location<S> {
+export function useModalLocation<S = State>(): Location<S> {
   const inRouterContext = useContext(ModalLocationContext).location != null
   invariant(
     inRouterContext,
