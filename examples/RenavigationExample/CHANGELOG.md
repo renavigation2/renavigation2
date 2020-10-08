@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.14.0](https://github.com/renavigation2/renavigation2/compare/v4.13.0...v4.14.0) (2020-10-08)
+
+
+### Features
+
+* **navigation:** Added isInteractivePopGestureEnabled prop on NavigationRouters ([e4bdb6f](https://github.com/renavigation2/renavigation2/commit/e4bdb6f3f0ac7dfc5a48c9ffff106bc0a793c3d3))
+
+
+
+
+
 # [4.13.0](https://github.com/renavigation2/renavigation2/compare/v4.12.1...v4.13.0) (2020-10-05)
 
 **Note:** Version bump only for package RenavigationExample

@@ -1,6 +1,6 @@
 {
   "name": "@renavigation2/navigation",
-  "version": "4.13.0",
+  "version": "4.14.0",
   "description": "Renavigation Navigation",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
