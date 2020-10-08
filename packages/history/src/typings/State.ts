@@ -4,4 +4,4 @@
  *
  * @see https://github.com/ReactTraining/history/tree/master/docs/api-reference.md#location.state
  */
-export type State = Record<string, unknown> | null
+export type State = {} | null
