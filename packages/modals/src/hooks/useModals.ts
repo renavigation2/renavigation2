@@ -1,3 +1,4 @@
+import { State } from '@renavigation2/history'
 import { useContext } from 'react'
 import invariant from 'tiny-invariant'
 import {
@@ -5,8 +6,8 @@ import {
   ModalsActionsContextValue
 } from '../context/ModalsActionsContext'
 
-export function useModals(): ModalsActionsContextValue {
+export function useModals<S = State>(): ModalsActionsContextValue<S> {
   const context = useContext(ModalsActionsContext)!
   invariant(context, 'You should not use useModals outside a <ModalsContainer>')
-  return context!
+  return context! as ModalsActionsContextValue<S>
 }

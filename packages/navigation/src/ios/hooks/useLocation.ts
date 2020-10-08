@@ -1,4 +1,4 @@
-import { Location } from '@renavigation2/history'
+import { Location, State } from '@renavigation2/history'
 import { useContext } from 'react'
 import { NavigationLocationContext } from '../context/NavigationLocationContext'
 import invariant from 'tiny-invariant'
@@ -13,7 +13,7 @@ import invariant from 'tiny-invariant'
  *
  * @see https://reactrouter.com/api/useLocation
  */
-export function useLocation(): Location {
+export function useLocation<S extends State = State>(): Location<S> {
   const inRouterContext = useContext(NavigationLocationContext).location != null
   invariant(
     inRouterContext,
@@ -21,5 +21,5 @@ export function useLocation(): Location {
     // router loaded. We can help them understand how to avoid that.
     `useLocation() may be used only in the context of a <NavigationRouter> component.`
   )
-  return useContext(NavigationLocationContext).location as Location
+  return useContext(NavigationLocationContext).location as Location<S>
 }
