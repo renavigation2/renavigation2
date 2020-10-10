@@ -5,7 +5,7 @@ export interface ModalsActionsContextValue<
   S extends State = Record<string, unknown> | null
 > {
   presentModal(to: To): Promise<void>
-  presentModal<PS extends S = S>(to: To, state: PS): Promise<void>
+  presentModal<PS extends State = S>(to: To, state: PS): Promise<void>
 
   dismissModal(key: Key): Promise<void>
 
