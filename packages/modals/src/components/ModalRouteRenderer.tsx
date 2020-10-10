@@ -9,6 +9,7 @@ import { ModalLocationContext } from '../context/ModalLocationContext'
 import { ModalsNavigatorContext } from '../context/ModalsNavigatorContext'
 import { NativeHistory, Location, Action } from '@renavigation2/history'
 import { ModalLifecycleContext } from '../context/ModalLifecycleContext'
+import { ModalsActionsResolversContext } from '../context/ModalsActionsResolversContext'
 
 interface Props {
   route: RouteObject
@@ -24,6 +25,10 @@ export const ModalRouteRenderer: React.FC<Props> = ({
   nativeRef,
   onDidDismiss: onDidDismissCallback
 }) => {
+  const {
+    onDidDismiss: onDidDismissResolversCallback,
+    onDidPresent
+  } = useContext(ModalsActionsResolversContext)!
   const { navigator, static: staticProp } = useContext(ModalsNavigatorContext)
 
   const action = useRef<Action>()
@@ -69,16 +74,17 @@ export const ModalRouteRenderer: React.FC<Props> = ({
 
   const onWillAppear = useCallback(() => trigger('willAppear'), [trigger])
   const onDidAppear = useCallback(() => {
+    onDidPresent(location)
     trigger('didAppear')
-  }, [trigger])
+  }, [location, onDidPresent, trigger])
   const onWillDisappear = useCallback(() => {
     trigger('willDisappear')
   }, [trigger])
   const onDidDisappear = useCallback(() => trigger('didDisappear'), [trigger])
-  const onDidDismiss = useCallback(() => onDidDismissCallback(location), [
-    onDidDismissCallback,
-    location
-  ])
+  const onDidDismiss = useCallback(() => {
+    onDidDismissCallback(location)
+    onDidDismissResolversCallback(location)
+  }, [onDidDismissCallback, onDidDismissResolversCallback, location])
 
   const lifecycleContext = useMemo(() => ({ subscribe }), [subscribe])
 

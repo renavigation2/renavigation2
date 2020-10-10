@@ -13,7 +13,7 @@ import { Blocker } from './Blocker'
  * It is similar to the DOM's `window.history` object, but with a smaller, more
  * focused API.
  */
-export interface History<S extends State = State> {
+export interface History<S extends State = Record<string, unknown> | null> {
   /**
    * The last action that modified the current location. This will always be
    * Action.Pop when a history instance is first created. This value is mutable.
@@ -49,7 +49,7 @@ export interface History<S extends State = State> {
    *
    * @see https://github.com/ReactTraining/history/tree/master/docs/api-reference.md#history.push
    */
-  push(to: To, state?: S): void
+  push<PS extends S = S>(to: To, state?: PS): void
 
   /**
    * Replaces the current location in the history stack with a new one.  The
@@ -60,7 +60,7 @@ export interface History<S extends State = State> {
    *
    * @see https://github.com/ReactTraining/history/tree/master/docs/api-reference.md#history.replace
    */
-  replace(to: To, state?: S): void
+  replace<RS extends S = S>(to: To, state?: RS): void
 
   /**
    * Navigates `n` entries backward/forward in the history stack relative to the
@@ -98,7 +98,7 @@ export interface History<S extends State = State> {
    *
    * @see https://github.com/ReactTraining/history/tree/master/docs/api-reference.md#history.listen
    */
-  listen(listener: Listener<S>): () => void
+  listen<LS extends S = S>(listener: Listener<LS>): () => void
 
   /**
    * Prevents the current location from changing and sets up a listener that
@@ -109,5 +109,5 @@ export interface History<S extends State = State> {
    *
    * @see https://github.com/ReactTraining/history/tree/master/docs/api-reference.md#history.block
    */
-  block(blocker: Blocker<S>): () => void
+  block<BS extends S = S>(blocker: Blocker<BS>): () => void
 }

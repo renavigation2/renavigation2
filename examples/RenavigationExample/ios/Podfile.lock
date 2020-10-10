@@ -296,9 +296,9 @@ PODS:
     - React-Core (= 0.63.3)
     - React-cxxreact (= 0.63.3)
     - React-jsi (= 0.63.3)
-  - renavigation-modals (4.14.1):
+  - renavigation-modals (4.14.2):
     - React
-  - renavigation-navigation (4.14.1):
+  - renavigation-navigation (4.14.2):
     - React
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -465,8 +465,8 @@ SPEC CHECKSUMS:
   React-RCTText: 65a6de06a7389098ce24340d1d3556015c38f746
   React-RCTVibration: 8e9fb25724a0805107fc1acc9075e26f814df454
   ReactCommon: 4167844018c9ed375cc01a843e9ee564399e53c3
-  renavigation-modals: 322c58c0639d3926a1a786de3619aef6ef037fd3
-  renavigation-navigation: 82cc7d61c3872d1df15a70b72c35c5104eb3c8d9
+  renavigation-modals: 52e042df1fa19a40047a54133a6c2d25a8622ac9
+  renavigation-navigation: 1b37c33b56f93923df17cdcc2ab7ba70eb257d1c
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 

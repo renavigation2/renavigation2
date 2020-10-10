@@ -3,7 +3,7 @@ import { match } from './match'
 
 export interface RouteChildrenProps<
   Params extends { [K in keyof Params]?: string } = {},
-  S extends State = State
+  S extends State = Record<string, unknown> | null
 > {
   history: History
   location: Location<S>

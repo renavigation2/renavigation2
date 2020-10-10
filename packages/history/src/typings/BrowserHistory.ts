@@ -8,4 +8,6 @@ import { History } from './History'
  *
  * @see https://github.com/ReactTraining/history/tree/master/docs/api-reference.md#browserhistory
  */
-export interface BrowserHistory<S extends State = State> extends History<S> {}
+export interface BrowserHistory<
+  S extends State = Record<string, unknown> | null
+> extends History<S> {}

@@ -1,5 +1,5 @@
 import { RouteObject } from '../typings/RouteObject'
-import { PartialLocation, parsePath } from '@renavigation2/history'
+import { PartialLocation, parsePath, State } from '@renavigation2/history'
 import { RouteMatch } from '../typings/RouteMatch'
 import { flattenRoutes } from './flattenRoutes'
 import { rankRouteBranches } from './rankRouteBranches'
@@ -10,9 +10,9 @@ import { matchRouteBranch } from './matchRouteBranch'
  *
  * @see https://reactrouter.com/api/matchRoutes
  */
-export function matchRoutes(
+export function matchRoutes<S extends State = Record<string, unknown> | null>(
   routes: RouteObject[],
-  location: string | PartialLocation,
+  location: string | PartialLocation<S>,
   basename = ''
 ): RouteMatch[] | null {
   if (typeof location === 'string') {

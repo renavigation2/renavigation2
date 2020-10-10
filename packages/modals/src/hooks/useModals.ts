@@ -6,7 +6,9 @@ import {
   ModalsActionsContextValue
 } from '../context/ModalsActionsContext'
 
-export function useModals<S = State>(): ModalsActionsContextValue<S> {
+export function useModals<
+  S extends State = Record<string, unknown> | null
+>(): ModalsActionsContextValue<S> {
   const context = useContext(ModalsActionsContext)!
   invariant(context, 'You should not use useModals outside a <ModalsContainer>')
   return context! as ModalsActionsContextValue<S>

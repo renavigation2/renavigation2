@@ -10,10 +10,11 @@ import { PartialLocation } from './PartialLocation'
  *
  * @see https://github.com/ReactTraining/history/tree/master/docs/api-reference.md#memoryhistory
  */
-export interface NativeHistory<S extends State = State> extends History<S> {
+export interface NativeHistory<S extends State = Record<string, unknown> | null>
+  extends History<S> {
   index: number
 
-  entries: Location[]
+  entries: Location<S>[]
 
-  reset(entries: PartialLocation<S>[], index: number): void
+  reset<RS extends S = S>(entries: PartialLocation<RS>[], index: number): void
 }
