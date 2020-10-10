@@ -49,7 +49,7 @@ export interface History<S extends State = Record<string, unknown> | null> {
    *
    * @see https://github.com/ReactTraining/history/tree/master/docs/api-reference.md#history.push
    */
-  push<PS extends S = S>(to: To, state?: PS): void
+  push<PS extends State = S>(to: To, state?: PS): void
 
   /**
    * Replaces the current location in the history stack with a new one.  The
@@ -60,7 +60,7 @@ export interface History<S extends State = Record<string, unknown> | null> {
    *
    * @see https://github.com/ReactTraining/history/tree/master/docs/api-reference.md#history.replace
    */
-  replace<RS extends S = S>(to: To, state?: RS): void
+  replace<RS extends State = S>(to: To, state?: RS): void
 
   /**
    * Navigates `n` entries backward/forward in the history stack relative to the
@@ -98,7 +98,7 @@ export interface History<S extends State = Record<string, unknown> | null> {
    *
    * @see https://github.com/ReactTraining/history/tree/master/docs/api-reference.md#history.listen
    */
-  listen<LS extends S = S>(listener: Listener<LS>): () => void
+  listen<LS extends State = S>(listener: Listener<LS>): () => void
 
   /**
    * Prevents the current location from changing and sets up a listener that
@@ -109,5 +109,5 @@ export interface History<S extends State = Record<string, unknown> | null> {
    *
    * @see https://github.com/ReactTraining/history/tree/master/docs/api-reference.md#history.block
    */
-  block<BS extends S = S>(blocker: Blocker<BS>): () => void
+  block<BS extends State = S>(blocker: Blocker<BS>): () => void
 }

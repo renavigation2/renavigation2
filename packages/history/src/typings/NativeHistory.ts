@@ -16,5 +16,8 @@ export interface NativeHistory<S extends State = Record<string, unknown> | null>
 
   entries: Location<S>[]
 
-  reset<RS extends S = S>(entries: PartialLocation<RS>[], index: number): void
+  reset<RS extends State = S>(
+    entries: PartialLocation<RS>[],
+    index: number
+  ): void
 }
