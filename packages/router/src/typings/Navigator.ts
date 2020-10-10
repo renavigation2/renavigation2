@@ -1,4 +1,4 @@
-import { History } from '@renavigation2/history'
+import { History, State } from '@renavigation2/history'
 
 /**
  * A Navigator is a "location changer"; it's how you get to different locations.
@@ -9,7 +9,8 @@ import { History } from '@renavigation2/history'
  * to avoid "tearing" that may occur in a suspense-enabled app if the action
  * and/or location were to be read directly from the history instance.
  */
-export type Navigator = Omit<
-  History,
-  'action' | 'location' | 'back' | 'forward' | 'listen'
->
+export interface Navigator<S extends State = Record<string, unknown> | null>
+  extends Omit<
+    History<S>,
+    'action' | 'location' | 'back' | 'forward' | 'listen'
+  > {}

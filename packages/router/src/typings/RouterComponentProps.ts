@@ -5,7 +5,7 @@ import { match } from './match'
 export interface RouteComponentProps<
   Params extends { [K in keyof Params]?: string } = {},
   C extends StaticContext = StaticContext,
-  S extends State = State
+  S extends State = Record<string, unknown> | null
 > {
   history: History<S>
   location: Location<S>
