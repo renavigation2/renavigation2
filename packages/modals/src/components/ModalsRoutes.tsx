@@ -81,7 +81,10 @@ export const MemoizedConnectedModalsRoutes: React.FC<
             : history.index
         )
       } else {
-        forceUpdate((i) => i + 1)
+        // Wait for all modals to dismiss before re-rendering
+        if (prevElements.current.length === entries.length) {
+          forceUpdate((i) => i + 1)
+        }
       }
     },
     [history]
@@ -133,9 +136,11 @@ export const MemoizedConnectedModalsRoutes: React.FC<
   const index = history.index
   useLayoutEffect(() => {
     if (index < prevIndex.current) {
-      const key = elements[prevIndex.current]?.props.children.props.location.key
-      if (nativeRefs.current[key] && nativeRefs.current[key].current) {
-        modals.current!.dismiss(nativeRefs.current[key])
+      for (let i = prevIndex.current; i > index; i--) {
+        const key = elements[i]?.props.children.props.location.key
+        if (nativeRefs.current[key] && nativeRefs.current[key].current) {
+          modals.current!.dismiss(nativeRefs.current[key])
+        }
       }
     }
     prevIndex.current = index
