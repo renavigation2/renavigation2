@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.16.0](https://github.com/renavigation2/renavigation2/compare/v4.15.2...v4.16.0) (2020-10-10)
+
+
+### Features
+
+* **modals:** Added support for style on Modal component ([f14f7c5](https://github.com/renavigation2/renavigation2/commit/f14f7c594c18717c07cef8be355c4ef8a1ce550a))
+
+
+
+
+
 ## [4.15.2](https://github.com/renavigation2/renavigation2/compare/v4.15.1...v4.15.2) (2020-10-10)
 
 
