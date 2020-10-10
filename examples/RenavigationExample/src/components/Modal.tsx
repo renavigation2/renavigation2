@@ -8,7 +8,7 @@ interface Props {}
 export const Modal: React.FC<Props> = ({}) => {
   const { location } = useModal()
   return (
-    <ModalBase>
+    <ModalBase style={{ backgroundColor: 'white' }}>
       <NavigationRouter
         initialEntries={[location]}
         initialIndex={0}
