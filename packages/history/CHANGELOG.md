@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.15.1](https://github.com/renavigation2/renavigation2/compare/v4.15.0...v4.15.1) (2020-10-10)
+
+
+### Bug Fixes
+
+* **history:** Fixed issues with location state typings ([68636e2](https://github.com/renavigation2/renavigation2/commit/68636e2c7a18be761248f327670e960982ff0cf0))
+
+
+
+
+
 # [4.15.0](https://github.com/renavigation2/renavigation2/compare/v4.14.2...v4.15.0) (2020-10-10)
 
 
