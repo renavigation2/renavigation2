@@ -12,4 +12,5 @@ import { History } from './History'
  *
  * @see https://github.com/ReactTraining/history/tree/master/docs/api-reference.md#hashhistory
  */
-export interface HashHistory<S extends State = State> extends History<S> {}
+export interface HashHistory<S extends State = Record<string, unknown> | null>
+  extends History<S> {}

@@ -5,7 +5,7 @@ import { Location } from './Location'
 /**
  * A change to the current location.
  */
-export interface Update<S extends State = State> {
+export interface Update<S extends State = Record<string, unknown> | null> {
   /**
    * The action that triggered the change.
    */

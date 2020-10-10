@@ -5,7 +5,9 @@ import { Key } from './Key'
 /**
  * A partial Location object that may be missing some properties.
  */
-export interface PartialLocation<S extends State = State> extends PartialPath {
+export interface PartialLocation<
+  S extends State = Record<string, unknown> | null
+> extends PartialPath {
   /**
    * An object of arbitrary data associated with this location.
    *

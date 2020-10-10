@@ -26,16 +26,16 @@ export type NativeHistoryOptions = {
  *
  * @see https://github.com/ReactTraining/history/tree/master/docs/api-reference.md#creatememoryhistory
  */
-export function createNativeHistory(
-  options: NativeHistoryOptions = {}
-): NativeHistory {
+export function createNativeHistory<
+  S extends State = Record<string, unknown> | null
+>(options: NativeHistoryOptions = {}): NativeHistory {
   const { initialEntries = [], initialIndex } = options
-  const entries: Location[] = initialEntries.map((entry) => {
-    const location = readOnly<Location>({
+  const entries: Location<S>[] = initialEntries.map((entry) => {
+    const location = readOnly<Location<S>>({
       pathname: '/',
       search: '',
       hash: '',
-      state: null,
+      state: null as S,
       key: createKey(),
       ...(typeof entry === 'string' ? parsePath(entry) : entry)
     })
@@ -57,18 +57,21 @@ export function createNativeHistory(
 
   let action = Action.Pop
   let location = entries[index]
-  const listeners = createEvents<Listener>()
-  const blockers = createEvents<Blocker>()
+  const listeners = createEvents<Listener<S>>()
+  const blockers = createEvents<Blocker<S>>()
 
   function createHref(to: To) {
     return typeof to === 'string' ? to : createPath(to)
   }
 
-  function getNextLocation(to: To, state: State = null): Location {
-    return readOnly<Location>({
+  function getNextLocation<S extends State = Record<string, unknown> | null>(
+    to: To,
+    state: S | null = null
+  ): Location<S> {
+    return readOnly<Location<S>>({
       ...location,
       ...(typeof to === 'string' ? parsePath(to) : to),
-      state,
+      state: state as S,
       key: createKey()
     })
   }
@@ -79,15 +82,15 @@ export function createNativeHistory(
     )
   }
 
-  function applyTx(nextAction: Action, nextLocation: Location) {
+  function applyTx(nextAction: Action, nextLocation: Location<S>) {
     action = nextAction
     location = nextLocation
     listeners.call({ action, location })
   }
 
-  function push(to: To, state?: State) {
+  function push(to: To, state?: S) {
     const nextAction = Action.Push
-    const nextLocation = getNextLocation(to, state)
+    const nextLocation = getNextLocation<S>(to, state)
     function retry() {
       push(to, state)
     }
@@ -106,9 +109,9 @@ export function createNativeHistory(
     }
   }
 
-  function replace(to: To, state?: State) {
+  function replace(to: To, state?: S) {
     const nextAction = Action.Replace
-    const nextLocation = getNextLocation(to, state)
+    const nextLocation = getNextLocation<S>(to, state)
     function retry() {
       replace(to, state)
     }
@@ -140,7 +143,7 @@ export function createNativeHistory(
     }
   }
 
-  function reset(next: PartialLocation[], nextIndex: number) {
+  function reset(next: PartialLocation<S>[], nextIndex: number) {
     const nextAction = Action.Reset
 
     function retry() {
@@ -148,11 +151,11 @@ export function createNativeHistory(
     }
 
     const nextEntries = next.map((entry) => {
-      const location = readOnly<Location>({
+      const location = readOnly<Location<S>>({
         pathname: '/',
         search: '',
         hash: '',
-        state: null,
+        state: null as S,
         key: createKey(),
         ...(typeof entry === 'string' ? parsePath(entry) : entry)
       })
@@ -173,7 +176,7 @@ export function createNativeHistory(
     }
   }
 
-  const history: NativeHistory = {
+  const history: NativeHistory<S> = {
     get index() {
       return index
     },
@@ -187,10 +190,10 @@ export function createNativeHistory(
       return entries
     },
     createHref,
-    push,
-    replace,
+    push: push as NativeHistory<S>['push'],
+    replace: replace as NativeHistory<S>['replace'],
     go,
-    reset,
+    reset: reset as NativeHistory<S>['reset'],
     back() {
       go(-1)
     },
@@ -198,10 +201,10 @@ export function createNativeHistory(
       go(1)
     },
     listen(listener) {
-      return listeners.push(listener)
+      return listeners.push((listener as any) as Listener<S>)
     },
     block(blocker) {
-      return blockers.push(blocker)
+      return blockers.push((blocker as any) as Blocker<S>)
     }
   }
 

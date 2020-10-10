@@ -8,7 +8,8 @@ import { Key } from './Key'
  *
  * @see https://github.com/ReactTraining/history/tree/master/docs/api-reference.md#location
  */
-export interface Location<S extends State = State> extends Path {
+export interface Location<S extends State = Record<string, unknown> | null>
+  extends Path {
   /**
    * An object of arbitrary data associated with this location.
    *
