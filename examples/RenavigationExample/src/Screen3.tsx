@@ -14,7 +14,7 @@ interface Props {}
 export const Screen3: React.FC<Props> = ({}) => {
   const { go, reset, push, replace } = useNavigation()
   const { state } = useLocation()
-  const { presentModal, dismissModal } = useModals()
+  const { presentModal, dismissAllModals } = useModals()
   const modal = useModal()
 
   const goBackToStart = useCallback(() => {
@@ -40,6 +40,10 @@ export const Screen3: React.FC<Props> = ({}) => {
   const dismiss = useCallback(() => {
     modal.dismiss()
   }, [modal])
+
+  const dismissAll = useCallback(() => {
+    dismissAllModals()
+  }, [dismissAllModals])
 
   return (
     <NavigationScreen
@@ -115,6 +119,16 @@ export const Screen3: React.FC<Props> = ({}) => {
           }}
         >
           <Button onPress={_presentModal}>Present 2nd modal</Button>
+        </View>
+        <View
+          style={{
+            justifyContent: 'flex-start',
+            flexDirection: 'row',
+            marginTop: 8,
+            marginBottom: 32
+          }}
+        >
+          <Button onPress={dismissAll}>Dismiss all</Button>
         </View>
 
         <Text>
