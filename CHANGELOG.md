@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.15.0](https://github.com/renavigation2/renavigation2/compare/v4.14.2...v4.15.0) (2020-10-10)
+
+
+### Bug Fixes
+
+* **history:** Fixed issues with State typings ([7567172](https://github.com/renavigation2/renavigation2/commit/756717214cbed2604784b9d7c5a48875e4a2951a))
+* **navigation:** Fixed issues with State typings ([df26328](https://github.com/renavigation2/renavigation2/commit/df263281ec14604c5633d079fb916141fea0b518))
+* **router:** Fixed issues with State typings ([a23491f](https://github.com/renavigation2/renavigation2/commit/a23491f7958f8f2796654c6d901e41a6b98ebfab))
+
+
+### Features
+
+* **modals:** Added promise on actions and fixed issues with dismissAll ([274075b](https://github.com/renavigation2/renavigation2/commit/274075ba67e75911f746964283f26d0cfb49d71e))
+
+
+
+
+
 ## [4.14.2](https://github.com/renavigation2/renavigation2/compare/v4.14.1...v4.14.2) (2020-10-08)
 
 

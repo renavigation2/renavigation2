@@ -1,6 +1,6 @@
 {
   "name": "@renavigation2/navigation",
-  "version": "4.14.2",
+  "version": "4.15.0",
   "description": "Renavigation Navigation",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -36,8 +36,8 @@
     "react-native": "*"
   },
   "dependencies": {
-    "@renavigation2/history": "^4.14.2",
-    "@renavigation2/router": "^4.14.2",
+    "@renavigation2/history": "^4.15.0",
+    "@renavigation2/router": "^4.15.0",
     "navigation": "^5.3.1",
     "navigation-react": "^4.1.1"
   },

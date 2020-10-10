@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.15.0](https://github.com/renavigation2/renavigation2/compare/v4.14.2...v4.15.0) (2020-10-10)
+
+
+### Features
+
+* **modals:** Added promise on actions and fixed issues with dismissAll ([274075b](https://github.com/renavigation2/renavigation2/commit/274075ba67e75911f746964283f26d0cfb49d71e))
+
+
+
+
+
 ## [4.14.2](https://github.com/renavigation2/renavigation2/compare/v4.14.1...v4.14.2) (2020-10-08)
 
 
