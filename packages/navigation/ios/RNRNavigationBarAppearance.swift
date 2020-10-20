@@ -19,13 +19,13 @@ struct RNRNavigationBarAppearance {
             } else if key == "backgroundColor" {
                 barAppearance.backgroundColor = RCTConvert.uiColor(value)
             } else if key == "backgroundImage" {
-                barAppearance.backgroundImage = RCTConvert.uiImage(value)
+                barAppearance.backgroundImage = RNRNavigationImage.getImage(RCTConvert.nsDictionary(value)! as NSDictionary)
             } else if key == "backgroundImageContentMode" {
                 barAppearance.backgroundImageContentMode = UIView.ContentMode.init(rawValue: value as! Int)!
             } else if key == "shadowColor" {
                 barAppearance.shadowColor = RCTConvert.uiColor(value)
             } else if key == "shadowImage" {
-                barAppearance.shadowImage = RCTConvert.uiImage(value)
+                barAppearance.shadowImage = RNRNavigationImage.getImage(RCTConvert.nsDictionary(value)! as NSDictionary)
             } else if key == "titleStyle" {
                 barAppearance.titleTextAttributes = RNRNavigationTextStyle.getStyles(RCTConvert.nsDictionary(value)! as NSDictionary, defaultFontSize: 17, defaultFontWeight: "bold")
             } else if key == "largeTitleStyle" {
@@ -43,7 +43,10 @@ struct RNRNavigationBarAppearance {
         }
 
         if attributes["backIndicatorImage"] != nil || attributes["backIndicatorTransitionMaskImage"] != nil {
-            barAppearance.setBackIndicatorImage(RCTConvert.uiImage(attributes["backIndicatorImage"]), transitionMaskImage: RCTConvert.uiImage(attributes["backIndicatorTransitionMaskImage"]))
+            barAppearance.setBackIndicatorImage(
+                    RNRNavigationImage.getImage(RCTConvert.nsDictionary(attributes["backIndicatorImage"])! as NSDictionary),
+                    transitionMaskImage: RNRNavigationImage.getImage(RCTConvert.nsDictionary(attributes["backIndicatorTransitionMaskImage"])! as NSDictionary)
+            )
         }
 
         return barAppearance

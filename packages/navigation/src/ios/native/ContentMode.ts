@@ -20,6 +20,6 @@ export enum ContentMode {
 
 export type ContentModeValue = keyof typeof ContentMode
 
-export function getContentMode(value: ContentModeValue): ContentMode {
+export function processContentMode(value: ContentModeValue): ContentMode {
   return ContentMode[value]
 }

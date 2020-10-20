@@ -1,6 +1,6 @@
-export function boolToInt(p: boolean | undefined): number
-export function boolToInt<T>(p: T, key?: string): T
-export function boolToInt(p: any, key?: string) {
+export function processBoolean(p: boolean | undefined): number
+export function processBoolean<T>(p: T, key?: string): T
+export function processBoolean(p: any, key?: string) {
   if (key) {
     const props: any = { ...p }
     if (props[key] !== undefined) {

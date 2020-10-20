@@ -1,14 +1,13 @@
 import React from 'react'
-import {
-  processColor,
-  requireNativeComponent,
-  ColorValue,
-  ImageURISource
-} from 'react-native'
+import { processColor, requireNativeComponent, ColorValue } from 'react-native'
 import { TextStyle } from '../typings/TextStyle'
-import { boolToInt } from '../utils/boolToInt'
+import { processBoolean } from '../utils/processBoolean'
 import { processTextStyle } from '../utils/processTextStyle'
-import { BarAppearance, processBarAppearance } from './BarAppearance'
+import {
+  NavigationBarAppearanceProps,
+  processNavigationBarAppearance
+} from './NavigationBarAppearance'
+import { ImageProps, processImage } from './Image'
 
 const RNRNavigationBar = requireNativeComponent<any>('RNRNavigationBar')
 
@@ -23,16 +22,16 @@ export interface NavigationBarProps {
   defaultPromptTitleVerticalPositionAdjustment?: number
   compactTitleVerticalPositionAdjustment?: number
   compactPromptTitleVerticalPositionAdjustment?: number
-  backIndicatorImage?: ImageURISource
-  backIndicatorTransitionMaskImage?: ImageURISource
-  shadowImage?: ImageURISource
-  defaultBackgroundImage?: ImageURISource
-  defaultPromptBackgroundImage?: ImageURISource
-  compactBackgroundImage?: ImageURISource
-  compactPromptBackgroundImage?: ImageURISource
-  standardAppearance?: BarAppearance
-  compactAppearance?: BarAppearance
-  scrollEdgeAppearance?: BarAppearance
+  backIndicatorImage?: React.ReactElement<ImageProps> | null
+  backIndicatorTransitionMaskImage?: React.ReactElement<ImageProps> | null
+  shadowImage?: React.ReactElement<ImageProps> | null
+  defaultBackgroundImage?: React.ReactElement<ImageProps> | null
+  defaultPromptBackgroundImage?: React.ReactElement<ImageProps> | null
+  compactBackgroundImage?: React.ReactElement<ImageProps> | null
+  compactPromptBackgroundImage?: React.ReactElement<ImageProps> | null
+  standardAppearance?: React.ReactElement<NavigationBarAppearanceProps>
+  compactAppearance?: React.ReactElement<NavigationBarAppearanceProps>
+  scrollEdgeAppearance?: React.ReactElement<NavigationBarAppearanceProps>
 }
 
 export const NavigationBar: React.FC<NavigationBarProps> = ({
@@ -43,10 +42,17 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
   standardAppearance,
   compactAppearance,
   scrollEdgeAppearance,
+  backIndicatorImage,
+  backIndicatorTransitionMaskImage,
+  shadowImage,
+  defaultBackgroundImage,
+  defaultPromptBackgroundImage,
+  compactBackgroundImage,
+  compactPromptBackgroundImage,
   ...props
 }) => {
-  props = boolToInt(props, 'isTranslucent')
-  props = boolToInt(props, 'prefersLargeTitles')
+  props = processBoolean(props, 'isTranslucent')
+  props = processBoolean(props, 'prefersLargeTitles')
 
   if (titleStyle) {
     titleStyle = processTextStyle(titleStyle)
@@ -57,21 +63,52 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
 
   return (
     <RNRNavigationBar
-      customHidden={boolToInt(hidden)}
+      customHidden={processBoolean(hidden)}
       customTintColor={tintColor ? processColor(tintColor) : undefined}
       titleStyle={titleStyle}
       largeTitleStyle={largeTitleStyle}
       standardAppearance={
         standardAppearance
-          ? processBarAppearance(standardAppearance)
+          ? processNavigationBarAppearance(standardAppearance)
           : undefined
       }
       compactAppearance={
-        compactAppearance ? processBarAppearance(compactAppearance) : undefined
+        compactAppearance
+          ? processNavigationBarAppearance(compactAppearance)
+          : undefined
       }
       scrollEdgeAppearance={
         scrollEdgeAppearance
-          ? processBarAppearance(scrollEdgeAppearance)
+          ? processNavigationBarAppearance(scrollEdgeAppearance)
+          : undefined
+      }
+      backIndicatorImage={
+        backIndicatorImage ? processImage(backIndicatorImage) : undefined
+      }
+      backIndicatorTransitionMaskImage={
+        backIndicatorTransitionMaskImage
+          ? processImage(backIndicatorTransitionMaskImage)
+          : undefined
+      }
+      shadowImage={shadowImage ? processImage(shadowImage) : undefined}
+      defaultBackgroundImage={
+        defaultBackgroundImage
+          ? processImage(defaultBackgroundImage)
+          : undefined
+      }
+      defaultPromptBackgroundImage={
+        defaultPromptBackgroundImage
+          ? processImage(defaultPromptBackgroundImage)
+          : undefined
+      }
+      compactBackgroundImage={
+        compactBackgroundImage
+          ? processImage(compactBackgroundImage)
+          : undefined
+      }
+      compactPromptBackgroundImage={
+        compactPromptBackgroundImage
+          ? processImage(compactPromptBackgroundImage)
           : undefined
       }
       {...props}

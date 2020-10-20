@@ -1,47 +1,50 @@
-import { ButtonStateAppearance } from './ButtonStateAppearance'
+import {
+  ButtonStateAppearanceProps,
+  ProcessedButtonStateAppearanceValue,
+  processButtonStateAppearance
+} from './ButtonStateAppearance'
 
-interface ReturnValue {
-  normal?: ButtonStateAppearance
-  highlighted?: ButtonStateAppearance
-  disabled?: ButtonStateAppearance
-  focused?: ButtonStateAppearance
-  configure?: 'plain' | 'done'
+export interface ButtonAppearanceProps {
+  normal?: React.ReactElement<ButtonStateAppearanceProps>
+  highlighted?: React.ReactElement<ButtonStateAppearanceProps>
+  disabled?: React.ReactElement<ButtonStateAppearanceProps>
+  focused?: React.ReactElement<ButtonStateAppearanceProps>
 }
 
-export class ButtonAppearance {
-  public normal?: ButtonStateAppearance
-  public highlighted?: ButtonStateAppearance
-  public disabled?: ButtonStateAppearance
-  public focused?: ButtonStateAppearance
-
-  static plain(): ButtonAppearance {
-    return new PlainButtonAppearance()
-  }
-
-  static done(): ButtonAppearance {
-    return new DoneButtonAppearance()
-  }
+export interface ProcessedButtonAppearanceValue {
+  normal?: ProcessedButtonStateAppearanceValue
+  highlighted?: ProcessedButtonStateAppearanceValue
+  disabled?: ProcessedButtonStateAppearanceValue
+  focused?: ProcessedButtonStateAppearanceValue
+  _configure?: 'plain' | 'done'
 }
 
-class PlainButtonAppearance extends ButtonAppearance {
-  public _configure = 'plain'
-}
+const ButtonAppearanceBase: React.FC<ButtonAppearanceProps> = () => null
+const ButtonAppearancePlain: React.FC<ButtonAppearanceProps> = () => null
+const ButtonAppearanceDone: React.FC<ButtonAppearanceProps> = () => null
 
-class DoneButtonAppearance extends ButtonAppearance {
-  public _configure = 'done'
-}
+export const ButtonAppearance = Object.assign(ButtonAppearanceBase, {
+  Plain: ButtonAppearancePlain,
+  Done: ButtonAppearanceDone
+})
 
 export function processButtonAppearance(
-  buttonAppearance: ButtonAppearance
-): ReturnValue {
-  const returnValue: ReturnValue = {}
-  if (buttonAppearance.normal) returnValue.normal = buttonAppearance.normal
-  if (buttonAppearance.highlighted)
-    returnValue.highlighted = buttonAppearance.highlighted
-  if (buttonAppearance.disabled)
-    returnValue.disabled = buttonAppearance.disabled
-  if (buttonAppearance.focused) returnValue.focused = buttonAppearance.focused
-  if ((buttonAppearance as any)._configure)
-    returnValue.configure = (buttonAppearance as any)._configure
-  return returnValue
+  element: React.ReactElement<ButtonAppearanceProps>
+): any {
+  const props = element.props
+  const final: ProcessedButtonAppearanceValue = { ...(props as any) }
+  if (element.type === ButtonAppearancePlain) {
+    final._configure = 'plain'
+  } else if (element.type === ButtonAppearanceDone) {
+    final._configure = 'done'
+  }
+
+  if (props.normal) final.normal = processButtonStateAppearance(props.normal)
+  if (props.highlighted)
+    final.highlighted = processButtonStateAppearance(props.highlighted)
+  if (props.disabled)
+    final.disabled = processButtonStateAppearance(props.disabled)
+  if (props.focused) final.focused = processButtonStateAppearance(props.focused)
+
+  return final
 }
