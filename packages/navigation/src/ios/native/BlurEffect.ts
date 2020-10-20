@@ -27,6 +27,6 @@ export enum BlurEffect {
 
 export type BlurEffectValue = keyof typeof BlurEffect
 
-export function getBlurEffect(value: BlurEffectValue): BlurEffect {
+export function processBlurEffect(value: BlurEffectValue): BlurEffect {
   return BlurEffect[value]
 }

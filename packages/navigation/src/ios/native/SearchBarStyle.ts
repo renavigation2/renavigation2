@@ -10,6 +10,8 @@ export enum SearchBarStyle {
 
 export type SearchBarStyleValue = keyof typeof SearchBarStyle
 
-export function getSearchBarStyle(value: SearchBarStyleValue): SearchBarStyle {
+export function processSearchBarStyle(
+  value: SearchBarStyleValue
+): SearchBarStyle {
   return SearchBarStyle[value]
 }

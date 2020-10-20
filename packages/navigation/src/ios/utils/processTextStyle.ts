@@ -1,6 +1,6 @@
 import { processColor } from 'react-native'
 import { TextStyle } from '../typings/TextStyle'
-import { boolToInt } from './boolToInt'
+import { processBoolean } from './processBoolean'
 
 export function processTextStyle(styles: TextStyle): TextStyle {
   if (styles) {
@@ -25,7 +25,7 @@ export function processTextStyle(styles: TextStyle): TextStyle {
       styles.allowsDefaultTighteningForTruncation !== null &&
       styles.allowsDefaultTighteningForTruncation !== undefined
     ) {
-      styles.allowsDefaultTighteningForTruncation = boolToInt(
+      styles.allowsDefaultTighteningForTruncation = processBoolean(
         styles.allowsDefaultTighteningForTruncation
       ) as any
     }

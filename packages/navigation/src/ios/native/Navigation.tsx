@@ -1,6 +1,6 @@
 import React from 'react'
 import { requireNativeComponent, StyleSheet } from 'react-native'
-import { boolToInt } from '../utils/boolToInt'
+import { processBoolean } from '../utils/processBoolean'
 import { NavigationBar, NavigationBarProps } from './NavigationBar'
 
 const RNRNavigation = requireNativeComponent<any>('RNRNavigation')
@@ -19,7 +19,9 @@ export const Navigation: React.FC<NavigationProps> = ({
   return (
     <RNRNavigation
       style={StyleSheet.absoluteFill}
-      isInteractivePopGestureEnabled={boolToInt(isInteractivePopGestureEnabled)}
+      isInteractivePopGestureEnabled={processBoolean(
+        isInteractivePopGestureEnabled
+      )}
       {...props}
     >
       {navigationBar ? navigationBar : <NavigationBar />}

@@ -11,7 +11,7 @@ export enum LargeTitleDisplayMode {
 
 export type LargeTitleDisplayModeValue = keyof typeof LargeTitleDisplayMode
 
-export function getLargeTitleDisplayMode(
+export function processLargeTitleDisplayMode(
   value: LargeTitleDisplayModeValue
 ): LargeTitleDisplayMode {
   return LargeTitleDisplayMode[value]

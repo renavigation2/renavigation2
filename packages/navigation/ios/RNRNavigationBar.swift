@@ -13,13 +13,13 @@ class RNRNavigationBar: UIView {
     @objc var defaultPromptTitleVerticalPositionAdjustment: CGFloat = 0
     @objc var compactTitleVerticalPositionAdjustment: CGFloat = 0
     @objc var compactPromptTitleVerticalPositionAdjustment: CGFloat = 0
-    @objc var backIndicatorImage: UIImage? = nil
-    @objc var backIndicatorTransitionMaskImage: UIImage? = nil
-    @objc var shadowImage: UIImage? = nil
-    @objc var defaultBackgroundImage: UIImage? = nil
-    @objc var defaultPromptBackgroundImage: UIImage? = nil
-    @objc var compactBackgroundImage: UIImage? = nil
-    @objc var compactPromptBackgroundImage: UIImage? = nil
+    @objc var backIndicatorImage: NSDictionary? = nil
+    @objc var backIndicatorTransitionMaskImage: NSDictionary? = nil
+    @objc var shadowImage: NSDictionary? = nil
+    @objc var defaultBackgroundImage: NSDictionary? = nil
+    @objc var defaultPromptBackgroundImage: NSDictionary? = nil
+    @objc var compactBackgroundImage: NSDictionary? = nil
+    @objc var compactPromptBackgroundImage: NSDictionary? = nil
     @objc var standardAppearance: NSDictionary? = nil
     @objc var compactAppearance: NSDictionary? = nil
     @objc var scrollEdgeAppearance: NSDictionary? = nil
@@ -98,25 +98,26 @@ class RNRNavigationBar: UIView {
                 navigationBar.setTitleVerticalPositionAdjustment(compactPromptTitleVerticalPositionAdjustment, for: UIBarMetrics.compactPrompt)
             }
             if backIndicatorImage != nil {
-                navigationBar.backIndicatorImage = backIndicatorImage
+                navigationBar.backIndicatorImage = RNRNavigationImage.getImage(RCTConvert.nsDictionary(backIndicatorImage)! as NSDictionary)
             }
             if backIndicatorTransitionMaskImage != nil {
-                navigationBar.backIndicatorTransitionMaskImage = backIndicatorTransitionMaskImage
+                navigationBar.backIndicatorTransitionMaskImage = RNRNavigationImage.getImage(RCTConvert.nsDictionary(backIndicatorTransitionMaskImage)! as NSDictionary)
             }
             if shadowImage != nil {
-                navigationBar.shadowImage = shadowImage
+                let t = RNRNavigationImage.getImage(RCTConvert.nsDictionary(shadowImage)! as NSDictionary)
+                navigationBar.shadowImage = t
             }
             if defaultBackgroundImage != nil {
-                navigationBar.setBackgroundImage(defaultBackgroundImage, for: UIBarMetrics.default)
+                navigationBar.setBackgroundImage(RNRNavigationImage.getImage(RCTConvert.nsDictionary(defaultBackgroundImage)! as NSDictionary), for: UIBarMetrics.default)
             }
             if defaultPromptBackgroundImage != nil {
-                navigationBar.setBackgroundImage(defaultPromptBackgroundImage, for: UIBarMetrics.defaultPrompt)
+                navigationBar.setBackgroundImage(RNRNavigationImage.getImage(RCTConvert.nsDictionary(defaultPromptBackgroundImage)! as NSDictionary), for: UIBarMetrics.defaultPrompt)
             }
             if compactBackgroundImage != nil {
-                navigationBar.setBackgroundImage(compactBackgroundImage, for: UIBarMetrics.compact)
+                navigationBar.setBackgroundImage(RNRNavigationImage.getImage(RCTConvert.nsDictionary(compactBackgroundImage)! as NSDictionary), for: UIBarMetrics.compact)
             }
             if compactPromptBackgroundImage != nil {
-                navigationBar.setBackgroundImage(compactPromptBackgroundImage, for: UIBarMetrics.compactPrompt)
+                navigationBar.setBackgroundImage(RNRNavigationImage.getImage(RCTConvert.nsDictionary(compactPromptBackgroundImage)! as NSDictionary), for: UIBarMetrics.compactPrompt)
             }
             if standardAppearance != nil {
                 if #available(iOS 13.0, *) {
@@ -200,19 +201,26 @@ class RNRNavigationBar: UIView {
                 } else if key == "compactPromptTitleVerticalPositionAdjustment" {
                     navigationBar.setTitleVerticalPositionAdjustment(compactPromptTitleVerticalPositionAdjustment, for: UIBarMetrics.compactPrompt)
                 } else if key == "backIndicatorImage" {
-                    navigationBar.backIndicatorImage = backIndicatorImage
+                    navigationBar.backIndicatorImage = backIndicatorImage != nil ?
+                            RNRNavigationImage.getImage(RCTConvert.nsDictionary(backIndicatorImage)! as NSDictionary) : nil
                 } else if key == "backIndicatorTransitionMaskImage" {
-                    navigationBar.backIndicatorTransitionMaskImage = backIndicatorTransitionMaskImage
+                    navigationBar.backIndicatorTransitionMaskImage = backIndicatorTransitionMaskImage != nil ?
+                            RNRNavigationImage.getImage(RCTConvert.nsDictionary(backIndicatorTransitionMaskImage)! as NSDictionary) : nil
                 } else if key == "shadowImage" {
-                    navigationBar.shadowImage = shadowImage
+                    navigationBar.shadowImage = shadowImage != nil ?
+                            RNRNavigationImage.getImage(RCTConvert.nsDictionary(shadowImage)! as NSDictionary) : nil
                 } else if key == "defaultBackgroundImage" {
-                    navigationBar.setBackgroundImage(defaultBackgroundImage, for: UIBarMetrics.default)
+                    navigationBar.setBackgroundImage(defaultBackgroundImage != nil ?
+                            RNRNavigationImage.getImage(RCTConvert.nsDictionary(defaultBackgroundImage)! as NSDictionary) : nil, for: UIBarMetrics.default)
                 } else if key == "defaultPromptBackgroundImage" {
-                    navigationBar.setBackgroundImage(defaultPromptBackgroundImage, for: UIBarMetrics.defaultPrompt)
+                    navigationBar.setBackgroundImage(defaultPromptBackgroundImage != nil ?
+                            RNRNavigationImage.getImage(RCTConvert.nsDictionary(defaultPromptBackgroundImage)! as NSDictionary) : nil, for: UIBarMetrics.defaultPrompt)
                 } else if key == "compactBackgroundImage" {
-                    navigationBar.setBackgroundImage(compactBackgroundImage, for: UIBarMetrics.compact)
+                    navigationBar.setBackgroundImage(compactBackgroundImage != nil ?
+                            RNRNavigationImage.getImage(RCTConvert.nsDictionary(compactBackgroundImage)! as NSDictionary) : nil, for: UIBarMetrics.compact)
                 } else if key == "compactPromptBackgroundImage" {
-                    navigationBar.setBackgroundImage(compactPromptBackgroundImage, for: UIBarMetrics.compactPrompt)
+                    navigationBar.setBackgroundImage(compactPromptBackgroundImage != nil ?
+                            RNRNavigationImage.getImage(RCTConvert.nsDictionary(compactPromptBackgroundImage)! as NSDictionary) : nil, for: UIBarMetrics.compactPrompt)
                 } else if key == "standardAppearance" {
                     if #available(iOS 13.0, *) {
                         if standardAppearance != nil {

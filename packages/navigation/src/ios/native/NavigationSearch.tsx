@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react'
 import { NativeSyntheticEvent, requireNativeComponent } from 'react-native'
-import { getSearchBarStyle, SearchBarStyleValue } from './SearchBarStyle'
+import { processSearchBarStyle, SearchBarStyleValue } from './SearchBarStyle'
 import { BarStyle } from './BarStyle'
-import { boolToInt } from '../utils/boolToInt'
+import { processBoolean } from '../utils/processBoolean'
 
 const RNRNavigationSearch = requireNativeComponent<any>('RNRNavigationSearch')
 
@@ -46,20 +46,20 @@ export const NavigationSearch: React.FC<NavigationSearchProps> = ({
   onSearchBarChangeText,
   ...props
 }) => {
-  props = boolToInt(props, 'isActive')
-  props = boolToInt(props, 'dimsBackgroundDuringPresentation')
-  props = boolToInt(props, 'obscuresBackgroundDuringPresentation')
-  props = boolToInt(props, 'hidesNavigationBarDuringPresentation')
-  props = boolToInt(props, 'automaticallyShowsCancelButton')
-  props = boolToInt(props, 'showsBookmarkButton')
-  props = boolToInt(props, 'showsCancelButton')
-  props = boolToInt(props, 'showsSearchResultsButton')
-  props = boolToInt(props, 'isSearchResultsButtonSelected')
-  props = boolToInt(props, 'isTranslucent')
-  props = boolToInt(props, 'showsScopeBar')
+  props = processBoolean(props, 'isActive')
+  props = processBoolean(props, 'dimsBackgroundDuringPresentation')
+  props = processBoolean(props, 'obscuresBackgroundDuringPresentation')
+  props = processBoolean(props, 'hidesNavigationBarDuringPresentation')
+  props = processBoolean(props, 'automaticallyShowsCancelButton')
+  props = processBoolean(props, 'showsBookmarkButton')
+  props = processBoolean(props, 'showsCancelButton')
+  props = processBoolean(props, 'showsSearchResultsButton')
+  props = processBoolean(props, 'isSearchResultsButtonSelected')
+  props = processBoolean(props, 'isTranslucent')
+  props = processBoolean(props, 'showsScopeBar')
 
   if (props.searchBarStyle) {
-    props.searchBarStyle = getSearchBarStyle(props.searchBarStyle) as any
+    props.searchBarStyle = processSearchBarStyle(props.searchBarStyle) as any
   }
 
   const onSearchBarChangeCallback = useCallback(

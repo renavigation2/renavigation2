@@ -10,6 +10,6 @@ export enum BarStyle {
 
 export type BarStyleValue = keyof typeof BarStyle
 
-export function getBarStyle(value: BarStyleValue): BarStyle {
+export function processBarStyle(value: BarStyleValue): BarStyle {
   return BarStyle[value]
 }

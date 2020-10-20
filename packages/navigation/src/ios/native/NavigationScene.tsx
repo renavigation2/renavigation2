@@ -1,6 +1,6 @@
 import React, { forwardRef, useCallback, useEffect, useRef } from 'react'
 import { requireNativeComponent, StyleSheet } from 'react-native'
-import { boolToInt } from '../utils/boolToInt'
+import { processBoolean } from '../utils/processBoolean'
 
 const RNRNavigationScene = requireNativeComponent<any>('RNRNavigationScene')
 
@@ -46,7 +46,7 @@ function NavigationSceneBase(
   return (
     <RNRNavigationScene
       ref={ref}
-      animated={boolToInt(animated)}
+      animated={processBoolean(animated)}
       onWillDisappear={onWillDisappearCallback}
       onDidDisappear={onDidDisappearCallback}
       {...props}
