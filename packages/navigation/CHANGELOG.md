@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.17.0](https://github.com/renavigation2/renavigation2/compare/v4.16.0...v4.17.0) (2020-10-20)
+
+
+### Features
+
+* **navigation:** Added support for button items in navigation bar ([f6f3158](https://github.com/renavigation2/renavigation2/commit/f6f31580b922e19f043b81eb7e883a4b513dc3ed))
+
+
+
+
+
 ## [4.15.1](https://github.com/renavigation2/renavigation2/compare/v4.15.0...v4.15.1) (2020-10-10)
 
 **Note:** Version bump only for package @renavigation2/navigation
