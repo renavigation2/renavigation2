@@ -18,8 +18,8 @@ class RNRNavigationSearch: UIView, UISearchControllerDelegate, UISearchBarDelega
     @objc var showsCancelButton: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var showsSearchResultsButton: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var isSearchResultsButtonSelected: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
-    @objc var searchTintColor: UIColor? = nil
-    @objc var barTintColor: UIColor? = nil
+    @objc var searchTintColor: NSNumber? = nil
+    @objc var barTintColor: NSNumber? = nil
     @objc var searchBarStyle: Int = Int(UISearchBar.Style.default.rawValue)
     @objc var isTranslucent: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var scopeButtonTitles: NSArray? = nil
@@ -88,7 +88,6 @@ class RNRNavigationSearch: UIView, UISearchControllerDelegate, UISearchBarDelega
                 controller?.navigationItem.searchController = searchController
             }
 
-
             if isActive == -1 {
                 searchController.isActive = false
             } else if isActive == 1 {
@@ -149,10 +148,10 @@ class RNRNavigationSearch: UIView, UISearchControllerDelegate, UISearchBarDelega
                 searchController.searchBar.isSearchResultsButtonSelected = true
             }
             if searchTintColor != nil {
-                searchController.searchBar.tintColor = searchTintColor
+                searchController.searchBar.tintColor = RCTConvert.uiColor(searchTintColor)
             }
             if barTintColor != nil {
-                searchController.searchBar.barTintColor = barTintColor
+                searchController.searchBar.barTintColor = RCTConvert.uiColor(barTintColor)
             }
             searchController.searchBar.searchBarStyle = UISearchBar.Style(rawValue: UInt(searchBarStyle))!
             if isTranslucent == -1 {
@@ -265,9 +264,9 @@ class RNRNavigationSearch: UIView, UISearchControllerDelegate, UISearchBarDelega
                         searchController.searchBar.isSearchResultsButtonSelected = false
                     }
                 } else if key == "tintColor" {
-                    searchController.searchBar.tintColor = searchTintColor
+                    searchController.searchBar.tintColor = RCTConvert.uiColor(searchTintColor)
                 } else if key == "barTintColor" {
-                    searchController.searchBar.barTintColor = barTintColor
+                    searchController.searchBar.barTintColor = RCTConvert.uiColor(barTintColor)
                 } else if key == "searchBarStyle" {
                     searchController.searchBar.searchBarStyle = UISearchBar.Style(rawValue: UInt(searchBarStyle))!
                 } else if key == "isTranslucent" {

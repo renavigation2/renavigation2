@@ -3,7 +3,8 @@ import {
   Image as RNImage,
   ImageResolvedAssetSource,
   processColor,
-  ProcessedColorValue
+  ProcessedColorValue,
+  ColorValue
 } from 'react-native'
 import { EdgeInsets } from '../typings/EdgeInsets'
 
@@ -12,7 +13,7 @@ export interface ImageProps {
   systemName?: string
   alignmentRectInsets?: EdgeInsets
   renderingMode?: 'automatic' | 'alwaysOriginal' | 'alwaysTemplate'
-  tintColor?: string
+  tintColor?: ColorValue
 }
 
 export interface ProcessedImageValue

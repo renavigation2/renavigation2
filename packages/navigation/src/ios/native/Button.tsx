@@ -1,4 +1,4 @@
-import { processColor, ProcessedColorValue } from 'react-native'
+import { ColorValue, processColor, ProcessedColorValue } from 'react-native'
 import { EdgeInsets } from '../typings/EdgeInsets'
 import { Offset } from '../typings/Offset'
 import { TextStyle } from '../typings/TextStyle'
@@ -61,7 +61,7 @@ export interface ButtonProps {
   selectedCompactBackgroundImage?: React.ReactElement<ImageProps> | null
   selectedDefaultPromptBackgroundImage?: React.ReactElement<ImageProps> | null
   selectedCompactPromptBackgroundImage?: React.ReactElement<ImageProps> | null
-  tintColor?: string
+  tintColor?: ColorValue
   defaultBackgroundVerticalPositionAdjustment?: number
   compactBackgroundVerticalPositionAdjustment?: number
   defaultPromptBackgroundVerticalPositionAdjustment?: number

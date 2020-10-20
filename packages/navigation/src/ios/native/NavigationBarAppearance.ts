@@ -1,4 +1,4 @@
-import { processColor, ProcessedColorValue } from 'react-native'
+import { ColorValue, processColor, ProcessedColorValue } from 'react-native'
 import { PositionAdjustment } from '../typings/PositionAdjustment'
 import { TextStyle } from '../typings/TextStyle'
 import { BlurEffect, BlurEffectValue, processBlurEffect } from './BlurEffect'
@@ -16,10 +16,10 @@ import { ImageProps, ProcessedImageValue, processImage } from './Image'
 
 export interface NavigationBarAppearanceProps {
   backgroundEffect?: BlurEffectValue
-  backgroundColor?: string
+  backgroundColor?: ColorValue
   backgroundImage?: React.ReactElement<ImageProps>
   backgroundImageContentMode?: ContentModeValue
-  shadowColor?: string
+  shadowColor?: ColorValue
   shadowImage?: React.ReactElement<ImageProps>
   titleStyle?: Omit<TextStyle, 'textTransform'>
   titlePositionAdjustment?: PositionAdjustment

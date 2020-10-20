@@ -1,5 +1,9 @@
 import React, { useCallback } from 'react'
-import { NativeSyntheticEvent, requireNativeComponent } from 'react-native'
+import {
+  ColorValue,
+  NativeSyntheticEvent,
+  requireNativeComponent
+} from 'react-native'
 import { processSearchBarStyle, SearchBarStyleValue } from './SearchBarStyle'
 import { BarStyle } from './BarStyle'
 import { processBoolean } from '../utils/processBoolean'
@@ -22,8 +26,8 @@ export interface NavigationSearchProps {
   showsCancelButton?: boolean | null
   showsSearchResultsButton?: boolean | null
   isSearchResultsButtonSelected?: boolean | null
-  tintColor?: string
-  barTintColor?: string
+  tintColor?: ColorValue
+  barTintColor?: ColorValue
   searchBarStyle?: SearchBarStyleValue
   isTranslucent?: boolean | null
   scopeButtonTitles?: [string]

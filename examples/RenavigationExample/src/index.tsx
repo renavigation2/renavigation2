@@ -20,6 +20,7 @@ export const App: React.FC<Props> = ({}) => {
           <NavigationBar
             backIndicatorImage={
               <Image
+                tintColor="red"
                 source={require('./components/BackButton/assets/back.png')}
                 alignmentRectInsets={{
                   left: 0,
@@ -31,6 +32,7 @@ export const App: React.FC<Props> = ({}) => {
             }
             backIndicatorTransitionMaskImage={
               <Image
+                tintColor="red"
                 source={require('./components/BackButton/assets/back.png')}
               />
             }
