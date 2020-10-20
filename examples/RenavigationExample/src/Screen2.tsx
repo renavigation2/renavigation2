@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { ScrollView, Text, View } from 'react-native'
-import { Button } from './components/Button'
+import { Button as ButtonComponent } from './components/Button'
 import {
   NavigationScreen,
   useDidAppearEffect,
@@ -8,13 +8,25 @@ import {
   useNavigation,
   useWillAppearEffect,
   useWillDisappearEffect,
-  NavigationBarItem
+  NavigationBarItem,
+  Button,
+  Image,
+  Menu,
+  Action
 } from '@renavigation2/navigation'
 
 interface Props {}
 
 export const Screen2: React.FC<Props> = ({}) => {
   const { back, reset, push } = useNavigation()
+
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 5000)
+  }, [])
 
   const goBack = useCallback(() => {
     back()
@@ -46,11 +58,87 @@ export const Screen2: React.FC<Props> = ({}) => {
   useDidDisappearEffect(() => {
     console.log('did disappear')
   }, [])
-
+  /*              menu={
+                <Menu
+                  items={[
+                    <Menu
+                      key="1"
+                      displayInline
+                      items={[
+                        <Action
+                          key="1"
+                          title="Hello World"
+                          state="on"
+                          image={
+                            <Image systemName="eyedropper" tintColor="red" />
+                          }
+                          onPress={() => {
+                            console.log('SO SIPMEE')
+                          }}
+                        />,
+                        <Action
+                          key="1"
+                          title="hello world"
+                          image={
+                            <Image
+                              source={require('./components/BackButton/assets/back.png')}
+                            />
+                          }
+                        />
+                      ]}
+                    />,
+                    <Action key="2" destructive title="Reset" />
+                  ]}
+                />
+              }
+*/
   return (
     <NavigationScreen
       navigationBarItem={
-        <NavigationBarItem title="Screen 2" largeTitleDisplayMode="always" />
+        <NavigationBarItem
+          title="Screen 2"
+          largeTitleDisplayMode="never"
+          leftItemsSupplementBackButton
+          leftButtons={[
+            <Button
+              key="2"
+              title="Hello"
+              image={<Image systemName="slider.horizontal.3" />}
+            />,
+            <Button
+              key="2"
+              title="Hello"
+              image={<Image systemName="slider.horizontal.3" />}
+            />
+          ]}
+          rightButtons={[
+            <Button
+              key="1"
+              title="Hello"
+              image={<Image systemName="slider.horizontal.3" />}
+              menu={
+                <Menu
+                  loading={loading}
+                  items={[
+                    <Action
+                      key="hello"
+                      title="Hello"
+                      image={<Image systemName="slider.horizontal.3" />}
+                      onPress={() => {
+                        console.log('hello')
+                      }}
+                    />
+                  ]}
+                />
+              }
+            />,
+            <Button
+              key="2"
+              title="Hello"
+              image={<Image systemName="slider.horizontal.3" />}
+            />
+          ]}
+        />
       }
     >
       <ScrollView
@@ -66,7 +154,7 @@ export const Screen2: React.FC<Props> = ({}) => {
             marginBottom: 8
           }}
         >
-          <Button onPress={goBack}>Go back</Button>
+          <ButtonComponent onPress={goBack}>Go back</ButtonComponent>
         </View>
         <View
           style={{
@@ -76,7 +164,9 @@ export const Screen2: React.FC<Props> = ({}) => {
             marginBottom: 8
           }}
         >
-          <Button onPress={resetToStart}>Reset to start</Button>
+          <ButtonComponent onPress={resetToStart}>
+            Reset to start
+          </ButtonComponent>
         </View>
         <View
           style={{
@@ -86,7 +176,9 @@ export const Screen2: React.FC<Props> = ({}) => {
             marginBottom: 32
           }}
         >
-          <Button onPress={goToScreen3}>Go to screen 3</Button>
+          <ButtonComponent onPress={goToScreen3}>
+            Go to screen 3
+          </ButtonComponent>
         </View>
         <Text>
           1. cwreoihv oeritvh porh vpio rhe iopvh repoiw hvpoirs hvpoier hwpiov
