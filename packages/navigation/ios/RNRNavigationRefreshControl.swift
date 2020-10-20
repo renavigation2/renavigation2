@@ -5,9 +5,9 @@ class RNRNavigationRefreshControl: UIView {
     var initialized = false
 
     @objc var refreshing: Bool = false
-    @objc var refreshControlTintColor: UIColor? = nil
+    @objc var refreshControlTintColor: NSNumber? = nil
     @objc var title: NSString? = nil
-    @objc var titleColor: UIColor? = nil
+    @objc var titleColor: NSNumber? = nil
 
     @objc var onRefresh: RCTDirectEventBlock?
 
@@ -20,7 +20,7 @@ class RNRNavigationRefreshControl: UIView {
             refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
 
             if refreshControlTintColor != nil {
-                refreshControl.tintColor = refreshControlTintColor!
+                refreshControl.tintColor = RCTConvert.uiColor(refreshControlTintColor!)
             }
 
             updateTitle()
@@ -53,7 +53,7 @@ class RNRNavigationRefreshControl: UIView {
                     refreshControl.endRefreshing()
                 }
             } else if key == "refreshControlTintColor" {
-                refreshControl.tintColor = refreshControlTintColor
+                refreshControl.tintColor = RCTConvert.uiColor(refreshControlTintColor)
             }
         })
     }
@@ -63,7 +63,7 @@ class RNRNavigationRefreshControl: UIView {
             let attributedTitle = NSMutableAttributedString(string: title! as String)
             let range = title!.range(of: title! as String)
             if titleColor != nil {
-                attributedTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: titleColor!, range: range)
+                attributedTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: RCTConvert.uiColor(titleColor!) as Any, range: range)
             }
             refreshControl.attributedTitle = attributedTitle
         } else {

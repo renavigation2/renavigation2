@@ -5,8 +5,8 @@ class RNRNavigationBar: UIView {
     @objc var isTranslucent: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var prefersLargeTitles: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var customHidden: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
-    @objc var customTintColor: UIColor? = nil
-    @objc var barTintColor: UIColor? = nil
+    @objc var customTintColor: NSNumber? = nil
+    @objc var barTintColor: NSNumber? = nil
     @objc var titleStyle: NSDictionary? = nil
     @objc var largeTitleStyle: NSDictionary? = nil
     @objc var defaultTitleVerticalPositionAdjustment: CGFloat = 0
@@ -72,10 +72,10 @@ class RNRNavigationBar: UIView {
                 navigationBar.isHidden = true
             }
             if customTintColor != nil {
-                navigationBar.tintColor = customTintColor
+                navigationBar.tintColor = RCTConvert.uiColor(customTintColor)
             }
             if barTintColor != nil {
-                navigationBar.barTintColor = barTintColor
+                navigationBar.barTintColor = RCTConvert.uiColor(barTintColor)
             }
             if titleStyle != nil {
                 navigationBar.titleTextAttributes = RNRNavigationTextStyle.getStyles(titleStyle!, defaultFontSize: 17, defaultFontWeight: "bold")
@@ -175,9 +175,17 @@ class RNRNavigationBar: UIView {
                         }
                     }
                 } else if key == "customTintColor" {
-                    navigationBar.tintColor = customTintColor
+                    if customTintColor != nil {
+                        navigationBar.tintColor = RCTConvert.uiColor(customTintColor)
+                    } else {
+                        navigationBar.tintColor = nil
+                    }
                 } else if key == "barTintColor" {
-                    navigationBar.barTintColor = barTintColor
+                    if customTintColor != nil {
+                        navigationBar.barTintColor = RCTConvert.uiColor(barTintColor)
+                    } else {
+                        navigationBar.barTintColor = nil
+                    }
                 } else if key == "titleStyle" {
                     if titleStyle != nil {
                         navigationBar.titleTextAttributes = RNRNavigationTextStyle.getStyles(titleStyle!, defaultFontSize: 17)
@@ -250,3 +258,4 @@ class RNRNavigationBar: UIView {
         }
     }
 }
+

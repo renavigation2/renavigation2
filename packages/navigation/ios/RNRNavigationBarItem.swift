@@ -57,7 +57,9 @@ class RNRNavigationBarItem: UIView {
                 scene!.controller.navigationItem.leftBarButtonItem = leftBar
             } else {
                 leftBar = nil
-                scene!.controller.navigationItem.leftBarButtonItem = nil
+                if leftButton == nil && leftButtons == nil {
+                    scene!.controller.navigationItem.leftBarButtonItem = nil
+                }
             }
         } else if atIndex == 1 { // title
             if !(subview is RNRNavigationEmptyComponent) {
@@ -74,17 +76,8 @@ class RNRNavigationBarItem: UIView {
                 scene!.controller.navigationItem.rightBarButtonItem = rightBar
             } else {
                 rightBar = nil
-                if rightButton == nil {
+                if rightButton == nil && rightButtons == nil {
                     scene!.controller.navigationItem.rightBarButtonItem = nil
-                } else {
-                    if #available(iOS 14.0, *) {
-                        scene!.controller.navigationItem.rightBarButtonItem = RNRNavigationButton.getButton(rightButton!,
-                                onActionSelect: self.onActionSelect,
-                                onLoadingComplete: self.onLoadingComplete
-                        )
-                    } else {
-                        scene!.controller.navigationItem.rightBarButtonItem = RNRNavigationButton.getButton(rightButton!, onAction: self.onPrimaryActionSelect)
-                    }
                 }
             }
         } else if atIndex == 3 { // refresh control
@@ -142,12 +135,6 @@ class RNRNavigationBarItem: UIView {
         NSLog("onAction....")
     }
 
-    override func removeReactSubview(_ subview: UIView!) {
-    }
-
-    override func didUpdateReactSubviews() {
-    }
-
     func setup() {
         let navigationItem = scene!.controller.navigationItem
 
@@ -171,72 +158,7 @@ class RNRNavigationBarItem: UIView {
             }
         }
 
-        if rightButton != nil {
-            if #available(iOS 14.0, *) {
-                navigationItem.rightBarButtonItem = RNRNavigationButton.getButton(rightButton!,
-                        onActionSelect: self.onActionSelect,
-                        onLoadingComplete: self.onLoadingComplete
-                )
-            } else {
-                navigationItem.rightBarButtonItem = RNRNavigationButton.getButton(rightButton!, onAction: self.onPrimaryActionSelect)
-            }
-        }
-
-        if rightButtons != nil {
-            var finalRightButtons: [UIBarButtonItem] = []
-            rightButtons?.forEach { element in
-                if #available(iOS 14.0, *) {
-                    finalRightButtons.append(RNRNavigationButton.getButton(element as! NSDictionary,
-                            onActionSelect: self.onActionSelect,
-                            onLoadingComplete: self.onLoadingComplete
-                    ))
-                } else {
-                    finalRightButtons.append(
-                            RNRNavigationButton.getButton(element as! NSDictionary, onAction: self.onPrimaryActionSelect)
-                    )
-                }
-            }
-            navigationItem.rightBarButtonItems = finalRightButtons
-        }
-
-        if leftButton != nil {
-            if #available(iOS 14.0, *) {
-                navigationItem.leftBarButtonItem = RNRNavigationButton.getButton(leftButton!,
-                        onActionSelect: self.onActionSelect,
-                        onLoadingComplete: self.onLoadingComplete
-                )
-            } else {
-                navigationItem.leftBarButtonItem = RNRNavigationButton.getButton(leftButton!, onAction: self.onPrimaryActionSelect)
-            }
-        }
-
-        if leftButtons != nil {
-            var finalLeftButtons: [UIBarButtonItem] = []
-            leftButtons?.forEach { element in
-                if #available(iOS 14.0, *) {
-                    finalLeftButtons.append(RNRNavigationButton.getButton(element as! NSDictionary,
-                            onActionSelect: self.onActionSelect,
-                            onLoadingComplete: self.onLoadingComplete
-                    ))
-                } else {
-                    finalLeftButtons.append(
-                            RNRNavigationButton.getButton(element as! NSDictionary, onAction: self.onPrimaryActionSelect)
-                    )
-                }
-            }
-            navigationItem.leftBarButtonItems = finalLeftButtons
-        }
-
-        if backButton != nil {
-            if #available(iOS 14.0, *) {
-                navigationItem.backBarButtonItem = RNRNavigationButton.getButton(backButton!,
-                        onActionSelect: self.onActionSelect,
-                        onLoadingComplete: self.onLoadingComplete
-                )
-            } else {
-                navigationItem.backBarButtonItem = RNRNavigationButton.getButton(backButton!, onAction: self.onPrimaryActionSelect)
-            }
-        }
+        setButtons()
 
         if hidesBackButton == -1 {
             navigationItem.hidesBackButton = false
@@ -275,6 +197,89 @@ class RNRNavigationBarItem: UIView {
         }
     }
 
+    func setButtons() {
+        if scene?.controller.navigationItem != nil {
+            let navigationItem = scene!.controller.navigationItem
+
+            if rightButton != nil {
+                if #available(iOS 14.0, *) {
+                    navigationItem.rightBarButtonItem = RNRNavigationButton.getButton(rightButton!,
+                            onActionSelect: self.onActionSelect,
+                            onLoadingComplete: self.onLoadingComplete
+                    )
+                } else {
+                    navigationItem.rightBarButtonItem = RNRNavigationButton.getButton(rightButton!, onAction: self.onPrimaryActionSelect)
+                }
+            } else if rightBar == nil {
+                navigationItem.rightBarButtonItem = nil
+            }
+
+            if rightButtons != nil {
+                var finalRightButtons: [UIBarButtonItem] = []
+                rightButtons?.forEach { element in
+                    if #available(iOS 14.0, *) {
+                        finalRightButtons.append(RNRNavigationButton.getButton(element as! NSDictionary,
+                                onActionSelect: self.onActionSelect,
+                                onLoadingComplete: self.onLoadingComplete
+                        ))
+                    } else {
+                        finalRightButtons.append(
+                                RNRNavigationButton.getButton(element as! NSDictionary, onAction: self.onPrimaryActionSelect)
+                        )
+                    }
+                }
+                navigationItem.rightBarButtonItems = finalRightButtons
+            } else {
+                navigationItem.rightBarButtonItems = nil
+            }
+
+            if leftButton != nil {
+                if #available(iOS 14.0, *) {
+                    navigationItem.leftBarButtonItem = RNRNavigationButton.getButton(leftButton!,
+                            onActionSelect: self.onActionSelect,
+                            onLoadingComplete: self.onLoadingComplete
+                    )
+                } else {
+                    navigationItem.leftBarButtonItem = RNRNavigationButton.getButton(leftButton!, onAction: self.onPrimaryActionSelect)
+                }
+            } else if leftBar == nil {
+                navigationItem.leftBarButtonItem = nil
+            }
+
+            if leftButtons != nil {
+                var finalLeftButtons: [UIBarButtonItem] = []
+                leftButtons?.forEach { element in
+                    if #available(iOS 14.0, *) {
+                        finalLeftButtons.append(RNRNavigationButton.getButton(element as! NSDictionary,
+                                onActionSelect: self.onActionSelect,
+                                onLoadingComplete: self.onLoadingComplete
+                        ))
+                    } else {
+                        finalLeftButtons.append(
+                                RNRNavigationButton.getButton(element as! NSDictionary, onAction: self.onPrimaryActionSelect)
+                        )
+                    }
+                }
+                navigationItem.leftBarButtonItems = finalLeftButtons
+            } else {
+                navigationItem.leftBarButtonItems = nil
+            }
+
+            if backButton != nil {
+                if #available(iOS 14.0, *) {
+                    navigationItem.backBarButtonItem = RNRNavigationButton.getButton(backButton!,
+                            onActionSelect: self.onActionSelect,
+                            onLoadingComplete: self.onLoadingComplete
+                    )
+                } else {
+                    navigationItem.backBarButtonItem = RNRNavigationButton.getButton(backButton!, onAction: self.onPrimaryActionSelect)
+                }
+            } else {
+                navigationItem.backBarButtonItem = nil
+            }
+        }
+    }
+
     @objc
     override func didSetProps(_ changedProps: [String]!) {
         if scene?.controller != nil {
@@ -293,83 +298,6 @@ class RNRNavigationBarItem: UIView {
                 } else if key == "largeTitleDisplayMode" {
                     if #available(iOS 11.0, *) {
                         navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode(rawValue: largeTitleDisplayMode)!
-                    }
-                } else if key == "rightButton" {
-                    if rightButton != nil {
-                        if #available(iOS 14.0, *) {
-                            navigationItem.rightBarButtonItem = RNRNavigationButton.getButton(rightButton!,
-                                    onActionSelect: self.onActionSelect,
-                                    onLoadingComplete: self.onLoadingComplete
-                            )
-                        } else {
-                            navigationItem.rightBarButtonItem = RNRNavigationButton.getButton(rightButton!, onAction: self.onPrimaryActionSelect)
-                        }
-                    } else {
-                        navigationItem.rightBarButtonItem = rightBar
-                    }
-                } else if key == "rightButtons" {
-                    if rightButtons != nil {
-                        var finalRightButtons: [UIBarButtonItem] = []
-                        rightButtons?.forEach { element in
-                            if #available(iOS 14.0, *) {
-                                finalRightButtons.append(RNRNavigationButton.getButton(element as! NSDictionary,
-                                        onActionSelect: self.onActionSelect,
-                                        onLoadingComplete: self.onLoadingComplete
-                                ))
-                            } else {
-                                finalRightButtons.append(
-                                        RNRNavigationButton.getButton(element as! NSDictionary, onAction: self.onPrimaryActionSelect)
-                                )
-                            }
-                        }
-                        navigationItem.rightBarButtonItems = finalRightButtons
-                    } else {
-                        navigationItem.rightBarButtonItems = nil
-                    }
-                } else if key == "leftButton" {
-                    if leftButton != nil {
-                        if #available(iOS 14.0, *) {
-                            navigationItem.leftBarButtonItem = RNRNavigationButton.getButton(leftButton!,
-                                    onActionSelect: self.onActionSelect,
-                                    onLoadingComplete: self.onLoadingComplete
-                            )
-                        } else {
-                            navigationItem.leftBarButtonItem = RNRNavigationButton.getButton(leftButton!, onAction: self.onPrimaryActionSelect)
-                        }
-                    } else {
-                        navigationItem.leftBarButtonItem = leftBar
-                    }
-                } else if key == "leftButtons" {
-                    if leftButtons != nil {
-                        var finalLeftButtons: [UIBarButtonItem] = []
-                        leftButtons?.forEach { element in
-                            if #available(iOS 14.0, *) {
-                                finalLeftButtons.append(RNRNavigationButton.getButton(element as! NSDictionary,
-                                        onActionSelect: self.onActionSelect,
-                                        onLoadingComplete: self.onLoadingComplete
-                                ))
-                            } else {
-                                finalLeftButtons.append(
-                                        RNRNavigationButton.getButton(element as! NSDictionary, onAction: self.onPrimaryActionSelect)
-                                )
-                            }
-                        }
-                        navigationItem.leftBarButtonItems = finalLeftButtons
-                    } else {
-                        navigationItem.leftBarButtonItems = nil
-                    }
-                } else if key == "backButton" {
-                    if backButton != nil {
-                        if #available(iOS 14.0, *) {
-                            navigationItem.backBarButtonItem = RNRNavigationButton.getButton(backButton!,
-                                    onActionSelect: self.onActionSelect,
-                                    onLoadingComplete: self.onLoadingComplete
-                            )
-                        } else {
-                            navigationItem.backBarButtonItem = RNRNavigationButton.getButton(backButton!, onAction: self.onPrimaryActionSelect)
-                        }
-                    } else {
-                        navigationItem.backBarButtonItem = nil
                     }
                 } else if key == "prompt" {
                     navigationItem.prompt = prompt as String?
@@ -413,6 +341,7 @@ class RNRNavigationBarItem: UIView {
                     }
                 }
             })
+            setButtons()
         }
     }
 }

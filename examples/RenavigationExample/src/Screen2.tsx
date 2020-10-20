@@ -20,14 +20,6 @@ interface Props {}
 export const Screen2: React.FC<Props> = ({}) => {
   const { back, reset, push } = useNavigation()
 
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false)
-    }, 5000)
-  }, [])
-
   const goBack = useCallback(() => {
     back()
   }, [back])
@@ -98,19 +90,6 @@ export const Screen2: React.FC<Props> = ({}) => {
         <NavigationBarItem
           title="Screen 2"
           largeTitleDisplayMode="never"
-          leftItemsSupplementBackButton
-          leftButtons={[
-            <Button
-              key="2"
-              title="Hello"
-              image={<Image systemName="slider.horizontal.3" />}
-            />,
-            <Button
-              key="2"
-              title="Hello"
-              image={<Image systemName="slider.horizontal.3" />}
-            />
-          ]}
           rightButtons={[
             <Button
               key="1"
@@ -118,7 +97,6 @@ export const Screen2: React.FC<Props> = ({}) => {
               image={<Image systemName="slider.horizontal.3" />}
               menu={
                 <Menu
-                  loading={loading}
                   items={[
                     <Action
                       key="hello"
