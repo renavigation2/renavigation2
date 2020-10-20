@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.17.1](https://github.com/renavigation2/renavigation2/compare/v4.17.0...v4.17.1) (2020-10-20)
+
+
+### Bug Fixes
+
+* **navigation:** Fixed issue with tint colors not working ([f8e7d4f](https://github.com/renavigation2/renavigation2/commit/f8e7d4f5021c40a74c5f22d55d5be7a5c43b3eba))
+
+
+
+
+
 # [4.17.0](https://github.com/renavigation2/renavigation2/compare/v4.16.0...v4.17.0) (2020-10-20)
 
 
