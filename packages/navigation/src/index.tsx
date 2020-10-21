@@ -36,5 +36,7 @@ export * from './ios/native/NavigationSearch'
 export * from './ios/native/SearchBarStyle'
 
 export * from './ios/typings/EdgeInsets'
+export * from './ios/typings/NavigationRouterRef'
+export * from './ios/typings/Offset'
 export * from './ios/typings/PositionAdjustment'
 export * from './ios/typings/TextStyle'
