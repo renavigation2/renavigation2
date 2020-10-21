@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.18.0](https://github.com/renavigation2/renavigation2/compare/v4.17.2...v4.18.0) (2020-10-21)
+
+
+### Features
+
+* **modals:** Added history as ref on routers ([f7c1d74](https://github.com/renavigation2/renavigation2/commit/f7c1d747991c66a0933d01ce2e26666baa81ee02))
+
+
+
+
+
 # [4.16.0](https://github.com/renavigation2/renavigation2/compare/v4.15.2...v4.16.0) (2020-10-10)
 
 
