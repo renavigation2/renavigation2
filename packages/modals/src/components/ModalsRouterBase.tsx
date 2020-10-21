@@ -1,4 +1,10 @@
-import React, { useMemo, useCallback, useRef } from 'react'
+import React, {
+  useMemo,
+  useCallback,
+  useRef,
+  forwardRef,
+  useImperativeHandle
+} from 'react'
 import {
   NativeHistory,
   To,
@@ -15,10 +21,11 @@ import {
   ModalsActionsResolversContext,
   ModalsActionsResolversContextValue
 } from '../context/ModalsActionsResolversContext'
+import { ModalsRouterRef } from '../typings/ModalsRouterRef'
 
 export interface ModalsRouterBaseProps {
-  action?: Action
   children?: React.ReactNode
+  action?: Action
   location: Location
   navigator: NativeHistory
   static?: boolean
@@ -30,13 +37,20 @@ interface Listeners {
   dismissAll: { [key: string]: () => void }
 }
 
-export const ModalsRouterBase: React.FC<ModalsRouterBaseProps> = ({
-  children = null,
-  navigator,
-  action,
-  location,
-  static: staticProp = false
-}) => {
+export function RefForwardingModalsRouterBase(
+  {
+    children = null,
+    navigator,
+    action,
+    location,
+    static: staticProp = false
+  }: ModalsRouterBaseProps,
+  ref:
+    | ((instance: ModalsRouterRef | null | undefined) => void)
+    | React.MutableRefObject<ModalsRouterRef | null | undefined>
+    | null
+    | undefined
+) {
   const listeners = useRef<Listeners>({
     present: {},
     dismiss: {},
@@ -125,6 +139,13 @@ export const ModalsRouterBase: React.FC<ModalsRouterBaseProps> = ({
     [presentModal, dismissModal, dismissAllModals]
   )
 
+  useImperativeHandle(ref, () => ({
+    history: navigator,
+    presentModal,
+    dismissModal,
+    dismissAllModals
+  }))
+
   return (
     <ModalsActionsResolversContext.Provider value={resolvers}>
       <ModalsActionsContext.Provider value={modalsActionsContext}>
@@ -142,3 +163,5 @@ export const ModalsRouterBase: React.FC<ModalsRouterBaseProps> = ({
     </ModalsActionsResolversContext.Provider>
   )
 }
+
+export const ModalsRouterBase = forwardRef(RefForwardingModalsRouterBase)
