@@ -1,4 +1,10 @@
-import React, { useMemo, useState, useLayoutEffect } from 'react'
+import React, {
+  useMemo,
+  useState,
+  useLayoutEffect,
+  forwardRef,
+  useImperativeHandle
+} from 'react'
 import {
   WebStorage,
   AsyncStorage,
@@ -15,8 +21,10 @@ import {
 } from '@renavigation2/history'
 import { NavigationRouterBase } from './NavigationRouterBase'
 import { NavigationBarProps } from '../native/NavigationBar'
+import { NavigationRouterRef } from '../typings/NavigationRouterRef'
 
 export interface NavigationPersistentRouterProps {
+  children?: React.ReactNode
   defaultEntries?: InitialEntry[]
   defaultIndex?: number
   version?: number
@@ -29,19 +37,26 @@ export interface NavigationPersistentRouterProps {
   isInteractivePopGestureEnabled?: boolean
 }
 
-export const NavigationPersistentRouter: React.FC<NavigationPersistentRouterProps> = ({
-  defaultEntries,
-  defaultIndex,
-  version,
-  storage,
-  storageKey,
-  migrate,
-  dataReconciler,
-  transforms,
-  children,
-  navigationBar,
-  isInteractivePopGestureEnabled
-}) => {
+function RefForwardingNavigationPersistentRouter(
+  {
+    defaultEntries,
+    defaultIndex,
+    version,
+    storage,
+    storageKey,
+    migrate,
+    dataReconciler,
+    transforms,
+    children,
+    navigationBar,
+    isInteractivePopGestureEnabled
+  }: NavigationPersistentRouterProps,
+  ref:
+    | ((instance: NavigationRouterRef | null | undefined) => void)
+    | React.MutableRefObject<NavigationRouterRef | null | undefined>
+    | null
+    | undefined
+) {
   const [history, setHistory] = useState<NativeHistory>()
 
   useMemo(() => {
@@ -68,6 +83,8 @@ export const NavigationPersistentRouter: React.FC<NavigationPersistentRouterProp
     version
   ])
 
+  useImperativeHandle(ref, () => history as any)
+
   const [state, setState] = useState<
     undefined | { action: Action; location: Location }
   >()
@@ -90,3 +107,7 @@ export const NavigationPersistentRouter: React.FC<NavigationPersistentRouterProp
     </NavigationRouterBase>
   ) : null
 }
+
+export const NavigationPersistentRouter = forwardRef(
+  RefForwardingNavigationPersistentRouter
+)
