@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Routes } from './Routes'
 import { ModalsRouter, ModalsRoutes, ModalRoute } from '@renavigation2/modals'
 import { Modal } from './components/Modal'
@@ -7,15 +7,18 @@ import {
   NavigationRouter,
   Image
 } from '@renavigation2/navigation'
+import { NavigationRouterRef } from '@renavigation2/navigation/lib/typescript/ios/typings/NavigationRouterRef'
 
 interface Props {}
 
 export const App: React.FC<Props> = ({}) => {
+  const ref = useRef<NavigationRouterRef>()
   return (
     <ModalsRouter>
       <NavigationRouter
         initialEntries={[{ pathname: '/' }, { pathname: '/screen2' }]}
         initialIndex={1}
+        ref={ref}
         navigationBar={
           <NavigationBar
             backIndicatorImage={

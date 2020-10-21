@@ -3375,7 +3375,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@renavigation2/navigation@^4.17.1, @renavigation2/navigation@workspace:packages/navigation":
+"@renavigation2/navigation@^4.17.2, @renavigation2/navigation@workspace:packages/navigation":
   version: 0.0.0-use.local
   resolution: "@renavigation2/navigation@workspace:packages/navigation"
   dependencies:
@@ -3980,7 +3980,7 @@ __metadata:
     "@babel/runtime": ^7.12.1
     "@react-native-community/eslint-config": ^2.0.0
     "@renavigation2/modals": ^4.16.0
-    "@renavigation2/navigation": ^4.17.1
+    "@renavigation2/navigation": ^4.17.2
     "@types/jest": ^26.0.15
     "@types/react": ^16.9.53
     "@types/react-native": ^0.63.27

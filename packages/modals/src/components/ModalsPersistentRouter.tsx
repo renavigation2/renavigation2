@@ -1,4 +1,10 @@
-import React, { useMemo, useState, useLayoutEffect } from 'react'
+import React, {
+  useMemo,
+  useState,
+  useLayoutEffect,
+  forwardRef,
+  useImperativeHandle
+} from 'react'
 import {
   WebStorage,
   AsyncStorage,
@@ -14,8 +20,10 @@ import {
   Location
 } from '@renavigation2/history'
 import { ModalsRouterBase } from './ModalsRouterBase'
+import { ModalsRouterRef } from '../typings/ModalsRouterRef'
 
 export interface ModalsPersistentRouterProps {
+  children?: React.ReactNode
   defaultEntries?: InitialEntry[]
   defaultIndex?: number
   version?: number
@@ -26,17 +34,24 @@ export interface ModalsPersistentRouterProps {
   transforms?: Transform[]
 }
 
-export const ModalsPersistentRouter: React.FC<ModalsPersistentRouterProps> = ({
-  defaultEntries,
-  defaultIndex,
-  version,
-  storage,
-  storageKey,
-  migrate,
-  dataReconciler,
-  transforms,
-  children
-}) => {
+function RefForwardingModalsPersistentRouter(
+  {
+    defaultEntries,
+    defaultIndex,
+    version,
+    storage,
+    storageKey,
+    migrate,
+    dataReconciler,
+    transforms,
+    children
+  }: ModalsPersistentRouterProps,
+  ref:
+    | ((instance: ModalsRouterRef | null | undefined) => void)
+    | React.MutableRefObject<ModalsRouterRef | null | undefined>
+    | null
+    | undefined
+) {
   const [history, setHistory] = useState<NativeHistory>()
 
   useMemo(() => {
@@ -63,6 +78,8 @@ export const ModalsPersistentRouter: React.FC<ModalsPersistentRouterProps> = ({
     version
   ])
 
+  useImperativeHandle(ref, () => history as any)
+
   const [state, setState] = useState<
     undefined | { action: Action; location: Location }
   >()
@@ -83,3 +100,7 @@ export const ModalsPersistentRouter: React.FC<ModalsPersistentRouterProps> = ({
     </ModalsRouterBase>
   ) : null
 }
+
+export const ModalsPersistentRouter = forwardRef(
+  RefForwardingModalsPersistentRouter
+)

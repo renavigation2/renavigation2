@@ -1,4 +1,10 @@
-import React, { useRef, useReducer, useLayoutEffect } from 'react'
+import React, {
+  useRef,
+  useReducer,
+  useLayoutEffect,
+  forwardRef,
+  useImperativeHandle
+} from 'react'
 import {
   createNativeHistory,
   InitialEntry,
@@ -6,17 +12,22 @@ import {
   Update
 } from '@renavigation2/history'
 import { ModalsRouterBase } from './ModalsRouterBase'
+import { ModalsRouterRef } from '../typings/ModalsRouterRef'
 
 export interface ModalsRouterProps {
+  children?: React.ReactNode
   initialEntries?: InitialEntry[]
   initialIndex?: number
 }
 
-export const ModalsRouter: React.FC<ModalsRouterProps> = ({
-  initialEntries,
-  initialIndex,
-  children
-}) => {
+function RefForwardingModalsRouter(
+  { initialEntries, initialIndex, children }: ModalsRouterProps,
+  ref:
+    | ((instance: ModalsRouterRef | null | undefined) => void)
+    | React.MutableRefObject<ModalsRouterRef | null | undefined>
+    | null
+    | undefined
+) {
   const historyRef = useRef<NativeHistory>()
   if (historyRef.current == null) {
     historyRef.current = createNativeHistory({ initialEntries, initialIndex })
@@ -27,6 +38,8 @@ export const ModalsRouter: React.FC<ModalsRouterProps> = ({
     action: history.action,
     location: history.location
   })
+
+  useImperativeHandle(ref, () => history)
 
   useLayoutEffect(() => history.listen(dispatch), [history])
 
@@ -40,3 +53,5 @@ export const ModalsRouter: React.FC<ModalsRouterProps> = ({
     </ModalsRouterBase>
   )
 }
+
+export const ModalsRouter = forwardRef(RefForwardingModalsRouter)
