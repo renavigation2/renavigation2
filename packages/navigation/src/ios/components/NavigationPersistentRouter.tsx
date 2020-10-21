@@ -1,10 +1,4 @@
-import React, {
-  useMemo,
-  useState,
-  useLayoutEffect,
-  forwardRef,
-  useImperativeHandle
-} from 'react'
+import React, { useMemo, useState, useLayoutEffect, forwardRef } from 'react'
 import {
   WebStorage,
   AsyncStorage,
@@ -83,8 +77,6 @@ function RefForwardingNavigationPersistentRouter(
     version
   ])
 
-  useImperativeHandle(ref, () => history as any)
-
   const [state, setState] = useState<
     undefined | { action: Action; location: Location }
   >()
@@ -102,6 +94,7 @@ function RefForwardingNavigationPersistentRouter(
       navigator={history}
       navigationBar={navigationBar}
       isInteractivePopGestureEnabled={isInteractivePopGestureEnabled}
+      ref={ref}
     >
       {children}
     </NavigationRouterBase>

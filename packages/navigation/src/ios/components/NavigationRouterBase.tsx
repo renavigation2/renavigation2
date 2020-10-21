@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { forwardRef, useImperativeHandle } from 'react'
 import { NativeHistory, Action, Location } from '@renavigation2/history'
 import { NavigationNavigatorContext } from '../context/NavigationNavigatorContext'
 import { NavigationBarProps } from '../native/NavigationBar'
 import { Navigation } from '../native/Navigation'
 import { NavigationRoutes } from './NavigationRoutes'
+import { NavigationRouterRef } from '../typings/NavigationRouterRef'
 
 export interface NavigationRouterBaseProps {
-  action?: Action
   children?: React.ReactNode
+  action?: Action
   location: Location
   navigator: NativeHistory
   static?: boolean
@@ -15,15 +16,24 @@ export interface NavigationRouterBaseProps {
   isInteractivePopGestureEnabled?: boolean
 }
 
-export const NavigationRouterBase: React.FC<NavigationRouterBaseProps> = ({
-  children = null,
-  navigator,
-  action,
-  location,
-  static: staticProp = false,
-  navigationBar,
-  isInteractivePopGestureEnabled
-}) => {
+function RefForwardingNavigationRouterBase(
+  {
+    children = null,
+    navigator,
+    action,
+    location,
+    static: staticProp = false,
+    navigationBar,
+    isInteractivePopGestureEnabled
+  }: NavigationRouterBaseProps,
+  ref:
+    | ((instance: NavigationRouterRef | null | undefined) => void)
+    | React.MutableRefObject<NavigationRouterRef | null | undefined>
+    | null
+    | undefined
+) {
+  useImperativeHandle(ref, () => ({ history: navigator }))
+
   return (
     <NavigationNavigatorContext.Provider
       value={{
@@ -42,3 +52,7 @@ export const NavigationRouterBase: React.FC<NavigationRouterBaseProps> = ({
     </NavigationNavigatorContext.Provider>
   )
 }
+
+export const NavigationRouterBase = forwardRef(
+  RefForwardingNavigationRouterBase
+)
