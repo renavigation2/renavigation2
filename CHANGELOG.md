@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.17.2](https://github.com/renavigation2/renavigation2/compare/v4.17.1...v4.17.2) (2020-10-21)
+
+
+### Bug Fixes
+
+* **navigation:** Export NavigationRouteProps type ([6afd6fe](https://github.com/renavigation2/renavigation2/commit/6afd6fe23175503299d592c77e3f5a13e471f473))
+
+
+
+
+
 ## [4.17.1](https://github.com/renavigation2/renavigation2/compare/v4.17.0...v4.17.1) (2020-10-20)
 
 
