@@ -1,10 +1,4 @@
-import React, {
-  useRef,
-  useReducer,
-  useLayoutEffect,
-  forwardRef,
-  useImperativeHandle
-} from 'react'
+import React, { useRef, useReducer, useLayoutEffect, forwardRef } from 'react'
 import {
   createNativeHistory,
   InitialEntry,
@@ -39,12 +33,11 @@ function RefForwardingModalsRouter(
     location: history.location
   })
 
-  useImperativeHandle(ref, () => history)
-
   useLayoutEffect(() => history.listen(dispatch), [history])
 
   return (
     <ModalsRouterBase
+      ref={ref}
       action={state.action}
       location={state.location}
       navigator={history}

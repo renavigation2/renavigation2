@@ -1,10 +1,4 @@
-import React, {
-  useMemo,
-  useState,
-  useLayoutEffect,
-  forwardRef,
-  useImperativeHandle
-} from 'react'
+import React, { useMemo, useState, useLayoutEffect, forwardRef } from 'react'
 import {
   WebStorage,
   AsyncStorage,
@@ -78,8 +72,6 @@ function RefForwardingModalsPersistentRouter(
     version
   ])
 
-  useImperativeHandle(ref, () => history as any)
-
   const [state, setState] = useState<
     undefined | { action: Action; location: Location }
   >()
@@ -92,6 +84,7 @@ function RefForwardingModalsPersistentRouter(
 
   return history ? (
     <ModalsRouterBase
+      ref={ref}
       action={state === undefined ? history.action : state.action}
       location={state === undefined ? history.location : state.location}
       navigator={history}

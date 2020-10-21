@@ -1,10 +1,4 @@
-import React, {
-  useRef,
-  useReducer,
-  useLayoutEffect,
-  forwardRef,
-  useImperativeHandle
-} from 'react'
+import React, { useRef, useReducer, useLayoutEffect, forwardRef } from 'react'
 import {
   createNativeHistory,
   InitialEntry,
@@ -48,8 +42,6 @@ function RefForwardingNavigationRouter(
     location: history.location
   })
 
-  useImperativeHandle(ref, () => history)
-
   useLayoutEffect(() => history.listen(dispatch), [history])
 
   return (
@@ -59,6 +51,7 @@ function RefForwardingNavigationRouter(
       navigator={history}
       navigationBar={navigationBar}
       isInteractivePopGestureEnabled={isInteractivePopGestureEnabled}
+      ref={ref}
     >
       {children}
     </NavigationRouterBase>
