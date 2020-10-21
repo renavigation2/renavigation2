@@ -25,3 +25,5 @@ export * from './native/ModalPresentationStyle'
 export * from './native/ModalTransitionStyle'
 export * from './native/StatusBarAnimation'
 export * from './native/StatusBarStyle'
+
+export * from './typings/ModalsRouterRef'
