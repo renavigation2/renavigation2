@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.18.1](https://github.com/renavigation2/renavigation2/compare/v4.18.0...v4.18.1) (2020-10-21)
+
+
+### Bug Fixes
+
+* **modals:** Export router ref typings ([2bee546](https://github.com/renavigation2/renavigation2/commit/2bee546bca5bd385b3d84b5ae84ddf812e963455))
+* **navigation:** Export router ref typings ([2100f0f](https://github.com/renavigation2/renavigation2/commit/2100f0f3241cfc77b347f6d20b02e7f9629717e0))
+
+
+
+
+
 # [4.18.0](https://github.com/renavigation2/renavigation2/compare/v4.17.2...v4.18.0) (2020-10-21)
 
 
