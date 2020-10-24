@@ -9,16 +9,28 @@
       "path": "examples/RenavigationExample"
     },
     {
+      "name": "core",
+      "path": "packages/core"
+    },
+    {
+      "name": "history",
       "path": "packages/history"
     },
     {
+      "name": "modals",
       "path": "packages/modals"
     },
     {
+      "name": "navigation",
       "path": "packages/navigation"
     },
     {
+      "name": "router",
       "path": "packages/router"
+    },
+    {
+      "name": "tabs",
+      "path": "packages/tabs"
     }
   ],
   "settings": {

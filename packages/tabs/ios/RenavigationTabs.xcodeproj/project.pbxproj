@@ -1,0 +1,369 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C004A76F2540C48B005EAB8C /* RNRTabsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C004A76C2540C48B005EAB8C /* RNRTabsManager.m */; };
+		C004A7702540C48B005EAB8C /* RNRTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004A76D2540C48B005EAB8C /* RNRTabs.swift */; };
+		C004A7712540C48B005EAB8C /* RNRTabsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004A76E2540C48B005EAB8C /* RNRTabsManager.swift */; };
+		C004A7762540CA25005EAB8C /* RNRTabBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C004A7732540CA25005EAB8C /* RNRTabBarManager.m */; };
+		C004A7772540CA25005EAB8C /* RNRTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004A7742540CA25005EAB8C /* RNRTabBar.swift */; };
+		C004A7782540CA25005EAB8C /* RNRTabBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004A7752540CA25005EAB8C /* RNRTabBarManager.swift */; };
+		C004A77D2540CA93005EAB8C /* RNRTabsContainerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C004A77A2540CA93005EAB8C /* RNRTabsContainerManager.m */; };
+		C004A77E2540CA93005EAB8C /* RNRTabsContainerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004A77B2540CA93005EAB8C /* RNRTabsContainerManager.swift */; };
+		C004A77F2540CA93005EAB8C /* RNRTabsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004A77C2540CA93005EAB8C /* RNRTabsContainer.swift */; };
+		C004A79625414C5D005EAB8C /* RNRTabBarAppearanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C004A79325414C5D005EAB8C /* RNRTabBarAppearanceManager.m */; };
+		C004A79725414C5D005EAB8C /* RNRTabBarAppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004A79425414C5D005EAB8C /* RNRTabBarAppearanceManager.swift */; };
+		C004A79825414C5D005EAB8C /* RNRTabBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004A79525414C5D005EAB8C /* RNRTabBarAppearance.swift */; };
+		C004A79D2541C821005EAB8C /* RNRTabBarItemAppearanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C004A79A2541C821005EAB8C /* RNRTabBarItemAppearanceManager.m */; };
+		C004A79E2541C821005EAB8C /* RNRTabBarItemAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004A79B2541C821005EAB8C /* RNRTabBarItemAppearance.swift */; };
+		C004A79F2541C821005EAB8C /* RNRTabBarItemAppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004A79C2541C821005EAB8C /* RNRTabBarItemAppearanceManager.swift */; };
+		C004A7A42541CF9F005EAB8C /* RNRTabBarItemStateAppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004A7A12541CF9F005EAB8C /* RNRTabBarItemStateAppearanceManager.swift */; };
+		C004A7A52541CF9F005EAB8C /* RNRTabBarItemStateAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004A7A22541CF9F005EAB8C /* RNRTabBarItemStateAppearance.swift */; };
+		C004A7A62541CF9F005EAB8C /* RNRTabBarItemStateAppearanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C004A7A32541CF9F005EAB8C /* RNRTabBarItemStateAppearanceManager.m */; };
+		C0DEE462254281E600AAE5C8 /* RNRTabScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEE45F254281E600AAE5C8 /* RNRTabScene.swift */; };
+		C0DEE463254281E600AAE5C8 /* RNRTabSceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0DEE460254281E600AAE5C8 /* RNRTabSceneManager.m */; };
+		C0DEE464254281E600AAE5C8 /* RNRTabSceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEE461254281E600AAE5C8 /* RNRTabSceneManager.swift */; };
+		C0DEE4672543140600AAE5C8 /* RNRTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEE4662543140600AAE5C8 /* RNRTabBarItem.swift */; };
+		C0DEE46B2543140D00AAE5C8 /* RNRTabBarItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEE4692543140D00AAE5C8 /* RNRTabBarItemManager.swift */; };
+		C0DEE46C2543140D00AAE5C8 /* RNRTabBarItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0DEE46A2543140D00AAE5C8 /* RNRTabBarItemManager.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		58B511D91A9E6C8500147676 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		134814201AA4EA6300B7C361 /* libRenavigationTabs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRenavigationTabs.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C004A76C2540C48B005EAB8C /* RNRTabsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRTabsManager.m; sourceTree = "<group>"; };
+		C004A76D2540C48B005EAB8C /* RNRTabs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRTabs.swift; sourceTree = "<group>"; };
+		C004A76E2540C48B005EAB8C /* RNRTabsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRTabsManager.swift; sourceTree = "<group>"; };
+		C004A7732540CA25005EAB8C /* RNRTabBarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRTabBarManager.m; sourceTree = "<group>"; };
+		C004A7742540CA25005EAB8C /* RNRTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRTabBar.swift; sourceTree = "<group>"; };
+		C004A7752540CA25005EAB8C /* RNRTabBarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRTabBarManager.swift; sourceTree = "<group>"; };
+		C004A77A2540CA93005EAB8C /* RNRTabsContainerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRTabsContainerManager.m; sourceTree = "<group>"; };
+		C004A77B2540CA93005EAB8C /* RNRTabsContainerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRTabsContainerManager.swift; sourceTree = "<group>"; };
+		C004A77C2540CA93005EAB8C /* RNRTabsContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRTabsContainer.swift; sourceTree = "<group>"; };
+		C004A79325414C5D005EAB8C /* RNRTabBarAppearanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRTabBarAppearanceManager.m; sourceTree = "<group>"; };
+		C004A79425414C5D005EAB8C /* RNRTabBarAppearanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRTabBarAppearanceManager.swift; sourceTree = "<group>"; };
+		C004A79525414C5D005EAB8C /* RNRTabBarAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRTabBarAppearance.swift; sourceTree = "<group>"; };
+		C004A79A2541C821005EAB8C /* RNRTabBarItemAppearanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRTabBarItemAppearanceManager.m; sourceTree = "<group>"; };
+		C004A79B2541C821005EAB8C /* RNRTabBarItemAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRTabBarItemAppearance.swift; sourceTree = "<group>"; };
+		C004A79C2541C821005EAB8C /* RNRTabBarItemAppearanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRTabBarItemAppearanceManager.swift; sourceTree = "<group>"; };
+		C004A7A12541CF9F005EAB8C /* RNRTabBarItemStateAppearanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRTabBarItemStateAppearanceManager.swift; sourceTree = "<group>"; };
+		C004A7A22541CF9F005EAB8C /* RNRTabBarItemStateAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRTabBarItemStateAppearance.swift; sourceTree = "<group>"; };
+		C004A7A32541CF9F005EAB8C /* RNRTabBarItemStateAppearanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRTabBarItemStateAppearanceManager.m; sourceTree = "<group>"; };
+		C0DEE45F254281E600AAE5C8 /* RNRTabScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRTabScene.swift; sourceTree = "<group>"; };
+		C0DEE460254281E600AAE5C8 /* RNRTabSceneManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRTabSceneManager.m; sourceTree = "<group>"; };
+		C0DEE461254281E600AAE5C8 /* RNRTabSceneManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRTabSceneManager.swift; sourceTree = "<group>"; };
+		C0DEE4662543140600AAE5C8 /* RNRTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRTabBarItem.swift; sourceTree = "<group>"; };
+		C0DEE4692543140D00AAE5C8 /* RNRTabBarItemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRTabBarItemManager.swift; sourceTree = "<group>"; };
+		C0DEE46A2543140D00AAE5C8 /* RNRTabBarItemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRTabBarItemManager.m; sourceTree = "<group>"; };
+		F4FF95D5245B92E700C19C63 /* RenavigationTabs-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RenavigationTabs-Bridging-Header.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		58B511D81A9E6C8500147676 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		134814211AA4EA7D00B7C361 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				134814201AA4EA6300B7C361 /* libRenavigationTabs.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		58B511D21A9E6C8500147676 = {
+			isa = PBXGroup;
+			children = (
+				F4FF95D5245B92E700C19C63 /* RenavigationTabs-Bridging-Header.h */,
+				C004A7742540CA25005EAB8C /* RNRTabBar.swift */,
+				C004A79525414C5D005EAB8C /* RNRTabBarAppearance.swift */,
+				C004A79325414C5D005EAB8C /* RNRTabBarAppearanceManager.m */,
+				C004A79425414C5D005EAB8C /* RNRTabBarAppearanceManager.swift */,
+				C0DEE4662543140600AAE5C8 /* RNRTabBarItem.swift */,
+				C004A79B2541C821005EAB8C /* RNRTabBarItemAppearance.swift */,
+				C004A79A2541C821005EAB8C /* RNRTabBarItemAppearanceManager.m */,
+				C004A79C2541C821005EAB8C /* RNRTabBarItemAppearanceManager.swift */,
+				C004A7A22541CF9F005EAB8C /* RNRTabBarItemStateAppearance.swift */,
+				C004A7A32541CF9F005EAB8C /* RNRTabBarItemStateAppearanceManager.m */,
+				C004A7A12541CF9F005EAB8C /* RNRTabBarItemStateAppearanceManager.swift */,
+				C0DEE46A2543140D00AAE5C8 /* RNRTabBarItemManager.m */,
+				C0DEE4692543140D00AAE5C8 /* RNRTabBarItemManager.swift */,
+				C004A7732540CA25005EAB8C /* RNRTabBarManager.m */,
+				C004A7752540CA25005EAB8C /* RNRTabBarManager.swift */,
+				C004A76D2540C48B005EAB8C /* RNRTabs.swift */,
+				C0DEE45F254281E600AAE5C8 /* RNRTabScene.swift */,
+				C0DEE460254281E600AAE5C8 /* RNRTabSceneManager.m */,
+				C0DEE461254281E600AAE5C8 /* RNRTabSceneManager.swift */,
+				C004A77C2540CA93005EAB8C /* RNRTabsContainer.swift */,
+				C004A77A2540CA93005EAB8C /* RNRTabsContainerManager.m */,
+				C004A77B2540CA93005EAB8C /* RNRTabsContainerManager.swift */,
+				C004A76C2540C48B005EAB8C /* RNRTabsManager.m */,
+				C004A76E2540C48B005EAB8C /* RNRTabsManager.swift */,
+				134814211AA4EA7D00B7C361 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		58B511DA1A9E6C8500147676 /* RenavigationTabs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RenavigationTabs" */;
+			buildPhases = (
+				58B511D71A9E6C8500147676 /* Sources */,
+				58B511D81A9E6C8500147676 /* Frameworks */,
+				58B511D91A9E6C8500147676 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RenavigationTabs;
+			productName = RCTDataManager;
+			productReference = 134814201AA4EA6300B7C361 /* libRenavigationTabs.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		58B511D31A9E6C8500147676 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Facebook;
+				TargetAttributes = {
+					58B511DA1A9E6C8500147676 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RenavigationTabs" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+			);
+			mainGroup = 58B511D21A9E6C8500147676;
+			productRefGroup = 58B511D21A9E6C8500147676;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				58B511DA1A9E6C8500147676 /* RenavigationTabs */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		58B511D71A9E6C8500147676 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0DEE462254281E600AAE5C8 /* RNRTabScene.swift in Sources */,
+				C0DEE46C2543140D00AAE5C8 /* RNRTabBarItemManager.m in Sources */,
+				C0DEE464254281E600AAE5C8 /* RNRTabSceneManager.swift in Sources */,
+				C004A7702540C48B005EAB8C /* RNRTabs.swift in Sources */,
+				C004A79D2541C821005EAB8C /* RNRTabBarItemAppearanceManager.m in Sources */,
+				C004A79E2541C821005EAB8C /* RNRTabBarItemAppearance.swift in Sources */,
+				C004A76F2540C48B005EAB8C /* RNRTabsManager.m in Sources */,
+				C004A79825414C5D005EAB8C /* RNRTabBarAppearance.swift in Sources */,
+				C004A77E2540CA93005EAB8C /* RNRTabsContainerManager.swift in Sources */,
+				C004A7A52541CF9F005EAB8C /* RNRTabBarItemStateAppearance.swift in Sources */,
+				C004A7A42541CF9F005EAB8C /* RNRTabBarItemStateAppearanceManager.swift in Sources */,
+				C004A77F2540CA93005EAB8C /* RNRTabsContainer.swift in Sources */,
+				C004A7782540CA25005EAB8C /* RNRTabBarManager.swift in Sources */,
+				C004A79725414C5D005EAB8C /* RNRTabBarAppearanceManager.swift in Sources */,
+				C0DEE4672543140600AAE5C8 /* RNRTabBarItem.swift in Sources */,
+				C004A7A62541CF9F005EAB8C /* RNRTabBarItemStateAppearanceManager.m in Sources */,
+				C0DEE463254281E600AAE5C8 /* RNRTabSceneManager.m in Sources */,
+				C004A79625414C5D005EAB8C /* RNRTabBarAppearanceManager.m in Sources */,
+				C004A7762540CA25005EAB8C /* RNRTabBarManager.m in Sources */,
+				C0DEE46B2543140D00AAE5C8 /* RNRTabBarItemManager.swift in Sources */,
+				C004A79F2541C821005EAB8C /* RNRTabBarItemAppearanceManager.swift in Sources */,
+				C004A7712540C48B005EAB8C /* RNRTabsManager.swift in Sources */,
+				C004A7772540CA25005EAB8C /* RNRTabBar.swift in Sources */,
+				C004A77D2540CA93005EAB8C /* RNRTabsContainerManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		58B511ED1A9E6C8500147676 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		58B511EE1A9E6C8500147676 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		58B511F01A9E6C8500147676 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = RenavigationTabs;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RenavigationTabs-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		58B511F11A9E6C8500147676 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = RenavigationTabs;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RenavigationTabs-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RenavigationTabs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58B511ED1A9E6C8500147676 /* Debug */,
+				58B511EE1A9E6C8500147676 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RenavigationTabs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58B511F01A9E6C8500147676 /* Debug */,
+				58B511F11A9E6C8500147676 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 58B511D31A9E6C8500147676 /* Project object */;
+}
