@@ -1,4 +1,4 @@
-// TODO: this is a bump comment, remove me
+// bump
 export * from './typings/LifecycleContextObject'
 export * from './typings/LifecycleEventHandler'
 export * from './typings/LifecycleEventType'
