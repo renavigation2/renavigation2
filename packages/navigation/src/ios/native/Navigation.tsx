@@ -7,20 +7,20 @@ const RNRNavigation = requireNativeComponent<any>('RNRNavigation')
 
 export interface NavigationProps {
   navigationBar?: React.ReactElement<NavigationBarProps>
-  isInteractivePopGestureEnabled?: boolean
+  interactivePopGestureEnabled?: boolean
 }
 
 export const Navigation: React.FC<NavigationProps> = ({
   children,
   navigationBar,
-  isInteractivePopGestureEnabled,
+  interactivePopGestureEnabled,
   ...props
 }) => {
   return (
     <RNRNavigation
       style={StyleSheet.absoluteFill}
       isInteractivePopGestureEnabled={processBoolean(
-        isInteractivePopGestureEnabled
+        interactivePopGestureEnabled
       )}
       {...props}
     >

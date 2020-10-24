@@ -14,7 +14,7 @@ export interface NavigationRouterProps {
   initialEntries?: InitialEntry[]
   initialIndex?: number
   navigationBar?: React.ReactElement<NavigationBarProps>
-  isInteractivePopGestureEnabled?: boolean
+  interactivePopGestureEnabled?: boolean
 }
 
 function RefForwardingNavigationRouter(
@@ -23,7 +23,7 @@ function RefForwardingNavigationRouter(
     initialIndex,
     children,
     navigationBar,
-    isInteractivePopGestureEnabled
+    interactivePopGestureEnabled
   }: NavigationRouterProps,
   ref:
     | ((instance: NavigationRouterRef | null | undefined) => void)
@@ -50,7 +50,7 @@ function RefForwardingNavigationRouter(
       location={state.location}
       navigator={history}
       navigationBar={navigationBar}
-      isInteractivePopGestureEnabled={isInteractivePopGestureEnabled}
+      interactivePopGestureEnabled={interactivePopGestureEnabled}
       ref={ref}
     >
       {children}

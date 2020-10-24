@@ -13,7 +13,7 @@ export interface NavigationRouterBaseProps {
   navigator: NativeHistory
   static?: boolean
   navigationBar?: React.ReactElement<NavigationBarProps>
-  isInteractivePopGestureEnabled?: boolean
+  interactivePopGestureEnabled?: boolean
 }
 
 function RefForwardingNavigationRouterBase(
@@ -24,7 +24,7 @@ function RefForwardingNavigationRouterBase(
     location,
     static: staticProp = false,
     navigationBar,
-    isInteractivePopGestureEnabled
+    interactivePopGestureEnabled
   }: NavigationRouterBaseProps,
   ref:
     | ((instance: NavigationRouterRef | null | undefined) => void)
@@ -45,7 +45,7 @@ function RefForwardingNavigationRouterBase(
     >
       <Navigation
         navigationBar={navigationBar}
-        isInteractivePopGestureEnabled={isInteractivePopGestureEnabled}
+        interactivePopGestureEnabled={interactivePopGestureEnabled}
       >
         <NavigationRoutes>{children}</NavigationRoutes>
       </Navigation>

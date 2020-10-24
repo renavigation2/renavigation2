@@ -1,54 +1,51 @@
-import React, { useRef } from 'react'
-import { Routes } from './Routes'
-import { ModalsRouter, ModalsRoutes, ModalRoute } from '@renavigation2/modals'
-import { Modal } from './components/Modal'
+import React from 'react'
+import { StyleSheet } from 'react-native'
 import {
-  NavigationBar,
-  NavigationRouter,
-  Image
-} from '@renavigation2/navigation'
-import { NavigationRouterRef } from '@renavigation2/navigation/lib/typescript/ios/typings/NavigationRouterRef'
+  TabsRouter,
+  TabScreen,
+  TabRoute,
+  TabBarItem,
+  Image,
+  Tabs
+} from '@renavigation2/tabs'
+import { Tab1 } from './Tab1'
 
 interface Props {}
 
 export const App: React.FC<Props> = ({}) => {
-  const ref = useRef<NavigationRouterRef>()
   return (
-    <ModalsRouter>
-      <NavigationRouter
-        initialEntries={[{ pathname: '/' }, { pathname: '/screen2' }]}
-        initialIndex={1}
-        ref={ref}
-        navigationBar={
-          <NavigationBar
-            backIndicatorImage={
-              <Image
-                tintColor="red"
-                source={require('./components/BackButton/assets/back.png')}
-                alignmentRectInsets={{
-                  left: 0,
-                  right: 0,
-                  bottom: 4,
-                  top: 0
-                }}
-              />
-            }
-            backIndicatorTransitionMaskImage={
-              <Image
-                tintColor="red"
-                source={require('./components/BackButton/assets/back.png')}
-              />
-            }
-          />
-        }
+    <TabsRouter initialEntries={[{ pathname: '/home' }]} initialIndex={0}>
+      <Tabs
+        hidden={false}
+        animationOptions={{
+          duration: 0.3,
+          damping: 1,
+          velocity: 1
+        }}
       >
-        {Routes}
-      </NavigationRouter>
-      <ModalsRoutes>
-        <ModalRoute path="*" element={<Modal />} />
-      </ModalsRoutes>
-    </ModalsRouter>
+        <TabRoute path="/home" element={<Tab1 />} />
+        <TabRoute
+          path="/settings"
+          element={
+            <TabScreen
+              tabBarItem={
+                <TabBarItem
+                  title="Settings"
+                  image={<Image systemName="gear" />}
+                />
+              }
+            />
+          }
+        />
+      </Tabs>
+    </TabsRouter>
   )
 }
+
+const styles = StyleSheet.create({
+  badge: {
+    fontSize: 12
+  }
+})
 
 export default App

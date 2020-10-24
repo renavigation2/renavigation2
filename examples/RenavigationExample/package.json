@@ -11,8 +11,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "@renavigation2/core": "^4.19.0",
     "@renavigation2/modals": "^4.19.0",
     "@renavigation2/navigation": "^4.19.0",
+    "@renavigation2/tabs": "^4.19.0",
     "react": "^16.14.0",
     "react-native": "^0.63.3"
   },

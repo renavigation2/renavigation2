@@ -1,0 +1,22 @@
+#import "React/RCTViewManager.h"
+
+@interface RCT_EXTERN_MODULE(RNRTabBarItemManager, RCTViewManager)
+
+RCT_EXPORT_VIEW_PROPERTY(badgeValue, NSString)
+RCT_EXPORT_VIEW_PROPERTY(titlePositionAdjustment, NSDictionary)
+RCT_EXPORT_VIEW_PROPERTY(badgeColor, NSNumber)
+RCT_EXPORT_VIEW_PROPERTY(normalBadgeStyle, NSDictionary)
+RCT_EXPORT_VIEW_PROPERTY(disabledBadgeStyle, NSDictionary)
+RCT_EXPORT_VIEW_PROPERTY(selectedBadgeStyle, NSDictionary)
+RCT_EXPORT_VIEW_PROPERTY(focusedBadgeStyle, NSDictionary)
+RCT_EXPORT_VIEW_PROPERTY(isEnabled, NSNumber)
+RCT_EXPORT_VIEW_PROPERTY(title, NSString)
+RCT_EXPORT_VIEW_PROPERTY(imageInsets, NSDictionary)
+RCT_EXPORT_VIEW_PROPERTY(landscapeImagePhoneInsets, NSDictionary)
+RCT_EXPORT_VIEW_PROPERTY(largeContentSizeImageInsets, NSDictionary)
+RCT_EXPORT_VIEW_PROPERTY(normalTitleStyle, NSDictionary)
+RCT_EXPORT_VIEW_PROPERTY(disabledTitleStyle, NSDictionary)
+RCT_EXPORT_VIEW_PROPERTY(selectedTitleStyle, NSDictionary)
+RCT_EXPORT_VIEW_PROPERTY(focusedTitleStyle, NSDictionary)
+
+@end
