@@ -1,4 +1,3 @@
-// TODO: this is a bump comment, remove me
 export * from './typings/Action'
 export * from './typings/Blocker'
 export * from './typings/BrowserHistory'
