@@ -1,4 +1,3 @@
-import { EdgeInsets } from '@renavigation2/navigation'
 import React from 'react'
 import {
   ImageURISource,
@@ -8,6 +7,7 @@ import {
   requireNativeComponent
 } from 'react-native'
 import { StyleSheet } from '../../utils/StyleSheet'
+import { EdgeInsets } from '../typings/EdgeInsets'
 
 const RNRImage = requireNativeComponent<any>('RNRImage')
 
