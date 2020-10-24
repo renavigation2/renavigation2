@@ -1,4 +1,3 @@
-// bump
 export * from './components/Modal'
 export * from './components/ModalRoute'
 export * from './components/ModalsPersistentRouter'

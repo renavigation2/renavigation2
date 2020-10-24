@@ -1,4 +1,3 @@
-// bump
 export * from './typings/LifecycleContextObject'
 export * from './typings/LifecycleEventHandler'
 export * from './typings/LifecycleEventType'

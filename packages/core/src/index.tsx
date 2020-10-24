@@ -1,4 +1,3 @@
-// bump
 export * from './ios/native/EmptyComponent'
 export * from './ios/native/Image'
 
