@@ -296,10 +296,16 @@ PODS:
     - React-Core (= 0.63.3)
     - React-cxxreact (= 0.63.3)
     - React-jsi (= 0.63.3)
-  - renavigation-modals (4.18.1):
+  - renavigation-modals (4.19.0):
     - React
-  - renavigation-navigation (4.18.1):
+  - renavigation-navigation (4.19.0):
     - React
+    - RenavigationCore
+  - RenavigationCore (4.19.0):
+    - React
+  - RenavigationTabs (4.19.0):
+    - React
+    - RenavigationCore
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -353,6 +359,8 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `./../../../node_modules/react-native//ReactCommon`)
   - renavigation-modals (from `../../../packages/modals`)
   - renavigation-navigation (from `../../../packages/navigation`)
+  - RenavigationCore (from `../../../packages/core`)
+  - RenavigationTabs (from `../../../packages/tabs`)
   - Yoga (from `./../../../node_modules/react-native//ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -425,6 +433,10 @@ EXTERNAL SOURCES:
     :path: "../../../packages/modals"
   renavigation-navigation:
     :path: "../../../packages/navigation"
+  RenavigationCore:
+    :path: "../../../packages/core"
+  RenavigationTabs:
+    :path: "../../../packages/tabs"
   Yoga:
     :path: "./../../../node_modules/react-native//ReactCommon/yoga"
 
@@ -465,8 +477,10 @@ SPEC CHECKSUMS:
   React-RCTText: 65a6de06a7389098ce24340d1d3556015c38f746
   React-RCTVibration: 8e9fb25724a0805107fc1acc9075e26f814df454
   ReactCommon: 4167844018c9ed375cc01a843e9ee564399e53c3
-  renavigation-modals: 3248794a86e7836e951819f44c968efa275367b8
-  renavigation-navigation: d52bcc6529bdd88e7822636a212b2d41eef82e96
+  renavigation-modals: 3f60fa407cabd89e4d8c33a3b76cf1279921b2ce
+  renavigation-navigation: 8227766ec3b083a7875c64f15bc9e41406ec43bb
+  RenavigationCore: cbf1b275492445dc8cfe3074232603449f9e3e87
+  RenavigationTabs: 169083b607178b1c06563b7e1a575632992238f0
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
