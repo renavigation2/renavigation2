@@ -33,6 +33,10 @@
     "react": "*",
     "react-native": "*"
   },
+  "dependencies": {
+    "@renavigation2/history": "^4.15.1",
+    "@renavigation2/router": "^4.15.1"
+  },
   "devDependencies": {
     "@react-native-community/bob": "^0.16.2",
     "@types/jest": "^26.0.15",
