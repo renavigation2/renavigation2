@@ -28,7 +28,7 @@ export interface NavigationPersistentRouterProps {
   dataReconciler?: false | DataReconciler
   transforms?: Transform[]
   navigationBar?: React.ReactElement<NavigationBarProps>
-  isInteractivePopGestureEnabled?: boolean
+  interactivePopGestureEnabled?: boolean
 }
 
 function RefForwardingNavigationPersistentRouter(
@@ -43,7 +43,7 @@ function RefForwardingNavigationPersistentRouter(
     transforms,
     children,
     navigationBar,
-    isInteractivePopGestureEnabled
+    interactivePopGestureEnabled
   }: NavigationPersistentRouterProps,
   ref:
     | ((instance: NavigationRouterRef | null | undefined) => void)
@@ -93,7 +93,7 @@ function RefForwardingNavigationPersistentRouter(
       location={state === undefined ? history.location : state.location}
       navigator={history}
       navigationBar={navigationBar}
-      isInteractivePopGestureEnabled={isInteractivePopGestureEnabled}
+      interactivePopGestureEnabled={interactivePopGestureEnabled}
       ref={ref}
     >
       {children}
