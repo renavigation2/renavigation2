@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.21.0](https://github.com/renavigation2/renavigation2/compare/v4.20.1...v4.21.0) (2020-10-25)
+
+
+### Features
+
+* **core:** Added processTextStyle util function ([c0da425](https://github.com/renavigation2/renavigation2/commit/c0da4258f7b0ef1bc93e1219d8c133527f2ae5e6))
+
+
+
+
+
 ## [4.20.1](https://github.com/renavigation2/renavigation2/compare/v4.20.0...v4.20.1) (2020-10-25)
 
 
