@@ -1,6 +1,11 @@
 import React from 'react'
 import { ColorValue, processColor, requireNativeComponent } from 'react-native'
-import { StyleSheet, TextStyle, Offset } from '@renavigation2/core'
+import {
+  StyleSheet,
+  TextStyle,
+  Offset,
+  processTextStyle
+} from '@renavigation2/core'
 
 const RNRTabBarItemStateAppearance = requireNativeComponent<any>(
   'RNRTabBarItemStateAppearance'
@@ -19,6 +24,8 @@ export interface TabBarItemStateAppearanceProps {
 export const TabBarItemStateAppearance: React.FC<TabBarItemStateAppearanceProps> = ({
   iconColor,
   badgeBackgroundColor,
+  titleStyle,
+  badgeStyle,
   ...props
 }) => {
   return (
@@ -29,6 +36,8 @@ export const TabBarItemStateAppearance: React.FC<TabBarItemStateAppearanceProps>
       badgeBackgroundColor={
         badgeBackgroundColor ? processColor(badgeBackgroundColor) : undefined
       }
+      titleStyle={titleStyle ? processTextStyle(titleStyle) : undefined}
+      badgeStyle={badgeStyle ? processTextStyle(badgeStyle) : undefined}
       {...props}
     />
   )

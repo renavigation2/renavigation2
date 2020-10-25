@@ -1,4 +1,4 @@
-class RNRTabs: UIView, UITabBarControllerDelegate {
+class RNRTabs: UIView {
     var tabBarController: UITabBarController = UITabBarController()
 
     override func layoutSubviews() {

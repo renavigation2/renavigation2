@@ -1,144 +1,45 @@
-import React, { useCallback, useState } from 'react'
-import { ScrollView, Text, TouchableOpacity } from 'react-native'
-import { TabScreen, TabBarItem, Image, useTabs } from '@renavigation2/tabs'
+import React from 'react'
+import { TabScreen, TabBarItem, Image } from '@renavigation2/tabs'
+import { NavigationBar, NavigationRouter } from '@renavigation2/navigation'
+import { Routes } from './Routes'
 
 interface Props {}
 
-let renderCount = 0
-
 export const Tab1: React.FC<Props> = ({}) => {
-  renderCount++
-  const { switch: switchTab } = useTabs()
-
-  const onPress = useCallback(() => {
-    switchTab('/settings')
-  }, [switchTab])
-
-  const [state, setState] = useState(2)
-
   return (
     <TabScreen
       tabBarItem={
         <TabBarItem title="Store" image={<Image systemName="bag" />} />
       }
     >
-      <ScrollView
-        style={{ flex: 1, backgroundColor: 'black' }}
-        contentInsetAdjustmentBehavior="automatic"
+      <NavigationRouter
+        initialEntries={[{ pathname: '/' }]}
+        initialIndex={0}
+        navigationBar={
+          <NavigationBar
+            backIndicatorImage={
+              <Image
+                tintColor="red"
+                source={require('./components/BackButton/assets/back.png')}
+                alignmentRectInsets={{
+                  left: 0,
+                  right: 0,
+                  bottom: 4,
+                  top: 0
+                }}
+              />
+            }
+            backIndicatorTransitionMaskImage={
+              <Image
+                tintColor="red"
+                source={require('./components/BackButton/assets/back.png')}
+              />
+            }
+          />
+        }
       >
-        <Text style={{ color: 'white', marginBottom: 20 }}>{renderCount}</Text>
-        <Text style={{ color: 'white', marginBottom: 20 }}>
-          ceroivneroinvoiren cer erpojvpoerh vopierh vopier hpoivh eropihees
-          vpoierh vopier hpovi heropiv heoripho ivhpeoirh vioêrj hvôier
-          hjiov^hjreoi vh êiorh voier erpojvpoerh vopierh vopier hpoivh eropih
-          vpoierh vopier hpovi heropiv heoripho ivhpeoirh vioêrj hvôier
-          hjiov^hjreoi vh êiorh voier erpojvpoerh vopierh vopier hpoivh eropih
-          vpoierh vopier hpovi heropiv heoripho ivhpeoirh vioêrj hvôier
-          hjiov^hjreoi vh êiorh voier erpojvpoerh vopierh vopier hpoivh eropih
-          vpoierh vopier hpovi heropiv heoripho ivhpeoirh vioêrj hvôier
-          hjiov^hjreoi vh êiorh voier erpojvpoerh vopierh vopier hpoivh eropih
-          vpoierh vopier hpovi heropiv heoripho ivhpeoirh vioêrj hvôier
-          hjiov^hjreoi vh êiorh voier erpojvpoerh vopierh vopier hpoivh eropih
-          vpoierh vopier hpovi heropiv heoripho ivhpeoirh vioêrj hvôier
-          hjiov^hjreoi vh êiorh voier erpojvpoerh vopierh vopier hpoivh eropih
-          vpoierh vopier hpovi heropiv heoripho ivhpeoirh vioêrj hvôier
-          hjiov^hjreoi vh êiorh voier
-        </Text>
-        <TouchableOpacity
-          onPress={() => {
-            setState((s) => s + 1)
-          }}
-        >
-          <Text style={{ color: '#007AFF', marginBottom: 20 }}>
-            Increase state
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={onPress}>
-          <Text style={{ color: '#007AFF', marginBottom: 20 }}>
-            Switch tab programatically
-          </Text>
-        </TouchableOpacity>
-        <Text style={{ color: 'white', marginBottom: 20 }}>
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-        </Text>
-        <Text style={{ color: 'white', marginBottom: 20 }}>
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-        </Text>
-        <Text style={{ color: 'white', marginBottom: 20 }}>
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-        </Text>
-        <Text style={{ color: 'white', marginBottom: 20 }}>
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-        </Text>
-        <Text style={{ color: 'white' }}>
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-          erpojvpoerh vopierh vopier hpoivh eropih vpoierh vopier hpovi heropiv
-          heoripho ivhpeoirh vioêrj hvôier hjiov^hjreoi vh êiorh voier
-        </Text>
-      </ScrollView>
+        {Routes}
+      </NavigationRouter>
     </TabScreen>
   )
 }

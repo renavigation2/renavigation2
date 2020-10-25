@@ -235,7 +235,6 @@ class RNRTabsContainer: UIView, UITabBarControllerDelegate, RNRParent {
     }
 
     func invalidate() {
-        NSLog("invalidate")
         tabBarController?.viewControllers = []
         tabBarController?.delegate = nil
         tabBarController = nil

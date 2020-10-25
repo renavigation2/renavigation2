@@ -11,4 +11,5 @@ export * from './ios/typings/TextStyle'
 
 export * from './utils/processAnimationOptions'
 export * from './utils/processBoolean'
+export * from './utils/processTextStyle'
 export * from './utils/StyleSheet'
