@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.20.1](https://github.com/renavigation2/renavigation2/compare/v4.20.0...v4.20.1) (2020-10-25)
+
+
+### Bug Fixes
+
+* **core:** Fixed missing podspec file in package ([c25e154](https://github.com/renavigation2/renavigation2/commit/c25e15411072636172ba1d7100c05854c6ef282f))
+* **tabs:** Fixed missing podspec file in package ([11d7808](https://github.com/renavigation2/renavigation2/commit/11d780832726982a15e4f7f16507d4fb420cb54e))
+
+
+
+
+
 # [4.20.0](https://github.com/renavigation2/renavigation2/compare/v4.19.0...v4.20.0) (2020-10-24)
 
 

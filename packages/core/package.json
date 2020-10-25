@@ -1,6 +1,6 @@
 {
   "name": "@renavigation2/core",
-  "version": "4.20.0",
+  "version": "4.20.1",
   "description": "Renavigation Core",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
