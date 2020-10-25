@@ -32,8 +32,8 @@ export const App: React.FC<Props> = ({}) => {
                           iconColor="gray"
                           titleStyle={{
                             fontFamily: 'AvenirNext-Medium',
-                            color: 'red',
-                            fontSize: 15
+                            color: 'gray',
+                            fontSize: 12
                           }}
                         />
                       }
@@ -43,7 +43,7 @@ export const App: React.FC<Props> = ({}) => {
                           titleStyle={{
                             fontFamily: 'AvenirNext-Medium',
                             color: 'blue',
-                            fontSize: 15
+                            fontSize: 12
                           }}
                         />
                       }

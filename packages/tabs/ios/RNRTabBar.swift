@@ -56,6 +56,9 @@ class RNRTabBar: UIView, RNRParent {
     override func didUpdateReactSubviews() {
         super.didUpdateReactSubviews()
         hasUpdatedReactSubviews = true
+        if isReady {
+            forceUpdate()
+        }
         setup()
     }
 
@@ -67,14 +70,48 @@ class RNRTabBar: UIView, RNRParent {
                 // setProps before setSubviews to set defaults
                 setProps()
                 setSubviews()
+
+                NotificationCenter.default.removeObserver(self,
+                        name: UIApplication.willEnterForegroundNotification,
+                        object: nil)
+
+                NotificationCenter.default.addObserver(self,
+                        selector: #selector(appWillEnterForeground),
+                        name: UIApplication.willEnterForegroundNotification,
+                        object: nil)
             }
         }
     }
 
-    @objc
-    override func didSetProps(_ changedProps: [String]!) {
+    // For some reason, when the app enters foreground from background state, the title of the tab bar will be cropped
+    // if it is using a custom font size (something large like 15pt). Selecting a tab re-renders it correctly so we just
+    // select them all then select the current tab
+    @objc func appWillEnterForeground() {
+        forceUpdate()
+    }
+
+    func forceUpdate() {
+        if tabBarController != nil {
+            let index = tabBarController!.selectedIndex
+            if tabBarController!.tabBar.items != nil {
+                tabBarController!.tabBar.items!.enumerated().forEach { (index, element) in
+                    tabBarController?.selectedIndex = index
+                }
+            }
+            tabBarController?.selectedIndex = index
+        }
+        tabBarController?.setNeedsFocusUpdate()
+        tabBarController?.updateFocusIfNeeded()
+        tabBarController?.tabBar.setNeedsLayout()
+        tabBarController?.tabBar.setNeedsDisplay()
+        tabBarController?.tabBar.layoutIfNeeded()
+        tabBarController?.tabBar.layoutSubviews()
+    }
+
+    @objc override func didSetProps(_ changedProps: [String]!) {
         if isReady && tabBarController != nil {
             setProps()
+            forceUpdate()
         }
     }
 
@@ -85,6 +122,7 @@ class RNRTabBar: UIView, RNRParent {
                     setSubview(subview, at: index)
                 }
             }
+            forceUpdate()
         }
     }
 
@@ -201,5 +239,11 @@ class RNRTabBar: UIView, RNRParent {
             tabBarController = (newSuperview as! RNRTabs).tabBarController
             setup()
         }
+    }
+
+    func invalidate() {
+        NotificationCenter.default.removeObserver(self,
+                name: UIApplication.willEnterForegroundNotification,
+                object: nil)
     }
 }
