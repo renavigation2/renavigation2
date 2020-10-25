@@ -6,7 +6,8 @@ import {
   processBoolean,
   Offset,
   TextStyle,
-  EdgeInsets
+  EdgeInsets,
+  processTextStyle
 } from '@renavigation2/core'
 
 const RNRTabBarItem = requireNativeComponent<any>('RNRTabBarItem')
@@ -43,6 +44,14 @@ export const TabBarItem: React.FC<TabBarItemProps> = ({
   image,
   landscapeImagePhone,
   largeContentSizeImage,
+  normalBadgeStyle,
+  disabledBadgeStyle,
+  selectedBadgeStyle,
+  focusedBadgeStyle,
+  normalTitleStyle,
+  disabledTitleStyle,
+  selectedTitleStyle,
+  focusedTitleStyle,
   ...props
 }) => {
   return (
@@ -51,6 +60,30 @@ export const TabBarItem: React.FC<TabBarItemProps> = ({
       pointerEvents="none"
       badgeColor={badgeColor ? processColor(badgeColor) : undefined}
       isEnabled={processBoolean(enabled)}
+      normalBadgeStyle={
+        normalBadgeStyle ? processTextStyle(normalBadgeStyle) : undefined
+      }
+      disabledBadgeStyle={
+        disabledBadgeStyle ? processTextStyle(disabledBadgeStyle) : undefined
+      }
+      selectedBadgeStyle={
+        selectedBadgeStyle ? processTextStyle(selectedBadgeStyle) : undefined
+      }
+      focusedBadgeStyle={
+        focusedBadgeStyle ? processTextStyle(focusedBadgeStyle) : undefined
+      }
+      normalTitleStyle={
+        normalTitleStyle ? processTextStyle(normalTitleStyle) : undefined
+      }
+      disabledTitleStyle={
+        disabledTitleStyle ? processTextStyle(disabledTitleStyle) : undefined
+      }
+      selectedTitleStyle={
+        selectedTitleStyle ? processTextStyle(selectedTitleStyle) : undefined
+      }
+      focusedTitleStyle={
+        focusedTitleStyle ? processTextStyle(focusedTitleStyle) : undefined
+      }
       {...props}
     >
       {selectedImage ? selectedImage : <EmptyComponent />}
