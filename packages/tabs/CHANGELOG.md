@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.22.0](https://github.com/renavigation2/renavigation2/compare/v4.21.0...v4.22.0) (2020-10-27)
+
+
+### Features
+
+* **tabs:** Added useTabsHistory hook ([9fe4ac2](https://github.com/renavigation2/renavigation2/commit/9fe4ac2d8ff1c06cd99530de74fbe615b9a37b3b))
+
+
+
+
+
 # [4.21.0](https://github.com/renavigation2/renavigation2/compare/v4.20.1...v4.21.0) (2020-10-25)
 
 

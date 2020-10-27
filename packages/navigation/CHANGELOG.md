@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.22.0](https://github.com/renavigation2/renavigation2/compare/v4.21.0...v4.22.0) (2020-10-27)
+
+
+### Features
+
+* **navigation:** Added useNavigationHistory hook ([a55da54](https://github.com/renavigation2/renavigation2/commit/a55da542788d32ed9c5ae4ddd3226a54bd3be0ff))
+
+
+
+
+
 # [4.20.0](https://github.com/renavigation2/renavigation2/compare/v4.19.0...v4.20.0) (2020-10-24)
 
 **Note:** Version bump only for package @renavigation2/navigation
