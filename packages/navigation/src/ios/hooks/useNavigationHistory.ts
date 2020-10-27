@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import invariant from 'tiny-invariant'
 import { NavigationNavigatorContext } from '../context/NavigationNavigatorContext'
 
-export function useNavigation<
+export function useNavigationHistory<
   S extends State = Record<string, unknown> | null
 >(): NativeHistory<S> {
   const context = useContext(NavigationNavigatorContext)!
