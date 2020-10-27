@@ -19,6 +19,7 @@ export * from './ios/hooks/useTabDidDisappearEffect'
 export * from './ios/hooks/useTabLocation'
 export * from './ios/hooks/useTabParams'
 export * from './ios/hooks/useTabs'
+export * from './ios/hooks/useTabsHistory'
 export * from './ios/hooks/useTabWillAppearEffect'
 export * from './ios/hooks/useTabWillDisappearEffect'
 
