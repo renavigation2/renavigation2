@@ -33,7 +33,7 @@ import { Modals, ModalsRef } from '../native/Modals'
 export const MemoizedConnectedModalsRoutes: React.FC<
   RoutesProps & { history: NativeHistory }
 > = ({ history, basename = '', children }) => {
-  const [{ action }, dispatch] = useReducer(
+  const [{ action, location }, dispatch] = useReducer(
     (_: Update, action: Update) => action,
     {
       action: history.action,
@@ -41,7 +41,13 @@ export const MemoizedConnectedModalsRoutes: React.FC<
     }
   )
 
-  useLayoutEffect(() => history.listen(dispatch), [history])
+  const locationRef = useRef(location)
+  useLayoutEffect(() => {
+    if (history.location?.key !== locationRef.current?.key) {
+      dispatch({ location: history.location, action: history.action })
+    }
+    return history.listen(dispatch)
+  }, [history])
 
   const modals = useRef<ModalsRef>()
   const routes = createRoutesFromChildren(children)

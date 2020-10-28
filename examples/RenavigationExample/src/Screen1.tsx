@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useLayoutEffect } from 'react'
 import { ScrollView, Text, View } from 'react-native'
 import { Button } from './components/Button'
 import {
@@ -13,6 +13,10 @@ interface Props {}
 export const Screen1: React.FC<Props> = ({}) => {
   const { push, reset } = useNavigation()
   const { presentModal } = useModals()
+
+  useLayoutEffect(() => {
+    presentModal('/screen3')
+  }, [presentModal])
 
   const goToNextScreen = useCallback(() => {
     push('/screen2')
@@ -32,7 +36,7 @@ export const Screen1: React.FC<Props> = ({}) => {
   return (
     <NavigationScreen
       navigationBarItem={
-        <NavigationBarItem title="Hello" largeTitleDisplayMode="always" />
+        <NavigationBarItem title="Hello World" largeTitleDisplayMode="always" />
       }
     >
       <ScrollView

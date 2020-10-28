@@ -9,7 +9,7 @@ class RNRModalContainerManager: RCTViewManager, RCTInvalidating {
 
     override func view() -> UIView! {
         modal = RNRModalContainer()
-        modal!.bridge = self.bridge
+        modal!.uiManager = self.bridge.uiManager
         touchHandler = RCTTouchHandler(bridge: self.bridge)
         touchHandler?.attach(to: modal)
         return modal
