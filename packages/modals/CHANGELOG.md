@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.22.1](https://github.com/renavigation2/renavigation2/compare/v4.22.0...v4.22.1) (2020-10-28)
+
+
+### Bug Fixes
+
+* **modals:** Fixed Unexpectedly found nil while implicitly unwrapping an Optional value ([ea46937](https://github.com/renavigation2/renavigation2/commit/ea469372b5d0ac6d1190911b4652ec123b727170))
+
+
+
+
+
 # [4.22.0](https://github.com/renavigation2/renavigation2/compare/v4.21.0...v4.22.0) (2020-10-27)
 
 
