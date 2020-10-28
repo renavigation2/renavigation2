@@ -42,7 +42,9 @@ class RNRModalContainer: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        bridge?.uiManager.setSize(self.bounds.size, for: self)
+        if bridge != nil && bridge?.uiManager != nil && (self as Any?) != nil && (self.bounds as Any?) != nil {
+            bridge?.uiManager.setSize(self.bounds.size, for: self)
+        }
     }
 
     func findConfig() -> RNRModalConfig? {
