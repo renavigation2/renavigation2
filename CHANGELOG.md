@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.22.2](https://github.com/renavigation2/renavigation2/compare/v4.22.1...v4.22.2) (2020-10-29)
+
+
+### Bug Fixes
+
+* **modals:** Fixed issue when presenting modal on load ([7bf538a](https://github.com/renavigation2/renavigation2/commit/7bf538acddbe2ab51948c7ac34aaee5c0da5f5ff))
+
+
+
+
+
 ## [4.22.1](https://github.com/renavigation2/renavigation2/compare/v4.22.0...v4.22.1) (2020-10-28)
 
 
