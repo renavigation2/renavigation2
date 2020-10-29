@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.23.0](https://github.com/renavigation2/renavigation2/compare/v4.22.2...v4.23.0) (2020-10-29)
+
+
+### Features
+
+* **modals:** Bump version ([4666c82](https://github.com/renavigation2/renavigation2/commit/4666c82c2de88dad3e4bb5cde0605c3bf355d491))
+
+
+
+
+
 ## [4.22.2](https://github.com/renavigation2/renavigation2/compare/v4.22.1...v4.22.2) (2020-10-29)
 
 
