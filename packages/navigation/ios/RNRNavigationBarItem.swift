@@ -329,15 +329,27 @@ class RNRNavigationBarItem: UIView {
                     }
                 } else if key == "standardAppearance" {
                     if #available(iOS 13.0, *) {
-                        navigationItem.standardAppearance = RNRNavigationBarAppearance.getBarAppearance(standardAppearance!)
+                        if standardAppearance != nil {
+                            navigationItem.standardAppearance = RNRNavigationBarAppearance.getBarAppearance(standardAppearance!)
+                        } else {
+                            navigationItem.standardAppearance = nil
+                        }
                     }
                 } else if key == "compactAppearance" {
                     if #available(iOS 13.0, *) {
-                        navigationItem.compactAppearance = RNRNavigationBarAppearance.getBarAppearance(compactAppearance!)
+                        if compactAppearance != nil {
+                            navigationItem.compactAppearance = RNRNavigationBarAppearance.getBarAppearance(compactAppearance!)
+                        } else {
+                            navigationItem.compactAppearance = nil
+                        }
                     }
                 } else if key == "scrollEdgeAppearance" {
                     if #available(iOS 13.0, *) {
-                        navigationItem.scrollEdgeAppearance = RNRNavigationBarAppearance.getBarAppearance(scrollEdgeAppearance!)
+                        if scrollEdgeAppearance != nil {
+                            navigationItem.scrollEdgeAppearance = RNRNavigationBarAppearance.getBarAppearance(scrollEdgeAppearance!)
+                        } else {
+                            navigationItem.scrollEdgeAppearance = nil
+                        }
                     }
                 }
             })

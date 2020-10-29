@@ -57,24 +57,18 @@ export interface ProcessedNavigationBarAppearanceValue
   buttonAppearance?: ProcessedButtonAppearanceValue
   doneButtonAppearance?: ProcessedButtonAppearanceValue
   backButtonAppearance?: ProcessedButtonAppearanceValue
-  _configure?:
-    | 'defaultBackground'
-    | 'opaqueBackground'
-    | 'transparentBackground'
+  configure?: 'defaultBackground' | 'opaqueBackground' | 'transparentBackground'
 }
 
 const BarAppearanceBase: React.FC<NavigationBarAppearanceProps> = () => null
-const BarAppearanceDefaultBackground: React.FC<NavigationBarAppearanceProps> = () =>
-  null
-const BarAppearanceOpaqueBackground: React.FC<NavigationBarAppearanceProps> = () =>
-  null
-const BarAppearanceTransparentBackground: React.FC<NavigationBarAppearanceProps> = () =>
-  null
+const DefaultBackground: React.FC<NavigationBarAppearanceProps> = () => null
+const OpaqueBackground: React.FC<NavigationBarAppearanceProps> = () => null
+const TransparentBackground: React.FC<NavigationBarAppearanceProps> = () => null
 
-export const BarAppearance = Object.assign(BarAppearanceBase, {
-  DefaultBackground: BarAppearanceDefaultBackground,
-  OpaqueBackground: BarAppearanceOpaqueBackground,
-  TransparentBackground: BarAppearanceTransparentBackground
+export const NavigationBarAppearance = Object.assign(BarAppearanceBase, {
+  DefaultBackground,
+  OpaqueBackground,
+  TransparentBackground
 })
 
 export function processNavigationBarAppearance(
@@ -82,12 +76,12 @@ export function processNavigationBarAppearance(
 ): ProcessedNavigationBarAppearanceValue {
   const props = element.props
   const final: ProcessedNavigationBarAppearanceValue = { ...(props as any) }
-  if (element.type === BarAppearanceDefaultBackground) {
-    final._configure = 'defaultBackground'
-  } else if (element.type === BarAppearanceOpaqueBackground) {
-    final._configure = 'opaqueBackground'
-  } else if (element.type === BarAppearanceTransparentBackground) {
-    final._configure = 'transparentBackground'
+  if (element.type === DefaultBackground) {
+    final.configure = 'defaultBackground'
+  } else if (element.type === OpaqueBackground) {
+    final.configure = 'opaqueBackground'
+  } else if (element.type === TransparentBackground) {
+    final.configure = 'transparentBackground'
   }
 
   if (props.backgroundEffect)
@@ -119,5 +113,6 @@ export function processNavigationBarAppearance(
       props.backButtonAppearance
     )
 
+  console.log(final)
   return final
 }

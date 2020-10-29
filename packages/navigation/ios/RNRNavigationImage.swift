@@ -4,7 +4,7 @@ struct RNRNavigationImage {
 
         if attributes["source"] != nil {
             image = RCTConvert.uiImage(attributes["source"])
-        } else {
+        } else if (attributes["systemName"] != nil) {
             if #available(iOS 13.0, *) {
                 image = UIImage(systemName: attributes["systemName"] as! String) ?? UIImage()
             }

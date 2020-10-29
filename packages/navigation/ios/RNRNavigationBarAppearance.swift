@@ -1,6 +1,8 @@
 struct RNRNavigationBarAppearance {
     @available(iOS 13.0, *)
     static func getBarAppearance(_ attributes: NSDictionary) -> UINavigationBarAppearance {
+        NSLog("heyooo")
+        print(attributes)
         let barAppearance: UINavigationBarAppearance = UINavigationBarAppearance()
         if attributes["configure"] != nil {
             if attributes["configure"] as! String == "defaultBackground" {
@@ -8,6 +10,7 @@ struct RNRNavigationBarAppearance {
             } else if attributes["configure"] as! String == "opaqueBackground" {
                 barAppearance.configureWithOpaqueBackground()
             } else if attributes["configure"] as! String == "transparentBackground" {
+                NSLog("configure with transparent background")
                 barAppearance.configureWithTransparentBackground()
             }
         }
@@ -34,15 +37,15 @@ struct RNRNavigationBarAppearance {
                 let v = RCTConvert.nsDictionary(value)! as NSDictionary
                 barAppearance.titlePositionAdjustment = UIOffset(horizontal: v["horizontal"] as! CGFloat, vertical: v["vertical"] as! CGFloat)
             } else if key == "buttonAppearance" {
-                 barAppearance.buttonAppearance = RNRNavigationButtonAppearance.getButtonAppearance(RCTConvert.nsDictionary(value)! as NSDictionary)
+                barAppearance.buttonAppearance = RNRNavigationButtonAppearance.getButtonAppearance(RCTConvert.nsDictionary(value)! as NSDictionary)
             } else if key == "doneButtonAppearance" {
-                 barAppearance.doneButtonAppearance = RNRNavigationButtonAppearance.getButtonAppearance(RCTConvert.nsDictionary(value)! as NSDictionary)
+                barAppearance.doneButtonAppearance = RNRNavigationButtonAppearance.getButtonAppearance(RCTConvert.nsDictionary(value)! as NSDictionary)
             } else if key == "backButtonAppearance" {
-                 barAppearance.backButtonAppearance = RNRNavigationButtonAppearance.getButtonAppearance(RCTConvert.nsDictionary(value)! as NSDictionary)
+                barAppearance.backButtonAppearance = RNRNavigationButtonAppearance.getButtonAppearance(RCTConvert.nsDictionary(value)! as NSDictionary)
             }
         }
 
-        if attributes["backIndicatorImage"] != nil || attributes["backIndicatorTransitionMaskImage"] != nil {
+        if attributes["backIndicatorImage"] != nil && attributes["backIndicatorTransitionMaskImage"] != nil {
             barAppearance.setBackIndicatorImage(
                     RNRNavigationImage.getImage(RCTConvert.nsDictionary(attributes["backIndicatorImage"])! as NSDictionary),
                     transitionMaskImage: RNRNavigationImage.getImage(RCTConvert.nsDictionary(attributes["backIndicatorTransitionMaskImage"])! as NSDictionary)
