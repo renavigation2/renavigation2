@@ -15,7 +15,7 @@ export const Screen1: React.FC<Props> = ({}) => {
   const { presentModal } = useModals()
 
   useLayoutEffect(() => {
-    presentModal('/screen3')
+    //presentModal('/screen3')
   }, [presentModal])
 
   const goToNextScreen = useCallback(() => {

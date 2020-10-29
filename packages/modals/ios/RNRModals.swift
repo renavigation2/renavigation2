@@ -20,24 +20,11 @@ class RNRModals: UIView, RNRParent {
 
     override func removeReactSubview(_ subview: UIView!) {
         modals.removeAll(where: { $0 == subview})
+        shouldPresent.removeAll(where: { $0 == subview})
     }
 
     override func reactSubviews() -> [UIView]! {
         modals
-    }
-
-    func updateSubview(_ subview: UIView) {}
-
-    func setup() {
-        if !isReady && hasMovedToSuperview && hasMovedToWindow {
-            let childrenReady = areChildrenReady(modals)
-            if childrenReady {
-                isReady = true
-                shouldPresent.forEach { view in
-                    present(view)
-                }
-            }
-        }
     }
 
     override func didUpdateReactSubviews() {
@@ -53,6 +40,20 @@ class RNRModals: UIView, RNRParent {
         super.didMoveToWindow()
         hasMovedToWindow = true
         setup()
+    }
+
+    func updateSubview(_ subview: UIView) {}
+
+    func setup() {
+        if !isReady && hasMovedToSuperview && hasMovedToWindow {
+            let childrenReady = areChildrenReady(modals)
+            if childrenReady {
+                isReady = true
+                shouldPresent.forEach { view in
+                    present(view)
+                }
+            }
+        }
     }
 
     func dismiss(_ view: RNRModalContainer) {
