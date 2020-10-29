@@ -9,6 +9,7 @@ class RNRModalContainer: UIView, RNRChild, RNRParent {
     var hasMovedToSuperview = false
     var hasUpdatedReactSubviews = false
     var isPresented = false
+    var fixedSize = false
 
     @objc var onWillAppear: RCTDirectEventBlock?
     @objc var onDidAppear: RCTDirectEventBlock?
@@ -68,8 +69,13 @@ class RNRModalContainer: UIView, RNRChild, RNRParent {
     }
 
     override func layoutSubviews() {
-        if uiManager != nil && (self as Any?) != nil && (self.bounds as Any?) != nil {
+        if !fixedSize && uiManager != nil && (self as Any?) != nil && (self.bounds as Any?) != nil {
+            let height = self.bounds.size.height
+            let width = self.bounds.size.width
             uiManager?.setSize(self.bounds.size, for: self)
+            if self.bounds.size.height == height && self.bounds.size.width == width {
+                fixedSize = true
+            }
         }
         super.layoutSubviews()
     }

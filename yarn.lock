@@ -3325,7 +3325,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@renavigation2/core@^4.21.0, @renavigation2/core@workspace:packages/core":
+"@renavigation2/core@^4.23.0, @renavigation2/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@renavigation2/core@workspace:packages/core"
   dependencies:
@@ -3383,7 +3383,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@renavigation2/modals@^4.22.2, @renavigation2/modals@workspace:packages/modals":
+"@renavigation2/modals@^4.23.0, @renavigation2/modals@workspace:packages/modals":
   version: 0.0.0-use.local
   resolution: "@renavigation2/modals@workspace:packages/modals"
   dependencies:
@@ -3419,7 +3419,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@renavigation2/navigation@^4.22.0, @renavigation2/navigation@workspace:packages/navigation":
+"@renavigation2/navigation@^4.23.0, @renavigation2/navigation@workspace:packages/navigation":
   version: 0.0.0-use.local
   resolution: "@renavigation2/navigation@workspace:packages/navigation"
   dependencies:
@@ -3480,7 +3480,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@renavigation2/tabs@^4.22.0, @renavigation2/tabs@workspace:packages/tabs":
+"@renavigation2/tabs@^4.23.0, @renavigation2/tabs@workspace:packages/tabs":
   version: 0.0.0-use.local
   resolution: "@renavigation2/tabs@workspace:packages/tabs"
   dependencies:
@@ -4060,10 +4060,10 @@ __metadata:
     "@babel/core": ^7.12.3
     "@babel/runtime": ^7.12.1
     "@react-native-community/eslint-config": ^2.0.0
-    "@renavigation2/core": ^4.21.0
-    "@renavigation2/modals": ^4.22.2
-    "@renavigation2/navigation": ^4.22.0
-    "@renavigation2/tabs": ^4.22.0
+    "@renavigation2/core": ^4.23.0
+    "@renavigation2/modals": ^4.23.0
+    "@renavigation2/navigation": ^4.23.0
+    "@renavigation2/tabs": ^4.23.0
     "@types/jest": ^26.0.15
     "@types/react": ^16.9.54
     "@types/react-native": ^0.63.30
