@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.23.1](https://github.com/renavigation2/renavigation2/compare/v4.23.0...v4.23.1) (2020-10-29)
+
+
+### Bug Fixes
+
+* **modals:** Fixed issue that would resize the modal when rendering ([a1d05d2](https://github.com/renavigation2/renavigation2/commit/a1d05d2ecbcbfb97e542b7e2361233614ec10266))
+* **navigation:** Fixed issue with navigation bar appearance not working ([eb3fa3c](https://github.com/renavigation2/renavigation2/commit/eb3fa3c5cfed59dfb94d19c844080c1019d37876))
+
+
+
+
+
 # [4.23.0](https://github.com/renavigation2/renavigation2/compare/v4.22.2...v4.23.0) (2020-10-29)
 
 

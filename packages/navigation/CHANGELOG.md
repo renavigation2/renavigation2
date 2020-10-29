@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.23.1](https://github.com/renavigation2/renavigation2/compare/v4.23.0...v4.23.1) (2020-10-29)
+
+
+### Bug Fixes
+
+* **navigation:** Fixed issue with navigation bar appearance not working ([eb3fa3c](https://github.com/renavigation2/renavigation2/commit/eb3fa3c5cfed59dfb94d19c844080c1019d37876))
+
+
+
+
+
 # [4.23.0](https://github.com/renavigation2/renavigation2/compare/v4.22.2...v4.23.0) (2020-10-29)
 
 **Note:** Version bump only for package @renavigation2/navigation
