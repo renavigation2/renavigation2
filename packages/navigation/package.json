@@ -20,7 +20,7 @@
     "lib",
     "ios",
     "src",
-    "renavigation-navigation.podspec",
+    "RenavigationNavigation.podspec",
     "!**/__tests__"
   ],
   "scripts": {
