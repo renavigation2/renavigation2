@@ -16,6 +16,9 @@ class RNRModalsManager: RCTViewManager, RCTInvalidating {
     }
 
     func invalidate() {
+        DispatchQueue.main.sync { [self] in
+            modals?.invalidate()
+        }
     }
 
     @objc func dismiss(_ node: NSNumber, viewNode: NSNumber) {

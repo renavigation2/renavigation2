@@ -1,7 +1,10 @@
-class RNRModalConfig: UIView {
-    var controller: RNRModalController?
+import RenavigationCore
 
-    var initialized = false
+class RNRModalConfig: UIView, RNRChild {
+    var viewController: RNRModalController?
+
+    var isReady: Bool = false
+    var hasMovedToSuperview = false
 
     @objc var animated: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var isModalInPresentation: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
@@ -12,56 +15,74 @@ class RNRModalConfig: UIView {
     @objc var preferredStatusBarStyle: Int = UIBarStyle.default.rawValue
     @objc var prefersStatusBarHidden: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
 
+    var hasSetDefaults = false
+    var defaultIsModalInPresentation: Bool?
+    var defaultModalPresentationCapturesStatusBarAppearance: Bool?
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.isHidden = true
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        if superview is RNRModalContainer {
+            self.viewController = (superview as! RNRModalContainer).viewController
+            hasMovedToSuperview = true
+            setup()
+        }
+    }
+
     func setup() {
-        if initialized == false {
-            initialized = true
-            controller!.config = self
-
-            if #available(iOS 13.0, *) {
-                if isModalInPresentation == 1 {
-                    controller!.isModalInPresentation = true
-                } else if isModalInPresentation == -1 {
-                    controller!.isModalInPresentation = false
-                }
-            }
-
-            if modalPresentationCapturesStatusBarAppearance == 1 {
-                controller!.modalPresentationCapturesStatusBarAppearance = true
-            } else if modalPresentationCapturesStatusBarAppearance == -1 {
-                controller!.modalPresentationCapturesStatusBarAppearance = false
-            }
-
-            controller!.modalPresentationStyle = UIModalPresentationStyle.init(rawValue: modalPresentationStyle)!
-            controller!.modalTransitionStyle = UIModalTransitionStyle.init(rawValue: modalTransitionStyle)!
+        if !isReady && hasMovedToSuperview && superview != nil {
+            isReady = true
+            setConfig()
+            setupParent(superview!)
         }
     }
 
     @objc
     override func didSetProps(_ changedProps: [String]!) {
-        changedProps.forEach({ key in
-            if key == "isModalInPresentation" {
+        if isReady && superview != nil {
+            setConfig()
+            updateInParent(superview!, subview: self)
+        }
+    }
+
+    func setConfig() {
+        if viewController != nil {
+            if !hasSetDefaults {
+                hasSetDefaults = true
                 if #available(iOS 13.0, *) {
-                    if isModalInPresentation == 1 {
-                        controller?.isModalInPresentation = true
-                    } else if isModalInPresentation == -1 {
-                        controller?.isModalInPresentation = false
-                    } else {
-                        controller?.isModalInPresentation = false
-                    }
+                    defaultIsModalInPresentation = viewController!.isModalInPresentation
+                    defaultModalPresentationCapturesStatusBarAppearance = viewController!.modalPresentationCapturesStatusBarAppearance
                 }
-            } else if key == "modalPresentationCapturesStatusBarAppearance" {
-                if modalPresentationCapturesStatusBarAppearance == 1 {
-                    controller?.modalPresentationCapturesStatusBarAppearance = true
-                } else if modalPresentationCapturesStatusBarAppearance == -1 {
-                    controller?.modalPresentationCapturesStatusBarAppearance = false
-                } else {
-                    controller?.modalPresentationCapturesStatusBarAppearance = false
-                }
-            } else if key == "modalPresentationStyle" {
-                controller?.modalPresentationStyle = UIModalPresentationStyle.init(rawValue: modalPresentationStyle)!
-            } else if key == "modalTransitionStyle" {
-                controller?.modalTransitionStyle = UIModalTransitionStyle.init(rawValue: modalTransitionStyle)!
             }
-        })
+
+            if #available(iOS 13.0, *) {
+                if isModalInPresentation == 1 {
+                    viewController!.isModalInPresentation = true
+                } else if isModalInPresentation == -1 {
+                    viewController!.isModalInPresentation = false
+                } else {
+                    viewController!.isModalInPresentation = defaultIsModalInPresentation!
+                }
+            }
+
+            if modalPresentationCapturesStatusBarAppearance == 1 {
+                viewController!.modalPresentationCapturesStatusBarAppearance = true
+            } else if modalPresentationCapturesStatusBarAppearance == -1 {
+                viewController!.modalPresentationCapturesStatusBarAppearance = false
+            } else {
+                viewController!.modalPresentationCapturesStatusBarAppearance = defaultModalPresentationCapturesStatusBarAppearance!
+            }
+
+            viewController!.modalPresentationStyle = UIModalPresentationStyle.init(rawValue: modalPresentationStyle)!
+            viewController!.modalTransitionStyle = UIModalTransitionStyle.init(rawValue: modalTransitionStyle)!
+        }
     }
 }

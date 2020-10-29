@@ -1,10 +1,14 @@
-class RNRModalContainer: UIView {
-    var _reactSuperview: RNRModals?
-    var controller: RNRModalController = RNRModalController()
-    var bridge: RCTBridge?
+import RenavigationCore
 
-    var initialized = false
-    var presented = false
+class RNRModalContainer: UIView, RNRChild, RNRParent {
+    var parent: RNRModals?
+    var viewController: RNRModalController = RNRModalController()
+    var uiManager: RCTUIManager?
+
+    var isReady = false
+    var hasMovedToSuperview = false
+    var hasUpdatedReactSubviews = false
+    var isPresented = false
 
     @objc var onWillAppear: RCTDirectEventBlock?
     @objc var onDidAppear: RCTDirectEventBlock?
@@ -14,72 +18,60 @@ class RNRModalContainer: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        controller.view = self
+        viewController.view = self
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func didUpdateReactSubviews() {
-        super.didUpdateReactSubviews()
-        // Give time for the component to mount
-        DispatchQueue.main.async { [self] in
-            setup()
-        }
-    }
-
-    override func reactSuperview() -> UIView! {
-        _reactSuperview!
-    }
-
     override func reactSetFrame(_ frame: CGRect) {
     }
 
     override func reactViewController() -> UIViewController! {
-        controller
+        viewController
     }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        if bridge != nil && bridge?.uiManager != nil && (self as Any?) != nil && (self.bounds as Any?) != nil {
-            bridge?.uiManager.setSize(self.bounds.size, for: self)
-        }
-    }
-
-    func findConfig() -> RNRModalConfig? {
-        findConfig(subviews)
-    }
-
-    func findConfig(_ subviews: [UIView]) -> RNRModalConfig? {
-        for subview in subviews {
-            if subview is RNRModalConfig {
-                return (subview as! RNRModalConfig)
-            } else if !subview.subviews.isEmpty {
-                let match = findConfig(subview.subviews)
-                if match != nil {
-                    return match
-                }
-            }
-        }
-        return nil
+    func updateSubview(_ subview: UIView) {
     }
 
     func setup() {
-        if !initialized && _reactSuperview != nil {
-            initialized = true
+        if !isReady && hasMovedToSuperview && hasUpdatedReactSubviews && parent != nil {
+            let childrenReady = areChildrenReady(subviews)
+            if childrenReady {
+                isReady = true
+                setupParent(parent!)
 
-            let config = findConfig()
-
-            if config != nil {
-                config!.controller = controller
-                config!.setup()
-            }
-
-            if !presented {
-                _reactSuperview!.present(self)
+                if !isPresented {
+                    parent!.present(self)
+                }
             }
         }
+    }
+
+    override func didUpdateReactSubviews() {
+        super.didUpdateReactSubviews()
+        // Give time for the component to mount
+        DispatchQueue.main.async { [self] in
+            hasUpdatedReactSubviews = true
+            setup()
+        }
+    }
+
+    override func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
+        if newSuperview is RNRModals {
+            parent = (newSuperview as! RNRModals)
+            hasMovedToSuperview = true
+            setup()
+        }
+    }
+
+    override func layoutSubviews() {
+        if uiManager != nil && (self as Any?) != nil && (self.bounds as Any?) != nil {
+            uiManager?.setSize(self.bounds.size, for: self)
+        }
+        super.layoutSubviews()
     }
 
     func willAppear() {

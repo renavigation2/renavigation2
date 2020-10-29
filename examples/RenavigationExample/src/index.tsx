@@ -1,10 +1,7 @@
 import React from 'react'
 import {
   TabsRouter,
-  TabScreen,
   TabRoute,
-  TabBarItem,
-  Image,
   Tabs,
   TabBar,
   TabBarAppearance,
@@ -12,7 +9,9 @@ import {
   TabBarItemStateAppearance
 } from '@renavigation2/tabs'
 import { Tab1 } from './Tab1'
-import { ModalsRouter } from '@renavigation2/modals'
+import { ModalRoute, ModalsRouter, ModalsRoutes } from '@renavigation2/modals'
+import { Modal } from './components/Modal'
+import { Tab2 } from './Tab2'
 
 interface Props {}
 
@@ -55,21 +54,13 @@ export const App: React.FC<Props> = ({}) => {
           }
         >
           <TabRoute path="/home" element={<Tab1 />} />
-          <TabRoute
-            path="/settings"
-            element={
-              <TabScreen
-                tabBarItem={
-                  <TabBarItem
-                    title="Settings"
-                    image={<Image systemName="gear" />}
-                  />
-                }
-              />
-            }
-          />
+          <TabRoute path="/settings" element={<Tab2 />} />
         </Tabs>
       </TabsRouter>
+
+      <ModalsRoutes>
+        <ModalRoute path="*" element={<Modal />} />
+      </ModalsRoutes>
     </ModalsRouter>
   )
 }

@@ -296,13 +296,14 @@ PODS:
     - React-Core (= 0.63.3)
     - React-cxxreact (= 0.63.3)
     - React-jsi (= 0.63.3)
-  - renavigation-modals (4.22.0):
-    - React
   - renavigation-navigation (4.22.0):
     - React
     - RenavigationCore
   - RenavigationCore (4.21.0):
     - React
+  - RenavigationModals (4.22.1):
+    - React
+    - RenavigationCore
   - RenavigationTabs (4.22.0):
     - React
     - RenavigationCore
@@ -357,9 +358,9 @@ DEPENDENCIES:
   - React-RCTText (from `./../../../node_modules/react-native//Libraries/Text`)
   - React-RCTVibration (from `./../../../node_modules/react-native//Libraries/Vibration`)
   - ReactCommon/turbomodule/core (from `./../../../node_modules/react-native//ReactCommon`)
-  - renavigation-modals (from `../../../packages/modals`)
   - renavigation-navigation (from `../../../packages/navigation`)
   - RenavigationCore (from `../../../packages/core`)
+  - RenavigationModals (from `../../../packages/modals`)
   - RenavigationTabs (from `../../../packages/tabs`)
   - Yoga (from `./../../../node_modules/react-native//ReactCommon/yoga`)
 
@@ -429,12 +430,12 @@ EXTERNAL SOURCES:
     :path: "./../../../node_modules/react-native//Libraries/Vibration"
   ReactCommon:
     :path: "./../../../node_modules/react-native//ReactCommon"
-  renavigation-modals:
-    :path: "../../../packages/modals"
   renavigation-navigation:
     :path: "../../../packages/navigation"
   RenavigationCore:
     :path: "../../../packages/core"
+  RenavigationModals:
+    :path: "../../../packages/modals"
   RenavigationTabs:
     :path: "../../../packages/tabs"
   Yoga:
@@ -477,9 +478,9 @@ SPEC CHECKSUMS:
   React-RCTText: 65a6de06a7389098ce24340d1d3556015c38f746
   React-RCTVibration: 8e9fb25724a0805107fc1acc9075e26f814df454
   ReactCommon: 4167844018c9ed375cc01a843e9ee564399e53c3
-  renavigation-modals: 6a3830e3347439faefa1e6b343aecb66a1c2e65f
   renavigation-navigation: 22222ee747c389e040fe6dd2ee6c9eec140269cd
   RenavigationCore: 1da21c3d28b3e2e76c3966b35f431c1f30e11c7a
+  RenavigationModals: b3ae2213ce28c363997bc0b9c5bb40b5ea91285f
   RenavigationTabs: da9371976ac4eb387296b1274b13469fb6c3962e
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a

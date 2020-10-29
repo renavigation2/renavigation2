@@ -16,8 +16,8 @@ export const App: React.FC<Props> = ({}) => {
   return (
     <ModalsRouter>
       <NavigationRouter
-        initialEntries={[{ pathname: '/' }, { pathname: '/screen2' }]}
-        initialIndex={1}
+        initialEntries={[{ pathname: '/' }]}
+        initialIndex={0}
         ref={ref}
         navigationBar={
           <NavigationBar
