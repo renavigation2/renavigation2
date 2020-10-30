@@ -102,11 +102,10 @@ class RNRModals: UIView, RNRParent {
 
     func getParentViewController(_ modal: RNRModalContainer) -> UIViewController? {
         if !modals.isEmpty {
-            let parent = modals.last(where: { m in
-                m !== modal
-            })
-            if parent != nil {
-                return parent?.viewController
+            let index = modals.firstIndex(of: modal)
+            if index != nil && index! > 0 {
+                let prev = modals[index! - 1]
+                return prev.viewController
             }
         }
         return RCTKeyWindow()?.rootViewController
