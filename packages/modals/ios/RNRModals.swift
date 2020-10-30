@@ -1,5 +1,8 @@
 import RenavigationCore
 
+var blocked = false
+var blockCount = 0
+
 class RNRModals: UIView, RNRParent {
     var modals: [RNRModalContainer] = []
     var shouldPresent: [RNRModalContainer] = []
@@ -45,12 +48,18 @@ class RNRModals: UIView, RNRParent {
     func updateSubview(_ subview: UIView) {}
 
     func setup() {
-        if !isReady && hasMovedToSuperview && hasMovedToWindow {
-            let childrenReady = areChildrenReady(modals)
-            if childrenReady {
-                isReady = true
-                shouldPresent.forEach { view in
-                    present(view)
+        if blocked || blockCount != 0 {
+            DispatchQueue.main.async { [self] in
+                setup()
+            }
+        } else {
+            if !isReady && hasMovedToSuperview && hasMovedToWindow {
+                let childrenReady = areChildrenReady(modals)
+                if childrenReady {
+                    isReady = true
+                    shouldPresent.forEach { view in
+                        present(view)
+                    }
                 }
             }
         }
@@ -86,7 +95,16 @@ class RNRModals: UIView, RNRParent {
                     animated = false
                 }
 
-                getParentViewController(modal)?.present(modal.viewController, animated: animated)
+                let parentViewController = getParentViewController(modal)
+                if parentViewController != nil {
+                    if ((parentViewController!.presentedViewController) != nil) {
+                        parentViewController!.presentedViewController!.dismiss(animated: false) {
+                            parentViewController!.present(modal.viewController, animated: animated)
+                        }
+                    } else {
+                        parentViewController!.present(modal.viewController, animated: animated)
+                    }
+                }
                 if shouldPresent.count > 0 {
                     shouldPresent.forEach({ scene in
                         present(scene)
@@ -112,12 +130,29 @@ class RNRModals: UIView, RNRParent {
     }
 
     func invalidate() {
-        modals.forEach {modal in
-            modal.viewController.dismiss(animated: false)
-            modal.willMove(toSuperview: nil)
-            modal.removeFromSuperview()
+        var presenting = false
+        modals.forEach { modal in
+            if modal.viewController.isBeingPresented || modal.viewController.isBeingDismissed {
+                presenting = true
+                blocked = true
+            }
         }
-        modals = []
-        shouldPresent = []
+        if presenting {
+            DispatchQueue.main.async { [self] in
+                invalidate()
+            }
+        } else {
+            modals.reversed().forEach { [self] modal in
+                blockCount += 1
+                modal.viewController.dismiss(animated: false) {
+                    blockCount -= 1
+                    if blockCount == 0 {
+                        blocked = false
+                        modals = []
+                        shouldPresent = []
+                    }
+                }
+            }
+        }
     }
 }
