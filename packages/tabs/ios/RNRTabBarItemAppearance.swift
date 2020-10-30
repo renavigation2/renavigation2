@@ -81,7 +81,7 @@ class RNRTabBarItemAppearance: UIView, RNRChild, RNRParent {
 
         if !subviews.isEmpty {
             if subviews.indices.contains(0) { // 0 = normal
-                let subview = getSubview(subviews[0])
+                let subview = getChild(subviews[0])
                 if subview is RNRTabBarItemStateAppearance {
                     (subview as! RNRTabBarItemStateAppearance).setTabBarItemStateAppearance(tabBarItemAppearance.normal, defaultAppearance: (defaultNormal as! UITabBarItemStateAppearance))
                 } else {
@@ -95,7 +95,7 @@ class RNRTabBarItemAppearance: UIView, RNRChild, RNRParent {
                 }
             }
             if subviews.indices.contains(1) { // 1 = selected
-                let subview = getSubview(subviews[1])
+                let subview = getChild(subviews[1])
                 if subview is RNRTabBarItemStateAppearance {
                     (subview as! RNRTabBarItemStateAppearance).setTabBarItemStateAppearance(tabBarItemAppearance.selected, defaultAppearance: (defaultSelected as! UITabBarItemStateAppearance))
                 } else {
@@ -109,7 +109,7 @@ class RNRTabBarItemAppearance: UIView, RNRChild, RNRParent {
                 }
             }
             if subviews.indices.contains(2) { // 2 = disabled
-                let subview = getSubview(subviews[2])
+                let subview = getChild(subviews[2])
                 if subview is RNRTabBarItemStateAppearance {
                     (subview as! RNRTabBarItemStateAppearance).setTabBarItemStateAppearance(tabBarItemAppearance.disabled, defaultAppearance: (defaultDisabled as! UITabBarItemStateAppearance))
                 } else {
@@ -123,7 +123,7 @@ class RNRTabBarItemAppearance: UIView, RNRChild, RNRParent {
                 }
             }
             if subviews.indices.contains(3) { // 3 = focused
-                let subview = getSubview(subviews[3])
+                let subview = getChild(subviews[3])
                 if subview is RNRTabBarItemStateAppearance {
                     (subview as! RNRTabBarItemStateAppearance).setTabBarItemStateAppearance(tabBarItemAppearance.focused, defaultAppearance: (defaultFocused as! UITabBarItemStateAppearance))
                 } else {

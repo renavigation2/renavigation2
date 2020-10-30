@@ -134,21 +134,21 @@ class RNRTabBar: UIView, RNRParent {
 
     func setSubview(_ subview: UIView, at atIndex: Int) {
         if atIndex == 0 { // 0 = backgroundImage
-            let item = getSubview(subview)
+            let item = getChild(subview)
             if item is RNRImageProtocol {
                 tabBarController!.tabBar.backgroundImage = (item as! RNRImageProtocol).getImage()
             } else if tabBarController!.tabBar.backgroundImage != nil {
                 tabBarController!.tabBar.backgroundImage = nil
             }
         } else if atIndex == 1 { // 1 = selectionIndicatorImage
-            let item = getSubview(subview)
+            let item = getChild(subview)
             if item is RNRImageProtocol {
                 tabBarController!.tabBar.selectionIndicatorImage = (item as! RNRImageProtocol).getImage()
             } else if tabBarController!.tabBar.selectionIndicatorImage != nil {
                 tabBarController!.tabBar.selectionIndicatorImage = nil
             }
         } else if atIndex == 2 { // 2 = shadowImage
-            let item = getSubview(subview)
+            let item = getChild(subview)
             if item is RNRImageProtocol {
                 tabBarController!.tabBar.shadowImage = (item as! RNRImageProtocol).getImage()
             } else if tabBarController!.tabBar.shadowImage != nil {
@@ -156,7 +156,7 @@ class RNRTabBar: UIView, RNRParent {
             }
         } else if atIndex == 3 { // 3 = standardAppearance
             if #available(iOS 13.0, *) {
-                let item = getSubview(subview)
+                let item = getChild(subview)
                 if item is RNRTabBarAppearance {
                     tabBarController!.tabBar.standardAppearance = (item as! RNRTabBarAppearance).getTabBarAppearance()
                 } else if tabBarController!.tabBar.standardAppearance != (defaultStandardAppearance as! UITabBarAppearance) {
