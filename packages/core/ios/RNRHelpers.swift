@@ -40,18 +40,27 @@ public func updateInParent(_ superview: UIView, subview: UIView) {
     }
 }
 
-public func getSubview(_ subview: UIView) -> UIView? {
+public func getChild(_ subview: UIView) -> UIView? {
     if subview is RNRChild {
         return subview
     } else if !subview.subviews.isEmpty {
         var match: UIView?
         subview.subviews.forEach { subview in
-            let result = getSubview(subview)
+            let result = getChild(subview)
             if result != nil {
                 match = result
             }
         }
         return match
+    }
+    return nil
+}
+
+public func getParent(_ superview: UIView) -> UIView? {
+    if superview is RNRParent {
+        return superview
+    } else if superview.superview != nil {
+        return getParent(superview.superview!)
     }
     return nil
 }
