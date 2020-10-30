@@ -42,7 +42,7 @@ class RNRTabScene: UIView, RNRChild, RNRParent {
     }
 
     func setItem() {
-        let item = getSubview(subviews[0])
+        let item = getChild(subviews[0])
         if item is RNRTabBarItem {
             viewController.tabBarItem = (item as! RNRTabBarItem).getTabBarItem()
         }

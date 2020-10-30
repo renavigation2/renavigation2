@@ -93,7 +93,7 @@ class RNRTabBarAppearance: UIView, RNRChild, RNRParent {
 
         if !subviews.isEmpty {
             if subviews.indices.contains(0) { // 0 = stackedLayoutAppearance
-                let subview = getSubview(subviews[0])
+                let subview = getChild(subviews[0])
                 if subview is RNRTabBarItemAppearance {
                     tabBarAppearance.stackedLayoutAppearance = (subview as! RNRTabBarItemAppearance).getTabBarItemAppearance()
                 } else if tabBarAppearance.stackedLayoutAppearance != defaultStackedLayoutAppearance as! UITabBarItemAppearance {
@@ -101,7 +101,7 @@ class RNRTabBarAppearance: UIView, RNRChild, RNRParent {
                 }
             }
             if subviews.indices.contains(1) { // 1 = inlineLayoutAppearance
-                let subview = getSubview(subviews[1])
+                let subview = getChild(subviews[1])
                 if subview is RNRTabBarItemAppearance {
                     tabBarAppearance.inlineLayoutAppearance = (subview as! RNRTabBarItemAppearance).getTabBarItemAppearance()
                 } else if tabBarAppearance.inlineLayoutAppearance != defaultInlineLayoutAppearance as! UITabBarItemAppearance {
@@ -109,7 +109,7 @@ class RNRTabBarAppearance: UIView, RNRChild, RNRParent {
                 }
             }
             if subviews.indices.contains(2) { // 2 = compactInlineLayoutAppearance
-                let subview = getSubview(subviews[2])
+                let subview = getChild(subviews[2])
                 if subview is RNRTabBarItemAppearance {
                     tabBarAppearance.compactInlineLayoutAppearance = (subview as! RNRTabBarItemAppearance).getTabBarItemAppearance()
                 } else if tabBarAppearance.compactInlineLayoutAppearance != defaultCompactInlineLayoutAppearance as! UITabBarItemAppearance {
@@ -117,7 +117,7 @@ class RNRTabBarAppearance: UIView, RNRChild, RNRParent {
                 }
             }
             if subviews.indices.contains(3) { // 3 = selectionIndicatorImage
-                let subview = getSubview(subviews[3])
+                let subview = getChild(subviews[3])
                 if subview is RNRImageProtocol {
                     tabBarAppearance.selectionIndicatorImage = (subview as! RNRImageProtocol).getImage()
                 } else if tabBarAppearance.selectionIndicatorImage != nil {
@@ -125,7 +125,7 @@ class RNRTabBarAppearance: UIView, RNRChild, RNRParent {
                 }
             }
             if subviews.indices.contains(4) { // 4 = backgroundImage
-                let subview = getSubview(subviews[4])
+                let subview = getChild(subviews[4])
                 if subview is RNRImageProtocol {
                     tabBarAppearance.backgroundImage = (subview as! RNRImageProtocol).getImage()
                 } else if tabBarAppearance.backgroundImage != nil {
@@ -133,7 +133,7 @@ class RNRTabBarAppearance: UIView, RNRChild, RNRParent {
                 }
             }
             if subviews.indices.contains(5) { // 5 = shadowImage
-                let subview = getSubview(subviews[5])
+                let subview = getChild(subviews[5])
                 if subview is RNRImageProtocol {
                     tabBarAppearance.shadowImage = (subview as! RNRImageProtocol).getImage()
                 } else if tabBarAppearance.shadowImage != nil {

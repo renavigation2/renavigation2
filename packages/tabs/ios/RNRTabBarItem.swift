@@ -125,7 +125,7 @@ class RNRTabBarItem: UIView, RNRChild, RNRParent {
         }
 
         if subviews.indices.contains(0) { // 0 = selectedImage
-            let subview = getSubview(subviews[0])
+            let subview = getChild(subviews[0])
             if subview is RNRImageProtocol {
                 tabBarItem.selectedImage = (subview as! RNRImageProtocol).getImage()
             } else if tabBarItem.selectedImage != defaultSelectedImage {
@@ -134,7 +134,7 @@ class RNRTabBarItem: UIView, RNRChild, RNRParent {
         }
         if subviews.indices.contains(1) { // 1 = standardAppearance
             if #available(iOS 13.0, *) {
-                let subview = getSubview(subviews[1])
+                let subview = getChild(subviews[1])
                 if subview is RNRTabBarAppearance {
                     tabBarItem.standardAppearance = (subview as! RNRTabBarAppearance).getTabBarAppearance()
                 } else if tabBarItem.standardAppearance != (defaultStandardAppearance as? UITabBarAppearance) {
@@ -143,7 +143,7 @@ class RNRTabBarItem: UIView, RNRChild, RNRParent {
             }
         }
         if subviews.indices.contains(2) { // 2 = image
-            let subview = getSubview(subviews[2])
+            let subview = getChild(subviews[2])
             if subview is RNRImageProtocol {
                 tabBarItem.image = (subview as! RNRImageProtocol).getImage()
             } else if tabBarItem.image != defaultImage {
@@ -151,7 +151,7 @@ class RNRTabBarItem: UIView, RNRChild, RNRParent {
             }
         }
         if subviews.indices.contains(3) { // 3 = landscapeImagePhone
-            let subview = getSubview(subviews[3])
+            let subview = getChild(subviews[3])
             if subview is RNRImageProtocol {
                 tabBarItem.landscapeImagePhone = (subview as! RNRImageProtocol).getImage()
             } else if tabBarItem.landscapeImagePhone != defaultLandscapeImagePhone {
@@ -160,7 +160,7 @@ class RNRTabBarItem: UIView, RNRChild, RNRParent {
         }
         if subviews.indices.contains(4) { // 4 = largeContentSizeImage
             if #available(iOS 11.0, *) {
-                let subview = getSubview(subviews[4])
+                let subview = getChild(subviews[4])
                 if subview is RNRImageProtocol {
                     tabBarItem.largeContentSizeImage = (subview as! RNRImageProtocol).getImage()
                 } else if tabBarItem.largeContentSizeImage != defaultLargeContentSizeImage {

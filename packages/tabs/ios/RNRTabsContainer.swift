@@ -22,7 +22,7 @@ class RNRTabsContainer: UIView, UITabBarControllerDelegate, RNRParent {
 
     override func insertReactSubview(_ subview: UIView!, at atIndex: Int) {
         scenes.insert(subview, at: atIndex)
-        let scene = getSubview(subview)
+        let scene = getChild(subview)
         if scene is RNRTabScene {
             scene?.willMove(toSuperview: self)
             if isReady {
@@ -33,7 +33,7 @@ class RNRTabsContainer: UIView, UITabBarControllerDelegate, RNRParent {
     }
 
     override func removeReactSubview(_ subview: UIView!) {
-        let match = getSubview(subview)
+        let match = getChild(subview)
         if isReady {
             tabBarController!.viewControllers?.removeAll(where: {
                 match == $0.view
@@ -66,7 +66,7 @@ class RNRTabsContainer: UIView, UITabBarControllerDelegate, RNRParent {
             if childrenReady {
                 isReady = true
                 tabBarController!.viewControllers = scenes.compactMap {
-                    let subview = getSubview($0)
+                    let subview = getChild($0)
                     if subview is RNRTabScene {
                         return (subview as! RNRTabScene).viewController
                     }
@@ -201,7 +201,7 @@ class RNRTabsContainer: UIView, UITabBarControllerDelegate, RNRParent {
         }
         var match: Int? = nil
         scenes.enumerated().forEach { (index, subview) in
-            let scene = getSubview(subview)
+            let scene = getChild(subview)
             if scene is RNRTabScene {
                 if (scene as! RNRTabScene).viewController == viewController {
                     match = index
@@ -220,7 +220,7 @@ class RNRTabsContainer: UIView, UITabBarControllerDelegate, RNRParent {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         var match: Int? = nil
         scenes.enumerated().forEach { (index, subview) in
-            let scene = getSubview(subview)
+            let scene = getChild(subview)
             if scene is RNRTabScene {
                 if (scene as! RNRTabScene).viewController == viewController {
                     match = index
