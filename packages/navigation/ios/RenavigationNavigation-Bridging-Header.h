@@ -6,6 +6,5 @@
 #import <React/RCTView.h>
 #import <React/RCTViewManager.h>
 #import <React/RCTScrollView.h>
-#import <React/RCTRefreshControl.h>
 #import <React/RCTFont.h>
 #import <React/UIView+React.h>

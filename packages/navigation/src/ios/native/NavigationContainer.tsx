@@ -1,13 +1,15 @@
 import React, { forwardRef, useImperativeHandle, useRef } from 'react'
 import {
+  findNodeHandle,
+  NativeSyntheticEvent,
   requireNativeComponent,
   StyleSheet,
-  UIManager,
-  findNodeHandle,
-  NativeSyntheticEvent
+  UIManager
 } from 'react-native'
 
-const RNRNavigationScenes = requireNativeComponent<any>('RNRNavigationScenes')
+const RNRNavigationContainer = requireNativeComponent<any>(
+  'RNRNavigationContainer'
+)
 
 export interface WillShowViewEvent {
   view: number
@@ -18,12 +20,15 @@ export interface NavigationScenesRef {
   popTo: (ref: React.MutableRefObject<any>, animated: boolean) => void
 }
 
-interface Props {
+export interface NavigationContainerProps {
   children?: any
   onWillShowView: (event: NativeSyntheticEvent<WillShowViewEvent>) => void
 }
 
-function NavigationScenesBase(props: Props, ref: any) {
+function NavigationContainerBase(
+  { children, ...props }: NavigationContainerProps,
+  ref: any
+) {
   const component = useRef<any>()
 
   useImperativeHandle(
@@ -33,7 +38,7 @@ function NavigationScenesBase(props: Props, ref: any) {
         if (component.current) {
           UIManager.dispatchViewManagerCommand(
             findNodeHandle(component.current),
-            (UIManager as any)['RNRNavigationScenes'].Commands.pop,
+            (UIManager as any)['RNRNavigationContainer'].Commands.pop,
             [animated]
           )
         }
@@ -42,7 +47,7 @@ function NavigationScenesBase(props: Props, ref: any) {
         if (component.current) {
           UIManager.dispatchViewManagerCommand(
             findNodeHandle(component.current),
-            (UIManager as any)['RNRNavigationScenes'].Commands.popTo,
+            (UIManager as any)['RNRNavigationContainer'].Commands.popTo,
             [findNodeHandle(ref.current), animated]
           )
         }
@@ -51,12 +56,14 @@ function NavigationScenesBase(props: Props, ref: any) {
   )
 
   return (
-    <RNRNavigationScenes
+    <RNRNavigationContainer
       ref={component}
-      {...props}
       style={StyleSheet.absoluteFill}
-    />
+      {...props}
+    >
+      {children}
+    </RNRNavigationContainer>
   )
 }
 
-export const NavigationScenes = forwardRef(NavigationScenesBase)
+export const NavigationContainer = forwardRef(NavigationContainerBase)

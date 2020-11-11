@@ -6,25 +6,16 @@ import {
   Update
 } from '@renavigation2/history'
 import { NavigationRouterBase } from './NavigationRouterBase'
-import { NavigationBarProps } from '../native/NavigationBar'
 import { NavigationRouterRef } from '../typings/NavigationRouterRef'
 
 export interface NavigationRouterProps {
   children?: React.ReactNode
   initialEntries?: InitialEntry[]
   initialIndex?: number
-  navigationBar?: React.ReactElement<NavigationBarProps>
-  interactivePopGestureEnabled?: boolean
 }
 
 function RefForwardingNavigationRouter(
-  {
-    initialEntries,
-    initialIndex,
-    children,
-    navigationBar,
-    interactivePopGestureEnabled
-  }: NavigationRouterProps,
+  { initialEntries, initialIndex, children }: NavigationRouterProps,
   ref:
     | ((instance: NavigationRouterRef | null | undefined) => void)
     | React.MutableRefObject<NavigationRouterRef | null | undefined>
@@ -49,8 +40,6 @@ function RefForwardingNavigationRouter(
       action={state.action}
       location={state.location}
       navigator={history}
-      navigationBar={navigationBar}
-      interactivePopGestureEnabled={interactivePopGestureEnabled}
       ref={ref}
     >
       {children}

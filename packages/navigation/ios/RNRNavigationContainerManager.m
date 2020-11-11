@@ -1,6 +1,6 @@
 #import "React/RCTViewManager.h"
 
-@interface RCT_EXTERN_MODULE(RNRNavigationScenesManager, RCTViewManager)
+@interface RCT_EXTERN_MODULE(RNRNavigationContainerManager, RCTViewManager)
 
 RCT_EXPORT_VIEW_PROPERTY(onWillShowView, RCTDirectEventBlock)
 

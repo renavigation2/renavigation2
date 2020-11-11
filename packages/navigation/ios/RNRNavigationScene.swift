@@ -1,84 +1,85 @@
-class RNRNavigationScene: UIView {
-    var _reactSuperview: RNRNavigationScenes?
-    var controller: UIViewController = RNRNavigationSceneController()
+import RenavigationCore
 
-    var ready = false
-    var initialized = false
-    var presented = false
-    var appeared = false
+class RNRNavigationScene: UIView, RNRChild, RNRParent{
+    var viewController: RNRNavigationSceneController = RNRNavigationSceneController()
+    var navigationContainer: RNRNavigationContainer?
+
+    var isReady = false
+    var hasUpdatedReactSubviews = false
+    var isPresented = false
 
     @objc var animated: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
-
     @objc var onWillAppear: RCTDirectEventBlock?
     @objc var onDidAppear: RCTDirectEventBlock?
     @objc var onWillDisappear: RCTDirectEventBlock?
     @objc var onDidDisappear: RCTDirectEventBlock?
     @objc var onDidDismiss: RCTDirectEventBlock?
 
+    override func reactViewController() -> UIViewController! {
+        viewController
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        controller.view = self
+        viewController.view = self
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
+        if newSuperview is RNRNavigationContainer {
+            navigationContainer = (newSuperview as! RNRNavigationContainer)
+        }
+    }
+
     override func didUpdateReactSubviews() {
         super.didUpdateReactSubviews()
-        setup()
-    }
-
-    override func reactSuperview() -> UIView! {
-        _reactSuperview!
-    }
-
-    override func reactSetFrame(_ frame: CGRect) {
-    }
-
-    override func reactViewController() -> UIViewController! {
-        controller
+        hasUpdatedReactSubviews = true
+        if !isReady {
+            setup()
+        } else {
+            updateNavigationBarItem()
+        }
     }
 
     func setup() {
-        if !initialized && _reactSuperview != nil {
-            initialized = true
-            if !presented {
-                _reactSuperview!.present(self)
+        if !isReady && hasUpdatedReactSubviews && navigationContainer != nil {
+            isReady = true
+            updateNavigationBarItem()
+            setupParent(navigationContainer!)
+            if navigationContainer!.isReady {
+                navigationContainer!.present(self)
             }
         }
     }
 
-    func findScene(_ subviews: [UIView]) -> RNRNavigationScene? {
-        for subview in subviews {
-            if subview is RNRNavigationScene {
-                return (subview as! RNRNavigationScene)
-            } else if !subview.subviews.isEmpty {
-                let match = findScene(subview.subviews)
-                if match != nil {
-                    return match
-                }
-            }
+    func updateSubview(_ subview: UIView) {
+        if subview is RNRNavigationItem {
+            updateNavigationBarItem()
         }
-        return nil
     }
 
-    func findNavigationBarItem() -> RNRNavigationBarItem? {
-        findNavigationBarItem(subviews)
-    }
-
-    func findNavigationBarItem(_ subviews: [UIView]) -> RNRNavigationBarItem? {
-        for subview in subviews {
-            if subview is RNRNavigationBarItem {
-                return (subview as! RNRNavigationBarItem)
-            } else if !subview.subviews.isEmpty {
-                let match = findNavigationBarItem(subview.subviews)
-                if match != nil {
-                    return match
-                }
+    func updateNavigationBarItem() {
+        reactSubviews().forEach { subview in
+            if subview is RNRNavigationItem {
+                (subview as! RNRNavigationItem).setNavigationItem(viewController.navigationItem)
+                updateRefreshControl((subview as! RNRNavigationItem).getRefreshControl())
             }
         }
-        return nil
+        navigationContainer?.navigationController?.navigationBar.setNeedsLayout()
+    }
+
+    func updateRefreshControl(_ refreshControl: RNRRefreshControlProtocol?) {
+        if #available(iOS 10.0, *) {
+            if refreshControl != nil {
+                findScrollView()?.refreshControl = refreshControl?.getRefreshControl()
+            } else {
+                findScrollView()?.refreshControl = nil
+            }
+        }
     }
 
     func findScrollView() -> UIScrollView? {
@@ -109,7 +110,6 @@ class RNRNavigationScene: UIView {
     }
 
     func didAppear() {
-        appeared = true
         if onDidAppear != nil {
             onDidAppear!([:])
         }
@@ -133,4 +133,3 @@ class RNRNavigationScene: UIView {
         }
     }
 }
-

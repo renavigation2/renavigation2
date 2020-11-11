@@ -29,15 +29,27 @@ import { NavigationRouteContext } from '../context/NavigationRouteContext'
 import { NavigationRouteRenderer } from './NavigationRouteRenderer'
 import { NavigationNavigatorContext } from '../context/NavigationNavigatorContext'
 import {
-  NavigationScenes,
+  NavigationContainer,
   NavigationScenesRef,
   WillShowViewEvent
-} from '../native/NavigationScenes'
+} from '../native/NavigationContainer'
 import { NativeSyntheticEvent, findNodeHandle } from 'react-native'
+import { Navigation } from '../native/Navigation'
+
+export interface NavigationRoutesProps extends RoutesProps {
+  navigationBar?: React.ReactElement<any> | null
+  interactivePopGestureEnabled?: boolean
+}
 
 export const MemoizedConnectedNavigationRoutes: React.FC<
-  RoutesProps & { history: NativeHistory }
-> = ({ history, basename = '', children }) => {
+  NavigationRoutesProps & { history: NativeHistory }
+> = ({
+  history,
+  basename = '',
+  children,
+  navigationBar,
+  interactivePopGestureEnabled
+}) => {
   const [{ action, location }, dispatch] = useReducer(
     (_: Update, action: Update) => action,
     {
@@ -180,9 +192,14 @@ export const MemoizedConnectedNavigationRoutes: React.FC<
   prevElements.current = elements
 
   return (
-    <NavigationScenes ref={scenes} onWillShowView={onWillShowView}>
-      {elements}
-    </NavigationScenes>
+    <Navigation
+      navigationBar={navigationBar}
+      interactivePopGestureEnabled={interactivePopGestureEnabled}
+    >
+      <NavigationContainer ref={scenes} onWillShowView={onWillShowView}>
+        {elements}
+      </NavigationContainer>
+    </Navigation>
   )
 }
 
@@ -191,7 +208,7 @@ const ConnectedNavigationRoutes = memo(
   () => true
 )
 
-export const NavigationRoutes: React.FC<RoutesProps> = (props) => {
+export const NavigationRoutes: React.FC<NavigationRoutesProps> = (props) => {
   const { navigator } = useContext(NavigationNavigatorContext)
 
   const history = useRef<NativeHistory>(navigator as NativeHistory)

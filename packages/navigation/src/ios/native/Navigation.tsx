@@ -1,19 +1,19 @@
+import { processBoolean } from '@renavigation2/core'
 import React from 'react'
 import { requireNativeComponent, StyleSheet } from 'react-native'
-import { processBoolean } from '../utils/processBoolean'
-import { NavigationBar, NavigationBarProps } from './NavigationBar'
+import { NavigationBar } from './NavigationBar'
 
 const RNRNavigation = requireNativeComponent<any>('RNRNavigation')
 
 export interface NavigationProps {
-  navigationBar?: React.ReactElement<NavigationBarProps>
   interactivePopGestureEnabled?: boolean
+  navigationBar?: React.ReactElement<any> | null
 }
 
 export const Navigation: React.FC<NavigationProps> = ({
   children,
-  navigationBar,
   interactivePopGestureEnabled,
+  navigationBar,
   ...props
 }) => {
   return (

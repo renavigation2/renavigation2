@@ -1,9 +1,6 @@
 import React, { forwardRef, useImperativeHandle } from 'react'
 import { NativeHistory, Action, Location } from '@renavigation2/history'
 import { NavigationNavigatorContext } from '../context/NavigationNavigatorContext'
-import { NavigationBarProps } from '../native/NavigationBar'
-import { Navigation } from '../native/Navigation'
-import { NavigationRoutes } from './NavigationRoutes'
 import { NavigationRouterRef } from '../typings/NavigationRouterRef'
 
 export interface NavigationRouterBaseProps {
@@ -12,8 +9,6 @@ export interface NavigationRouterBaseProps {
   location: Location
   navigator: NativeHistory
   static?: boolean
-  navigationBar?: React.ReactElement<NavigationBarProps>
-  interactivePopGestureEnabled?: boolean
 }
 
 function RefForwardingNavigationRouterBase(
@@ -22,9 +17,7 @@ function RefForwardingNavigationRouterBase(
     navigator,
     action,
     location,
-    static: staticProp = false,
-    navigationBar,
-    interactivePopGestureEnabled
+    static: staticProp = false
   }: NavigationRouterBaseProps,
   ref:
     | ((instance: NavigationRouterRef | null | undefined) => void)
@@ -43,12 +36,7 @@ function RefForwardingNavigationRouterBase(
         static: staticProp
       }}
     >
-      <Navigation
-        navigationBar={navigationBar}
-        interactivePopGestureEnabled={interactivePopGestureEnabled}
-      >
-        <NavigationRoutes>{children}</NavigationRoutes>
-      </Navigation>
+      {children}
     </NavigationNavigatorContext.Provider>
   )
 }
