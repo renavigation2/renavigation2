@@ -1,25 +1,17 @@
-@objc(RNRNavigationScenesManager)
-class RNRNavigationScenesManager: RCTViewManager, RCTInvalidating {
-    var navigationScenes: RNRNavigationScenes?
-
-    override init() {
-        super.init()
-    }
+@objc(RNRNavigationContainerManager)
+class RNRNavigationContainerManager: RCTViewManager {
+    var navigationContainer: RNRNavigationContainer?
 
     override func view() -> UIView! {
-        navigationScenes = RNRNavigationScenes()
-        return navigationScenes
-    }
-
-    override static func requiresMainQueueSetup() -> Bool {
-        true
+        navigationContainer = RNRNavigationContainer()
+        return navigationContainer
     }
 
     @objc func pop(_ node: NSNumber, animated: Bool) {
         DispatchQueue.main.async { [self] in
             (bridge.uiManager.view(
                     forReactTag: node
-            ) as? RNRNavigationScenes)?.pop(animated: animated)
+            ) as? RNRNavigationContainer)?.pop(animated: animated)
         }
     }
 
@@ -31,11 +23,12 @@ class RNRNavigationScenesManager: RCTViewManager, RCTInvalidating {
             if view != nil {
                 (bridge.uiManager.view(
                         forReactTag: node
-                ) as? RNRNavigationScenes)?.popTo(view!, animated: animated)
+                ) as? RNRNavigationContainer)?.popTo(view!, animated: animated)
             }
         }
     }
 
-    func invalidate() {
+    override static func requiresMainQueueSetup() -> Bool {
+        true
     }
 }

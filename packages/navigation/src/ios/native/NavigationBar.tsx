@@ -1,47 +1,52 @@
-import React from 'react'
-import { processColor, requireNativeComponent, ColorValue } from 'react-native'
-import { TextStyle } from '../typings/TextStyle'
-import { processBoolean } from '../utils/processBoolean'
-import { processTextStyle } from '../utils/processTextStyle'
 import {
-  NavigationBarAppearanceProps,
-  processNavigationBarAppearance
-} from './NavigationBarAppearance'
-import { ImageProps, processImage } from './Image'
+  EmptyComponent,
+  processBoolean,
+  processTextStyle,
+  StyleSheet,
+  TextStyle
+} from '@renavigation2/core'
+import React from 'react'
+import { ColorValue, processColor, requireNativeComponent } from 'react-native'
 
 const RNRNavigationBar = requireNativeComponent<any>('RNRNavigationBar')
 
 export interface NavigationBarProps {
-  isTranslucent?: boolean
+  translucent?: boolean
   prefersLargeTitles?: boolean
   hidden?: boolean
   tintColor?: ColorValue
+  barTintColor?: ColorValue
   titleStyle?: Omit<TextStyle, 'textTransform'>
   largeTitleStyle?: Omit<TextStyle, 'textTransform'>
   defaultTitleVerticalPositionAdjustment?: number
   defaultPromptTitleVerticalPositionAdjustment?: number
   compactTitleVerticalPositionAdjustment?: number
   compactPromptTitleVerticalPositionAdjustment?: number
-  backIndicatorImage?: React.ReactElement<ImageProps> | null
-  backIndicatorTransitionMaskImage?: React.ReactElement<ImageProps> | null
-  shadowImage?: React.ReactElement<ImageProps> | null
-  defaultBackgroundImage?: React.ReactElement<ImageProps> | null
-  defaultPromptBackgroundImage?: React.ReactElement<ImageProps> | null
-  compactBackgroundImage?: React.ReactElement<ImageProps> | null
-  compactPromptBackgroundImage?: React.ReactElement<ImageProps> | null
-  standardAppearance?: React.ReactElement<NavigationBarAppearanceProps>
-  compactAppearance?: React.ReactElement<NavigationBarAppearanceProps>
-  scrollEdgeAppearance?: React.ReactElement<NavigationBarAppearanceProps>
+  backIndicatorImage?: React.ReactElement<any> | null
+  backIndicatorTransitionMaskImage?: React.ReactElement<any> | null
+  shadowImage?: React.ReactElement<any> | null
+  defaultBackgroundImage?: React.ReactElement<any> | null
+  defaultPromptBackgroundImage?: React.ReactElement<any> | null
+  compactBackgroundImage?: React.ReactElement<any> | null
+  compactPromptBackgroundImage?: React.ReactElement<any> | null
+  standardAppearance?: React.ReactElement<any> | null
+  compactAppearance?: React.ReactElement<any> | null
+  scrollEdgeAppearance?: React.ReactElement<any> | null
 }
 
 export const NavigationBar: React.FC<NavigationBarProps> = ({
+  children,
+  translucent,
+  prefersLargeTitles,
   hidden,
   tintColor,
+  barTintColor,
   titleStyle,
   largeTitleStyle,
-  standardAppearance,
-  compactAppearance,
-  scrollEdgeAppearance,
+  defaultTitleVerticalPositionAdjustment,
+  defaultPromptTitleVerticalPositionAdjustment,
+  compactTitleVerticalPositionAdjustment,
+  compactPromptTitleVerticalPositionAdjustment,
   backIndicatorImage,
   backIndicatorTransitionMaskImage,
   shadowImage,
@@ -49,70 +54,61 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
   defaultPromptBackgroundImage,
   compactBackgroundImage,
   compactPromptBackgroundImage,
+  standardAppearance,
+  compactAppearance,
+  scrollEdgeAppearance,
   ...props
 }) => {
-  props = processBoolean(props, 'isTranslucent')
-  props = processBoolean(props, 'prefersLargeTitles')
-
-  if (titleStyle) {
-    titleStyle = processTextStyle(titleStyle)
-  }
-  if (largeTitleStyle) {
-    largeTitleStyle = processTextStyle(largeTitleStyle)
-  }
-
   return (
     <RNRNavigationBar
-      customHidden={processBoolean(hidden)}
-      customTintColor={tintColor ? processColor(tintColor) : undefined}
-      titleStyle={titleStyle}
-      largeTitleStyle={largeTitleStyle}
-      standardAppearance={
-        standardAppearance
-          ? processNavigationBarAppearance(standardAppearance)
-          : undefined
-      }
-      compactAppearance={
-        compactAppearance
-          ? processNavigationBarAppearance(compactAppearance)
-          : undefined
-      }
-      scrollEdgeAppearance={
-        scrollEdgeAppearance
-          ? processNavigationBarAppearance(scrollEdgeAppearance)
-          : undefined
-      }
-      backIndicatorImage={
-        backIndicatorImage ? processImage(backIndicatorImage) : undefined
-      }
-      backIndicatorTransitionMaskImage={
-        backIndicatorTransitionMaskImage
-          ? processImage(backIndicatorTransitionMaskImage)
-          : undefined
-      }
-      shadowImage={shadowImage ? processImage(shadowImage) : undefined}
-      defaultBackgroundImage={
-        defaultBackgroundImage
-          ? processImage(defaultBackgroundImage)
-          : undefined
-      }
-      defaultPromptBackgroundImage={
-        defaultPromptBackgroundImage
-          ? processImage(defaultPromptBackgroundImage)
-          : undefined
-      }
-      compactBackgroundImage={
-        compactBackgroundImage
-          ? processImage(compactBackgroundImage)
-          : undefined
-      }
-      compactPromptBackgroundImage={
-        compactPromptBackgroundImage
-          ? processImage(compactPromptBackgroundImage)
-          : undefined
-      }
+      style={StyleSheet.absoluteHidden}
+      pointerEvents="none"
       {...props}
-      style={{ position: 'absolute', top: 0, left: 0 }}
-    />
+      isTranslucent={processBoolean(translucent)}
+      prefersLargeTitles={processBoolean(prefersLargeTitles)}
+      _isHidden={processBoolean(hidden)}
+      _tintColor={processColor(tintColor)}
+      barTintColor={processColor(barTintColor)}
+      titleStyle={titleStyle ? processTextStyle(titleStyle) : undefined}
+      largeTitleStyle={
+        largeTitleStyle ? processTextStyle(largeTitleStyle) : undefined
+      }
+      defaultTitleVerticalPositionAdjustment={
+        defaultTitleVerticalPositionAdjustment
+      }
+      defaultPromptTitleVerticalPositionAdjustment={
+        defaultPromptTitleVerticalPositionAdjustment
+      }
+      compactTitleVerticalPositionAdjustment={
+        compactTitleVerticalPositionAdjustment
+      }
+      compactPromptTitleVerticalPositionAdjustment={
+        compactPromptTitleVerticalPositionAdjustment
+      }
+    >
+      {backIndicatorImage ? backIndicatorImage : <EmptyComponent />}
+      {backIndicatorTransitionMaskImage ? (
+        backIndicatorTransitionMaskImage
+      ) : (
+        <EmptyComponent />
+      )}
+      {shadowImage ? shadowImage : <EmptyComponent />}
+      {defaultBackgroundImage ? defaultBackgroundImage : <EmptyComponent />}
+      {defaultPromptBackgroundImage ? (
+        defaultPromptBackgroundImage
+      ) : (
+        <EmptyComponent />
+      )}
+      {compactBackgroundImage ? compactBackgroundImage : <EmptyComponent />}
+      {compactPromptBackgroundImage ? (
+        compactPromptBackgroundImage
+      ) : (
+        <EmptyComponent />
+      )}
+      {standardAppearance ? standardAppearance : <EmptyComponent />}
+      {compactAppearance ? compactAppearance : <EmptyComponent />}
+      {scrollEdgeAppearance ? scrollEdgeAppearance : <EmptyComponent />}
+      {children}
+    </RNRNavigationBar>
   )
 }

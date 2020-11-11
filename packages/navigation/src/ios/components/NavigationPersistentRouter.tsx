@@ -14,7 +14,6 @@ import {
   Location
 } from '@renavigation2/history'
 import { NavigationRouterBase } from './NavigationRouterBase'
-import { NavigationBarProps } from '../native/NavigationBar'
 import { NavigationRouterRef } from '../typings/NavigationRouterRef'
 
 export interface NavigationPersistentRouterProps {
@@ -27,8 +26,6 @@ export interface NavigationPersistentRouterProps {
   migrate?: Migrate
   dataReconciler?: false | DataReconciler
   transforms?: Transform[]
-  navigationBar?: React.ReactElement<NavigationBarProps>
-  interactivePopGestureEnabled?: boolean
 }
 
 function RefForwardingNavigationPersistentRouter(
@@ -41,9 +38,7 @@ function RefForwardingNavigationPersistentRouter(
     migrate,
     dataReconciler,
     transforms,
-    children,
-    navigationBar,
-    interactivePopGestureEnabled
+    children
   }: NavigationPersistentRouterProps,
   ref:
     | ((instance: NavigationRouterRef | null | undefined) => void)
@@ -92,8 +87,6 @@ function RefForwardingNavigationPersistentRouter(
       action={state === undefined ? history.action : state.action}
       location={state === undefined ? history.location : state.location}
       navigator={history}
-      navigationBar={navigationBar}
-      interactivePopGestureEnabled={interactivePopGestureEnabled}
       ref={ref}
     >
       {children}

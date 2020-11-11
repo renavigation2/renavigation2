@@ -1,21 +1,11 @@
 @objc(RNRNavigationManager)
-class RNRNavigationManager: RCTViewManager, RCTInvalidating {
-    var navigation: RNRNavigation?
-
-    override init() {
-        super.init()
-    }
-
+class RNRNavigationManager: RCTViewManager {
     override func view() -> UIView! {
-        navigation = RNRNavigation()
-        return navigation
+        RNRNavigation()
     }
 
     override static func requiresMainQueueSetup() -> Bool {
         true
     }
 
-    func invalidate() {
-        navigation?.invalidate()
-    }
 }

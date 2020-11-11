@@ -1,18 +1,18 @@
 import React from 'react'
-import { NavigationBarItemProps } from '../native/NavigationBarItem'
+import { NavigationItem } from '../native/NavigationItem'
 
 interface Props {
-  navigationBarItem?: React.ReactElement<NavigationBarItemProps> | null
+  navigationItem?: React.ReactElement<any> | null
 }
 
 export const NavigationScreen: React.FC<Props> = ({
-  navigationBarItem,
+  navigationItem,
   children
 }) => {
   return (
     <>
       {children}
-      {navigationBarItem}
+      {navigationItem ? navigationItem : <NavigationItem />}
     </>
   )
 }

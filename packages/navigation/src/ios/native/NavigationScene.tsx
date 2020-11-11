@@ -1,10 +1,10 @@
+import { processBoolean } from '@renavigation2/core'
 import React, { forwardRef, useCallback, useEffect, useRef } from 'react'
 import { requireNativeComponent, StyleSheet } from 'react-native'
-import { processBoolean } from '../utils/processBoolean'
 
 const RNRNavigationScene = requireNativeComponent<any>('RNRNavigationScene')
 
-interface NavigationSceneProps {
+export interface NavigationSceneProps {
   animated?: boolean
   onWillAppear?: () => void
   onDidAppear?: () => void
@@ -15,7 +15,16 @@ interface NavigationSceneProps {
 }
 
 function NavigationSceneBase(
-  { animated, onWillDisappear, onDidDisappear, ...props }: NavigationSceneProps,
+  {
+    animated,
+    onWillAppear,
+    onDidAppear,
+    onWillDisappear,
+    onDidDisappear,
+    onDidDismiss,
+    children,
+    ...props
+  }: NavigationSceneProps,
   ref: any
 ) {
   const willDisappearCalled = useRef(false)
@@ -46,12 +55,17 @@ function NavigationSceneBase(
   return (
     <RNRNavigationScene
       ref={ref}
+      style={StyleSheet.absoluteFill}
       animated={processBoolean(animated)}
+      onWillAppear={onWillAppear}
+      onDidAppear={onDidAppear}
       onWillDisappear={onWillDisappearCallback}
       onDidDisappear={onDidDisappearCallback}
+      onDidDismiss={onDidDismiss}
       {...props}
-      style={StyleSheet.absoluteFill}
-    />
+    >
+      {children}
+    </RNRNavigationScene>
   )
 }
 

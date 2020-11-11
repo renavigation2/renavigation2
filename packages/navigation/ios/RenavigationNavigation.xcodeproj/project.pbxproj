@@ -7,52 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C038569E2532A386006E0AAC /* RNRNavigationBackButtonDisplayMode.m in Sources */ = {isa = PBXBuildFile; fileRef = C038569C2532A386006E0AAC /* RNRNavigationBackButtonDisplayMode.m */; };
-		C038569F2532A386006E0AAC /* RNRNavigationBackButtonDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C038569D2532A386006E0AAC /* RNRNavigationBackButtonDisplayMode.swift */; };
 		C06A104B253B34F200D07B3B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06A104A253B34F200D07B3B /* UIKit.framework */; };
-		C08BCA4C25337817002F62AE /* RNRNavigationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08BCA4B25337817002F62AE /* RNRNavigationAction.swift */; };
-		C08BCA4F2533FA75002F62AE /* RNRNavigationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08BCA4E2533FA75002F62AE /* RNRNavigationMenu.swift */; };
-		C0E3040125241D0E00DC94CB /* RNRNavigationSearchBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303DA25241D0D00DC94CB /* RNRNavigationSearchBarStyle.swift */; };
-		C0E3040225241D0E00DC94CB /* RNRNavigationBarItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E303DB25241D0D00DC94CB /* RNRNavigationBarItemManager.m */; };
-		C0E3040325241D0E00DC94CB /* RNRNavigationRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303DC25241D0D00DC94CB /* RNRNavigationRefreshControl.swift */; };
-		C0E3040425241D0E00DC94CB /* RNRNavigationBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303DD25241D0D00DC94CB /* RNRNavigationBarAppearance.swift */; };
-		C0E3040525241D0E00DC94CB /* RNRNavigationBlurEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303DE25241D0D00DC94CB /* RNRNavigationBlurEffect.swift */; };
-		C0E3040625241D0E00DC94CB /* RNRNavigationBarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E303DF25241D0D00DC94CB /* RNRNavigationBarStyle.m */; };
-		C0E3040725241D0E00DC94CB /* RNRNavigationSceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303E025241D0E00DC94CB /* RNRNavigationSceneManager.swift */; };
-		C0E3040825241D0E00DC94CB /* RNRNavigationBarItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303E125241D0E00DC94CB /* RNRNavigationBarItemManager.swift */; };
-		C0E3040925241D0E00DC94CB /* RNRNavigationContentMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303E225241D0E00DC94CB /* RNRNavigationContentMode.swift */; };
-		C0E3040A25241D0E00DC94CB /* RNRNavigationLargeTitleDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303E325241D0E00DC94CB /* RNRNavigationLargeTitleDisplayMode.swift */; };
-		C0E3040B25241D0E00DC94CB /* RNRNavigationEmptyComponentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E303E425241D0E00DC94CB /* RNRNavigationEmptyComponentManager.m */; };
-		C0E3040C25241D0E00DC94CB /* RNRNavigationSceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E303E525241D0E00DC94CB /* RNRNavigationSceneManager.m */; };
-		C0E3040D25241D0E00DC94CB /* RNRNavigationSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303E625241D0E00DC94CB /* RNRNavigationSearchManager.swift */; };
-		C0E3040E25241D0E00DC94CB /* RNRNavigationSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303E725241D0E00DC94CB /* RNRNavigationSceneController.swift */; };
-		C0E3040F25241D0E00DC94CB /* RNRNavigationEmptyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303E825241D0E00DC94CB /* RNRNavigationEmptyComponent.swift */; };
-		C0E3041025241D0E00DC94CB /* RNRNavigationBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303E925241D0E00DC94CB /* RNRNavigationBarItem.swift */; };
-		C0E3041125241D0E00DC94CB /* RNRNavigationBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303EA25241D0E00DC94CB /* RNRNavigationBarStyle.swift */; };
-		C0E3041225241D0E00DC94CB /* RNRNavigationEmptyComponentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303EB25241D0E00DC94CB /* RNRNavigationEmptyComponentManager.swift */; };
-		C0E3041325241D0E00DC94CB /* RNRNavigationSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303EC25241D0E00DC94CB /* RNRNavigationSearch.swift */; };
-		C0E3041425241D0E00DC94CB /* RNRNavigationBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303ED25241D0E00DC94CB /* RNRNavigationBarManager.swift */; };
-		C0E3041525241D0E00DC94CB /* RNRNavigationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E303EE25241D0E00DC94CB /* RNRNavigationManager.m */; };
-		C0E3041625241D0E00DC94CB /* RNRNavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303EF25241D0E00DC94CB /* RNRNavigationManager.swift */; };
-		C0E3041725241D0E00DC94CB /* RNRNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303F025241D0E00DC94CB /* RNRNavigation.swift */; };
-		C0E3041825241D0E00DC94CB /* RNRNavigationContentMode.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E303F125241D0E00DC94CB /* RNRNavigationContentMode.m */; };
-		C0E3041925241D0E00DC94CB /* RNRNavigationButtonAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303F225241D0E00DC94CB /* RNRNavigationButtonAppearance.swift */; };
-		C0E3041A25241D0E00DC94CB /* RNRNavigationRefreshControlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E303F325241D0E00DC94CB /* RNRNavigationRefreshControlManager.m */; };
-		C0E3041B25241D0E00DC94CB /* RNRNavigationScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303F425241D0E00DC94CB /* RNRNavigationScenes.swift */; };
-		C0E3041C25241D0E00DC94CB /* RNRNavigationTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303F525241D0E00DC94CB /* RNRNavigationTextStyle.swift */; };
-		C0E3041D25241D0E00DC94CB /* RNRNavigationScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303F625241D0E00DC94CB /* RNRNavigationScene.swift */; };
-		C0E3041E25241D0E00DC94CB /* RNRNavigationBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E303F725241D0E00DC94CB /* RNRNavigationBarManager.m */; };
-		C0E3041F25241D0E00DC94CB /* RNRNavigationScenesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303F825241D0E00DC94CB /* RNRNavigationScenesManager.swift */; };
-		C0E3042025241D0E00DC94CB /* RNRNavigationSearchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E303F925241D0E00DC94CB /* RNRNavigationSearchManager.m */; };
-		C0E3042125241D0E00DC94CB /* RNRNavigationButtonStateAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303FA25241D0E00DC94CB /* RNRNavigationButtonStateAppearance.swift */; };
-		C0E3042225241D0E00DC94CB /* RNRNavigationBlurEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E303FB25241D0E00DC94CB /* RNRNavigationBlurEffect.m */; };
-		C0E3042325241D0E00DC94CB /* RNRNavigationRefreshControlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303FC25241D0E00DC94CB /* RNRNavigationRefreshControlManager.swift */; };
-		C0E3042425241D0E00DC94CB /* RNRNavigationSearchBarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E303FD25241D0E00DC94CB /* RNRNavigationSearchBarStyle.m */; };
-		C0E3042525241D0E00DC94CB /* RNRNavigationLargeTitleDisplayMode.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E303FE25241D0E00DC94CB /* RNRNavigationLargeTitleDisplayMode.m */; };
-		C0E3042625241D0E00DC94CB /* RNRNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E303FF25241D0E00DC94CB /* RNRNavigationBar.swift */; };
-		C0E3042725241D0E00DC94CB /* RNRNavigationScenesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E3040025241D0E00DC94CB /* RNRNavigationScenesManager.m */; };
-		C0EF5FB62532B3FC00D7FE4C /* RNRNavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EF5FB52532B3FC00D7FE4C /* RNRNavigationButton.swift */; };
-		C0EF5FB92532C16700D7FE4C /* RNRNavigationImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EF5FB82532C16700D7FE4C /* RNRNavigationImage.swift */; };
+		C07A1EB8255B91F2007D8F13 /* RNRNavigationSceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EA5255B91F2007D8F13 /* RNRNavigationSceneManager.swift */; };
+		C07A1EB9255B91F2007D8F13 /* RNRNavigationItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EA6255B91F2007D8F13 /* RNRNavigationItemManager.m */; };
+		C07A1EBA255B91F2007D8F13 /* RNRNavigationBarAppearanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EA7255B91F2007D8F13 /* RNRNavigationBarAppearanceManager.m */; };
+		C07A1EBB255B91F2007D8F13 /* RNRNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EA8255B91F2007D8F13 /* RNRNavigation.swift */; };
+		C07A1EBC255B91F2007D8F13 /* RNRNavigationScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EA9255B91F2007D8F13 /* RNRNavigationScene.swift */; };
+		C07A1EBD255B91F2007D8F13 /* RNRNavigationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EAA255B91F2007D8F13 /* RNRNavigationManager.m */; };
+		C07A1EBE255B91F2007D8F13 /* RNRNavigationBarAppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EAB255B91F2007D8F13 /* RNRNavigationBarAppearanceManager.swift */; };
+		C07A1EBF255B91F2007D8F13 /* RNRNavigationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EAC255B91F2007D8F13 /* RNRNavigationContainer.swift */; };
+		C07A1EC0255B91F2007D8F13 /* RNRNavigationItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EAD255B91F2007D8F13 /* RNRNavigationItemManager.swift */; };
+		C07A1EC1255B91F2007D8F13 /* RNRNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EAE255B91F2007D8F13 /* RNRNavigationBar.swift */; };
+		C07A1EC2255B91F2007D8F13 /* RNRNavigationBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EAF255B91F2007D8F13 /* RNRNavigationBarAppearance.swift */; };
+		C07A1EC3255B91F2007D8F13 /* RNRNavigationSceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EB0255B91F2007D8F13 /* RNRNavigationSceneManager.m */; };
+		C07A1EC4255B91F2007D8F13 /* RNRNavigationBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EB1255B91F2007D8F13 /* RNRNavigationBarManager.m */; };
+		C07A1EC5255B91F2007D8F13 /* RNRNavigationContainerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EB2255B91F2007D8F13 /* RNRNavigationContainerManager.m */; };
+		C07A1EC6255B91F2007D8F13 /* RNRNavigationContainerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EB3255B91F2007D8F13 /* RNRNavigationContainerManager.swift */; };
+		C07A1EC7255B91F2007D8F13 /* RNRNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EB4255B91F2007D8F13 /* RNRNavigationItem.swift */; };
+		C07A1EC8255B91F2007D8F13 /* RNRNavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EB5255B91F2007D8F13 /* RNRNavigationManager.swift */; };
+		C07A1EC9255B91F2007D8F13 /* RNRNavigationBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EB6255B91F2007D8F13 /* RNRNavigationBarManager.swift */; };
+		C07A1ECA255B91F2007D8F13 /* RNRNavigationSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EB7255B91F2007D8F13 /* RNRNavigationSceneController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,53 +43,27 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRenavigationNavigation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRenavigationNavigation.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C038569C2532A386006E0AAC /* RNRNavigationBackButtonDisplayMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationBackButtonDisplayMode.m; sourceTree = "<group>"; };
-		C038569D2532A386006E0AAC /* RNRNavigationBackButtonDisplayMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationBackButtonDisplayMode.swift; sourceTree = "<group>"; };
 		C06A104A253B34F200D07B3B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/iOSSupport/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		C08BCA4B25337817002F62AE /* RNRNavigationAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationAction.swift; sourceTree = "<group>"; };
-		C08BCA4E2533FA75002F62AE /* RNRNavigationMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationMenu.swift; sourceTree = "<group>"; };
-		C0E303DA25241D0D00DC94CB /* RNRNavigationSearchBarStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationSearchBarStyle.swift; sourceTree = "<group>"; };
-		C0E303DB25241D0D00DC94CB /* RNRNavigationBarItemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationBarItemManager.m; sourceTree = "<group>"; };
-		C0E303DC25241D0D00DC94CB /* RNRNavigationRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationRefreshControl.swift; sourceTree = "<group>"; };
-		C0E303DD25241D0D00DC94CB /* RNRNavigationBarAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationBarAppearance.swift; sourceTree = "<group>"; };
-		C0E303DE25241D0D00DC94CB /* RNRNavigationBlurEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationBlurEffect.swift; sourceTree = "<group>"; };
-		C0E303DF25241D0D00DC94CB /* RNRNavigationBarStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationBarStyle.m; sourceTree = "<group>"; };
-		C0E303E025241D0E00DC94CB /* RNRNavigationSceneManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationSceneManager.swift; sourceTree = "<group>"; };
-		C0E303E125241D0E00DC94CB /* RNRNavigationBarItemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationBarItemManager.swift; sourceTree = "<group>"; };
-		C0E303E225241D0E00DC94CB /* RNRNavigationContentMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationContentMode.swift; sourceTree = "<group>"; };
-		C0E303E325241D0E00DC94CB /* RNRNavigationLargeTitleDisplayMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationLargeTitleDisplayMode.swift; sourceTree = "<group>"; };
-		C0E303E425241D0E00DC94CB /* RNRNavigationEmptyComponentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationEmptyComponentManager.m; sourceTree = "<group>"; };
-		C0E303E525241D0E00DC94CB /* RNRNavigationSceneManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationSceneManager.m; sourceTree = "<group>"; };
-		C0E303E625241D0E00DC94CB /* RNRNavigationSearchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationSearchManager.swift; sourceTree = "<group>"; };
-		C0E303E725241D0E00DC94CB /* RNRNavigationSceneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationSceneController.swift; sourceTree = "<group>"; };
-		C0E303E825241D0E00DC94CB /* RNRNavigationEmptyComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationEmptyComponent.swift; sourceTree = "<group>"; };
-		C0E303E925241D0E00DC94CB /* RNRNavigationBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationBarItem.swift; sourceTree = "<group>"; };
-		C0E303EA25241D0E00DC94CB /* RNRNavigationBarStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationBarStyle.swift; sourceTree = "<group>"; };
-		C0E303EB25241D0E00DC94CB /* RNRNavigationEmptyComponentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationEmptyComponentManager.swift; sourceTree = "<group>"; };
-		C0E303EC25241D0E00DC94CB /* RNRNavigationSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationSearch.swift; sourceTree = "<group>"; };
-		C0E303ED25241D0E00DC94CB /* RNRNavigationBarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationBarManager.swift; sourceTree = "<group>"; };
-		C0E303EE25241D0E00DC94CB /* RNRNavigationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationManager.m; sourceTree = "<group>"; };
-		C0E303EF25241D0E00DC94CB /* RNRNavigationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationManager.swift; sourceTree = "<group>"; };
-		C0E303F025241D0E00DC94CB /* RNRNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigation.swift; sourceTree = "<group>"; };
-		C0E303F125241D0E00DC94CB /* RNRNavigationContentMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationContentMode.m; sourceTree = "<group>"; };
-		C0E303F225241D0E00DC94CB /* RNRNavigationButtonAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationButtonAppearance.swift; sourceTree = "<group>"; };
-		C0E303F325241D0E00DC94CB /* RNRNavigationRefreshControlManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationRefreshControlManager.m; sourceTree = "<group>"; };
-		C0E303F425241D0E00DC94CB /* RNRNavigationScenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationScenes.swift; sourceTree = "<group>"; };
-		C0E303F525241D0E00DC94CB /* RNRNavigationTextStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationTextStyle.swift; sourceTree = "<group>"; };
-		C0E303F625241D0E00DC94CB /* RNRNavigationScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationScene.swift; sourceTree = "<group>"; };
-		C0E303F725241D0E00DC94CB /* RNRNavigationBarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationBarManager.m; sourceTree = "<group>"; };
-		C0E303F825241D0E00DC94CB /* RNRNavigationScenesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationScenesManager.swift; sourceTree = "<group>"; };
-		C0E303F925241D0E00DC94CB /* RNRNavigationSearchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationSearchManager.m; sourceTree = "<group>"; };
-		C0E303FA25241D0E00DC94CB /* RNRNavigationButtonStateAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationButtonStateAppearance.swift; sourceTree = "<group>"; };
-		C0E303FB25241D0E00DC94CB /* RNRNavigationBlurEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationBlurEffect.m; sourceTree = "<group>"; };
-		C0E303FC25241D0E00DC94CB /* RNRNavigationRefreshControlManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationRefreshControlManager.swift; sourceTree = "<group>"; };
-		C0E303FD25241D0E00DC94CB /* RNRNavigationSearchBarStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationSearchBarStyle.m; sourceTree = "<group>"; };
-		C0E303FE25241D0E00DC94CB /* RNRNavigationLargeTitleDisplayMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationLargeTitleDisplayMode.m; sourceTree = "<group>"; };
-		C0E303FF25241D0E00DC94CB /* RNRNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationBar.swift; sourceTree = "<group>"; };
-		C0E3040025241D0E00DC94CB /* RNRNavigationScenesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationScenesManager.m; sourceTree = "<group>"; };
+		C07A1EA5255B91F2007D8F13 /* RNRNavigationSceneManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationSceneManager.swift; sourceTree = "<group>"; };
+		C07A1EA6255B91F2007D8F13 /* RNRNavigationItemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationItemManager.m; sourceTree = "<group>"; };
+		C07A1EA7255B91F2007D8F13 /* RNRNavigationBarAppearanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationBarAppearanceManager.m; sourceTree = "<group>"; };
+		C07A1EA8255B91F2007D8F13 /* RNRNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigation.swift; sourceTree = "<group>"; };
+		C07A1EA9255B91F2007D8F13 /* RNRNavigationScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationScene.swift; sourceTree = "<group>"; };
+		C07A1EAA255B91F2007D8F13 /* RNRNavigationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationManager.m; sourceTree = "<group>"; };
+		C07A1EAB255B91F2007D8F13 /* RNRNavigationBarAppearanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationBarAppearanceManager.swift; sourceTree = "<group>"; };
+		C07A1EAC255B91F2007D8F13 /* RNRNavigationContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationContainer.swift; sourceTree = "<group>"; };
+		C07A1EAD255B91F2007D8F13 /* RNRNavigationItemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationItemManager.swift; sourceTree = "<group>"; };
+		C07A1EAE255B91F2007D8F13 /* RNRNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationBar.swift; sourceTree = "<group>"; };
+		C07A1EAF255B91F2007D8F13 /* RNRNavigationBarAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationBarAppearance.swift; sourceTree = "<group>"; };
+		C07A1EB0255B91F2007D8F13 /* RNRNavigationSceneManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationSceneManager.m; sourceTree = "<group>"; };
+		C07A1EB1255B91F2007D8F13 /* RNRNavigationBarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationBarManager.m; sourceTree = "<group>"; };
+		C07A1EB2255B91F2007D8F13 /* RNRNavigationContainerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationContainerManager.m; sourceTree = "<group>"; };
+		C07A1EB3255B91F2007D8F13 /* RNRNavigationContainerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationContainerManager.swift; sourceTree = "<group>"; };
+		C07A1EB4255B91F2007D8F13 /* RNRNavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationItem.swift; sourceTree = "<group>"; };
+		C07A1EB5255B91F2007D8F13 /* RNRNavigationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationManager.swift; sourceTree = "<group>"; };
+		C07A1EB6255B91F2007D8F13 /* RNRNavigationBarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationBarManager.swift; sourceTree = "<group>"; };
+		C07A1EB7255B91F2007D8F13 /* RNRNavigationSceneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationSceneController.swift; sourceTree = "<group>"; };
 		C0E3042B25241D4D00DC94CB /* RenavigationNavigation-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RenavigationNavigation-Bridging-Header.h"; sourceTree = "<group>"; };
-		C0EF5FB52532B3FC00D7FE4C /* RNRNavigationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationButton.swift; sourceTree = "<group>"; };
-		C0EF5FB82532C16700D7FE4C /* RNRNavigationImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,52 +89,26 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				C0E303F025241D0E00DC94CB /* RNRNavigation.swift */,
-				C0E303FF25241D0E00DC94CB /* RNRNavigationBar.swift */,
-				C0E303DD25241D0D00DC94CB /* RNRNavigationBarAppearance.swift */,
-				C0E303E925241D0E00DC94CB /* RNRNavigationBarItem.swift */,
-				C0E303DB25241D0D00DC94CB /* RNRNavigationBarItemManager.m */,
-				C0E303E125241D0E00DC94CB /* RNRNavigationBarItemManager.swift */,
-				C0E303F725241D0E00DC94CB /* RNRNavigationBarManager.m */,
-				C0E303ED25241D0E00DC94CB /* RNRNavigationBarManager.swift */,
-				C0E303DF25241D0D00DC94CB /* RNRNavigationBarStyle.m */,
-				C0E303EA25241D0E00DC94CB /* RNRNavigationBarStyle.swift */,
-				C0E303FB25241D0E00DC94CB /* RNRNavigationBlurEffect.m */,
-				C0E303DE25241D0D00DC94CB /* RNRNavigationBlurEffect.swift */,
-				C0E303F225241D0E00DC94CB /* RNRNavigationButtonAppearance.swift */,
-				C0E303FA25241D0E00DC94CB /* RNRNavigationButtonStateAppearance.swift */,
-				C0E303F125241D0E00DC94CB /* RNRNavigationContentMode.m */,
-				C0E303E225241D0E00DC94CB /* RNRNavigationContentMode.swift */,
-				C0E303E825241D0E00DC94CB /* RNRNavigationEmptyComponent.swift */,
-				C0E303E425241D0E00DC94CB /* RNRNavigationEmptyComponentManager.m */,
-				C0E303EB25241D0E00DC94CB /* RNRNavigationEmptyComponentManager.swift */,
-				C0E303FE25241D0E00DC94CB /* RNRNavigationLargeTitleDisplayMode.m */,
-				C0E303E325241D0E00DC94CB /* RNRNavigationLargeTitleDisplayMode.swift */,
-				C0E303EE25241D0E00DC94CB /* RNRNavigationManager.m */,
-				C0E303EF25241D0E00DC94CB /* RNRNavigationManager.swift */,
-				C0E303DC25241D0D00DC94CB /* RNRNavigationRefreshControl.swift */,
-				C0E303F325241D0E00DC94CB /* RNRNavigationRefreshControlManager.m */,
-				C0E303FC25241D0E00DC94CB /* RNRNavigationRefreshControlManager.swift */,
-				C0E303F625241D0E00DC94CB /* RNRNavigationScene.swift */,
-				C0E303E725241D0E00DC94CB /* RNRNavigationSceneController.swift */,
-				C0E303E525241D0E00DC94CB /* RNRNavigationSceneManager.m */,
-				C0E303E025241D0E00DC94CB /* RNRNavigationSceneManager.swift */,
-				C0E303F425241D0E00DC94CB /* RNRNavigationScenes.swift */,
-				C0E3040025241D0E00DC94CB /* RNRNavigationScenesManager.m */,
-				C0E303F825241D0E00DC94CB /* RNRNavigationScenesManager.swift */,
-				C0E303EC25241D0E00DC94CB /* RNRNavigationSearch.swift */,
-				C0E303FD25241D0E00DC94CB /* RNRNavigationSearchBarStyle.m */,
-				C0E303DA25241D0D00DC94CB /* RNRNavigationSearchBarStyle.swift */,
-				C0E303F925241D0E00DC94CB /* RNRNavigationSearchManager.m */,
-				C0E303E625241D0E00DC94CB /* RNRNavigationSearchManager.swift */,
-				C0E303F525241D0E00DC94CB /* RNRNavigationTextStyle.swift */,
-				C038569C2532A386006E0AAC /* RNRNavigationBackButtonDisplayMode.m */,
-				C038569D2532A386006E0AAC /* RNRNavigationBackButtonDisplayMode.swift */,
-				C0EF5FB52532B3FC00D7FE4C /* RNRNavigationButton.swift */,
-				C0EF5FB82532C16700D7FE4C /* RNRNavigationImage.swift */,
-				C08BCA4B25337817002F62AE /* RNRNavigationAction.swift */,
-				C08BCA4E2533FA75002F62AE /* RNRNavigationMenu.swift */,
 				C0E3042B25241D4D00DC94CB /* RenavigationNavigation-Bridging-Header.h */,
+				C07A1EA8255B91F2007D8F13 /* RNRNavigation.swift */,
+				C07A1EAE255B91F2007D8F13 /* RNRNavigationBar.swift */,
+				C07A1EAF255B91F2007D8F13 /* RNRNavigationBarAppearance.swift */,
+				C07A1EA7255B91F2007D8F13 /* RNRNavigationBarAppearanceManager.m */,
+				C07A1EAB255B91F2007D8F13 /* RNRNavigationBarAppearanceManager.swift */,
+				C07A1EB1255B91F2007D8F13 /* RNRNavigationBarManager.m */,
+				C07A1EB6255B91F2007D8F13 /* RNRNavigationBarManager.swift */,
+				C07A1EAC255B91F2007D8F13 /* RNRNavigationContainer.swift */,
+				C07A1EB2255B91F2007D8F13 /* RNRNavigationContainerManager.m */,
+				C07A1EB3255B91F2007D8F13 /* RNRNavigationContainerManager.swift */,
+				C07A1EB4255B91F2007D8F13 /* RNRNavigationItem.swift */,
+				C07A1EA6255B91F2007D8F13 /* RNRNavigationItemManager.m */,
+				C07A1EAD255B91F2007D8F13 /* RNRNavigationItemManager.swift */,
+				C07A1EAA255B91F2007D8F13 /* RNRNavigationManager.m */,
+				C07A1EB5255B91F2007D8F13 /* RNRNavigationManager.swift */,
+				C07A1EA9255B91F2007D8F13 /* RNRNavigationScene.swift */,
+				C07A1EB7255B91F2007D8F13 /* RNRNavigationSceneController.swift */,
+				C07A1EB0255B91F2007D8F13 /* RNRNavigationSceneManager.m */,
+				C07A1EA5255B91F2007D8F13 /* RNRNavigationSceneManager.swift */,
 				134814211AA4EA7D00B7C361 /* Products */,
 				C06A1049253B34F200D07B3B /* Frameworks */,
 			);
@@ -257,51 +179,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C08BCA4C25337817002F62AE /* RNRNavigationAction.swift in Sources */,
-				C0E3042425241D0E00DC94CB /* RNRNavigationSearchBarStyle.m in Sources */,
-				C0E3040B25241D0E00DC94CB /* RNRNavigationEmptyComponentManager.m in Sources */,
-				C0E3041C25241D0E00DC94CB /* RNRNavigationTextStyle.swift in Sources */,
-				C0E3041025241D0E00DC94CB /* RNRNavigationBarItem.swift in Sources */,
-				C0E3040525241D0E00DC94CB /* RNRNavigationBlurEffect.swift in Sources */,
-				C0E3041F25241D0E00DC94CB /* RNRNavigationScenesManager.swift in Sources */,
-				C0E3040325241D0E00DC94CB /* RNRNavigationRefreshControl.swift in Sources */,
-				C0E3042325241D0E00DC94CB /* RNRNavigationRefreshControlManager.swift in Sources */,
-				C0E3040825241D0E00DC94CB /* RNRNavigationBarItemManager.swift in Sources */,
-				C08BCA4F2533FA75002F62AE /* RNRNavigationMenu.swift in Sources */,
-				C0E3040C25241D0E00DC94CB /* RNRNavigationSceneManager.m in Sources */,
-				C0E3041425241D0E00DC94CB /* RNRNavigationBarManager.swift in Sources */,
-				C0E3042725241D0E00DC94CB /* RNRNavigationScenesManager.m in Sources */,
-				C0EF5FB62532B3FC00D7FE4C /* RNRNavigationButton.swift in Sources */,
-				C038569F2532A386006E0AAC /* RNRNavigationBackButtonDisplayMode.swift in Sources */,
-				C0E3041325241D0E00DC94CB /* RNRNavigationSearch.swift in Sources */,
-				C0E3041925241D0E00DC94CB /* RNRNavigationButtonAppearance.swift in Sources */,
-				C0E3040725241D0E00DC94CB /* RNRNavigationSceneManager.swift in Sources */,
-				C0E3041A25241D0E00DC94CB /* RNRNavigationRefreshControlManager.m in Sources */,
-				C0E3040125241D0E00DC94CB /* RNRNavigationSearchBarStyle.swift in Sources */,
-				C038569E2532A386006E0AAC /* RNRNavigationBackButtonDisplayMode.m in Sources */,
-				C0E3041125241D0E00DC94CB /* RNRNavigationBarStyle.swift in Sources */,
-				C0E3040A25241D0E00DC94CB /* RNRNavigationLargeTitleDisplayMode.swift in Sources */,
-				C0EF5FB92532C16700D7FE4C /* RNRNavigationImage.swift in Sources */,
-				C0E3041525241D0E00DC94CB /* RNRNavigationManager.m in Sources */,
-				C0E3040F25241D0E00DC94CB /* RNRNavigationEmptyComponent.swift in Sources */,
-				C0E3041D25241D0E00DC94CB /* RNRNavigationScene.swift in Sources */,
-				C0E3041725241D0E00DC94CB /* RNRNavigation.swift in Sources */,
-				C0E3041E25241D0E00DC94CB /* RNRNavigationBarManager.m in Sources */,
-				C0E3040925241D0E00DC94CB /* RNRNavigationContentMode.swift in Sources */,
-				C0E3042025241D0E00DC94CB /* RNRNavigationSearchManager.m in Sources */,
-				C0E3040625241D0E00DC94CB /* RNRNavigationBarStyle.m in Sources */,
-				C0E3041B25241D0E00DC94CB /* RNRNavigationScenes.swift in Sources */,
-				C0E3041225241D0E00DC94CB /* RNRNavigationEmptyComponentManager.swift in Sources */,
-				C0E3041625241D0E00DC94CB /* RNRNavigationManager.swift in Sources */,
-				C0E3040D25241D0E00DC94CB /* RNRNavigationSearchManager.swift in Sources */,
-				C0E3042125241D0E00DC94CB /* RNRNavigationButtonStateAppearance.swift in Sources */,
-				C0E3040225241D0E00DC94CB /* RNRNavigationBarItemManager.m in Sources */,
-				C0E3041825241D0E00DC94CB /* RNRNavigationContentMode.m in Sources */,
-				C0E3042625241D0E00DC94CB /* RNRNavigationBar.swift in Sources */,
-				C0E3040425241D0E00DC94CB /* RNRNavigationBarAppearance.swift in Sources */,
-				C0E3042525241D0E00DC94CB /* RNRNavigationLargeTitleDisplayMode.m in Sources */,
-				C0E3042225241D0E00DC94CB /* RNRNavigationBlurEffect.m in Sources */,
-				C0E3040E25241D0E00DC94CB /* RNRNavigationSceneController.swift in Sources */,
+				C07A1EC1255B91F2007D8F13 /* RNRNavigationBar.swift in Sources */,
+				C07A1EC4255B91F2007D8F13 /* RNRNavigationBarManager.m in Sources */,
+				C07A1EBE255B91F2007D8F13 /* RNRNavigationBarAppearanceManager.swift in Sources */,
+				C07A1EC7255B91F2007D8F13 /* RNRNavigationItem.swift in Sources */,
+				C07A1ECA255B91F2007D8F13 /* RNRNavigationSceneController.swift in Sources */,
+				C07A1EBC255B91F2007D8F13 /* RNRNavigationScene.swift in Sources */,
+				C07A1EBB255B91F2007D8F13 /* RNRNavigation.swift in Sources */,
+				C07A1EC9255B91F2007D8F13 /* RNRNavigationBarManager.swift in Sources */,
+				C07A1EC6255B91F2007D8F13 /* RNRNavigationContainerManager.swift in Sources */,
+				C07A1EBD255B91F2007D8F13 /* RNRNavigationManager.m in Sources */,
+				C07A1EC0255B91F2007D8F13 /* RNRNavigationItemManager.swift in Sources */,
+				C07A1EBF255B91F2007D8F13 /* RNRNavigationContainer.swift in Sources */,
+				C07A1EC5255B91F2007D8F13 /* RNRNavigationContainerManager.m in Sources */,
+				C07A1EB8255B91F2007D8F13 /* RNRNavigationSceneManager.swift in Sources */,
+				C07A1EBA255B91F2007D8F13 /* RNRNavigationBarAppearanceManager.m in Sources */,
+				C07A1EC3255B91F2007D8F13 /* RNRNavigationSceneManager.m in Sources */,
+				C07A1EC8255B91F2007D8F13 /* RNRNavigationManager.swift in Sources */,
+				C07A1EB9255B91F2007D8F13 /* RNRNavigationItemManager.m in Sources */,
+				C07A1EC2255B91F2007D8F13 /* RNRNavigationBarAppearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
