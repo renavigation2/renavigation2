@@ -1,4 +1,4 @@
-class RNREmptyComponent: UIView, RNRChild {
+class RNREmptyComponent: UIView, RNRChild, RNREmptyComponentProtocol {
     var isReady = true
 
     override init(frame: CGRect) {
