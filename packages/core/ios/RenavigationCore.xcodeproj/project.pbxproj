@@ -21,6 +21,41 @@
 		C03E3F6025427EFE001E84FA /* RNREmptyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03E3F5D25427EFE001E84FA /* RNREmptyComponent.swift */; };
 		C03E3F6125427EFE001E84FA /* RNREmptyComponentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C03E3F5E25427EFE001E84FA /* RNREmptyComponentManager.m */; };
 		C0A5F0F32543DD2B000A5567 /* RNRAnimationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5F0F22543DD2B000A5567 /* RNRAnimationOptions.swift */; };
+		C0CE8A6B254D1AC600DB8F6A /* RNRBarButtonItemAppearanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8A68254D1AC600DB8F6A /* RNRBarButtonItemAppearanceManager.m */; };
+		C0CE8A6C254D1AC600DB8F6A /* RNRBarButtonItemAppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8A69254D1AC600DB8F6A /* RNRBarButtonItemAppearanceManager.swift */; };
+		C0CE8A6D254D1AC600DB8F6A /* RNRBarButtonItemAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8A6A254D1AC600DB8F6A /* RNRBarButtonItemAppearance.swift */; };
+		C0CE8AA5254D1D8600DB8F6A /* RNRBarButtonItemStateAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8AA2254D1D8600DB8F6A /* RNRBarButtonItemStateAppearance.swift */; };
+		C0CE8AA6254D1D8600DB8F6A /* RNRBarButtonItemStateAppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8AA3254D1D8600DB8F6A /* RNRBarButtonItemStateAppearanceManager.swift */; };
+		C0CE8AA7254D1D8600DB8F6A /* RNRBarButtonItemStateAppearanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8AA4254D1D8600DB8F6A /* RNRBarButtonItemStateAppearanceManager.m */; };
+		C0CE8ADE254D23CE00DB8F6A /* RNRBarButtonItemAppearanceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8ADC254D23CE00DB8F6A /* RNRBarButtonItemAppearanceProtocol.swift */; };
+		C0CE8ADF254D23CE00DB8F6A /* RNRBarButtonItemStateAppearanceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8ADD254D23CE00DB8F6A /* RNRBarButtonItemStateAppearanceProtocol.swift */; };
+		C0CE8B18254DD6C200DB8F6A /* RNRActionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8B14254DD6C200DB8F6A /* RNRActionProtocol.swift */; };
+		C0CE8B19254DD6C200DB8F6A /* RNRActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8B15254DD6C200DB8F6A /* RNRActionManager.m */; };
+		C0CE8B1A254DD6C200DB8F6A /* RNRActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8B16254DD6C200DB8F6A /* RNRActionManager.swift */; };
+		C0CE8B1B254DD6C200DB8F6A /* RNRAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8B17254DD6C200DB8F6A /* RNRAction.swift */; };
+		C0CE8B1E254DD6C900DB8F6A /* RNRBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8B1D254DD6C900DB8F6A /* RNRBarButtonItem.swift */; };
+		C0CE8B23254DD6D200DB8F6A /* RNRBarButtonItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8B20254DD6D200DB8F6A /* RNRBarButtonItemProtocol.swift */; };
+		C0CE8B24254DD6D200DB8F6A /* RNRBarButtonItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8B21254DD6D200DB8F6A /* RNRBarButtonItemManager.m */; };
+		C0CE8B25254DD6D200DB8F6A /* RNRBarButtonItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8B22254DD6D200DB8F6A /* RNRBarButtonItemManager.swift */; };
+		C0CE8B2B254DD6DD00DB8F6A /* RNRMenuProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8B27254DD6DD00DB8F6A /* RNRMenuProtocol.swift */; };
+		C0CE8B2C254DD6DD00DB8F6A /* RNRMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8B28254DD6DD00DB8F6A /* RNRMenuManager.swift */; };
+		C0CE8B2D254DD6DD00DB8F6A /* RNRMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8B29254DD6DD00DB8F6A /* RNRMenu.swift */; };
+		C0CE8B2E254DD6DD00DB8F6A /* RNRMenuManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8B2A254DD6DD00DB8F6A /* RNRMenuManager.m */; };
+		C0CE8B34254DD6E500DB8F6A /* RNRRefreshControlProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8B30254DD6E500DB8F6A /* RNRRefreshControlProtocol.swift */; };
+		C0CE8B35254DD6E500DB8F6A /* RNRRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8B31254DD6E500DB8F6A /* RNRRefreshControl.swift */; };
+		C0CE8B36254DD6E500DB8F6A /* RNRRefreshControlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8B32254DD6E500DB8F6A /* RNRRefreshControlManager.swift */; };
+		C0CE8B37254DD6E500DB8F6A /* RNRRefreshControlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8B33254DD6E500DB8F6A /* RNRRefreshControlManager.m */; };
+		C0CE8B83254FABA400DB8F6A /* RNREmptyComponentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CE8B82254FABA400DB8F6A /* RNREmptyComponentProtocol.swift */; };
+		C0D03E9F2557212D00D1883A /* RNRCoreEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D03E9D2557212D00D1883A /* RNRCoreEventManager.swift */; };
+		C0D03EA02557212D00D1883A /* RNRCoreEventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D03E9E2557212D00D1883A /* RNRCoreEventManager.m */; };
+		C0D03EA525572BAD00D1883A /* RNRBarButtonItemsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D03EA225572BAD00D1883A /* RNRBarButtonItemsManager.m */; };
+		C0D03EA625572BAD00D1883A /* RNRBarButtonItemsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D03EA325572BAD00D1883A /* RNRBarButtonItemsManager.swift */; };
+		C0D03EA725572BAD00D1883A /* RNRBarButtonItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D03EA425572BAD00D1883A /* RNRBarButtonItems.swift */; };
+		C0D03EAA25572DFA00D1883A /* RNRBarButtonItemsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D03EA925572DFA00D1883A /* RNRBarButtonItemsProtocol.swift */; };
+		C0D03EB02557A9BA00D1883A /* RNRSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D03EAC2557A9BA00D1883A /* RNRSearchBar.swift */; };
+		C0D03EB12557A9BA00D1883A /* RNRSearchBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D03EAD2557A9BA00D1883A /* RNRSearchBarManager.m */; };
+		C0D03EB22557A9BA00D1883A /* RNRSearchBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D03EAE2557A9BA00D1883A /* RNRSearchBarManager.swift */; };
+		C0D03EB32557A9BA00D1883A /* RNRSearchBarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D03EAF2557A9BA00D1883A /* RNRSearchBarProtocol.swift */; };
 		C0DEE46F2543199D00AAE5C8 /* RNROffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEE46E2543199D00AAE5C8 /* RNROffset.swift */; };
 		C0DEE4722543305400AAE5C8 /* RNREdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEE4712543305400AAE5C8 /* RNREdgeInsets.swift */; };
 /* End PBXBuildFile section */
@@ -53,6 +88,41 @@
 		C03E3F5D25427EFE001E84FA /* RNREmptyComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNREmptyComponent.swift; sourceTree = "<group>"; };
 		C03E3F5E25427EFE001E84FA /* RNREmptyComponentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNREmptyComponentManager.m; sourceTree = "<group>"; };
 		C0A5F0F22543DD2B000A5567 /* RNRAnimationOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRAnimationOptions.swift; sourceTree = "<group>"; };
+		C0CE8A68254D1AC600DB8F6A /* RNRBarButtonItemAppearanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRBarButtonItemAppearanceManager.m; sourceTree = "<group>"; };
+		C0CE8A69254D1AC600DB8F6A /* RNRBarButtonItemAppearanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRBarButtonItemAppearanceManager.swift; sourceTree = "<group>"; };
+		C0CE8A6A254D1AC600DB8F6A /* RNRBarButtonItemAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRBarButtonItemAppearance.swift; sourceTree = "<group>"; };
+		C0CE8AA2254D1D8600DB8F6A /* RNRBarButtonItemStateAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRBarButtonItemStateAppearance.swift; sourceTree = "<group>"; };
+		C0CE8AA3254D1D8600DB8F6A /* RNRBarButtonItemStateAppearanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRBarButtonItemStateAppearanceManager.swift; sourceTree = "<group>"; };
+		C0CE8AA4254D1D8600DB8F6A /* RNRBarButtonItemStateAppearanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRBarButtonItemStateAppearanceManager.m; sourceTree = "<group>"; };
+		C0CE8ADC254D23CE00DB8F6A /* RNRBarButtonItemAppearanceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRBarButtonItemAppearanceProtocol.swift; sourceTree = "<group>"; };
+		C0CE8ADD254D23CE00DB8F6A /* RNRBarButtonItemStateAppearanceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRBarButtonItemStateAppearanceProtocol.swift; sourceTree = "<group>"; };
+		C0CE8B14254DD6C200DB8F6A /* RNRActionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRActionProtocol.swift; sourceTree = "<group>"; };
+		C0CE8B15254DD6C200DB8F6A /* RNRActionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRActionManager.m; sourceTree = "<group>"; };
+		C0CE8B16254DD6C200DB8F6A /* RNRActionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRActionManager.swift; sourceTree = "<group>"; };
+		C0CE8B17254DD6C200DB8F6A /* RNRAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRAction.swift; sourceTree = "<group>"; };
+		C0CE8B1D254DD6C900DB8F6A /* RNRBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRBarButtonItem.swift; sourceTree = "<group>"; };
+		C0CE8B20254DD6D200DB8F6A /* RNRBarButtonItemProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRBarButtonItemProtocol.swift; sourceTree = "<group>"; };
+		C0CE8B21254DD6D200DB8F6A /* RNRBarButtonItemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRBarButtonItemManager.m; sourceTree = "<group>"; };
+		C0CE8B22254DD6D200DB8F6A /* RNRBarButtonItemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRBarButtonItemManager.swift; sourceTree = "<group>"; };
+		C0CE8B27254DD6DD00DB8F6A /* RNRMenuProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRMenuProtocol.swift; sourceTree = "<group>"; };
+		C0CE8B28254DD6DD00DB8F6A /* RNRMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRMenuManager.swift; sourceTree = "<group>"; };
+		C0CE8B29254DD6DD00DB8F6A /* RNRMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRMenu.swift; sourceTree = "<group>"; };
+		C0CE8B2A254DD6DD00DB8F6A /* RNRMenuManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRMenuManager.m; sourceTree = "<group>"; };
+		C0CE8B30254DD6E500DB8F6A /* RNRRefreshControlProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRRefreshControlProtocol.swift; sourceTree = "<group>"; };
+		C0CE8B31254DD6E500DB8F6A /* RNRRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRRefreshControl.swift; sourceTree = "<group>"; };
+		C0CE8B32254DD6E500DB8F6A /* RNRRefreshControlManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRRefreshControlManager.swift; sourceTree = "<group>"; };
+		C0CE8B33254DD6E500DB8F6A /* RNRRefreshControlManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRRefreshControlManager.m; sourceTree = "<group>"; };
+		C0CE8B82254FABA400DB8F6A /* RNREmptyComponentProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNREmptyComponentProtocol.swift; sourceTree = "<group>"; };
+		C0D03E9D2557212D00D1883A /* RNRCoreEventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRCoreEventManager.swift; sourceTree = "<group>"; };
+		C0D03E9E2557212D00D1883A /* RNRCoreEventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRCoreEventManager.m; sourceTree = "<group>"; };
+		C0D03EA225572BAD00D1883A /* RNRBarButtonItemsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRBarButtonItemsManager.m; sourceTree = "<group>"; };
+		C0D03EA325572BAD00D1883A /* RNRBarButtonItemsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRBarButtonItemsManager.swift; sourceTree = "<group>"; };
+		C0D03EA425572BAD00D1883A /* RNRBarButtonItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRBarButtonItems.swift; sourceTree = "<group>"; };
+		C0D03EA925572DFA00D1883A /* RNRBarButtonItemsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRBarButtonItemsProtocol.swift; sourceTree = "<group>"; };
+		C0D03EAC2557A9BA00D1883A /* RNRSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRSearchBar.swift; sourceTree = "<group>"; };
+		C0D03EAD2557A9BA00D1883A /* RNRSearchBarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRSearchBarManager.m; sourceTree = "<group>"; };
+		C0D03EAE2557A9BA00D1883A /* RNRSearchBarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRSearchBarManager.swift; sourceTree = "<group>"; };
+		C0D03EAF2557A9BA00D1883A /* RNRSearchBarProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRSearchBarProtocol.swift; sourceTree = "<group>"; };
 		C0DEE46E2543199D00AAE5C8 /* RNROffset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNROffset.swift; sourceTree = "<group>"; };
 		C0DEE4712543305400AAE5C8 /* RNREdgeInsets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNREdgeInsets.swift; sourceTree = "<group>"; };
 		F4FF95D5245B92E700C19C63 /* RenavigationCore-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RenavigationCore-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -81,21 +151,56 @@
 			isa = PBXGroup;
 			children = (
 				F4FF95D5245B92E700C19C63 /* RenavigationCore-Bridging-Header.h */,
+				C0CE8B17254DD6C200DB8F6A /* RNRAction.swift */,
+				C0CE8B15254DD6C200DB8F6A /* RNRActionManager.m */,
+				C0CE8B16254DD6C200DB8F6A /* RNRActionManager.swift */,
+				C0CE8B14254DD6C200DB8F6A /* RNRActionProtocol.swift */,
 				C0A5F0F22543DD2B000A5567 /* RNRAnimationOptions.swift */,
+				C0CE8B1D254DD6C900DB8F6A /* RNRBarButtonItem.swift */,
+				C0CE8A6A254D1AC600DB8F6A /* RNRBarButtonItemAppearance.swift */,
+				C0CE8A68254D1AC600DB8F6A /* RNRBarButtonItemAppearanceManager.m */,
+				C0CE8A69254D1AC600DB8F6A /* RNRBarButtonItemAppearanceManager.swift */,
+				C0CE8ADC254D23CE00DB8F6A /* RNRBarButtonItemAppearanceProtocol.swift */,
+				C0CE8B21254DD6D200DB8F6A /* RNRBarButtonItemManager.m */,
+				C0CE8B22254DD6D200DB8F6A /* RNRBarButtonItemManager.swift */,
+				C0CE8B20254DD6D200DB8F6A /* RNRBarButtonItemProtocol.swift */,
+				C0D03EA425572BAD00D1883A /* RNRBarButtonItems.swift */,
+				C0D03EA225572BAD00D1883A /* RNRBarButtonItemsManager.m */,
+				C0D03EA325572BAD00D1883A /* RNRBarButtonItemsManager.swift */,
+				C0D03EA925572DFA00D1883A /* RNRBarButtonItemsProtocol.swift */,
+				C0CE8AA2254D1D8600DB8F6A /* RNRBarButtonItemStateAppearance.swift */,
+				C0CE8AA4254D1D8600DB8F6A /* RNRBarButtonItemStateAppearanceManager.m */,
+				C0CE8AA3254D1D8600DB8F6A /* RNRBarButtonItemStateAppearanceManager.swift */,
+				C0CE8ADD254D23CE00DB8F6A /* RNRBarButtonItemStateAppearanceProtocol.swift */,
 				C03E3F552542676E001E84FA /* RNRBlurEffect.swift */,
 				C004ADCF25422314005EAB8C /* RNRChild.swift */,
 				C03E3F5825426BBE001E84FA /* RNRContentMode.swift */,
+				C0D03E9E2557212D00D1883A /* RNRCoreEventManager.m */,
+				C0D03E9D2557212D00D1883A /* RNRCoreEventManager.swift */,
 				C0DEE4712543305400AAE5C8 /* RNREdgeInsets.swift */,
 				C03E3F5D25427EFE001E84FA /* RNREmptyComponent.swift */,
 				C03E3F5E25427EFE001E84FA /* RNREmptyComponentManager.m */,
 				C03E3F5C25427EFE001E84FA /* RNREmptyComponentManager.swift */,
+				C0CE8B82254FABA400DB8F6A /* RNREmptyComponentProtocol.swift */,
 				C004ADD525422348005EAB8C /* RNRHelpers.swift */,
 				C004AE0E25422482005EAB8C /* RNRImage.swift */,
 				C004AE0D25422482005EAB8C /* RNRImageManager.m */,
 				C004AE0F25422482005EAB8C /* RNRImageManager.swift */,
 				C004AE4A25422557005EAB8C /* RNRImageProtocol.swift */,
+				C0CE8B29254DD6DD00DB8F6A /* RNRMenu.swift */,
+				C0CE8B2A254DD6DD00DB8F6A /* RNRMenuManager.m */,
+				C0CE8B28254DD6DD00DB8F6A /* RNRMenuManager.swift */,
+				C0CE8B27254DD6DD00DB8F6A /* RNRMenuProtocol.swift */,
 				C0DEE46E2543199D00AAE5C8 /* RNROffset.swift */,
 				C004ADD22542232D005EAB8C /* RNRParent.swift */,
+				C0CE8B31254DD6E500DB8F6A /* RNRRefreshControl.swift */,
+				C0CE8B33254DD6E500DB8F6A /* RNRRefreshControlManager.m */,
+				C0CE8B32254DD6E500DB8F6A /* RNRRefreshControlManager.swift */,
+				C0CE8B30254DD6E500DB8F6A /* RNRRefreshControlProtocol.swift */,
+				C0D03EAC2557A9BA00D1883A /* RNRSearchBar.swift */,
+				C0D03EAD2557A9BA00D1883A /* RNRSearchBarManager.m */,
+				C0D03EAE2557A9BA00D1883A /* RNRSearchBarManager.swift */,
+				C0D03EAF2557A9BA00D1883A /* RNRSearchBarProtocol.swift */,
 				C004AE1425422489005EAB8C /* RNRTextStyle.swift */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
@@ -159,21 +264,56 @@
 			buildActionMask = 2147483647;
 			files = (
 				C004AE4B25422557005EAB8C /* RNRImageProtocol.swift in Sources */,
+				C0D03EB32557A9BA00D1883A /* RNRSearchBarProtocol.swift in Sources */,
+				C0CE8AA7254D1D8600DB8F6A /* RNRBarButtonItemStateAppearanceManager.m in Sources */,
+				C0CE8B1B254DD6C200DB8F6A /* RNRAction.swift in Sources */,
+				C0CE8A6C254D1AC600DB8F6A /* RNRBarButtonItemAppearanceManager.swift in Sources */,
 				C004AE1525422489005EAB8C /* RNRTextStyle.swift in Sources */,
+				C0CE8B25254DD6D200DB8F6A /* RNRBarButtonItemManager.swift in Sources */,
 				C0A5F0F32543DD2B000A5567 /* RNRAnimationOptions.swift in Sources */,
+				C0CE8B2D254DD6DD00DB8F6A /* RNRMenu.swift in Sources */,
+				C0CE8B35254DD6E500DB8F6A /* RNRRefreshControl.swift in Sources */,
+				C0D03EAA25572DFA00D1883A /* RNRBarButtonItemsProtocol.swift in Sources */,
 				C03E3F6125427EFE001E84FA /* RNREmptyComponentManager.m in Sources */,
+				C0D03EB12557A9BA00D1883A /* RNRSearchBarManager.m in Sources */,
+				C0CE8B2E254DD6DD00DB8F6A /* RNRMenuManager.m in Sources */,
 				C004AE1225422482005EAB8C /* RNRImageManager.swift in Sources */,
+				C0CE8B18254DD6C200DB8F6A /* RNRActionProtocol.swift in Sources */,
+				C0CE8B24254DD6D200DB8F6A /* RNRBarButtonItemManager.m in Sources */,
 				C004AE1025422482005EAB8C /* RNRImageManager.m in Sources */,
 				C004ADD625422348005EAB8C /* RNRHelpers.swift in Sources */,
+				C0CE8AA6254D1D8600DB8F6A /* RNRBarButtonItemStateAppearanceManager.swift in Sources */,
+				C0D03EA725572BAD00D1883A /* RNRBarButtonItems.swift in Sources */,
 				C03E3F5925426BBE001E84FA /* RNRContentMode.swift in Sources */,
+				C0CE8B19254DD6C200DB8F6A /* RNRActionManager.m in Sources */,
+				C0CE8B83254FABA400DB8F6A /* RNREmptyComponentProtocol.swift in Sources */,
 				C03E3F562542676E001E84FA /* RNRBlurEffect.swift in Sources */,
+				C0D03EA525572BAD00D1883A /* RNRBarButtonItemsManager.m in Sources */,
 				C004AE1125422482005EAB8C /* RNRImage.swift in Sources */,
+				C0CE8B1E254DD6C900DB8F6A /* RNRBarButtonItem.swift in Sources */,
+				C0D03EB02557A9BA00D1883A /* RNRSearchBar.swift in Sources */,
+				C0D03EA02557212D00D1883A /* RNRCoreEventManager.m in Sources */,
+				C0CE8B2C254DD6DD00DB8F6A /* RNRMenuManager.swift in Sources */,
+				C0D03EB22557A9BA00D1883A /* RNRSearchBarManager.swift in Sources */,
+				C0D03EA625572BAD00D1883A /* RNRBarButtonItemsManager.swift in Sources */,
+				C0CE8ADF254D23CE00DB8F6A /* RNRBarButtonItemStateAppearanceProtocol.swift in Sources */,
+				C0CE8B34254DD6E500DB8F6A /* RNRRefreshControlProtocol.swift in Sources */,
+				C0CE8A6D254D1AC600DB8F6A /* RNRBarButtonItemAppearance.swift in Sources */,
+				C0CE8B23254DD6D200DB8F6A /* RNRBarButtonItemProtocol.swift in Sources */,
 				C03E3F5F25427EFE001E84FA /* RNREmptyComponentManager.swift in Sources */,
 				C0DEE4722543305400AAE5C8 /* RNREdgeInsets.swift in Sources */,
 				C004ADD32542232D005EAB8C /* RNRParent.swift in Sources */,
 				C0DEE46F2543199D00AAE5C8 /* RNROffset.swift in Sources */,
+				C0CE8B36254DD6E500DB8F6A /* RNRRefreshControlManager.swift in Sources */,
 				C03E3F6025427EFE001E84FA /* RNREmptyComponent.swift in Sources */,
+				C0D03E9F2557212D00D1883A /* RNRCoreEventManager.swift in Sources */,
 				C004ADD025422314005EAB8C /* RNRChild.swift in Sources */,
+				C0CE8B37254DD6E500DB8F6A /* RNRRefreshControlManager.m in Sources */,
+				C0CE8ADE254D23CE00DB8F6A /* RNRBarButtonItemAppearanceProtocol.swift in Sources */,
+				C0CE8A6B254D1AC600DB8F6A /* RNRBarButtonItemAppearanceManager.m in Sources */,
+				C0CE8B2B254DD6DD00DB8F6A /* RNRMenuProtocol.swift in Sources */,
+				C0CE8B1A254DD6C200DB8F6A /* RNRActionManager.swift in Sources */,
+				C0CE8AA5254D1D8600DB8F6A /* RNRBarButtonItemStateAppearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

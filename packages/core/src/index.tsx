@@ -1,5 +1,15 @@
+export * from './ios/context'
+
+export * from './ios/native/Action'
+export * from './ios/native/BarButtonItem'
+export * from './ios/native/BarButtonItems'
+export * from './ios/native/BarButtonItemAppearance'
+export * from './ios/native/BarButtonItemStateAppearance'
 export * from './ios/native/EmptyComponent'
 export * from './ios/native/Image'
+export * from './ios/native/Menu'
+export * from './ios/native/RefreshControl'
+export * from './ios/native/SearchBar'
 
 export * from './ios/typings/AnimationOptions'
 export * from './ios/typings/BlurEffect'
