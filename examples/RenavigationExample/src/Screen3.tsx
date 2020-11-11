@@ -5,9 +5,9 @@ import {
   NavigationScreen,
   useNavigation,
   useLocation,
-  NavigationBarItem
+  NavigationItem
 } from '@renavigation2/navigation'
-import { useModals, useModal } from '@renavigation2/modals'
+import { useModals, useModal, useIsInModal } from '@renavigation2/modals'
 
 interface Props {}
 
@@ -16,6 +16,7 @@ export const Screen3: React.FC<Props> = ({}) => {
   const { state } = useLocation()
   const { presentModal, dismissAllModals } = useModals()
   const modal = useModal()
+  const isInModal = useIsInModal()
 
   const goBackToStart = useCallback(() => {
     go(-2)
@@ -44,22 +45,42 @@ export const Screen3: React.FC<Props> = ({}) => {
   const dismissAll = useCallback(() => {
     dismissAllModals()
   }, [dismissAllModals])
-
+  /*            <TouchableOpacity onPress={dismiss}>
+              <Text
+                style={{ fontSize: 17, fontWeight: '500', color: '#007AFF' }}
+              >
+                Dismiss
+              </Text>
+            </TouchableOpacity>
+*/
   return (
     <NavigationScreen
-      navigationBarItem={
-        <NavigationBarItem
+      navigationItem={
+        <NavigationItem
           title={state ? (state.value as string) : '😱 Screen 3'}
           largeTitleDisplayMode="always"
           leftContent={
-            modal ? (
-              <TouchableOpacity onPress={dismiss}>
-                <Text
-                  style={{ fontSize: 17, fontWeight: '500', color: '#007AFF' }}
-                >
-                  Dismiss
-                </Text>
-              </TouchableOpacity>
+            isInModal ? (
+              <View
+                style={{
+                  height: 32,
+                  width: 100,
+                  justifyContent: 'center'
+                }}
+              >
+                <TouchableOpacity onPress={dismiss}>
+                  <Text
+                    style={{
+                      fontSize: 17,
+                      fontWeight: '500',
+                      color: '#007AFF',
+                      marginTop: 1
+                    }}
+                  >
+                    Dismiss
+                  </Text>
+                </TouchableOpacity>
+              </View>
             ) : null
           }
         />
@@ -132,7 +153,7 @@ export const Screen3: React.FC<Props> = ({}) => {
         </View>
 
         <Text>
-          1. cwreoihv oeritvh porh vpio rhe iopvh repoiw hvpoirs hvpoier hwpiov
+          3. cwreoihv oeritvh porh vpio rhe iopvh repoiw hvpoirs hvpoier hwpiov
           hrpoei hvpoire hvpoier hopvi heroipv ihoiv hrpoei hvpoire hvpoier
           hopvi heroipv ihoiv hrpoei hvpoire hvpoier hopvi heroipv ihoiv hrpoei
           hvpoire hvpoier hopvi heroipv ihoiv hrpoei hvpoire hvpoier hopvi

@@ -1,11 +1,12 @@
-import React, { useCallback, useLayoutEffect } from 'react'
+import React, { useCallback, useLayoutEffect, useState } from 'react'
 import { ScrollView, Text, View } from 'react-native'
 import { Button } from './components/Button'
 import {
   NavigationScreen,
   useNavigation,
-  NavigationBarItem
+  NavigationItem
 } from '@renavigation2/navigation'
+import { RefreshControl, SearchBar } from '@renavigation2/core'
 import { useModals } from '@renavigation2/modals'
 
 interface Props {}
@@ -33,10 +34,25 @@ export const Screen1: React.FC<Props> = ({}) => {
     presentModal('/screen3')
   }, [presentModal])
 
+  const [refreshing, setRefreshing] = useState(false)
+  const onRefresh = useCallback(() => {
+    setRefreshing(true)
+    setTimeout(() => {
+      setRefreshing(false)
+    }, 2000)
+  }, [])
+
   return (
     <NavigationScreen
-      navigationBarItem={
-        <NavigationBarItem title="Hello World" largeTitleDisplayMode="always" />
+      navigationItem={
+        <NavigationItem
+          title="Hello World"
+          largeTitleDisplayMode="always"
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
+          searchBar={<SearchBar></SearchBar>}
+        />
       }
     >
       <ScrollView
