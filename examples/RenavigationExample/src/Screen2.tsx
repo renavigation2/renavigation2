@@ -2,18 +2,15 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { ScrollView, Text, View } from 'react-native'
 import { Button as ButtonComponent } from './components/Button'
 import {
+  NavigationItem,
   NavigationScreen,
   useDidAppearEffect,
   useDidDisappearEffect,
   useNavigation,
   useWillAppearEffect,
-  useWillDisappearEffect,
-  NavigationBarItem,
-  Button,
-  Image,
-  Menu,
-  Action
+  useWillDisappearEffect
 } from '@renavigation2/navigation'
+import { Action, BarButtonItem, Image, Menu } from '@renavigation2/core'
 
 interface Props {}
 
@@ -86,31 +83,29 @@ export const Screen2: React.FC<Props> = ({}) => {
 */
   return (
     <NavigationScreen
-      navigationBarItem={
-        <NavigationBarItem
+      navigationItem={
+        <NavigationItem
           title="Screen 2"
           largeTitleDisplayMode="never"
-          rightButtons={[
-            <Button
+          rightBarButtonItems={[
+            <BarButtonItem
               key="1"
               title="Hello"
               image={<Image systemName="slider.horizontal.3" />}
               menu={
-                <Menu
-                  items={[
-                    <Action
-                      key="hello"
-                      title="Hello"
-                      image={<Image systemName="slider.horizontal.3" />}
-                      onPress={() => {
-                        console.log('hello')
-                      }}
-                    />
-                  ]}
-                />
+                <Menu>
+                  <Action
+                    key="hello"
+                    title="Hello"
+                    image={<Image systemName="slider.horizontal.3" />}
+                    onPress={() => {
+                      console.log('hello')
+                    }}
+                  />
+                </Menu>
               }
             />,
-            <Button
+            <BarButtonItem
               key="2"
               title="Hello"
               image={<Image systemName="slider.horizontal.3" />}

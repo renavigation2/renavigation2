@@ -1,0 +1,17 @@
+{
+  "editor.formatOnSave": false,
+  "[json]": {
+    "editor.formatOnSave": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "jest.runAllTestsFirst": false,
+  "jest.autoEnable": false,
+  "jest.showCoverageOnLoad": false,
+  "jest.debugCodeLens.showWhenTestStateIn": [
+    "fail",
+    "unknown",
+    "pass"
+  ]
+}

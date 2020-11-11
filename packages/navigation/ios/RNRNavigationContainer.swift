@@ -20,7 +20,6 @@ class RNRNavigationContainer: UIView, UINavigationControllerDelegate, RNRChild, 
     }
 
     override func removeReactSubview(_ subview: UIView!) {
-        NSLog("removeReactSubview")
         scenes.removeAll(where: { $0 == subview})
         shouldPresent.removeAll(where: { $0 == subview})
     }
