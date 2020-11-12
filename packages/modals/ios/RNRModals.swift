@@ -5,7 +5,10 @@ var blockCount = 0
 
 class RNRModals: UIView, RNRParent {
     var modals: [RNRModalContainer] = []
-    var shouldPresent: [RNRModalContainer] = []
+    var pendingPresent: [RNRModalContainer] = []
+    var pendingDismiss: [RNRModalContainer] = []
+
+    var presenting = false
 
     var isReady = false
     var hasMovedToSuperview = false
@@ -23,7 +26,7 @@ class RNRModals: UIView, RNRParent {
 
     override func removeReactSubview(_ subview: UIView!) {
         modals.removeAll(where: { $0 == subview})
-        shouldPresent.removeAll(where: { $0 == subview})
+        pendingPresent.removeAll(where: { $0 == subview})
     }
 
     override func reactSubviews() -> [UIView]! {
@@ -57,7 +60,7 @@ class RNRModals: UIView, RNRParent {
                 let childrenReady = areChildrenReady(modals)
                 if childrenReady {
                     isReady = true
-                    shouldPresent.forEach { view in
+                    pendingPresent.forEach { view in
                         present(view)
                     }
                 }
@@ -66,23 +69,41 @@ class RNRModals: UIView, RNRParent {
     }
 
     func dismiss(_ view: RNRModalContainer) {
-        var animated = true
-        if view.viewController.config?.animated == -1 {
-            animated = false
+        if !isReady || presenting {
+            if !pendingDismiss.contains(view) {
+                pendingDismiss.append(view)
+            }
+        } else {
+            pendingDismiss.removeAll(where: { $0 == view })
+            var animated = true
+            if view.viewController.config?.animated == -1 {
+                animated = false
+            }
+            presenting = true
+            view.viewController.dismiss(animated: animated, completion: { [self] in
+                presenting = false
+                pendingPresent.forEach({ scene in
+                    present(scene)
+                })
+                pendingDismiss.forEach({ scene in
+                    dismiss(scene)
+                })
+            })
         }
-        view.viewController.dismiss(animated: animated)
     }
 
     func present(_ modal: RNRModalContainer) {
-        if !isReady {
-            shouldPresent.append(modal)
+        if !isReady || presenting {
+            if !pendingPresent.contains(modal) {
+                pendingPresent.append(modal)
+            }
         } else {
             let next = modals.firstIndex(where: { modal in
                 !modal.isPresented
             })
             let index = modals.firstIndex(of: modal)
             if next == index {
-                shouldPresent.removeAll(where: { $0 == modal })
+                pendingPresent.removeAll(where: { $0 == modal })
                 modal.isPresented = true
                 if onWillShowView != nil {
                     if modal.reactTag != nil {
@@ -102,17 +123,25 @@ class RNRModals: UIView, RNRParent {
                             parentViewController!.present(modal.viewController, animated: animated)
                         }
                     } else {
-                        parentViewController!.present(modal.viewController, animated: animated)
+                        presenting = true
+                        parentViewController!.present(modal.viewController, animated: animated, completion: { [self] in
+                            presenting = false
+                            pendingPresent.forEach({ scene in
+                                present(scene)
+                            })
+                            pendingDismiss.forEach({ scene in
+                                dismiss(scene)
+                            })
+                        })
                     }
-                }
-                if shouldPresent.count > 0 {
-                    shouldPresent.forEach({ scene in
+                } else if pendingPresent.count > 0 {
+                    pendingPresent.forEach({ scene in
                         present(scene)
                     })
                 }
             } else {
-                if !shouldPresent.contains(modal) {
-                    shouldPresent.append(modal)
+                if !pendingPresent.contains(modal) {
+                    pendingPresent.append(modal)
                 }
             }
         }
@@ -149,7 +178,8 @@ class RNRModals: UIView, RNRParent {
                     if blockCount == 0 {
                         blocked = false
                         modals = []
-                        shouldPresent = []
+                        pendingPresent = []
+                        pendingDismiss = []
                     }
                 }
             }
