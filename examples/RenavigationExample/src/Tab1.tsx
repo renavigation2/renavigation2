@@ -20,6 +20,7 @@ export const Tab1: React.FC<Props> = ({}) => {
         <NavigationRoutes
           navigationBar={
             <NavigationBar
+              prefersLargeTitles
               backIndicatorImage={
                 <Image
                   tintColor="red"
