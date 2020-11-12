@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.24.0](https://github.com/renavigation2/renavigation2/compare/v4.23.1...v4.24.0) (2020-11-12)
+
+
+### Bug Fixes
+
+* **modals:** Attempt to fix issue when reloading app too quickly ([ca32a29](https://github.com/renavigation2/renavigation2/commit/ca32a29a4800846e62e1fd0666bbc7fe9c41b655))
+* **modals:** Fixed dismissing two modals at the same time ([e7b50fa](https://github.com/renavigation2/renavigation2/commit/e7b50fa7bfbb63eb35190e7270a71b83762e2f72))
+* **modals:** Fixed issue when presenting multiple modals at once ([4fcffdf](https://github.com/renavigation2/renavigation2/commit/4fcffdfc67e683504a5f939ffefeb226ebc9c805))
+
+
+
+
+
 ## [4.23.1](https://github.com/renavigation2/renavigation2/compare/v4.23.0...v4.23.1) (2020-10-29)
 
 

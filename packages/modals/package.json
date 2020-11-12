@@ -1,6 +1,6 @@
 {
   "name": "@renavigation2/modals",
-  "version": "4.23.1",
+  "version": "4.24.0",
   "description": "Renavigation Modals",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -34,8 +34,8 @@
     "react-native": "*"
   },
   "dependencies": {
-    "@renavigation2/history": "^4.20.0",
-    "@renavigation2/router": "^4.20.0",
+    "@renavigation2/history": "^4.24.0",
+    "@renavigation2/router": "^4.24.0",
     "tiny-invariant": "^1.1.0"
   },
   "devDependencies": {

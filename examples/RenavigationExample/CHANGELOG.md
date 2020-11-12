@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.24.0](https://github.com/renavigation2/renavigation2/compare/v4.23.1...v4.24.0) (2020-11-12)
+
+
+### Bug Fixes
+
+* **tabs:** Don’t wait for nav to be ready ([3dfca60](https://github.com/renavigation2/renavigation2/commit/3dfca60aefc9c5700c00cba0517b0f527cf987ac))
+
+
+
+
+
 ## [4.23.1](https://github.com/renavigation2/renavigation2/compare/v4.23.0...v4.23.1) (2020-10-29)
 
 
