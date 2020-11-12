@@ -32,7 +32,7 @@ class RNRTabScene: UIView, RNRChild, RNRParent {
 
     func setup() {
         if !isReady && hasMovedToSuperview && hasUpdatedReactSubviews && parent != nil {
-            let childrenReady = areChildrenReady(subviews)
+            let childrenReady = areChildrenReady([subviews[0]])
             if childrenReady {
                 isReady = true
                 setItem()
