@@ -1,7 +1,7 @@
 @objc(RNRBarButtonItemStateAppearanceManager)
 class RNRBarButtonItemStateAppearanceManager: RCTViewManager {
     override func view() -> UIView! {
-        return RNRBarButtonItemStateAppearance()
+        RNRBarButtonItemStateAppearance()
     }
 
     override static func requiresMainQueueSetup() -> Bool {
