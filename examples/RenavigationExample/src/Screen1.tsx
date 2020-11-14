@@ -51,6 +51,7 @@ export const Screen1: React.FC<Props> = ({}) => {
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           }
+          hidesSearchBarWhenScrolling={false}
           searchBar={<SearchBar></SearchBar>}
         />
       }

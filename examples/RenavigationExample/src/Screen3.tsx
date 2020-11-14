@@ -57,8 +57,8 @@ export const Screen3: React.FC<Props> = ({}) => {
     <NavigationScreen
       navigationItem={
         <NavigationItem
-          title={state ? (state.value as string) : '😱 Screen 3'}
-          largeTitleDisplayMode="always"
+          title={state ? (state.value as string) : 'Screen 3'}
+          largeTitleDisplayMode={isInModal ? 'never' : 'always'}
           leftContent={
             isInModal ? (
               <View

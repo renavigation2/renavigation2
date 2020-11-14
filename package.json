@@ -19,17 +19,17 @@
     "watch": "sh scripts/watch.sh"
   },
   "dependencies": {
-    "codecov": "^3.8.0",
+    "codecov": "^3.8.1",
     "concurrently": "^5.3.0",
     "lerna": "^3.22.1",
-    "npm-check-updates": "^9.2.3",
+    "npm-check-updates": "^10.0.0",
     "patch-package": "^6.2.2",
     "react-native": "^0.63.3"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
     "@commitlint/config-lerna-scopes": "^11.0.0",
-    "@types/react-native": "^0.63.30",
+    "@types/react-native": "^0.63.34",
     "commitlint": "^11.0.0",
     "husky": "^4.3.0"
   }

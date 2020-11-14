@@ -8,6 +8,7 @@ class RNRNavigationContainer: UIView, UINavigationControllerDelegate, RNRChild, 
 
     var isReady = false
     var hasMovedToSuperview = false
+    var hasUpdatedReactSubviews = false
 
     @objc var onWillShowView: RCTDirectEventBlock?
 
@@ -35,6 +36,8 @@ class RNRNavigationContainer: UIView, UINavigationControllerDelegate, RNRChild, 
     }
 
     override func didUpdateReactSubviews() {
+        hasUpdatedReactSubviews = true
+        setup()
     }
 
     override func reactAddController(toClosestParent controller: UIViewController!) {
@@ -63,7 +66,7 @@ class RNRNavigationContainer: UIView, UINavigationControllerDelegate, RNRChild, 
 
     func setup() {
         let controller = viewController ?? reactViewController()
-        if !isReady && hasMovedToSuperview && controller != nil {
+        if !isReady && hasMovedToSuperview && hasUpdatedReactSubviews && controller != nil {
             let childrenReady = areChildrenReady(scenes)
             if childrenReady {
                 isReady = true
@@ -73,6 +76,13 @@ class RNRNavigationContainer: UIView, UINavigationControllerDelegate, RNRChild, 
                     scene.isPresented = true
                     return scene.reactViewController()
                 }, animated: false)
+
+                // Update navigation bar item after setup
+                DispatchQueue.main.async { [self] in
+                    scenes.forEach { scene in
+                        scene.updateNavigationBarItem()
+                    }
+                }
             }
         }
     }
@@ -89,6 +99,7 @@ class RNRNavigationContainer: UIView, UINavigationControllerDelegate, RNRChild, 
         if !scene.isPresented && scene.isReady {
             scene.isPresented = true
             let animated = scene.animated == -1 ? false : true
+            scene.updateNavigationBarItem()
             navigationController!.pushViewController(scene.reactViewController(), animated: animated)
         }
     }
