@@ -12,15 +12,6 @@ class RNRNavigation: UIView, RNRParent {
     var hasSetDefaults = false
     var defaultIsInteractivePopGestureEnabled: Bool?
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        navigationController.setViewControllers([UIViewController()], animated: false)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     override func insertReactSubview(_ subview: UIView!, at atIndex: Int) {
         subview.willMove(toSuperview: self)
         super.insertReactSubview(subview, at: atIndex)

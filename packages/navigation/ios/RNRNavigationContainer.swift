@@ -70,10 +70,9 @@ class RNRNavigationContainer: UIView, UINavigationControllerDelegate, RNRChild, 
             let childrenReady = areChildrenReady(scenes)
             if childrenReady {
                 isReady = true
-                controller!.addChild(navigationController!)
-                addSubview(navigationController!.view)
                 navigationController!.setViewControllers(scenes.map { scene in
                     scene.isPresented = true
+                    scene.updateNavigationBarItem()
                     return scene.reactViewController()
                 }, animated: false)
 
@@ -83,6 +82,10 @@ class RNRNavigationContainer: UIView, UINavigationControllerDelegate, RNRChild, 
                         scene.updateNavigationBarItem()
                     }
                 }
+
+                // Add navigation view controller after setting up the view controllers (otherwise things break)
+                controller!.addChild(navigationController!)
+                addSubview(navigationController!.view)
             }
         }
     }
