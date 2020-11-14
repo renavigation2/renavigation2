@@ -3327,7 +3327,7 @@ __metadata:
     "@renavigation2/router": ^4.24.0
     "@types/jest": ^26.0.15
     "@types/react": ^16.9.56
-    "@types/react-native": 0.63.34
+    "@types/react-native": 0.63.35
     "@types/react-test-renderer": ^16.9.3
     "@typescript-eslint/eslint-plugin": ^4.7.0
     "@typescript-eslint/parser": ^4.7.0
@@ -3385,7 +3385,7 @@ __metadata:
     "@renavigation2/router": ^4.24.0
     "@types/jest": ^26.0.15
     "@types/react": ^16.9.56
-    "@types/react-native": 0.63.34
+    "@types/react-native": 0.63.35
     "@types/react-test-renderer": ^16.9.3
     "@typescript-eslint/eslint-plugin": ^4.7.0
     "@typescript-eslint/parser": ^4.7.0
@@ -3412,7 +3412,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@renavigation2/navigation@^4.24.0, @renavigation2/navigation@workspace:packages/navigation":
+"@renavigation2/navigation@^4.24.1, @renavigation2/navigation@workspace:packages/navigation":
   version: 0.0.0-use.local
   resolution: "@renavigation2/navigation@workspace:packages/navigation"
   dependencies:
@@ -3421,7 +3421,7 @@ __metadata:
     "@renavigation2/router": ^4.24.0
     "@types/jest": ^26.0.15
     "@types/react": ^16.9.56
-    "@types/react-native": 0.63.34
+    "@types/react-native": 0.63.35
     "@types/react-test-renderer": ^16.9.3
     "@typescript-eslint/eslint-plugin": ^4.7.0
     "@typescript-eslint/parser": ^4.7.0
@@ -3482,7 +3482,7 @@ __metadata:
     "@renavigation2/router": ^4.24.0
     "@types/jest": ^26.0.15
     "@types/react": ^16.9.56
-    "@types/react-native": 0.63.34
+    "@types/react-native": 0.63.35
     "@types/react-test-renderer": ^16.9.3
     "@typescript-eslint/eslint-plugin": ^4.7.0
     "@typescript-eslint/parser": ^4.7.0
@@ -3735,12 +3735,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-native@npm:0.63.34, @types/react-native@npm:^0.63.34":
-  version: 0.63.34
-  resolution: "@types/react-native@npm:0.63.34"
+"@types/react-native@npm:0.63.35, @types/react-native@npm:^0.63.35":
+  version: 0.63.35
+  resolution: "@types/react-native@npm:0.63.35"
   dependencies:
     "@types/react": "*"
-  checksum: efb3dbe52b0390fbbc670afd51896892dfa27c73ff380b6353d6793f60315afc83abfa571a16dffdd6d8846f712d6ba47d8e58851109e0f18ace84fc0d9209ea
+  checksum: dd11f84b60a905e02bbd5bbc3aece6b98c11178ee39c1a8fda5df72c548e8344bebca57a51a0486b59376493e99daad1e1fc7eb35c5d7e590d2f9bedc539d4fe
   languageName: node
   linkType: hard
 
@@ -4055,11 +4055,11 @@ __metadata:
     "@react-native-community/eslint-config": ^2.0.0
     "@renavigation2/core": ^4.24.0
     "@renavigation2/modals": ^4.24.0
-    "@renavigation2/navigation": ^4.24.0
+    "@renavigation2/navigation": ^4.24.1
     "@renavigation2/tabs": ^4.24.0
     "@types/jest": ^26.0.15
     "@types/react": ^16.9.56
-    "@types/react-native": ^0.63.34
+    "@types/react-native": ^0.63.35
     "@types/react-test-renderer": ^16.9.3
     "@types/redux-logger": ^3.0.8
     "@typescript-eslint/eslint-plugin": ^4.7.0
@@ -6578,9 +6578,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.3.591":
-  version: 1.3.595
-  resolution: "electron-to-chromium@npm:1.3.595"
-  checksum: 5fb65f0071e9aa48ff23263d63a1fd4fb469fb1d066effb2d834729b6542f1cb5179a9bd2ed41d9ab802cf90d07b4b12fd037f6d7f3c0c572625422ee03314f0
+  version: 1.3.596
+  resolution: "electron-to-chromium@npm:1.3.596"
+  checksum: 3276707e79b41c6680469eab372bb9a73bcf985395d796e4ccc9ed9f3d8b2458d9637669ebf382378620cf63c9306ef7fc4986945eacb4abcb15e6216d8dfd45
   languageName: node
   linkType: hard
 
@@ -14039,7 +14039,7 @@ fsevents@^1.2.7:
   dependencies:
     "@commitlint/config-conventional": ^11.0.0
     "@commitlint/config-lerna-scopes": ^11.0.0
-    "@types/react-native": ^0.63.34
+    "@types/react-native": ^0.63.35
     codecov: ^3.8.1
     commitlint: ^11.0.0
     concurrently: ^5.3.0
@@ -14729,18 +14729,20 @@ fsevents@^1.2.7:
   linkType: hard
 
 "stack-utils@npm:^1.0.1":
-  version: 1.0.2
-  resolution: "stack-utils@npm:1.0.2"
-  checksum: 593a8bc5ca6d4bc0f97a5eb9b4d5739614a1037ccbeb05989de7e24c9352e2744c779611fa30a441ab40a97a1cc770d6cd4acdbc621fd80ea8d309c3d8068c49
+  version: 1.0.3
+  resolution: "stack-utils@npm:1.0.3"
+  dependencies:
+    escape-string-regexp: ^2.0.0
+  checksum: a4897a26c9bcc54a86dd6d150de0dcf13a9c590756cbcfe8d421d6c489d3253b34222d627169605beaed6c2b905cf9c7f25d06292cfb829d803bd1ece716a221
   languageName: node
   linkType: hard
 
 "stack-utils@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "stack-utils@npm:2.0.2"
+  version: 2.0.3
+  resolution: "stack-utils@npm:2.0.3"
   dependencies:
     escape-string-regexp: ^2.0.0
-  checksum: a9fa702767defa95a14fe7a78083eadfc254c5e12e105b034242b47cc4e9ba4ba345b54b7218b8abbbf8f38d6a327b20aa0fdebb582eae5118f2cd004e7bace5
+  checksum: 65fe92891beee90473708c119e8d55473996aa11ff073cc59c3f6a0b199b44c1cc7c51425b64a8d0761d1c7c3d9ab8350a6bebff4d32720492cdfb00ee3096f8
   languageName: node
   linkType: hard
 
@@ -15671,11 +15673,11 @@ typescript@^4.0.5:
   linkType: hard
 
 "uglify-js@npm:^3.1.4":
-  version: 3.11.5
-  resolution: "uglify-js@npm:3.11.5"
+  version: 3.11.6
+  resolution: "uglify-js@npm:3.11.6"
   bin:
     uglifyjs: bin/uglifyjs
-  checksum: 8614bb84f305d229ed42a4cfba1687725a32d17828e67ea06f8c972f2d71eaaccc973c21dd65d4271a9bbd8e45cdde096ebf3f21c0f041dd39b2592862e7713a
+  checksum: 26b7dc245f6db4c786517dae7ed06e3928a3542546cea08c4e3cbc0fc716390bea14007314157dd27d6c64ed3f5f5278ef5bcd0bcbf77d9ce54a527b0f03eaf9
   languageName: node
   linkType: hard
 
