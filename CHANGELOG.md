@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.25.0](https://github.com/renavigation2/renavigation2/compare/v4.24.1...v4.25.0) (2020-11-14)
+
+
+### Bug Fixes
+
+* **core:** Fixed code format ([62e3813](https://github.com/renavigation2/renavigation2/commit/62e3813357ed465a119711324c4371327ffe25dc))
+* **navigation:** Fixed large title sometimes appearing as compact title ([b225fad](https://github.com/renavigation2/renavigation2/commit/b225fadfaf38f7a1a435148547f6be34419edcfa))
+
+
+### Features
+
+* **navigation:** Added NavigationItemTitleView component ([30f49c1](https://github.com/renavigation2/renavigation2/commit/30f49c1ec29cd03b6ddccf0e7f498d6dc9a6a377))
+
+
+
+
+
 ## [4.24.1](https://github.com/renavigation2/renavigation2/compare/v4.24.0...v4.24.1) (2020-11-14)
 
 

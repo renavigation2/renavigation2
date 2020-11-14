@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.25.0](https://github.com/renavigation2/renavigation2/compare/v4.24.1...v4.25.0) (2020-11-14)
+
+
+### Bug Fixes
+
+* **core:** Fixed code format ([62e3813](https://github.com/renavigation2/renavigation2/commit/62e3813357ed465a119711324c4371327ffe25dc))
+
+
+
+
+
 # [4.24.0](https://github.com/renavigation2/renavigation2/compare/v4.23.1...v4.24.0) (2020-11-12)
 
 
