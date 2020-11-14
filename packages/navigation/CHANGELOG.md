@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.24.1](https://github.com/renavigation2/renavigation2/compare/v4.24.0...v4.24.1) (2020-11-14)
+
+
+### Bug Fixes
+
+* **navigation:** Fixed issue with navigation item not always being applied ([7c60a81](https://github.com/renavigation2/renavigation2/commit/7c60a810d131f2e30ac4cc8f3b4aca97024c4ece))
+
+
+
+
+
 # [4.24.0](https://github.com/renavigation2/renavigation2/compare/v4.23.1...v4.24.0) (2020-11-12)
 
 **Note:** Version bump only for package @renavigation2/navigation
