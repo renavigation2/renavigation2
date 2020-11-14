@@ -35,6 +35,11 @@ class RNRNavigationScene: UIView, RNRChild, RNRParent{
         }
     }
 
+    override func insertReactSubview(_ subview: UIView!, at atIndex: Int) {
+        subview.willMove(toSuperview: self)
+        super.insertReactSubview(subview, at: atIndex)
+    }
+
     override func didUpdateReactSubviews() {
         super.didUpdateReactSubviews()
         hasUpdatedReactSubviews = true

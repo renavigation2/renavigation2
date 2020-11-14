@@ -35,7 +35,6 @@ export interface NavigationItemProps {
 }
 
 export const NavigationItem: React.FC<NavigationItemProps> = ({
-  children,
   title,
   leftItemsSupplementBackButton,
   largeTitleDisplayMode,
@@ -99,7 +98,6 @@ export const NavigationItem: React.FC<NavigationItemProps> = ({
         {scrollEdgeAppearance ? scrollEdgeAppearance : <EmptyComponent />}
         {refreshControl ? refreshControl : <EmptyComponent />}
         {searchBar ? searchBar : <EmptyComponent />}
-        {children}
       </RNRNavigationItem>
     </Contexts.HasPromptContext.Provider>
   )
