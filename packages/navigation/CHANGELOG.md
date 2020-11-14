@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.25.1](https://github.com/renavigation2/renavigation2/compare/v4.25.0...v4.25.1) (2020-11-14)
+
+
+### Bug Fixes
+
+* **navigation:** Added ref on NavigationItemTitleView ([b8a1c9d](https://github.com/renavigation2/renavigation2/commit/b8a1c9dcf71ce5460eada5f9610b0b5e4b60534f))
+
+
+
+
+
 # [4.25.0](https://github.com/renavigation2/renavigation2/compare/v4.24.1...v4.25.0) (2020-11-14)
 
 
