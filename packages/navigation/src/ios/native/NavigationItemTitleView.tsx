@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import {
   requireNativeComponent,
   useWindowDimensions,
@@ -9,23 +9,25 @@ const RNRNavigationItemTitleView = requireNativeComponent<any>(
   'RNRNavigationItemTitleView'
 )
 
-export interface NavigationItemTitleViewProps extends ViewProps {
+export interface NavigationItemTitleViewProps
+  extends React.PropsWithChildren<ViewProps> {
   autoFill?: boolean
 }
 
-export const NavigationItemTitleView: React.FC<NavigationItemTitleViewProps> = ({
-  children,
-  style,
-  autoFill,
-  ...props
-}) => {
+function NavigationItemTitleViewBase(
+  { children, style, autoFill, ...props }: NavigationItemTitleViewProps,
+  ref: any
+) {
   const { width } = useWindowDimensions()
   return (
     <RNRNavigationItemTitleView
       {...props}
+      ref={ref}
       style={autoFill ? [style, { width }] : style}
     >
       {children}
     </RNRNavigationItemTitleView>
   )
 }
+
+export const NavigationItemTitleView = forwardRef(NavigationItemTitleViewBase)
