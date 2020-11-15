@@ -83,7 +83,11 @@ class RNRSearchBar: UIView, RNRChild, RNRSearchBarProtocol, UISearchControllerDe
     func setup() {
         if !isReady && parent != nil {
             isReady = true
-            setupParent(parent!)
+            if !parent!.isReady {
+                setupParent(parent!)
+            } else {
+                updateInParent(parent!, subview: self)
+            }
         }
     }
 

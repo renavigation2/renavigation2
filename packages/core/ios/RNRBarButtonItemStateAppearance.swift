@@ -40,7 +40,11 @@ class RNRBarButtonItemStateAppearance: UIView, RNRChild, RNRParent, RNRBarButton
             let childrenReady = areChildrenReady(subviews)
             if childrenReady {
                 isReady = true
-                setupParent(parent!)
+                if !parent!.isReady {
+                    setupParent(parent!)
+                } else {
+                    updateInParent(parent!, subview: self)
+                }
             }
         }
     }

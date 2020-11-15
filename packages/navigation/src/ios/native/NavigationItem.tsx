@@ -7,6 +7,7 @@ import {
 } from '@renavigation2/core'
 import React from 'react'
 import { requireNativeComponent } from 'react-native'
+import { NavigationBarContent } from './NavigationBarContent'
 
 const RNRNavigationItem = requireNativeComponent<any>('RNRNavigationItem')
 
@@ -77,14 +78,22 @@ export const NavigationItem: React.FC<NavigationItemProps> = ({
         )}
         {...props}
       >
-        {titleView ? titleView : <EmptyComponent />}
+        {titleView ? (
+          <NavigationBarContent>{titleView}</NavigationBarContent>
+        ) : (
+          <EmptyComponent />
+        )}
         {leftBarButtonItem ? leftBarButtonItem : <EmptyComponent />}
         {leftBarButtonItems ? (
           <BarButtonItems>{leftBarButtonItems}</BarButtonItems>
         ) : (
           <EmptyComponent />
         )}
-        {leftContent ? leftContent : <EmptyComponent />}
+        {leftContent ? (
+          <NavigationBarContent>{leftContent}</NavigationBarContent>
+        ) : (
+          <EmptyComponent />
+        )}
         {backBarButtonItem ? backBarButtonItem : <EmptyComponent />}
         {rightBarButtonItem ? rightBarButtonItem : <EmptyComponent />}
         {rightBarButtonItems ? (
@@ -92,7 +101,11 @@ export const NavigationItem: React.FC<NavigationItemProps> = ({
         ) : (
           <EmptyComponent />
         )}
-        {rightContent ? rightContent : <EmptyComponent />}
+        {rightContent ? (
+          <NavigationBarContent>{rightContent}</NavigationBarContent>
+        ) : (
+          <EmptyComponent />
+        )}
         {standardAppearance ? standardAppearance : <EmptyComponent />}
         {compactAppearance ? compactAppearance : <EmptyComponent />}
         {scrollEdgeAppearance ? scrollEdgeAppearance : <EmptyComponent />}

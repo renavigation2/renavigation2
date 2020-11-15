@@ -54,7 +54,11 @@ class RNRNavigationItem: UIView, RNRChild, RNRParent {
             let childrenReady = areChildrenReady(subviews)
             if childrenReady {
                 isReady = true
-                setupParent(parent!)
+                if !parent!.isReady {
+                    setupParent(parent!)
+                } else {
+                    updateInParent(parent!, subview: self)
+                }
             }
         }
     }
@@ -162,7 +166,10 @@ class RNRNavigationItem: UIView, RNRChild, RNRParent {
                     navigationItem.titleView = nil
                 } else {
                     navigationItem.titleView = nil
-                    navigationItem.titleView = subview
+                    if !subview.reactSubviews().isEmpty && (subview as! RNRNavigationBarContent).isReady {
+                        navigationItem.titleView = subview.reactSubviews()[0]
+                    }
+
                 }
             } else if index == 1 { // leftButton
                 if subview is RNRBarButtonItemProtocol {
@@ -186,9 +193,11 @@ class RNRNavigationItem: UIView, RNRChild, RNRParent {
                         navigationItem.leftBarButtonItem = nil
                     } else {
                         navigationItem.leftBarButtonItem = nil
-                        let leftBarButtonItem = UIBarButtonItem()
-                        leftBarButtonItem.customView = subview
-                        navigationItem.leftBarButtonItem = leftBarButtonItem
+                        if !subview.reactSubviews().isEmpty && (subview as! RNRNavigationBarContent).isReady {
+                            let leftBarButtonItem = UIBarButtonItem()
+                            leftBarButtonItem.customView = subview.reactSubviews()[0]
+                            navigationItem.leftBarButtonItem = leftBarButtonItem
+                        }
                     }
                 }
             } else if index == 4 { // backButton
@@ -220,9 +229,11 @@ class RNRNavigationItem: UIView, RNRChild, RNRParent {
                         navigationItem.rightBarButtonItem = nil
                     } else {
                         navigationItem.rightBarButtonItem = nil
-                        let rightBarButtonItem = UIBarButtonItem()
-                        rightBarButtonItem.customView = subview
-                        navigationItem.rightBarButtonItem = rightBarButtonItem
+                        if !subview.reactSubviews().isEmpty && (subview as! RNRNavigationBarContent).isReady {
+                            let rightBarButtonItem = UIBarButtonItem()
+                            rightBarButtonItem.customView = subview.reactSubviews()[0]
+                            navigationItem.rightBarButtonItem = rightBarButtonItem
+                        }
                     }
                 }
             } else if index == 8 { // standardAppearance
