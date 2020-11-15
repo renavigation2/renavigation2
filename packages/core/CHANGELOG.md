@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.25.2](https://github.com/renavigation2/renavigation2/compare/v4.25.1...v4.25.2) (2020-11-15)
+
+
+### Bug Fixes
+
+* **core:** Update parent if parent is already setup ([f7ded53](https://github.com/renavigation2/renavigation2/commit/f7ded53ba667679c5f32445b3d4912c80b2077f4))
+
+
+
+
+
 # [4.25.0](https://github.com/renavigation2/renavigation2/compare/v4.24.1...v4.25.0) (2020-11-14)
 
 
