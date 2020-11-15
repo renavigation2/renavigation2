@@ -44,7 +44,11 @@ class RNRRefreshControl: UIView, RNRChild, RNRRefreshControlProtocol {
                     refreshControl.beginRefreshing()
                 }
 
-                setupParent(parent!)
+                if !parent!.isReady {
+                    setupParent(parent!)
+                } else {
+                    updateInParent(parent!, subview: self)
+                }
             }
         }
     }
