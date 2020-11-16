@@ -74,7 +74,7 @@ class RNRNavigationBar: UIView, RNRChild, RNRParent {
 
     func setup() {
         if !isReady && hasUpdatedReactSubviews && parent != nil {
-            let childrenReady = areChildrenReady(subviews)
+            let childrenReady = areChildrenReady(reactSubviews())
             if childrenReady {
                 isReady = true
                 if !parent!.isReady {

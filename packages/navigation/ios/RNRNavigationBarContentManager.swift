@@ -1,7 +1,9 @@
 @objc(RNRNavigationBarContentManager)
 class RNRNavigationBarContentManager: RCTViewManager {
     override func view() -> UIView! {
-        RNRNavigationBarContent()
+        let navigationBarContent = RNRNavigationBarContent()
+        navigationBarContent.uiManager = bridge.uiManager
+        return navigationBarContent
     }
 
     override static func requiresMainQueueSetup() -> Bool {

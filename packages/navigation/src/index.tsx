@@ -23,7 +23,6 @@ export * from './ios/hooks/useWillDisappearEffect'
 export * from './ios/native/NavigationBar'
 export * from './ios/native/NavigationBarAppearance'
 export * from './ios/native/NavigationItem'
-export * from './ios/native/NavigationItemTitleView'
 
 export * from './ios/typings/EdgeInsets'
 export * from './ios/typings/NavigationRouterRef'

@@ -1,11 +1,11 @@
 import RenavigationCore
 
-class RNRNavigationBarContent: UIView, RNRChild {
+class RNRNavigationBarContent: UIView, RNRChild, RNRParent {
     var parent: RNRNavigationItem?
+    var uiManager: RCTUIManager?
 
     var isReady = false
     var hasUpdatedReactSubviews = false
-    var hasLayedoutSubviews = false
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -17,13 +17,8 @@ class RNRNavigationBarContent: UIView, RNRChild {
     }
 
     override func insertReactSubview(_ subview: UIView!, at atIndex: Int) {
+        subview.willMove(toSuperview: self)
         super.insertReactSubview(subview, at: atIndex)
-        NSLog("insertReactSubview")
-    }
-
-    override func removeReactSubview(_ subview: UIView!) {
-        super.removeReactSubview(subview)
-        NSLog("removeReactSubview")
     }
 
     override func didUpdateReactSubviews() {
@@ -44,21 +39,30 @@ class RNRNavigationBarContent: UIView, RNRChild {
         }
     }
 
+    func updateSubview(_ subview: UIView) {
+        updateInParent(parent!, subview: self)
+    }
+
+    override func reactSetFrame(_ frame: CGRect) {
+
+    }
+
     override func layoutSubviews() {
-        super.layoutSubviews()
-        if !reactSubviews().isEmpty {
-            hasLayedoutSubviews = true
-            setup()
+        reactSubviews().forEach { view in
+            uiManager?.setSize(view.frame.size, for: view)
         }
     }
 
     func setup() {
-        if !isReady && hasUpdatedReactSubviews && hasLayedoutSubviews && parent != nil {
-            isReady = true
-            if !parent!.isReady {
-                setupParent(parent!)
-            } else {
-                updateInParent(parent!, subview: self)
+        if !isReady && hasUpdatedReactSubviews && parent != nil {
+            let childrenReady = areChildrenReady(reactSubviews())
+            if childrenReady {
+                isReady = true
+                if !parent!.isReady {
+                    setupParent(parent!)
+                } else {
+                    updateInParent(parent!, subview: self)
+                }
             }
         }
     }

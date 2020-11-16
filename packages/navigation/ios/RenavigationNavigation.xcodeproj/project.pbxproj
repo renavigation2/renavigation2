@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C06A104B253B34F200D07B3B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06A104A253B34F200D07B3B /* UIKit.framework */; };
-		C073D961256064630019411B /* RNRNavigationItemTitleViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C073D95E256064630019411B /* RNRNavigationItemTitleViewManager.m */; };
-		C073D962256064630019411B /* RNRNavigationItemTitleViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C073D95F256064630019411B /* RNRNavigationItemTitleViewManager.swift */; };
-		C073D963256064630019411B /* RNRNavigationItemTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C073D960256064630019411B /* RNRNavigationItemTitleView.swift */; };
 		C07A1EB8255B91F2007D8F13 /* RNRNavigationSceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EA5255B91F2007D8F13 /* RNRNavigationSceneManager.swift */; };
 		C07A1EB9255B91F2007D8F13 /* RNRNavigationItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EA6255B91F2007D8F13 /* RNRNavigationItemManager.m */; };
 		C07A1EBA255B91F2007D8F13 /* RNRNavigationBarAppearanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EA7255B91F2007D8F13 /* RNRNavigationBarAppearanceManager.m */; };
@@ -50,9 +47,6 @@
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRenavigationNavigation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRenavigationNavigation.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C06A104A253B34F200D07B3B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/iOSSupport/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		C073D95E256064630019411B /* RNRNavigationItemTitleViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationItemTitleViewManager.m; sourceTree = "<group>"; };
-		C073D95F256064630019411B /* RNRNavigationItemTitleViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationItemTitleViewManager.swift; sourceTree = "<group>"; };
-		C073D960256064630019411B /* RNRNavigationItemTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationItemTitleView.swift; sourceTree = "<group>"; };
 		C07A1EA5255B91F2007D8F13 /* RNRNavigationSceneManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationSceneManager.swift; sourceTree = "<group>"; };
 		C07A1EA6255B91F2007D8F13 /* RNRNavigationItemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationItemManager.m; sourceTree = "<group>"; };
 		C07A1EA7255B91F2007D8F13 /* RNRNavigationBarAppearanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationBarAppearanceManager.m; sourceTree = "<group>"; };
@@ -118,9 +112,6 @@
 				C07A1EB4255B91F2007D8F13 /* RNRNavigationItem.swift */,
 				C07A1EA6255B91F2007D8F13 /* RNRNavigationItemManager.m */,
 				C07A1EAD255B91F2007D8F13 /* RNRNavigationItemManager.swift */,
-				C073D960256064630019411B /* RNRNavigationItemTitleView.swift */,
-				C073D95E256064630019411B /* RNRNavigationItemTitleViewManager.m */,
-				C073D95F256064630019411B /* RNRNavigationItemTitleViewManager.swift */,
 				C07A1EAA255B91F2007D8F13 /* RNRNavigationManager.m */,
 				C07A1EB5255B91F2007D8F13 /* RNRNavigationManager.swift */,
 				C07A1EA9255B91F2007D8F13 /* RNRNavigationScene.swift */,
@@ -212,11 +203,8 @@
 				C07A1EC0255B91F2007D8F13 /* RNRNavigationItemManager.swift in Sources */,
 				C07A1EBF255B91F2007D8F13 /* RNRNavigationContainer.swift in Sources */,
 				C07A1EC5255B91F2007D8F13 /* RNRNavigationContainerManager.m in Sources */,
-				C073D962256064630019411B /* RNRNavigationItemTitleViewManager.swift in Sources */,
-				C073D963256064630019411B /* RNRNavigationItemTitleView.swift in Sources */,
 				C07A1EB8255B91F2007D8F13 /* RNRNavigationSceneManager.swift in Sources */,
 				C07A1EBA255B91F2007D8F13 /* RNRNavigationBarAppearanceManager.m in Sources */,
-				C073D961256064630019411B /* RNRNavigationItemTitleViewManager.m in Sources */,
 				C0ABD12E2560DC8E0088832B /* RNRNavigationBarContent.swift in Sources */,
 				C07A1EC3255B91F2007D8F13 /* RNRNavigationSceneManager.m in Sources */,
 				C07A1EC8255B91F2007D8F13 /* RNRNavigationManager.swift in Sources */,

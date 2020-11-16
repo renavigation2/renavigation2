@@ -76,13 +76,6 @@ class RNRNavigationContainer: UIView, UINavigationControllerDelegate, RNRChild, 
                     return scene.reactViewController()
                 }, animated: false)
 
-                // Update navigation bar item after setup
-                DispatchQueue.main.async { [self] in
-                    scenes.forEach { scene in
-                        scene.updateNavigationBarItem()
-                    }
-                }
-
                 // Add navigation view controller after setting up the view controllers (otherwise things break)
                 controller!.addChild(navigationController!)
                 addSubview(navigationController!.view)
