@@ -51,7 +51,7 @@ class RNRNavigationItem: UIView, RNRChild, RNRParent {
 
     func setup() {
         if !isReady && hasUpdatedReactSubviews && parent != nil {
-            let childrenReady = areChildrenReady(subviews)
+            let childrenReady = areChildrenReady(reactSubviews())
             if childrenReady {
                 isReady = true
                 if !parent!.isReady {
@@ -161,17 +161,7 @@ class RNRNavigationItem: UIView, RNRChild, RNRParent {
         var hasLeftContent = false
         var hasRightContent = false
         reactSubviews().enumerated().forEach { (index, subview) in
-            if index == 0 { // titleView
-                if subview is RNREmptyComponentProtocol {
-                    navigationItem.titleView = nil
-                } else {
-                    navigationItem.titleView = nil
-                    if !subview.reactSubviews().isEmpty && (subview as! RNRNavigationBarContent).isReady {
-                        navigationItem.titleView = subview.reactSubviews()[0]
-                    }
-
-                }
-            } else if index == 1 { // leftButton
+            if index == 1 { // leftButton
                 if subview is RNRBarButtonItemProtocol {
                     hasLeftContent = true
                     navigationItem.leftBarButtonItem = nil
@@ -273,6 +263,18 @@ class RNRNavigationItem: UIView, RNRChild, RNRParent {
                     } else {
                         navigationItem.searchController = nil
                     }
+                }
+            }
+
+            // Do title last, not sure if this had an impact but it can't hurt
+            if index == 0 { // titleView
+                if subview is RNREmptyComponentProtocol {
+                    navigationItem.titleView = nil
+                } else {
+                    if !subview.reactSubviews().isEmpty && (subview as! RNRNavigationBarContent).isReady {
+                        navigationItem.titleView = subview.reactSubviews()[0]
+                    }
+
                 }
             }
         }

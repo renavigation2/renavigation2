@@ -51,13 +51,6 @@ class RNRNavigation: UIView, RNRParent {
                 setupChildren()
             }
         }
-
-        // Sometimes, the reactViewController is not available yet, we have to wait until it is
-        if !isReady && hasMovedToSuperview && hasUpdatedReactSubviews {
-            DispatchQueue.main.async { [self] in
-                setup()
-            }
-        }
     }
 
     func setupChildren() {

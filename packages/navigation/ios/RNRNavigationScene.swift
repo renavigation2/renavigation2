@@ -52,11 +52,22 @@ class RNRNavigationScene: UIView, RNRChild, RNRParent{
 
     func setup() {
         if !isReady && hasUpdatedReactSubviews && navigationContainer != nil {
-            isReady = true
-            updateNavigationBarItem()
-            setupParent(navigationContainer!)
-            if navigationContainer!.isReady {
-                navigationContainer!.present(self)
+            var ready = true
+            reactSubviews().forEach { subview in
+                if subview is RNRNavigationItem {
+                    ready = (subview as! RNRNavigationItem).isReady
+                }
+            }
+
+            if ready {
+                isReady = true
+                if navigationContainer!.isReady {
+                    DispatchQueue.main.async { [self] in
+                        navigationContainer!.present(self)
+                    }
+                } else {
+                    setupParent(navigationContainer!)
+                }
             }
         }
     }
@@ -74,7 +85,6 @@ class RNRNavigationScene: UIView, RNRChild, RNRParent{
                 updateRefreshControl((subview as! RNRNavigationItem).getRefreshControl())
             }
         }
-        navigationContainer?.navigationController?.navigationBar.setNeedsLayout()
     }
 
     func updateRefreshControl(_ refreshControl: RNRRefreshControlProtocol?) {
