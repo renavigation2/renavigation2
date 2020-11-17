@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.26.1](https://github.com/renavigation2/renavigation2/compare/v4.26.0...v4.26.1) (2020-11-17)
+
+
+### Bug Fixes
+
+* **navigation:** Added ref forwarfing to title view ([ff8841b](https://github.com/renavigation2/renavigation2/commit/ff8841ba4a46e697a2f05d4697da67525c7bd733))
+
+
+
+
+
 # [4.26.0](https://github.com/renavigation2/renavigation2/compare/v4.25.4...v4.26.0) (2020-11-17)
 
 
