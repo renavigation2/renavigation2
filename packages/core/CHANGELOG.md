@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.25.4](https://github.com/renavigation2/renavigation2/compare/v4.25.3...v4.25.4) (2020-11-17)
+
+
+### Bug Fixes
+
+* **core:** Use react subviews/superview instead of uikit ones ([defbe3b](https://github.com/renavigation2/renavigation2/commit/defbe3b878cc0a2d5b441c1c00343ce1552c31c2))
+
+
+
+
+
 ## [4.25.2](https://github.com/renavigation2/renavigation2/compare/v4.25.1...v4.25.2) (2020-11-15)
 
 

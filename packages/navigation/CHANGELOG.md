@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.25.4](https://github.com/renavigation2/renavigation2/compare/v4.25.3...v4.25.4) (2020-11-17)
+
+
+### Bug Fixes
+
+* **navigation:** Fixed reactViewController not set when presenting from modal ([c8e11dc](https://github.com/renavigation2/renavigation2/commit/c8e11dc30d8c9e93f6624167cd015447f72f676e))
+
+
+
+
+
 ## [4.25.3](https://github.com/renavigation2/renavigation2/compare/v4.25.2...v4.25.3) (2020-11-16)
 
 

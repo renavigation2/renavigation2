@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.25.4](https://github.com/renavigation2/renavigation2/compare/v4.25.3...v4.25.4) (2020-11-17)
+
+
+### Bug Fixes
+
+* **core:** Use react subviews/superview instead of uikit ones ([defbe3b](https://github.com/renavigation2/renavigation2/commit/defbe3b878cc0a2d5b441c1c00343ce1552c31c2))
+* **modals:** Fixed issue with modal not presenting ([aad4d24](https://github.com/renavigation2/renavigation2/commit/aad4d245eab22073c93d650e4ce4adab0f33dee2))
+* **navigation:** Fixed reactViewController not set when presenting from modal ([c8e11dc](https://github.com/renavigation2/renavigation2/commit/c8e11dc30d8c9e93f6624167cd015447f72f676e))
+
+
+
+
+
 ## [4.25.3](https://github.com/renavigation2/renavigation2/compare/v4.25.2...v4.25.3) (2020-11-16)
 
 
