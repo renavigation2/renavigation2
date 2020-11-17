@@ -44,11 +44,22 @@ class RNRNavigation: UIView, RNRParent {
 
     func setup() {
         setProps()
-        if !isReady && hasMovedToSuperview && hasUpdatedReactSubviews && reactViewController() != nil {
-            let childrenReady = (reactSubviews()[0] as! RNRChild).isReady
-            if childrenReady {
-                isReady = true
-                setupChildren()
+        if !isReady && hasMovedToSuperview && hasUpdatedReactSubviews {
+            if reactViewController() != nil {
+                let childrenReady = (reactSubviews()[0] as! RNRChild).isReady
+                if childrenReady {
+                    isReady = true
+                    setupChildren()
+                }
+            } else {
+                // Sometimes, when presenting from a modal, the reactViewController is not yet set, so we dispatch an
+                // async call (or more than 1) to wait until reactViewController is set. This does not create issues
+                // because it simply waits until this is ready before displaying the modal. If we would display the
+                // modals before the reactViewController is set, the navigation inside the modal would have the wrong
+                // safe area insets.
+                DispatchQueue.main.async { [self] in
+                    setup()
+                }
             }
         }
     }
