@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { ViewProps } from 'react-native'
 import { NavigationItemTitleViewFittingCompressed } from '../native/NavigationItemTitleViewFittingCompressed'
 import { NavigationItemTitleViewFittingExpanded } from '../native/NavigationItemTitleViewFittingExpanded'
@@ -7,13 +7,15 @@ export interface NavigationItemTitleViewProps extends ViewProps {
   contentSize?: 'expanded' | 'compressed'
 }
 
-export const NavigationItemTitleView: React.FC<NavigationItemTitleViewProps> = ({
-  contentSize = 'compressed',
-  ...props
-}) => {
+function NavigationItemTitleViewBase(
+  { contentSize = 'compressed', ...props }: NavigationItemTitleViewProps,
+  ref: any
+) {
   if (contentSize === 'expanded') {
-    return <NavigationItemTitleViewFittingExpanded {...props} />
+    return <NavigationItemTitleViewFittingExpanded ref={ref} {...props} />
   }
 
-  return <NavigationItemTitleViewFittingCompressed {...props} />
+  return <NavigationItemTitleViewFittingCompressed ref={ref} {...props} />
 }
+
+export const NavigationItemTitleView = forwardRef(NavigationItemTitleViewBase)

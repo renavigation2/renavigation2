@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { requireNativeComponent, ViewProps } from 'react-native'
 
 const RNRNavigationItemTitleViewFittingCompressed = requireNativeComponent<any>(
@@ -6,10 +6,15 @@ const RNRNavigationItemTitleViewFittingCompressed = requireNativeComponent<any>(
 )
 
 export interface NavigationItemTitleViewFittingCompressedProps
-  extends ViewProps {}
+  extends React.PropsWithChildren<ViewProps> {}
 
-export const NavigationItemTitleViewFittingCompressed: React.FC<NavigationItemTitleViewFittingCompressedProps> = (
-  props
-) => {
-  return <RNRNavigationItemTitleViewFittingCompressed {...props} />
+function NavigationItemTitleViewFittingCompressedBase(
+  props: NavigationItemTitleViewFittingCompressedProps,
+  ref: any
+) {
+  return <RNRNavigationItemTitleViewFittingCompressed ref={ref} {...props} />
 }
+
+export const NavigationItemTitleViewFittingCompressed = forwardRef(
+  NavigationItemTitleViewFittingCompressedBase
+)
