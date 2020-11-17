@@ -1,7 +1,7 @@
 import RenavigationCore
 
 class RNRModalConfig: UIView, RNRChild {
-    var viewController: RNRModalController?
+    var parent: RNRModalContainer?
 
     var isReady: Bool = false
     var hasMovedToSuperview = false
@@ -28,33 +28,34 @@ class RNRModalConfig: UIView, RNRChild {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func didMoveToSuperview() {
-        super.didMoveToSuperview()
-        if superview is RNRModalContainer {
-            self.viewController = (superview as! RNRModalContainer).viewController
+    override func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
+        if newSuperview is RNRModalContainer {
+            parent = (newSuperview as! RNRModalContainer)
             hasMovedToSuperview = true
             setup()
         }
     }
 
     func setup() {
-        if !isReady && hasMovedToSuperview && superview != nil {
+        if !isReady && hasMovedToSuperview && parent != nil {
             isReady = true
             setConfig()
-            setupParent(superview!)
+            setupParent(parent!)
         }
     }
 
     @objc
     override func didSetProps(_ changedProps: [String]!) {
-        if isReady && superview != nil {
+        if isReady && parent != nil {
             setConfig()
-            updateInParent(superview!, subview: self)
+            updateInParent(parent!, subview: self)
         }
     }
 
     func setConfig() {
-        if viewController != nil {
+        if parent?.viewController != nil {
+            let viewController = parent?.viewController
             if !hasSetDefaults {
                 hasSetDefaults = true
                 if #available(iOS 13.0, *) {
