@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0016D46256434DD00B981AF /* RNRNavigationItemTitleViewFittingExpandedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0016D40256434DD00B981AF /* RNRNavigationItemTitleViewFittingExpandedManager.swift */; };
+		C0016D47256434DD00B981AF /* RNRNavigationItemTitleViewFittingExpanded.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0016D41256434DD00B981AF /* RNRNavigationItemTitleViewFittingExpanded.swift */; };
+		C0016D48256434DD00B981AF /* RNRNavigationItemTitleViewFittingExpandedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0016D42256434DD00B981AF /* RNRNavigationItemTitleViewFittingExpandedManager.m */; };
+		C0016D49256434DD00B981AF /* RNRNavigationItemTitleViewFittingCompressedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0016D43256434DD00B981AF /* RNRNavigationItemTitleViewFittingCompressedManager.swift */; };
+		C0016D4A256434DD00B981AF /* RNRNavigationItemTitleViewFittingCompressed.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0016D44256434DD00B981AF /* RNRNavigationItemTitleViewFittingCompressed.swift */; };
+		C0016D4B256434DD00B981AF /* RNRNavigationItemTitleViewFittingCompressedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0016D45256434DD00B981AF /* RNRNavigationItemTitleViewFittingCompressedManager.m */; };
 		C06A104B253B34F200D07B3B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06A104A253B34F200D07B3B /* UIKit.framework */; };
 		C07A1EB8255B91F2007D8F13 /* RNRNavigationSceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EA5255B91F2007D8F13 /* RNRNavigationSceneManager.swift */; };
 		C07A1EB9255B91F2007D8F13 /* RNRNavigationItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C07A1EA6255B91F2007D8F13 /* RNRNavigationItemManager.m */; };
@@ -46,6 +52,12 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRenavigationNavigation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRenavigationNavigation.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0016D40256434DD00B981AF /* RNRNavigationItemTitleViewFittingExpandedManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationItemTitleViewFittingExpandedManager.swift; sourceTree = "<group>"; };
+		C0016D41256434DD00B981AF /* RNRNavigationItemTitleViewFittingExpanded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationItemTitleViewFittingExpanded.swift; sourceTree = "<group>"; };
+		C0016D42256434DD00B981AF /* RNRNavigationItemTitleViewFittingExpandedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationItemTitleViewFittingExpandedManager.m; sourceTree = "<group>"; };
+		C0016D43256434DD00B981AF /* RNRNavigationItemTitleViewFittingCompressedManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationItemTitleViewFittingCompressedManager.swift; sourceTree = "<group>"; };
+		C0016D44256434DD00B981AF /* RNRNavigationItemTitleViewFittingCompressed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationItemTitleViewFittingCompressed.swift; sourceTree = "<group>"; };
+		C0016D45256434DD00B981AF /* RNRNavigationItemTitleViewFittingCompressedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationItemTitleViewFittingCompressedManager.m; sourceTree = "<group>"; };
 		C06A104A253B34F200D07B3B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/iOSSupport/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		C07A1EA5255B91F2007D8F13 /* RNRNavigationSceneManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRNavigationSceneManager.swift; sourceTree = "<group>"; };
 		C07A1EA6255B91F2007D8F13 /* RNRNavigationItemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRNavigationItemManager.m; sourceTree = "<group>"; };
@@ -112,6 +124,12 @@
 				C07A1EB4255B91F2007D8F13 /* RNRNavigationItem.swift */,
 				C07A1EA6255B91F2007D8F13 /* RNRNavigationItemManager.m */,
 				C07A1EAD255B91F2007D8F13 /* RNRNavigationItemManager.swift */,
+				C0016D44256434DD00B981AF /* RNRNavigationItemTitleViewFittingCompressed.swift */,
+				C0016D45256434DD00B981AF /* RNRNavigationItemTitleViewFittingCompressedManager.m */,
+				C0016D43256434DD00B981AF /* RNRNavigationItemTitleViewFittingCompressedManager.swift */,
+				C0016D41256434DD00B981AF /* RNRNavigationItemTitleViewFittingExpanded.swift */,
+				C0016D42256434DD00B981AF /* RNRNavigationItemTitleViewFittingExpandedManager.m */,
+				C0016D40256434DD00B981AF /* RNRNavigationItemTitleViewFittingExpandedManager.swift */,
 				C07A1EAA255B91F2007D8F13 /* RNRNavigationManager.m */,
 				C07A1EB5255B91F2007D8F13 /* RNRNavigationManager.swift */,
 				C07A1EA9255B91F2007D8F13 /* RNRNavigationScene.swift */,
@@ -189,18 +207,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				C07A1EC1255B91F2007D8F13 /* RNRNavigationBar.swift in Sources */,
+				C0016D46256434DD00B981AF /* RNRNavigationItemTitleViewFittingExpandedManager.swift in Sources */,
 				C07A1EC4255B91F2007D8F13 /* RNRNavigationBarManager.m in Sources */,
 				C07A1EBE255B91F2007D8F13 /* RNRNavigationBarAppearanceManager.swift in Sources */,
 				C07A1EC7255B91F2007D8F13 /* RNRNavigationItem.swift in Sources */,
 				C0ABD12F2560DC8E0088832B /* RNRNavigationBarContentManager.swift in Sources */,
 				C0ABD1302560DC8E0088832B /* RNRNavigationBarContentManager.m in Sources */,
 				C07A1ECA255B91F2007D8F13 /* RNRNavigationSceneController.swift in Sources */,
+				C0016D48256434DD00B981AF /* RNRNavigationItemTitleViewFittingExpandedManager.m in Sources */,
 				C07A1EBC255B91F2007D8F13 /* RNRNavigationScene.swift in Sources */,
+				C0016D49256434DD00B981AF /* RNRNavigationItemTitleViewFittingCompressedManager.swift in Sources */,
 				C07A1EBB255B91F2007D8F13 /* RNRNavigation.swift in Sources */,
 				C07A1EC9255B91F2007D8F13 /* RNRNavigationBarManager.swift in Sources */,
 				C07A1EC6255B91F2007D8F13 /* RNRNavigationContainerManager.swift in Sources */,
 				C07A1EBD255B91F2007D8F13 /* RNRNavigationManager.m in Sources */,
+				C0016D4A256434DD00B981AF /* RNRNavigationItemTitleViewFittingCompressed.swift in Sources */,
 				C07A1EC0255B91F2007D8F13 /* RNRNavigationItemManager.swift in Sources */,
+				C0016D47256434DD00B981AF /* RNRNavigationItemTitleViewFittingExpanded.swift in Sources */,
 				C07A1EBF255B91F2007D8F13 /* RNRNavigationContainer.swift in Sources */,
 				C07A1EC5255B91F2007D8F13 /* RNRNavigationContainerManager.m in Sources */,
 				C07A1EB8255B91F2007D8F13 /* RNRNavigationSceneManager.swift in Sources */,
@@ -209,6 +232,7 @@
 				C07A1EC3255B91F2007D8F13 /* RNRNavigationSceneManager.m in Sources */,
 				C07A1EC8255B91F2007D8F13 /* RNRNavigationManager.swift in Sources */,
 				C07A1EB9255B91F2007D8F13 /* RNRNavigationItemManager.m in Sources */,
+				C0016D4B256434DD00B981AF /* RNRNavigationItemTitleViewFittingCompressedManager.m in Sources */,
 				C07A1EC2255B91F2007D8F13 /* RNRNavigationBarAppearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,4 +1,4 @@
-// bump
+export * from './ios/components/NavigationItemTitleView'
 export * from './ios/components/NavigationPersistentRouter'
 export * from './ios/components/NavigationRoute'
 export * from './ios/components/NavigationRouter'
