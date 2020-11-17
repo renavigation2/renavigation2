@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.26.0](https://github.com/renavigation2/renavigation2/compare/v4.25.4...v4.26.0) (2020-11-17)
+
+
+### Features
+
+* **navigation:** Added title view component ([dce9335](https://github.com/renavigation2/renavigation2/commit/dce9335ac7faf2019934cbb58a59b13ef291f381))
+
+
+
+
+
 ## [4.25.4](https://github.com/renavigation2/renavigation2/compare/v4.25.3...v4.25.4) (2020-11-17)
 
 
