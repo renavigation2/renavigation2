@@ -5,8 +5,8 @@ public func areChildrenReady(_ subviews: [UIView]) -> Bool {
             if !(subview as! RNRChild).isReady {
                 ready = false
             }
-        } else if !subview.subviews.isEmpty {
-            let result = areChildrenReady(subview.subviews)
+        } else if subview.reactSubviews() != nil && !subview.reactSubviews().isEmpty {
+            let result = areChildrenReady(subview.reactSubviews())
             if result == false {
                 ready = false
             }
@@ -18,8 +18,8 @@ public func areChildrenReady(_ subviews: [UIView]) -> Bool {
 public func isParentReady(_ superview: UIView) -> Bool {
     if superview is RNRParent {
         return true
-    } else if superview.superview != nil {
-        return isParentReady(superview.superview!)
+    } else if superview.reactSuperview() != nil {
+        return isParentReady(superview.reactSuperview()!)
     }
     return false
 }
@@ -27,25 +27,25 @@ public func isParentReady(_ superview: UIView) -> Bool {
 public func setupParent(_ superview: UIView) {
     if superview is RNRParent {
         (superview as! RNRParent).setup()
-    } else if superview.superview != nil {
-        setupParent(superview.superview!)
+    } else if superview.reactSuperview() != nil {
+        setupParent(superview.reactSuperview()!)
     }
 }
 
 public func updateInParent(_ superview: UIView, subview: UIView) {
     if superview is RNRParent {
         (superview as! RNRParent).updateSubview(subview)
-    } else if superview.superview != nil {
-        updateInParent(superview.superview!, subview: superview)
+    } else if superview.reactSuperview() != nil {
+        updateInParent(superview.reactSuperview()!, subview: superview)
     }
 }
 
 public func getChild(_ subview: UIView) -> UIView? {
     if subview is RNRChild {
         return subview
-    } else if !subview.subviews.isEmpty {
+    } else if subview.reactSubviews() != nil && !subview.reactSubviews().isEmpty {
         var match: UIView?
-        subview.subviews.forEach { subview in
+        subview.reactSubviews().forEach { subview in
             let result = getChild(subview)
             if result != nil {
                 match = result
@@ -59,8 +59,8 @@ public func getChild(_ subview: UIView) -> UIView? {
 public func getParent(_ superview: UIView) -> UIView? {
     if superview is RNRParent {
         return superview
-    } else if superview.superview != nil {
-        return getParent(superview.superview!)
+    } else if superview.reactSuperview() != nil {
+        return getParent(superview.reactSuperview()!)
     }
     return nil
 }

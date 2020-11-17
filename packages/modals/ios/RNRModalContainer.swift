@@ -26,6 +26,11 @@ class RNRModalContainer: UIView, RNRChild, RNRParent {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func insertReactSubview(_ subview: UIView!, at atIndex: Int) {
+        subview.willMove(toSuperview: self)
+        super.insertReactSubview(subview, at: atIndex)
+    }
+
     override func reactSetFrame(_ frame: CGRect) {
     }
 
@@ -38,13 +43,17 @@ class RNRModalContainer: UIView, RNRChild, RNRParent {
 
     func setup() {
         if !isReady && hasMovedToSuperview && hasUpdatedReactSubviews && parent != nil {
-            let childrenReady = areChildrenReady(subviews)
+            let childrenReady = areChildrenReady(reactSubviews())
             if childrenReady {
                 isReady = true
                 setupParent(parent!)
 
                 if !isPresented {
                     parent!.present(self)
+                }
+            } else {
+                DispatchQueue.main.async { [self] in
+                    setup()
                 }
             }
         }
