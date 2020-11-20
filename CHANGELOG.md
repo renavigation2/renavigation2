@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.26.2](https://github.com/renavigation2/renavigation2/compare/v4.26.1...v4.26.2) (2020-11-20)
+
+
+### Bug Fixes
+
+* **navigation:** Fixed issue with navigation bar appearance on first mount ([5dfd07a](https://github.com/renavigation2/renavigation2/commit/5dfd07a7c0c68bc5c8677712f31a75ce7ff34054))
+
+
+
+
+
 ## [4.26.1](https://github.com/renavigation2/renavigation2/compare/v4.26.0...v4.26.1) (2020-11-17)
 
 
