@@ -69,6 +69,8 @@ class RNRNavigationContainer: UIView, UINavigationControllerDelegate, RNRChild, 
         if !isReady && hasMovedToSuperview && hasUpdatedReactSubviews && controller != nil {
             let childrenReady = areChildrenReady(scenes)
             if childrenReady {
+                controller!.addChild(navigationController!)
+
                 isReady = true
                 navigationController!.setViewControllers(scenes.map { scene in
                     scene.isPresented = true
@@ -76,8 +78,13 @@ class RNRNavigationContainer: UIView, UINavigationControllerDelegate, RNRChild, 
                     return scene.reactViewController()
                 }, animated: false)
 
+                // Fixes issue with navigation bar item appearances not working properly when only setting it up
+                // before adding them with setViewControllers
+                scenes.forEach { scene in
+                    scene.updateNavigationBarItem()
+                }
+
                 // Add navigation view controller after setting up the view controllers (otherwise things break)
-                controller!.addChild(navigationController!)
                 addSubview(navigationController!.view)
             }
         }
