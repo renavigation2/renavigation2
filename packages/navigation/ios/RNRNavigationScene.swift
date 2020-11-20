@@ -62,9 +62,7 @@ class RNRNavigationScene: UIView, RNRChild, RNRParent{
             if ready {
                 isReady = true
                 if navigationContainer!.isReady {
-                    DispatchQueue.main.async { [self] in
-                        navigationContainer!.present(self)
-                    }
+                    navigationContainer!.present(self)
                 } else {
                     setupParent(navigationContainer!)
                 }
