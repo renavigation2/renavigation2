@@ -5,6 +5,8 @@ update () {
     npx ncu --packageFile "$1/package.json" -u --dep dev -x path-to-regexp
 }
 
+yarn set version latest
+
 yarn workspaces list --json | while read package; do
     package="${package/\{\"location\":\"/}"
     package=$(sed "s/\",\"name\":.*//g" <<< "$package")
