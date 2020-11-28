@@ -1,7 +1,7 @@
 {
-  "name": "@renavigation2/core",
-  "version": "4.25.4",
-  "description": "Renavigation Core",
+  "name": "@renavigation2/constraints",
+  "version": "4.26.2",
+  "description": "Renavigation Constraints",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
@@ -19,7 +19,7 @@
     "lib",
     "ios",
     "src",
-    "RenavigationCore.podspec",
+    "RenavigationConstraints.podspec",
     "!**/__tests__"
   ],
   "scripts": {
@@ -32,10 +32,6 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*"
-  },
-  "dependencies": {
-    "@renavigation2/history": "^4.24.0",
-    "@renavigation2/router": "^4.24.0"
   },
   "devDependencies": {
     "@react-native-community/bob": "^0.16.2",
