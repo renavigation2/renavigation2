@@ -73,20 +73,12 @@ export interface BarButtonItemProps {
   focusedCompactPromptBackButtonBackgroundImage?: React.ReactElement<any> | null
   disabledDefaultBackButtonBackgroundImage?: React.ReactElement<any> | null
   disabledCompactBackButtonBackgroundImage?: React.ReactElement<any> | null
-  disabledDefaultPromptBackButtonBackgroundImage?: React.ReactElement<
-    any
-  > | null
-  disabledCompactPromptBackButtonBackgroundImage?: React.ReactElement<
-    any
-  > | null
+  disabledDefaultPromptBackButtonBackgroundImage?: React.ReactElement<any> | null
+  disabledCompactPromptBackButtonBackgroundImage?: React.ReactElement<any> | null
   highlightedDefaultBackButtonBackgroundImage?: React.ReactElement<any> | null
   highlightedCompactBackButtonBackgroundImage?: React.ReactElement<any> | null
-  highlightedDefaultPromptBackButtonBackgroundImage?: React.ReactElement<
-    any
-  > | null
-  highlightedCompactPromptBackButtonBackgroundImage?: React.ReactElement<
-    any
-  > | null
+  highlightedDefaultPromptBackButtonBackgroundImage?: React.ReactElement<any> | null
+  highlightedCompactPromptBackButtonBackgroundImage?: React.ReactElement<any> | null
 }
 
 export const BarButtonItem: React.FC<BarButtonItemProps> = ({
