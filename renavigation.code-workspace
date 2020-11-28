@@ -9,6 +9,10 @@
       "path": "examples/RenavigationExample"
     },
     {
+      "name": "constraints",
+      "path": "packages/constraints"
+    },
+    {
       "name": "core",
       "path": "packages/core"
     },

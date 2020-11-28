@@ -11,6 +11,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@renavigation2/constraints": "^4.26.2",
     "@renavigation2/core": "^4.25.4",
     "@renavigation2/modals": "^4.25.4",
     "@renavigation2/navigation": "^4.26.2",

@@ -298,6 +298,8 @@ PODS:
     - React-Core (= 0.63.3)
     - React-cxxreact (= 0.63.3)
     - React-jsi (= 0.63.3)
+  - RenavigationConstraints (4.26.2):
+    - React
   - RenavigationCore (4.25.4):
     - React
   - RenavigationModals (4.25.4):
@@ -361,6 +363,7 @@ DEPENDENCIES:
   - React-RCTText (from `./../../../node_modules/react-native//Libraries/Text`)
   - React-RCTVibration (from `./../../../node_modules/react-native//Libraries/Vibration`)
   - ReactCommon/turbomodule/core (from `./../../../node_modules/react-native//ReactCommon`)
+  - RenavigationConstraints (from `../../../packages/constraints`)
   - RenavigationCore (from `../../../packages/core`)
   - RenavigationModals (from `../../../packages/modals`)
   - RenavigationNavigation (from `../../../packages/navigation`)
@@ -435,6 +438,8 @@ EXTERNAL SOURCES:
     :path: "./../../../node_modules/react-native//Libraries/Vibration"
   ReactCommon:
     :path: "./../../../node_modules/react-native//ReactCommon"
+  RenavigationConstraints:
+    :path: "../../../packages/constraints"
   RenavigationCore:
     :path: "../../../packages/core"
   RenavigationModals:
@@ -484,6 +489,7 @@ SPEC CHECKSUMS:
   React-RCTText: 65a6de06a7389098ce24340d1d3556015c38f746
   React-RCTVibration: 8e9fb25724a0805107fc1acc9075e26f814df454
   ReactCommon: 4167844018c9ed375cc01a843e9ee564399e53c3
+  RenavigationConstraints: 0f65ac8c77dfe6a8769087f37837046c1dad46aa
   RenavigationCore: ca5767b8d6c26771f9eba1dd4237a16caa4e3245
   RenavigationModals: 673f99d9b8b0ea0f3877beaa777666407f5a5fe8
   RenavigationNavigation: 9da193dc4f18bf9a03801219fc60f197892b088d
