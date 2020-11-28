@@ -1,6 +1,6 @@
 {
   "name": "@renavigation2/constraints",
-  "version": "4.26.2",
+  "version": "4.27.0",
   "description": "Renavigation Constraints",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
