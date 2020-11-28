@@ -358,7 +358,7 @@ class RNRConstraintsView: UIView {
             _constraints?.forEach { constraint in
                 let params: NSDictionary? = RCTConvert.nsDictionary(constraint) as NSDictionary?
                 if params != nil {
-                    let type = getType(RCTConvert.nsString(params!["attribute"]))
+                    let type: String? = params!["attribute"] != nil ? getType(RCTConvert.nsString(params!["attribute"])) : nil
                     if type == "x" {
                         let constraint = createXConstraint(params!)
                         if constraint != nil {
