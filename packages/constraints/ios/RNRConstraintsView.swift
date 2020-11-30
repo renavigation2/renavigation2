@@ -19,6 +19,22 @@ class RNRConstraintsView: UIView {
         }
     }
 
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        var match: UIView? = nil
+        if reactSubviews() != nil {
+            reactSubviews().forEach { view in
+                let res = view.hitTest(point, with: event)
+                if res != nil {
+                    match = res
+                }
+            }
+            if match != nil {
+                return match
+            }
+        }
+        return super.hitTest(_: point, with: event)
+    }
+
     override func layoutSubviews() {
         uiManager?.setSize(frame.size, for: self)
         super.layoutSubviews()
