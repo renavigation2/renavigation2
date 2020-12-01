@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.28.0](https://github.com/renavigation2/renavigation2/compare/v4.27.2...v4.28.0) (2020-12-01)
+
+
+### Bug Fixes
+
+* **constraints:** Fixed crash when prop is not correctly set ([63df13a](https://github.com/renavigation2/renavigation2/commit/63df13ae98b13a5d3094d1c54fe3c0205de5972f))
+
+
+### Features
+
+* **constraints:** Added support for math operations on constants and multipliers ([f2e564e](https://github.com/renavigation2/renavigation2/commit/f2e564eede11440a3f298e64cafd2db4ca0548c0))
+
+
+
+
+
 ## [4.27.2](https://github.com/renavigation2/renavigation2/compare/v4.27.1...v4.27.2) (2020-11-30)
 
 
