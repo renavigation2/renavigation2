@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.29.0](https://github.com/renavigation2/renavigation2/compare/v4.28.0...v4.29.0) (2020-12-01)
+
+
+### Features
+
+* **constraints:** Added animation change options to animate constaints changes ([2091189](https://github.com/renavigation2/renavigation2/commit/20911896fe98b7b6fce63dcf6b6bc744d7473f32))
+
+
+
+
+
 # [4.28.0](https://github.com/renavigation2/renavigation2/compare/v4.27.2...v4.28.0) (2020-12-01)
 
 
