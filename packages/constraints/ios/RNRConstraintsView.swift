@@ -5,6 +5,7 @@ class RNRConstraintsView: UIView {
 
     @objc var _preservesSuperviewLayoutMargins: Bool = false
     @objc var _constraints: NSArray?
+    @objc var _animateChangesOptions: NSDictionary?
 
     override func reactSetFrame(_ frame: CGRect) {
         // Don't use this one, we do that through constraints
@@ -503,10 +504,81 @@ class RNRConstraintsView: UIView {
             }
 
             if prevConstraints != nil {
-                NSLayoutConstraint.deactivate(prevConstraints!)
+                superview!.layoutIfNeeded()
+                var animated = false
+                if _animateChangesOptions != nil {
+                    let duration: TimeInterval? = _animateChangesOptions!["duration"] != nil ? RCTConvert.double(_animateChangesOptions!["duration"]) : nil
+                    let delay: TimeInterval? = _animateChangesOptions!["delay"] != nil ? RCTConvert.double(_animateChangesOptions!["delay"]) : nil
+                    var curve: UIView.AnimationOptions?
+                    var damping: CGFloat?
+                    var velocity: CGFloat?
+                    var useCurve: Bool?
+
+                    let nextCurve = RCTConvert.nsString(_animateChangesOptions!["delay"])
+                    if nextCurve == "easeInOut" {
+                        useCurve = true
+                        curve = UIView.AnimationOptions.curveEaseInOut
+                    } else if nextCurve == "easeIn" {
+                        useCurve = true
+                        curve = UIView.AnimationOptions.curveEaseIn
+                    } else if nextCurve == "easeOut" {
+                        useCurve = true
+                        curve = UIView.AnimationOptions.curveEaseOut
+                    } else if nextCurve == "linear" {
+                        useCurve = true
+                        curve = UIView.AnimationOptions.curveLinear
+                    }
+                    if useCurve != true {
+                        damping = _animateChangesOptions!["delay"] != nil ? RCTConvert.cgFloat(_animateChangesOptions!["delay"]) : nil
+                        velocity = _animateChangesOptions!["delay"] != nil ? RCTConvert.cgFloat(_animateChangesOptions!["delay"]) : nil
+                        if velocity != nil || damping != nil {
+                            useCurve = false
+                        }
+                    }
+                    if useCurve != false {
+                        useCurve = true
+                    }
+                    if useCurve == true && duration != nil {
+                        animated = true
+                        UIView.animate(
+                                withDuration: duration!,
+                                delay: delay ?? 0,
+                                options: curve != nil ? [curve!] : [],
+                                animations: { [self] in
+                                    NSLayoutConstraint.deactivate(prevConstraints!)
+                                    NSLayoutConstraint.activate(constraints)
+                                    superview!.layoutIfNeeded()
+                                    prevConstraints = constraints
+                                },
+                                completion: nil
+                        )
+                    } else if useCurve == false && duration != nil {
+                        animated = true
+                        UIView.animate(
+                                withDuration: duration!,
+                                delay: delay ?? 0,
+                                usingSpringWithDamping: damping ?? 0,
+                                initialSpringVelocity: velocity ?? 0,
+                                options: [],
+                                animations: { [self] in
+                                    NSLayoutConstraint.deactivate(prevConstraints!)
+                                    NSLayoutConstraint.activate(constraints)
+                                    superview!.layoutIfNeeded()
+                                    prevConstraints = constraints
+                                },
+                                completion: nil
+                        )
+                    }
+                }
+                if !animated {
+                    NSLayoutConstraint.deactivate(prevConstraints!)
+                    NSLayoutConstraint.activate(constraints)
+                    prevConstraints = constraints
+                }
+            } else {
+                NSLayoutConstraint.activate(constraints)
+                prevConstraints = constraints
             }
-            NSLayoutConstraint.activate(constraints)
-            prevConstraints = constraints
         }
     }
 }
