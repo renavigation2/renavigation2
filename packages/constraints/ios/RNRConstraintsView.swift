@@ -47,7 +47,109 @@ class RNRConstraintsView: UIView {
         }
         applyConstraints()
     }
-    
+
+    func getValue(_ value: NSDictionary) -> CGFloat? {
+        let item: String? = value["item"] != nil ? RCTConvert.nsString(value["item"]) : nil
+        let property: String? = value["property"] != nil ? RCTConvert.nsString(value["property"]) : nil
+        let attribute: String? = value["attribute"] != nil ? RCTConvert.nsString(value["attribute"]) : nil
+
+        var view: UIView?
+        switch item {
+        case "window":
+            view = UIApplication.shared.windows.first
+            break
+        case "view":
+            view = self
+            break
+        case "superview":
+            view = superview
+            break
+        default: break
+        }
+
+        if view != nil {
+            var edgeInsets: UIEdgeInsets?
+            switch property {
+            case "margin":
+                edgeInsets = view!.layoutMargins
+                break
+            case "safeArea":
+                if #available(iOS 11.0, *) {
+                    edgeInsets = view!.safeAreaInsets
+                }
+                break
+            default: break
+            }
+
+            if edgeInsets != nil {
+                switch attribute {
+                case "top":
+                    return edgeInsets!.top
+                case "left":
+                    return edgeInsets!.left
+                case "bottom":
+                    return edgeInsets!.bottom
+                case "right":
+                    return edgeInsets!.right
+                default: break
+                }
+            }
+        }
+
+        return nil
+    }
+
+    func processMathOperation(_ value: Any?) -> CGFloat? {
+        if value == nil {
+            return nil
+        } else if value is CGFloat || value is NSNumber || value is Int || value is Float {
+            return RCTConvert.cgFloat(value)
+        } else if value is NSDictionary {
+            if (value as! NSDictionary)["item"] != nil {
+                return getValue(RCTConvert.nsDictionary(value) as NSDictionary)
+            } else {
+                let operation: String? = (value as! NSDictionary)["operation"] != nil ? RCTConvert.nsString((value as! NSDictionary)["operation"]) : nil
+                let values: [Any]? = (value as! NSDictionary)["values"] != nil ? RCTConvert.nsArray((value as! NSDictionary)["values"]) : nil
+                if operation != nil {
+                    return mathOperation(operation!, values)
+                }
+            }
+        }
+        return nil
+    }
+
+    func mathOperation(_ operation: String, _ values: [Any]?) -> CGFloat? {
+        if values == nil {
+            return nil
+        }
+        var result: CGFloat?
+        values?.forEach { value in
+            let i = processMathOperation(value)
+            if i != nil {
+                if result == nil {
+                    result = i!
+                } else {
+                    switch operation {
+                    case "add":
+                        result! += i!
+                        break
+                    case "mul":
+                        result! *= i!
+                        break
+                    case "div":
+                        result! /= i!
+                        break
+                    case "sub":
+                        result! -= i!
+                        break
+                    default: break
+                    }
+                }
+            }
+        }
+        return result != nil ? result : 0
+    }
+
     func getType(_ attribute: String) -> String? {
         if attribute == "leading" ||
                    attribute == "trailing" ||
@@ -150,66 +252,68 @@ class RNRConstraintsView: UIView {
     }
 
     func createXConstraint(_ params: NSDictionary) -> NSLayoutConstraint? {
-        let item: String = RCTConvert.nsString(params["item"])
-        let attribute: String = RCTConvert.nsString(params["attribute"])
-        let relatedBy: String = RCTConvert.nsString(params["relatedBy"])
-        let toAttribute: String = RCTConvert.nsString(params["toAttribute"])
-        let toItem: String = RCTConvert.nsString(params["toItem"])
-        let constant: CGFloat? = params["constant"] != nil ? RCTConvert.cgFloat(params["constant"]) : nil
-        let multiplier: CGFloat? = params["multiplier"] != nil ? RCTConvert.cgFloat(params["multiplier"]) : nil
+        let item: String? = params["item"] != nil ? RCTConvert.nsString(params["item"]) : nil
+        let attribute: String? = params["attribute"] != nil ? RCTConvert.nsString(params["attribute"]) : nil
+        let relatedBy: String? = params["relatedBy"] != nil ? RCTConvert.nsString(params["relatedBy"]) : nil
+        let toAttribute: String? = params["toAttribute"] != nil ? RCTConvert.nsString(params["toAttribute"]) : nil
+        let toItem: String? = params["toItem"] != nil ? RCTConvert.nsString(params["toItem"]) : nil
+        let constant: CGFloat? = processMathOperation(params["constant"])
+        let multiplier: CGFloat? = processMathOperation(params["multiplier"])
 
-        var itemAnchor: NSLayoutXAxisAnchor? = nil
-        if item == "view" {
-            itemAnchor = getXAnchorFromView(self, attribute: attribute)
-        } else if item == "superview" {
-            itemAnchor = getXAnchorFromView(superview!, attribute: attribute)
-        } else if item == "safeArea" {
-            if #available(iOS 11.0, *) {
-                itemAnchor = getXAnchorFromSafeArea(superview!.safeAreaLayoutGuide, attribute: attribute)
+        if item != nil && attribute != nil && relatedBy != nil && toAttribute != nil && toItem != nil {
+            var itemAnchor: NSLayoutXAxisAnchor? = nil
+            if item == "view" {
+                itemAnchor = getXAnchorFromView(self, attribute: attribute!)
+            } else if item == "superview" {
+                itemAnchor = getXAnchorFromView(superview!, attribute: attribute!)
+            } else if item == "safeArea" {
+                if #available(iOS 11.0, *) {
+                    itemAnchor = getXAnchorFromSafeArea(superview!.safeAreaLayoutGuide, attribute: attribute!)
+                }
             }
-        }
 
-        var toItemAnchor: NSLayoutXAxisAnchor? = nil
-        if toItem == "view" {
-            toItemAnchor = getXAnchorFromView(self, attribute: toAttribute)
-        } else if toItem == "superview" {
-            toItemAnchor = getXAnchorFromView(superview!, attribute: toAttribute)
-        } else if toItem == "safeArea" {
-            if #available(iOS 11.0, *) {
-                toItemAnchor = getXAnchorFromSafeArea(superview!.safeAreaLayoutGuide, attribute: toAttribute)
+            var toItemAnchor: NSLayoutXAxisAnchor? = nil
+            if toItem == "view" {
+                toItemAnchor = getXAnchorFromView(self, attribute: toAttribute!)
+            } else if toItem == "superview" {
+                toItemAnchor = getXAnchorFromView(superview!, attribute: toAttribute!)
+            } else if toItem == "safeArea" {
+                if #available(iOS 11.0, *) {
+                    toItemAnchor = getXAnchorFromSafeArea(superview!.safeAreaLayoutGuide, attribute: toAttribute!)
+                }
             }
-        }
 
-        if itemAnchor != nil && toItemAnchor != nil {
-            if relatedBy == "equalTo" {
-                if constant != nil {
-                    return itemAnchor!.constraint(equalTo: toItemAnchor!, constant: constant!)
-                } else {
-                    return itemAnchor!.constraint(equalTo: toItemAnchor!)
-                }
-            } else if relatedBy == "greaterThenOrEqualTo" {
-                if constant != nil {
-                    return itemAnchor!.constraint(greaterThanOrEqualTo: toItemAnchor!, constant: constant!)
-                } else {
-                    return itemAnchor!.constraint(greaterThanOrEqualTo: toItemAnchor!)
-                }
-            } else if relatedBy == "lessThanOrEqualTo" {
-                if constant != nil {
-                    return itemAnchor!.constraint(lessThanOrEqualTo: toItemAnchor!, constant: constant!)
-                } else {
-                    return itemAnchor!.constraint(lessThanOrEqualTo: toItemAnchor!)
-                }
-            } else if relatedBy == "equalToSystemSpacingAfter" && multiplier != nil {
-                if #available(iOS 11.0, *) {
-                    return itemAnchor!.constraint(equalToSystemSpacingAfter: toItemAnchor!, multiplier: multiplier!)
-                }
-            } else if relatedBy == "greaterThanOrEqualToSystemSpacingAfter" && multiplier != nil {
-                if #available(iOS 11.0, *) {
-                    return itemAnchor!.constraint(greaterThanOrEqualToSystemSpacingAfter: toItemAnchor!, multiplier: multiplier!)
-                }
-            } else if relatedBy == "lessThanOrEqualToSystemSpacingAfter" && multiplier != nil {
-                if #available(iOS 11.0, *) {
-                    return itemAnchor!.constraint(lessThanOrEqualToSystemSpacingAfter: toItemAnchor!, multiplier: multiplier!)
+            if itemAnchor != nil && toItemAnchor != nil {
+                if relatedBy == "equalTo" {
+                    if constant != nil {
+                        return itemAnchor!.constraint(equalTo: toItemAnchor!, constant: constant!)
+                    } else {
+                        return itemAnchor!.constraint(equalTo: toItemAnchor!)
+                    }
+                } else if relatedBy == "greaterThenOrEqualTo" {
+                    if constant != nil {
+                        return itemAnchor!.constraint(greaterThanOrEqualTo: toItemAnchor!, constant: constant!)
+                    } else {
+                        return itemAnchor!.constraint(greaterThanOrEqualTo: toItemAnchor!)
+                    }
+                } else if relatedBy == "lessThanOrEqualTo" {
+                    if constant != nil {
+                        return itemAnchor!.constraint(lessThanOrEqualTo: toItemAnchor!, constant: constant!)
+                    } else {
+                        return itemAnchor!.constraint(lessThanOrEqualTo: toItemAnchor!)
+                    }
+                } else if relatedBy == "equalToSystemSpacingAfter" && multiplier != nil {
+                    if #available(iOS 11.0, *) {
+                        return itemAnchor!.constraint(equalToSystemSpacingAfter: toItemAnchor!, multiplier: multiplier!)
+                    }
+                } else if relatedBy == "greaterThanOrEqualToSystemSpacingAfter" && multiplier != nil {
+                    if #available(iOS 11.0, *) {
+                        return itemAnchor!.constraint(greaterThanOrEqualToSystemSpacingAfter: toItemAnchor!, multiplier: multiplier!)
+                    }
+                } else if relatedBy == "lessThanOrEqualToSystemSpacingAfter" && multiplier != nil {
+                    if #available(iOS 11.0, *) {
+                        return itemAnchor!.constraint(lessThanOrEqualToSystemSpacingAfter: toItemAnchor!, multiplier: multiplier!)
+                    }
                 }
             }
         }
@@ -217,66 +321,68 @@ class RNRConstraintsView: UIView {
     }
 
     func createYConstraint(_ params: NSDictionary) -> NSLayoutConstraint? {
-        let item: String = RCTConvert.nsString(params["item"])
-        let attribute: String = RCTConvert.nsString(params["attribute"])
-        let relatedBy: String = RCTConvert.nsString(params["relatedBy"])
-        let toAttribute: String = RCTConvert.nsString(params["toAttribute"])
-        let toItem: String = RCTConvert.nsString(params["toItem"])
-        let constant: CGFloat? = params["constant"] != nil ? RCTConvert.cgFloat(params["constant"]) : nil
-        let multiplier: CGFloat? = params["multiplier"] != nil ? RCTConvert.cgFloat(params["multiplier"]) : nil
+        let item: String? = params["item"] != nil ? RCTConvert.nsString(params["item"]) : nil
+        let attribute: String? = params["attribute"] != nil ? RCTConvert.nsString(params["attribute"]) : nil
+        let relatedBy: String? = params["relatedBy"] != nil ? RCTConvert.nsString(params["relatedBy"]) : nil
+        let toAttribute: String? = params["toAttribute"] != nil ? RCTConvert.nsString(params["toAttribute"]) : nil
+        let toItem: String? = params["toItem"] != nil ? RCTConvert.nsString(params["toItem"]) : nil
+        let constant: CGFloat? = processMathOperation(params["constant"])
+        let multiplier: CGFloat? = processMathOperation(params["multiplier"])
 
-        var itemAnchor: NSLayoutYAxisAnchor? = nil
-        if item == "view" {
-            itemAnchor = getYAnchorFromView(self, attribute: attribute)
-        } else if item == "superview" {
-            itemAnchor = getYAnchorFromView(superview!, attribute: attribute)
-        } else if item == "safeArea" {
-            if #available(iOS 11.0, *) {
-                itemAnchor = getYAnchorFromSafeArea(superview!.safeAreaLayoutGuide, attribute: attribute)
+        if item != nil && attribute != nil && relatedBy != nil && toAttribute != nil && toItem != nil {
+            var itemAnchor: NSLayoutYAxisAnchor? = nil
+            if item == "view" {
+                itemAnchor = getYAnchorFromView(self, attribute: attribute!)
+            } else if item == "superview" {
+                itemAnchor = getYAnchorFromView(superview!, attribute: attribute!)
+            } else if item == "safeArea" {
+                if #available(iOS 11.0, *) {
+                    itemAnchor = getYAnchorFromSafeArea(superview!.safeAreaLayoutGuide, attribute: attribute!)
+                }
             }
-        }
 
-        var toItemAnchor: NSLayoutYAxisAnchor? = nil
-        if toItem == "view" {
-            toItemAnchor = getYAnchorFromView(self, attribute: toAttribute)
-        } else if toItem == "superview" {
-            toItemAnchor = getYAnchorFromView(superview!, attribute: toAttribute)
-        } else if toItem == "safeArea" {
-            if #available(iOS 11.0, *) {
-                toItemAnchor = getYAnchorFromSafeArea(superview!.safeAreaLayoutGuide, attribute: toAttribute)
+            var toItemAnchor: NSLayoutYAxisAnchor? = nil
+            if toItem == "view" {
+                toItemAnchor = getYAnchorFromView(self, attribute: toAttribute!)
+            } else if toItem == "superview" {
+                toItemAnchor = getYAnchorFromView(superview!, attribute: toAttribute!)
+            } else if toItem == "safeArea" {
+                if #available(iOS 11.0, *) {
+                    toItemAnchor = getYAnchorFromSafeArea(superview!.safeAreaLayoutGuide, attribute: toAttribute!)
+                }
             }
-        }
 
-        if itemAnchor != nil && toItemAnchor != nil {
-            if relatedBy == "equalTo" {
-                if constant != nil {
-                    return itemAnchor!.constraint(equalTo: toItemAnchor!, constant: constant!)
-                } else {
-                    return itemAnchor!.constraint(equalTo: toItemAnchor!)
-                }
-            } else if relatedBy == "greaterThenOrEqualTo" {
-                if constant != nil {
-                    return itemAnchor!.constraint(greaterThanOrEqualTo: toItemAnchor!, constant: constant!)
-                } else {
-                    return itemAnchor!.constraint(greaterThanOrEqualTo: toItemAnchor!)
-                }
-            } else if relatedBy == "lessThanOrEqualTo" {
-                if constant != nil {
-                    return itemAnchor!.constraint(lessThanOrEqualTo: toItemAnchor!, constant: constant!)
-                } else {
-                    return itemAnchor!.constraint(lessThanOrEqualTo: toItemAnchor!)
-                }
-            } else if relatedBy == "equalToSystemSpacingBelow" && multiplier != nil {
-                if #available(iOS 11.0, *) {
-                    return itemAnchor!.constraint(equalToSystemSpacingBelow: toItemAnchor!, multiplier: multiplier!)
-                }
-            } else if relatedBy == "greaterThanOrEqualToSystemSpacingBelow" && multiplier != nil {
-                if #available(iOS 11.0, *) {
-                    return itemAnchor!.constraint(greaterThanOrEqualToSystemSpacingBelow: toItemAnchor!, multiplier: multiplier!)
-                }
-            } else if relatedBy == "lessThanOrEqualToSystemSpacingBelow" && multiplier != nil {
-                if #available(iOS 11.0, *) {
-                    return itemAnchor!.constraint(lessThanOrEqualToSystemSpacingBelow: toItemAnchor!, multiplier: multiplier!)
+            if itemAnchor != nil && toItemAnchor != nil {
+                if relatedBy == "equalTo" {
+                    if constant != nil {
+                        return itemAnchor!.constraint(equalTo: toItemAnchor!, constant: constant!)
+                    } else {
+                        return itemAnchor!.constraint(equalTo: toItemAnchor!)
+                    }
+                } else if relatedBy == "greaterThenOrEqualTo" {
+                    if constant != nil {
+                        return itemAnchor!.constraint(greaterThanOrEqualTo: toItemAnchor!, constant: constant!)
+                    } else {
+                        return itemAnchor!.constraint(greaterThanOrEqualTo: toItemAnchor!)
+                    }
+                } else if relatedBy == "lessThanOrEqualTo" {
+                    if constant != nil {
+                        return itemAnchor!.constraint(lessThanOrEqualTo: toItemAnchor!, constant: constant!)
+                    } else {
+                        return itemAnchor!.constraint(lessThanOrEqualTo: toItemAnchor!)
+                    }
+                } else if relatedBy == "equalToSystemSpacingBelow" && multiplier != nil {
+                    if #available(iOS 11.0, *) {
+                        return itemAnchor!.constraint(equalToSystemSpacingBelow: toItemAnchor!, multiplier: multiplier!)
+                    }
+                } else if relatedBy == "greaterThanOrEqualToSystemSpacingBelow" && multiplier != nil {
+                    if #available(iOS 11.0, *) {
+                        return itemAnchor!.constraint(greaterThanOrEqualToSystemSpacingBelow: toItemAnchor!, multiplier: multiplier!)
+                    }
+                } else if relatedBy == "lessThanOrEqualToSystemSpacingBelow" && multiplier != nil {
+                    if #available(iOS 11.0, *) {
+                        return itemAnchor!.constraint(lessThanOrEqualToSystemSpacingBelow: toItemAnchor!, multiplier: multiplier!)
+                    }
                 }
             }
         }
@@ -284,83 +390,85 @@ class RNRConstraintsView: UIView {
     }
 
     func createDimensionConstraint(_ params: NSDictionary) -> NSLayoutConstraint? {
-        let item: String = RCTConvert.nsString(params["item"])
-        let attribute: String = RCTConvert.nsString(params["attribute"])
-        let relatedBy: String = RCTConvert.nsString(params["relatedBy"])
+        let item: String? = params["item"] != nil ? RCTConvert.nsString(params["item"]) : nil
+        let attribute: String? = params["attribute"] != nil ? RCTConvert.nsString(params["attribute"]) : nil
+        let relatedBy: String? = params["relatedBy"] != nil ? RCTConvert.nsString(params["relatedBy"]) : nil
         let toAttribute: String? = params["toAttribute"] != nil ? RCTConvert.nsString(params["toAttribute"]) : nil
         let toItem: String? = params["toItem"] != nil ? RCTConvert.nsString(params["toItem"]) : nil
-        let constant: CGFloat? = params["constant"] != nil ? RCTConvert.cgFloat(params["constant"]) : nil
-        let multiplier: CGFloat? = params["multiplier"] != nil ? RCTConvert.cgFloat(params["multiplier"]) : nil
+        let constant: CGFloat? = processMathOperation(params["constant"])
+        let multiplier: CGFloat? = processMathOperation(params["multiplier"])
 
-        var itemAnchor: NSLayoutDimension? = nil
-        if item == "view" {
-            if attribute == "width" {
-                itemAnchor = self.widthAnchor
-            } else if attribute == "height" {
-                itemAnchor = self.heightAnchor
-            }
-        } else if item == "superview" {
-            if attribute == "width" {
-                itemAnchor = superview!.widthAnchor
-            } else if attribute == "height" {
-                itemAnchor = superview!.heightAnchor
-            }
-        }
-
-        var toItemAnchor: NSLayoutDimension? = nil
-        if toItem == "view" {
-            if toAttribute == "width" {
-                toItemAnchor = self.widthAnchor
-            } else if toAttribute == "height" {
-                toItemAnchor = self.heightAnchor
-            }
-        } else if toItem == "superview" {
-            if toAttribute == "width" {
-                toItemAnchor = superview!.widthAnchor
-            } else if toAttribute == "height" {
-                toItemAnchor = superview!.heightAnchor
-            }
-        }
-
-        if itemAnchor != nil && toItemAnchor != nil {
-            if relatedBy == "equalTo" {
-                if constant != nil && multiplier != nil {
-                    return itemAnchor!.constraint(equalTo: toItemAnchor!, multiplier: multiplier!, constant: constant!)
-                } else if multiplier != nil {
-                    return itemAnchor!.constraint(equalTo: toItemAnchor!, multiplier: multiplier!)
-                } else if constant != nil {
-                    return itemAnchor!.constraint(equalTo: toItemAnchor!, constant: constant!)
-                } else {
-                    return itemAnchor!.constraint(equalTo: toItemAnchor!)
+        if item != nil && attribute != nil && relatedBy != nil {
+            var itemAnchor: NSLayoutDimension? = nil
+            if item == "view" {
+                if attribute == "width" {
+                    itemAnchor = self.widthAnchor
+                } else if attribute == "height" {
+                    itemAnchor = self.heightAnchor
                 }
-            } else if relatedBy == "greaterThenOrEqualTo" {
-                if constant != nil && multiplier != nil {
-                    return itemAnchor!.constraint(greaterThanOrEqualTo: toItemAnchor!, multiplier: multiplier!, constant: constant!)
-                } else if multiplier != nil {
-                    return itemAnchor!.constraint(greaterThanOrEqualTo: toItemAnchor!, multiplier: multiplier!)
-                } else if constant != nil {
-                    return itemAnchor!.constraint(greaterThanOrEqualTo: toItemAnchor!, constant: constant!)
-                } else {
-                    return itemAnchor!.constraint(greaterThanOrEqualTo: toItemAnchor!)
-                }
-            } else if relatedBy == "lessThanOrEqualTo" {
-                if constant != nil && multiplier != nil {
-                    return itemAnchor!.constraint(lessThanOrEqualTo: toItemAnchor!, multiplier: multiplier!, constant: constant!)
-                } else if multiplier != nil {
-                    return itemAnchor!.constraint(lessThanOrEqualTo: toItemAnchor!, multiplier: multiplier!)
-                } else if constant != nil {
-                    return itemAnchor!.constraint(lessThanOrEqualTo: toItemAnchor!, constant: constant!)
-                } else {
-                    return itemAnchor!.constraint(lessThanOrEqualTo: toItemAnchor!)
+            } else if item == "superview" {
+                if attribute == "width" {
+                    itemAnchor = superview!.widthAnchor
+                } else if attribute == "height" {
+                    itemAnchor = superview!.heightAnchor
                 }
             }
-        } else if itemAnchor != nil && constant != nil {
-            if relatedBy == "equalTo" {
-                return itemAnchor!.constraint(equalToConstant: constant!)
-            } else if relatedBy == "greaterThenOrEqualTo" {
-                return itemAnchor!.constraint(greaterThanOrEqualToConstant: constant!)
-            } else if relatedBy == "lessThanOrEqualTo" {
-                return itemAnchor!.constraint(lessThanOrEqualToConstant: constant!)
+
+            var toItemAnchor: NSLayoutDimension? = nil
+            if toItem == "view" {
+                if toAttribute == "width" {
+                    toItemAnchor = self.widthAnchor
+                } else if toAttribute == "height" {
+                    toItemAnchor = self.heightAnchor
+                }
+            } else if toItem == "superview" {
+                if toAttribute == "width" {
+                    toItemAnchor = superview!.widthAnchor
+                } else if toAttribute == "height" {
+                    toItemAnchor = superview!.heightAnchor
+                }
+            }
+
+            if itemAnchor != nil && toItemAnchor != nil {
+                if relatedBy == "equalTo" {
+                    if constant != nil && multiplier != nil {
+                        return itemAnchor!.constraint(equalTo: toItemAnchor!, multiplier: multiplier!, constant: constant!)
+                    } else if multiplier != nil {
+                        return itemAnchor!.constraint(equalTo: toItemAnchor!, multiplier: multiplier!)
+                    } else if constant != nil {
+                        return itemAnchor!.constraint(equalTo: toItemAnchor!, constant: constant!)
+                    } else {
+                        return itemAnchor!.constraint(equalTo: toItemAnchor!)
+                    }
+                } else if relatedBy == "greaterThenOrEqualTo" {
+                    if constant != nil && multiplier != nil {
+                        return itemAnchor!.constraint(greaterThanOrEqualTo: toItemAnchor!, multiplier: multiplier!, constant: constant!)
+                    } else if multiplier != nil {
+                        return itemAnchor!.constraint(greaterThanOrEqualTo: toItemAnchor!, multiplier: multiplier!)
+                    } else if constant != nil {
+                        return itemAnchor!.constraint(greaterThanOrEqualTo: toItemAnchor!, constant: constant!)
+                    } else {
+                        return itemAnchor!.constraint(greaterThanOrEqualTo: toItemAnchor!)
+                    }
+                } else if relatedBy == "lessThanOrEqualTo" {
+                    if constant != nil && multiplier != nil {
+                        return itemAnchor!.constraint(lessThanOrEqualTo: toItemAnchor!, multiplier: multiplier!, constant: constant!)
+                    } else if multiplier != nil {
+                        return itemAnchor!.constraint(lessThanOrEqualTo: toItemAnchor!, multiplier: multiplier!)
+                    } else if constant != nil {
+                        return itemAnchor!.constraint(lessThanOrEqualTo: toItemAnchor!, constant: constant!)
+                    } else {
+                        return itemAnchor!.constraint(lessThanOrEqualTo: toItemAnchor!)
+                    }
+                }
+            } else if itemAnchor != nil && constant != nil {
+                if relatedBy == "equalTo" {
+                    return itemAnchor!.constraint(equalToConstant: constant!)
+                } else if relatedBy == "greaterThenOrEqualTo" {
+                    return itemAnchor!.constraint(greaterThanOrEqualToConstant: constant!)
+                } else if relatedBy == "lessThanOrEqualTo" {
+                    return itemAnchor!.constraint(lessThanOrEqualToConstant: constant!)
+                }
             }
         }
 

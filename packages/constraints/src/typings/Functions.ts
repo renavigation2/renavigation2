@@ -1,4 +1,5 @@
 import { Attribute } from './Attribute'
+import { MathOperation } from './Math'
 import { ProcessedConstraint } from './ProcessedConstraint'
 import {
   ConstantRelation,
@@ -10,12 +11,12 @@ export interface ViewXAxisFunction {
   (
     relatedBy: ConstantRelation,
     item: SuperviewXAxisFunction | SafeAreaXAxisFunction,
-    constant?: number
+    constant?: number | MathOperation
   ): ProcessedConstraint
   (
     relatedBy: MultiplierRelationX,
     item: SuperviewXAxisFunction | SafeAreaXAxisFunction,
-    multiplier: number
+    multiplier: number | MathOperation
   ): ProcessedConstraint
   item: 'view'
   attribute: Attribute
@@ -26,12 +27,12 @@ export interface ViewYAxisFunction {
   (
     relatedBy: ConstantRelation,
     item: SuperviewYAxisFunction | SafeAreaYAxisFunction,
-    constant?: number
+    constant?: number | MathOperation
   ): ProcessedConstraint
   (
     relatedBy: MultiplierRelationY,
     item: SuperviewYAxisFunction | SafeAreaYAxisFunction,
-    multiplier: number
+    multiplier: number | MathOperation
   ): ProcessedConstraint
   item: 'view'
   attribute: Attribute
@@ -39,12 +40,15 @@ export interface ViewYAxisFunction {
 }
 
 export interface ViewDimensionFunction {
-  (relatedBy: ConstantRelation, constant: number): ProcessedConstraint
+  (
+    relatedBy: ConstantRelation,
+    constant: number | MathOperation
+  ): ProcessedConstraint
   (
     relatedBy: ConstantRelation,
     item: ViewDimensionFunction | SuperviewDimensionFunction,
-    multiplier?: number,
-    constant?: number
+    multiplier?: number | MathOperation,
+    constant?: number | MathOperation
   ): ProcessedConstraint
   item: 'view'
   attribute: Attribute
@@ -55,12 +59,12 @@ export interface SuperviewXAxisFunction {
   (
     relatedBy: ConstantRelation,
     item: ViewXAxisFunction | SafeAreaXAxisFunction,
-    constant?: number
+    constant?: number | MathOperation
   ): ProcessedConstraint
   (
     relatedBy: MultiplierRelationX,
     item: ViewXAxisFunction | SafeAreaXAxisFunction,
-    multiplier: number
+    multiplier: number | MathOperation
   ): ProcessedConstraint
   item: 'superview'
   attribute: Attribute
@@ -71,12 +75,12 @@ export interface SuperviewYAxisFunction {
   (
     relatedBy: ConstantRelation,
     item: ViewYAxisFunction | SafeAreaYAxisFunction,
-    constant?: number
+    constant?: number | MathOperation
   ): ProcessedConstraint
   (
     relatedBy: MultiplierRelationY,
     item: ViewYAxisFunction | SafeAreaYAxisFunction,
-    multiplier: number
+    multiplier: number | MathOperation
   ): ProcessedConstraint
   item: 'superview'
   attribute: Attribute
@@ -84,12 +88,15 @@ export interface SuperviewYAxisFunction {
 }
 
 export interface SuperviewDimensionFunction {
-  (relatedBy: ConstantRelation, constant: number): ProcessedConstraint
+  (
+    relatedBy: ConstantRelation,
+    constant: number | MathOperation
+  ): ProcessedConstraint
   (
     relatedBy: ConstantRelation,
     item: ViewDimensionFunction | SuperviewDimensionFunction,
-    multiplier?: number,
-    constant?: number
+    multiplier?: number | MathOperation,
+    constant?: number | MathOperation
   ): ProcessedConstraint
   item: 'superview'
   attribute: Attribute
@@ -100,12 +107,12 @@ export interface SafeAreaXAxisFunction {
   (
     relatedBy: ConstantRelation,
     item: ViewXAxisFunction | SuperviewXAxisFunction,
-    constant?: number
+    constant?: number | MathOperation
   ): ProcessedConstraint
   (
     relatedBy: MultiplierRelationX,
     item: ViewXAxisFunction | SuperviewXAxisFunction,
-    multiplier: number
+    multiplier: number | MathOperation
   ): ProcessedConstraint
   item: 'safeArea'
   attribute: Attribute
@@ -116,12 +123,12 @@ export interface SafeAreaYAxisFunction {
   (
     relatedBy: ConstantRelation,
     item: ViewYAxisFunction | SuperviewYAxisFunction,
-    constant?: number
+    constant?: number | MathOperation
   ): ProcessedConstraint
   (
     relatedBy: MultiplierRelationY,
     item: ViewYAxisFunction | SuperviewYAxisFunction,
-    multiplier: number
+    multiplier: number | MathOperation
   ): ProcessedConstraint
   item: 'safeArea'
   attribute: Attribute
