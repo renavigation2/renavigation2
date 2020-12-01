@@ -47,7 +47,109 @@ class RNRConstraintsView: UIView {
         }
         applyConstraints()
     }
-    
+
+    func getValue(_ value: NSDictionary) -> CGFloat? {
+        let item: String? = value["item"] != nil ? RCTConvert.nsString(value["item"]) : nil
+        let property: String? = value["property"] != nil ? RCTConvert.nsString(value["property"]) : nil
+        let attribute: String? = value["attribute"] != nil ? RCTConvert.nsString(value["attribute"]) : nil
+
+        var view: UIView?
+        switch item {
+        case "window":
+            view = UIApplication.shared.windows.first
+            break
+        case "view":
+            view = self
+            break
+        case "superview":
+            view = superview
+            break
+        default: break
+        }
+
+        if view != nil {
+            var edgeInsets: UIEdgeInsets?
+            switch property {
+            case "margin":
+                edgeInsets = view!.layoutMargins
+                break
+            case "safeArea":
+                if #available(iOS 11.0, *) {
+                    edgeInsets = view!.safeAreaInsets
+                }
+                break
+            default: break
+            }
+
+            if edgeInsets != nil {
+                switch attribute {
+                case "top":
+                    return edgeInsets!.top
+                case "left":
+                    return edgeInsets!.left
+                case "bottom":
+                    return edgeInsets!.bottom
+                case "right":
+                    return edgeInsets!.right
+                default: break
+                }
+            }
+        }
+
+        return nil
+    }
+
+    func processMathOperation(_ value: Any?) -> CGFloat? {
+        if value == nil {
+            return nil
+        } else if value is CGFloat || value is NSNumber || value is Int || value is Float {
+            return RCTConvert.cgFloat(value)
+        } else if value is NSDictionary {
+            if (value as! NSDictionary)["item"] != nil {
+                return getValue(RCTConvert.nsDictionary(value) as NSDictionary)
+            } else {
+                let operation: String? = (value as! NSDictionary)["operation"] != nil ? RCTConvert.nsString((value as! NSDictionary)["operation"]) : nil
+                let values: [Any]? = (value as! NSDictionary)["values"] != nil ? RCTConvert.nsArray((value as! NSDictionary)["values"]) : nil
+                if operation != nil {
+                    return mathOperation(operation!, values)
+                }
+            }
+        }
+        return nil
+    }
+
+    func mathOperation(_ operation: String, _ values: [Any]?) -> CGFloat? {
+        if values == nil {
+            return nil
+        }
+        var result: CGFloat?
+        values?.forEach { value in
+            let i = processMathOperation(value)
+            if i != nil {
+                if result == nil {
+                    result = i!
+                } else {
+                    switch operation {
+                    case "add":
+                        result! += i!
+                        break
+                    case "mul":
+                        result! *= i!
+                        break
+                    case "div":
+                        result! /= i!
+                        break
+                    case "sub":
+                        result! -= i!
+                        break
+                    default: break
+                    }
+                }
+            }
+        }
+        return result != nil ? result : 0
+    }
+
     func getType(_ attribute: String) -> String? {
         if attribute == "leading" ||
                    attribute == "trailing" ||
@@ -155,8 +257,8 @@ class RNRConstraintsView: UIView {
         let relatedBy: String? = params["relatedBy"] != nil ? RCTConvert.nsString(params["relatedBy"]) : nil
         let toAttribute: String? = params["toAttribute"] != nil ? RCTConvert.nsString(params["toAttribute"]) : nil
         let toItem: String? = params["toItem"] != nil ? RCTConvert.nsString(params["toItem"]) : nil
-        let constant: CGFloat? = params["constant"] != nil ? RCTConvert.cgFloat(params["constant"]) : nil
-        let multiplier: CGFloat? = params["multiplier"] != nil ? RCTConvert.cgFloat(params["multiplier"]) : nil
+        let constant: CGFloat? = processMathOperation(params["constant"])
+        let multiplier: CGFloat? = processMathOperation(params["multiplier"])
 
         if item != nil && attribute != nil && relatedBy != nil && toAttribute != nil && toItem != nil {
             var itemAnchor: NSLayoutXAxisAnchor? = nil
@@ -224,8 +326,8 @@ class RNRConstraintsView: UIView {
         let relatedBy: String? = params["relatedBy"] != nil ? RCTConvert.nsString(params["relatedBy"]) : nil
         let toAttribute: String? = params["toAttribute"] != nil ? RCTConvert.nsString(params["toAttribute"]) : nil
         let toItem: String? = params["toItem"] != nil ? RCTConvert.nsString(params["toItem"]) : nil
-        let constant: CGFloat? = params["constant"] != nil ? RCTConvert.cgFloat(params["constant"]) : nil
-        let multiplier: CGFloat? = params["multiplier"] != nil ? RCTConvert.cgFloat(params["multiplier"]) : nil
+        let constant: CGFloat? = processMathOperation(params["constant"])
+        let multiplier: CGFloat? = processMathOperation(params["multiplier"])
 
         if item != nil && attribute != nil && relatedBy != nil && toAttribute != nil && toItem != nil {
             var itemAnchor: NSLayoutYAxisAnchor? = nil
@@ -293,8 +395,8 @@ class RNRConstraintsView: UIView {
         let relatedBy: String? = params["relatedBy"] != nil ? RCTConvert.nsString(params["relatedBy"]) : nil
         let toAttribute: String? = params["toAttribute"] != nil ? RCTConvert.nsString(params["toAttribute"]) : nil
         let toItem: String? = params["toItem"] != nil ? RCTConvert.nsString(params["toItem"]) : nil
-        let constant: CGFloat? = params["constant"] != nil ? RCTConvert.cgFloat(params["constant"]) : nil
-        let multiplier: CGFloat? = params["multiplier"] != nil ? RCTConvert.cgFloat(params["multiplier"]) : nil
+        let constant: CGFloat? = processMathOperation(params["constant"])
+        let multiplier: CGFloat? = processMathOperation(params["multiplier"])
 
         if item != nil && attribute != nil && relatedBy != nil {
             var itemAnchor: NSLayoutDimension? = nil

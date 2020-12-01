@@ -1,3 +1,4 @@
+import { processMathOperation } from '../math/processMathOperation'
 import {
   SafeAreaXAxisFunction,
   SafeAreaYAxisFunction,
@@ -6,6 +7,7 @@ import {
   ViewXAxisFunction,
   ViewYAxisFunction
 } from '../typings/Functions'
+import { MathOperation } from '../typings/Math'
 import { ProcessedConstraint } from '../typings/ProcessedConstraint'
 import {
   ConstantRelation,
@@ -16,7 +18,7 @@ import {
 function left(
   relatedBy: ConstantRelation | MultiplierRelationX,
   item: ViewXAxisFunction | SuperviewXAxisFunction,
-  constant?: number
+  constant?: number | MathOperation
 ): ProcessedConstraint {
   if (
     relatedBy === 'equalToSystemSpacingAfter' ||
@@ -29,7 +31,10 @@ function left(
       relatedBy: relatedBy,
       toItem: item.item,
       toAttribute: item.attribute,
-      multiplier: constant!
+      multiplier:
+        typeof constant === 'function'
+          ? processMathOperation(constant!)
+          : constant!
     }
   }
   return {
@@ -38,7 +43,10 @@ function left(
     relatedBy: relatedBy,
     toItem: item.item,
     toAttribute: item.attribute,
-    constant
+    constant:
+      typeof constant === 'function'
+        ? processMathOperation(constant!)
+        : constant
   }
 }
 left.item = 'safeArea'
@@ -48,7 +56,7 @@ left.xAxis = true
 function right(
   relatedBy: ConstantRelation | MultiplierRelationX,
   item: ViewXAxisFunction | SuperviewXAxisFunction,
-  constant?: number
+  constant?: number | MathOperation
 ): ProcessedConstraint {
   if (
     relatedBy === 'equalToSystemSpacingAfter' ||
@@ -61,7 +69,10 @@ function right(
       relatedBy: relatedBy,
       toItem: item.item,
       toAttribute: item.attribute,
-      multiplier: constant!
+      multiplier:
+        typeof constant === 'function'
+          ? processMathOperation(constant!)
+          : constant!
     }
   }
   return {
@@ -70,7 +81,10 @@ function right(
     relatedBy: relatedBy,
     toItem: item.item,
     toAttribute: item.attribute,
-    constant
+    constant:
+      typeof constant === 'function'
+        ? processMathOperation(constant!)
+        : constant
   }
 }
 right.item = 'safeArea'
@@ -80,7 +94,7 @@ right.xAxis = true
 function leading(
   relatedBy: ConstantRelation | MultiplierRelationX,
   item: ViewXAxisFunction | SuperviewXAxisFunction,
-  constant?: number
+  constant?: number | MathOperation
 ): ProcessedConstraint {
   if (
     relatedBy === 'equalToSystemSpacingAfter' ||
@@ -93,7 +107,10 @@ function leading(
       relatedBy: relatedBy,
       toItem: item.item,
       toAttribute: item.attribute,
-      multiplier: constant!
+      multiplier:
+        typeof constant === 'function'
+          ? processMathOperation(constant!)
+          : constant!
     }
   }
   return {
@@ -102,7 +119,10 @@ function leading(
     relatedBy: relatedBy,
     toItem: item.item,
     toAttribute: item.attribute,
-    constant
+    constant:
+      typeof constant === 'function'
+        ? processMathOperation(constant!)
+        : constant
   }
 }
 leading.item = 'safeArea'
@@ -112,7 +132,7 @@ leading.xAxis = true
 function centerX(
   relatedBy: ConstantRelation | MultiplierRelationX,
   item: ViewXAxisFunction | SuperviewXAxisFunction,
-  constant?: number
+  constant?: number | MathOperation
 ): ProcessedConstraint {
   if (
     relatedBy === 'equalToSystemSpacingAfter' ||
@@ -125,7 +145,10 @@ function centerX(
       relatedBy: relatedBy,
       toItem: item.item,
       toAttribute: item.attribute,
-      multiplier: constant!
+      multiplier:
+        typeof constant === 'function'
+          ? processMathOperation(constant!)
+          : constant!
     }
   }
   return {
@@ -134,7 +157,10 @@ function centerX(
     relatedBy: relatedBy,
     toItem: item.item,
     toAttribute: item.attribute,
-    constant
+    constant:
+      typeof constant === 'function'
+        ? processMathOperation(constant!)
+        : constant
   }
 }
 centerX.item = 'safeArea'
@@ -144,7 +170,7 @@ centerX.xAxis = true
 function trailing(
   relatedBy: ConstantRelation | MultiplierRelationX,
   item: ViewXAxisFunction | SuperviewXAxisFunction,
-  constant?: number
+  constant?: number | MathOperation
 ): ProcessedConstraint {
   if (
     relatedBy === 'equalToSystemSpacingAfter' ||
@@ -157,7 +183,10 @@ function trailing(
       relatedBy: relatedBy,
       toItem: item.item,
       toAttribute: item.attribute,
-      multiplier: constant!
+      multiplier:
+        typeof constant === 'function'
+          ? processMathOperation(constant!)
+          : constant!
     }
   }
   return {
@@ -166,7 +195,10 @@ function trailing(
     relatedBy: relatedBy,
     toItem: item.item,
     toAttribute: item.attribute,
-    constant
+    constant:
+      typeof constant === 'function'
+        ? processMathOperation(constant!)
+        : constant
   }
 }
 trailing.item = 'safeArea'
@@ -176,7 +208,7 @@ trailing.xAxis = true
 function top(
   relatedBy: ConstantRelation | MultiplierRelationY,
   item: ViewYAxisFunction | SuperviewYAxisFunction,
-  constant?: number
+  constant?: number | MathOperation
 ): ProcessedConstraint {
   if (
     relatedBy === 'equalToSystemSpacingBelow' ||
@@ -189,7 +221,10 @@ function top(
       relatedBy: relatedBy,
       toItem: item.item,
       toAttribute: item.attribute,
-      multiplier: constant!
+      multiplier:
+        typeof constant === 'function'
+          ? processMathOperation(constant!)
+          : constant!
     }
   }
   return {
@@ -198,7 +233,10 @@ function top(
     relatedBy: relatedBy,
     toItem: item.item,
     toAttribute: item.attribute,
-    constant
+    constant:
+      typeof constant === 'function'
+        ? processMathOperation(constant!)
+        : constant
   }
 }
 top.item = 'safeArea'
@@ -208,7 +246,7 @@ top.yAxis = true
 function centerY(
   relatedBy: ConstantRelation | MultiplierRelationY,
   item: ViewYAxisFunction | SuperviewYAxisFunction,
-  constant?: number
+  constant?: number | MathOperation
 ): ProcessedConstraint {
   if (
     relatedBy === 'equalToSystemSpacingBelow' ||
@@ -221,7 +259,10 @@ function centerY(
       relatedBy: relatedBy,
       toItem: item.item,
       toAttribute: item.attribute,
-      multiplier: constant!
+      multiplier:
+        typeof constant === 'function'
+          ? processMathOperation(constant!)
+          : constant!
     }
   }
   return {
@@ -230,7 +271,10 @@ function centerY(
     relatedBy: relatedBy,
     toItem: item.item,
     toAttribute: item.attribute,
-    constant
+    constant:
+      typeof constant === 'function'
+        ? processMathOperation(constant!)
+        : constant
   }
 }
 centerY.item = 'safeArea'
@@ -240,7 +284,7 @@ centerY.yAxis = true
 function firstBaseline(
   relatedBy: ConstantRelation | MultiplierRelationY,
   item: ViewYAxisFunction | SuperviewYAxisFunction,
-  constant?: number
+  constant?: number | MathOperation
 ): ProcessedConstraint {
   if (
     relatedBy === 'equalToSystemSpacingBelow' ||
@@ -253,7 +297,10 @@ function firstBaseline(
       relatedBy: relatedBy,
       toItem: item.item,
       toAttribute: item.attribute,
-      multiplier: constant!
+      multiplier:
+        typeof constant === 'function'
+          ? processMathOperation(constant!)
+          : constant!
     }
   }
   return {
@@ -262,7 +309,10 @@ function firstBaseline(
     relatedBy: relatedBy,
     toItem: item.item,
     toAttribute: item.attribute,
-    constant
+    constant:
+      typeof constant === 'function'
+        ? processMathOperation(constant!)
+        : constant
   }
 }
 firstBaseline.item = 'safeArea'
@@ -272,7 +322,7 @@ firstBaseline.yAxis = true
 function lastBaseline(
   relatedBy: ConstantRelation | MultiplierRelationY,
   item: ViewYAxisFunction | SuperviewYAxisFunction,
-  constant?: number
+  constant?: number | MathOperation
 ): ProcessedConstraint {
   if (
     relatedBy === 'equalToSystemSpacingBelow' ||
@@ -285,7 +335,10 @@ function lastBaseline(
       relatedBy: relatedBy,
       toItem: item.item,
       toAttribute: item.attribute,
-      multiplier: constant!
+      multiplier:
+        typeof constant === 'function'
+          ? processMathOperation(constant!)
+          : constant!
     }
   }
   return {
@@ -294,7 +347,10 @@ function lastBaseline(
     relatedBy: relatedBy,
     toItem: item.item,
     toAttribute: item.attribute,
-    constant
+    constant:
+      typeof constant === 'function'
+        ? processMathOperation(constant!)
+        : constant
   }
 }
 lastBaseline.item = 'safeArea'
@@ -304,7 +360,7 @@ lastBaseline.yAxis = true
 function bottom(
   relatedBy: ConstantRelation | MultiplierRelationY,
   item: ViewYAxisFunction | SuperviewYAxisFunction,
-  constant?: number
+  constant?: number | MathOperation
 ): ProcessedConstraint {
   if (
     relatedBy === 'equalToSystemSpacingBelow' ||
@@ -317,7 +373,10 @@ function bottom(
       relatedBy: relatedBy,
       toItem: item.item,
       toAttribute: item.attribute,
-      multiplier: constant!
+      multiplier:
+        typeof constant === 'function'
+          ? processMathOperation(constant!)
+          : constant!
     }
   }
   return {
@@ -326,7 +385,10 @@ function bottom(
     relatedBy: relatedBy,
     toItem: item.item,
     toAttribute: item.attribute,
-    constant
+    constant:
+      typeof constant === 'function'
+        ? processMathOperation(constant!)
+        : constant
   }
 }
 bottom.item = 'safeArea'
