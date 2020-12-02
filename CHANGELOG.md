@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.30.0](https://github.com/renavigation2/renavigation2/compare/v4.29.0...v4.30.0) (2020-12-02)
+
+
+### Features
+
+* **constraints:** Added safe area helper functions and hooks ([cbef955](https://github.com/renavigation2/renavigation2/commit/cbef9559557f15bab188eaf6d5f8b3274bfd762d))
+
+
+
+
+
 # [4.29.0](https://github.com/renavigation2/renavigation2/compare/v4.28.0...v4.29.0) (2020-12-01)
 
 
