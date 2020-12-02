@@ -24,7 +24,7 @@
     "lerna": "^3.22.1",
     "npm-check-updates": "^10.2.2",
     "patch-package": "^6.2.2",
-    "react-native": "^0.63.3"
+    "react-native": "^0.63.4"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
