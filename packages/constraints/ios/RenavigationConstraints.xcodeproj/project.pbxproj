@@ -10,6 +10,9 @@
 		C02CCAF12571F20C00DC091D /* RNRConstraintsViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02CCAEE2571F20C00DC091D /* RNRConstraintsViewManager.swift */; };
 		C02CCAF22571F20C00DC091D /* RNRConstraintsViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C02CCAEF2571F20C00DC091D /* RNRConstraintsViewManager.m */; };
 		C02CCAF32571F20C00DC091D /* RNRConstraintsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02CCAF02571F20C00DC091D /* RNRConstraintsView.swift */; };
+		C05D52B525781CC20047EFD3 /* RCTRootView+SafeArea.m in Sources */ = {isa = PBXBuildFile; fileRef = C05D52B325781CC10047EFD3 /* RCTRootView+SafeArea.m */; };
+		C0B079EA2577FA7600CE6A46 /* RNREdgeInsetsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B079E92577FA7600CE6A46 /* RNREdgeInsetsHelper.swift */; };
+		C0B079EE2577FB0D00CE6A46 /* RNREdgeInsetsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B079ED2577FB0D00CE6A46 /* RNREdgeInsetsHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +32,10 @@
 		C02CCAEE2571F20C00DC091D /* RNRConstraintsViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRConstraintsViewManager.swift; sourceTree = "<group>"; };
 		C02CCAEF2571F20C00DC091D /* RNRConstraintsViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRConstraintsViewManager.m; sourceTree = "<group>"; };
 		C02CCAF02571F20C00DC091D /* RNRConstraintsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRConstraintsView.swift; sourceTree = "<group>"; };
+		C05D52B325781CC10047EFD3 /* RCTRootView+SafeArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RCTRootView+SafeArea.m"; sourceTree = "<group>"; };
+		C05D52B425781CC20047EFD3 /* RCTRootView+SafeArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RCTRootView+SafeArea.h"; sourceTree = "<group>"; };
+		C0B079E92577FA7600CE6A46 /* RNREdgeInsetsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNREdgeInsetsHelper.swift; sourceTree = "<group>"; };
+		C0B079ED2577FB0D00CE6A46 /* RNREdgeInsetsHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNREdgeInsetsHelper.m; sourceTree = "<group>"; };
 		F4FF95D5245B92E700C19C63 /* RenavigationConstraints-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RenavigationConstraints-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,10 +61,14 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				C05D52B425781CC20047EFD3 /* RCTRootView+SafeArea.h */,
+				C05D52B325781CC10047EFD3 /* RCTRootView+SafeArea.m */,
 				F4FF95D5245B92E700C19C63 /* RenavigationConstraints-Bridging-Header.h */,
 				C02CCAF02571F20C00DC091D /* RNRConstraintsView.swift */,
 				C02CCAEF2571F20C00DC091D /* RNRConstraintsViewManager.m */,
 				C02CCAEE2571F20C00DC091D /* RNRConstraintsViewManager.swift */,
+				C0B079ED2577FB0D00CE6A46 /* RNREdgeInsetsHelper.m */,
+				C0B079E92577FA7600CE6A46 /* RNREdgeInsetsHelper.swift */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -120,7 +131,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C02CCAF22571F20C00DC091D /* RNRConstraintsViewManager.m in Sources */,
+				C0B079EA2577FA7600CE6A46 /* RNREdgeInsetsHelper.swift in Sources */,
 				C02CCAF12571F20C00DC091D /* RNRConstraintsViewManager.swift in Sources */,
+				C0B079EE2577FB0D00CE6A46 /* RNREdgeInsetsHelper.m in Sources */,
+				C05D52B525781CC20047EFD3 /* RCTRootView+SafeArea.m in Sources */,
 				C02CCAF32571F20C00DC091D /* RNRConstraintsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
