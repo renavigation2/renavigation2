@@ -47,6 +47,18 @@ const context: MathContext = {
   div,
   sub,
   window: {
+    dimensions: {
+      width: {
+        item: 'window',
+        property: 'dimensions',
+        attribute: 'width'
+      },
+      height: {
+        item: 'window',
+        property: 'dimensions',
+        attribute: 'height'
+      }
+    },
     margin: {
       top: {
         item: 'window',
@@ -93,6 +105,18 @@ const context: MathContext = {
     }
   },
   superview: {
+    dimensions: {
+      width: {
+        item: 'superview',
+        property: 'dimensions',
+        attribute: 'width'
+      },
+      height: {
+        item: 'superview',
+        property: 'dimensions',
+        attribute: 'height'
+      }
+    },
     margin: {
       top: {
         item: 'superview',
@@ -139,6 +163,18 @@ const context: MathContext = {
     }
   },
   view: {
+    dimensions: {
+      width: {
+        item: 'view',
+        property: 'dimensions',
+        attribute: 'width'
+      },
+      height: {
+        item: 'view',
+        property: 'dimensions',
+        attribute: 'height'
+      }
+    },
     margin: {
       top: {
         item: 'view',

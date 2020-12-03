@@ -1,3 +1,4 @@
+@available(macCatalyst 13.0, *)
 class RNRConstraintsView: UIView {
     var uiManager: RCTUIManager?
 
@@ -71,6 +72,13 @@ class RNRConstraintsView: UIView {
         if view != nil {
             var edgeInsets: UIEdgeInsets?
             switch property {
+            case "dimensions":
+                if attribute == "width" {
+                    return view!.frame.width
+                } else if attribute == "height" {
+                    return view!.frame.height
+                }
+                break
             case "margin":
                 edgeInsets = view!.layoutMargins
                 break

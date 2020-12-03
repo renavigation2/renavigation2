@@ -1,3 +1,4 @@
+@available(macCatalyst 13.0, *)
 @objc(RNRConstraintsViewManager)
 class RNRConstraintsViewManager: RCTViewManager {
     override func view() -> UIView! {
