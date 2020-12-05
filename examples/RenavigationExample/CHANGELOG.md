@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.31.0](https://github.com/renavigation2/renavigation2/compare/v4.30.0...v4.31.0) (2020-12-05)
+
+
+### Features
+
+* **constraints:** Added dimensions to math functions ([9a12238](https://github.com/renavigation2/renavigation2/commit/9a12238c5ec8a9f458ea04849f05910a4d3d6971))
+
+
+
+
+
 # [4.30.0](https://github.com/renavigation2/renavigation2/compare/v4.29.0...v4.30.0) (2020-12-02)
 
 **Note:** Version bump only for package RenavigationExample
