@@ -1,3 +1,4 @@
+@available(macCatalyst 13.0, *)
 @objc(RNREdgeInsetsHelper)
 class RNREdgeInsetsHelper: RCTEventEmitter {
     var limits: [AnyHashable : Int] = [:]

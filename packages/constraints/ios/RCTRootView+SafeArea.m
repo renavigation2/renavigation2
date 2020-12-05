@@ -3,8 +3,7 @@
 @implementation RCTRootView (SafeArea)
 
 - (void)safeAreaInsetsDidChange {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"RNRSafeAreaInsetsForRootViewDidChangeNotification"
-                                                        object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RNRSafeAreaInsetsForRootViewDidChangeNotification" object:self];
 }
 
 @end

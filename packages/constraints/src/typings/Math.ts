@@ -4,15 +4,15 @@ export interface ProcessedMathOperation {
 }
 
 export type MathValueItem = 'window' | 'view' | 'superview'
-export type MathValueProperty = 'margin' | 'safeArea'
+export type MathValueProperty = 'margin' | 'safeArea' | 'dimensions'
 
 export interface MathValue {
   item: MathValueItem
   property: MathValueProperty
-  attribute: 'top' | 'left' | 'bottom' | 'right'
+  attribute: 'top' | 'left' | 'bottom' | 'right' | 'width' | 'height'
 }
 
-export interface MathItemPropertyValues<
+export interface MathEdgeInsetsValues<
   Item extends MathValueItem,
   Property extends MathValueProperty
 > {
@@ -38,6 +38,19 @@ export interface MathItemPropertyValues<
   }
 }
 
+export interface MathDimensionsValues<Item extends MathValueItem> {
+  width: {
+    item: Item
+    property: 'dimensions'
+    attribute: 'width'
+  }
+  height: {
+    item: Item
+    property: 'dimensions'
+    attribute: 'height'
+  }
+}
+
 export interface MathContext {
   add: (
     ...args: Array<number | MathValue | ProcessedMathOperation>
@@ -52,16 +65,19 @@ export interface MathContext {
     ...args: Array<number | MathValue | ProcessedMathOperation>
   ) => ProcessedMathOperation
   window: {
-    margin: MathItemPropertyValues<'window', 'margin'>
-    safeArea: MathItemPropertyValues<'window', 'safeArea'>
+    dimensions: MathDimensionsValues<'window'>
+    margin: MathEdgeInsetsValues<'window', 'margin'>
+    safeArea: MathEdgeInsetsValues<'window', 'safeArea'>
   }
   superview: {
-    margin: MathItemPropertyValues<'superview', 'margin'>
-    safeArea: MathItemPropertyValues<'superview', 'safeArea'>
+    dimensions: MathDimensionsValues<'superview'>
+    margin: MathEdgeInsetsValues<'superview', 'margin'>
+    safeArea: MathEdgeInsetsValues<'superview', 'safeArea'>
   }
   view: {
-    margin: MathItemPropertyValues<'view', 'margin'>
-    safeArea: MathItemPropertyValues<'view', 'safeArea'>
+    dimensions: MathDimensionsValues<'view'>
+    margin: MathEdgeInsetsValues<'view', 'margin'>
+    safeArea: MathEdgeInsetsValues<'view', 'safeArea'>
   }
 }
 
