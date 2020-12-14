@@ -22,15 +22,15 @@
     "codecov": "^3.8.1",
     "concurrently": "^5.3.0",
     "lerna": "^3.22.1",
-    "npm-check-updates": "^10.2.2",
+    "npm-check-updates": "^10.2.5",
     "patch-package": "^6.2.2",
     "react-native": "^0.63.4"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
     "@commitlint/config-lerna-scopes": "^11.0.0",
-    "@types/react-native": "^0.63.37",
+    "@types/react-native": "^0.63.42",
     "commitlint": "^11.0.0",
-    "husky": "^4.3.0"
+    "husky": "^4.3.6"
   }
 }
