@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.31.1](https://github.com/renavigation2/renavigation2/compare/v4.31.0...v4.31.1) (2020-12-18)
+
+
+### Bug Fixes
+
+* **constraints:** Export missing interfaces ([ee66d44](https://github.com/renavigation2/renavigation2/commit/ee66d44cfafdb2d0aab36aa444f0333fb2719791))
+
+
+
+
+
 # [4.31.0](https://github.com/renavigation2/renavigation2/compare/v4.30.0...v4.31.0) (2020-12-05)
 
 
