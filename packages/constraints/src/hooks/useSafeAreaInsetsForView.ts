@@ -4,7 +4,7 @@ import { getSafeAreaInsetsForView } from '../native/EdgeInsetsHelper'
 import { EdgeInsets } from '../typings/EdgeInsets'
 
 export function useSafeAreaInsetsForView(
-  view: MutableRefObject<any> | RefObject<any>
+  view: MutableRefObject<any> | RefObject<any> | ((instance: any) => void)
 ): EdgeInsets | undefined {
   const [edgeInsets, setEdgeInsets] = useState<EdgeInsets | undefined>(
     undefined

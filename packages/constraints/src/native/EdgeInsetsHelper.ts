@@ -8,19 +8,22 @@ interface EdgeInsetsHelperObject {
   getSafeAreaInsetsForRootView(): Promise<EdgeInsets>
   getLayoutMarginsForRootView(): Promise<EdgeInsets>
   getSafeAreaInsetsForView(
-    view: MutableRefObject<any> | RefObject<any>
+    view: MutableRefObject<any> | RefObject<any> | ((instance: any) => void)
   ): Promise<EdgeInsets>
   getLayoutMarginsForView(
-    view: MutableRefObject<any> | RefObject<any>
+    view: MutableRefObject<any> | RefObject<any> | ((instance: any) => void)
   ): Promise<EdgeInsets>
 }
 
 const EdgeInsetsHelper: EdgeInsetsHelperObject = {
   ...RNREdgeInsetsHelper,
-  getSafeAreaInsetsForView: (view: MutableRefObject<any> | RefObject<any>) => {
+  getSafeAreaInsetsForView: (
+    view: MutableRefObject<any> | RefObject<any> | ((instance: any) => void)
+  ) => {
     return new Promise((resolve, reject) => {
-      if (view.current) {
-        const nodeHandle = findNodeHandle(view.current)
+      const resolved = typeof view === 'object' ? view.current : view
+      if (resolved) {
+        const nodeHandle = findNodeHandle(resolved)
         if (nodeHandle) {
           // Use timeout so that useEffect/useLayoutEffect do not call it before the view is ready
           setTimeout(() => {
@@ -36,10 +39,13 @@ const EdgeInsetsHelper: EdgeInsetsHelperObject = {
       }
     })
   },
-  getLayoutMarginsForView: (view: MutableRefObject<any> | RefObject<any>) => {
+  getLayoutMarginsForView: (
+    view: MutableRefObject<any> | RefObject<any> | ((instance: any) => void)
+  ) => {
     return new Promise((resolve, reject) => {
-      if (view.current) {
-        const nodeHandle = findNodeHandle(view.current)
+      const resolved = typeof view === 'object' ? view.current : view
+      if (resolved) {
+        const nodeHandle = findNodeHandle(resolved)
         if (nodeHandle) {
           // Use timeout so that useEffect/useLayoutEffect do not call it before the view is ready
           setTimeout(() => {

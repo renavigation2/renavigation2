@@ -3314,7 +3314,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@renavigation2/constraints@^4.31.0, @renavigation2/constraints@workspace:packages/constraints":
+"@renavigation2/constraints@^4.31.1, @renavigation2/constraints@workspace:packages/constraints":
   version: 0.0.0-use.local
   resolution: "@renavigation2/constraints@workspace:packages/constraints"
   dependencies:
@@ -4074,7 +4074,7 @@ __metadata:
     "@babel/core": ^7.12.10
     "@babel/runtime": ^7.12.5
     "@react-native-community/eslint-config": ^2.0.0
-    "@renavigation2/constraints": ^4.31.0
+    "@renavigation2/constraints": ^4.31.1
     "@renavigation2/core": ^4.27.0
     "@renavigation2/modals": ^4.25.4
     "@renavigation2/navigation": ^4.26.2
