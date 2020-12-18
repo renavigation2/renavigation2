@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.31.2](https://github.com/renavigation2/renavigation2/compare/v4.31.1...v4.31.2) (2020-12-18)
+
+
+### Bug Fixes
+
+* **constraints:** Fixed typings for edge insets functions ([fb19756](https://github.com/renavigation2/renavigation2/commit/fb19756caee81b09d82c0a3b079187a4c7ed317c))
+
+
+
+
+
 ## [4.31.1](https://github.com/renavigation2/renavigation2/compare/v4.31.0...v4.31.1) (2020-12-18)
 
 **Note:** Version bump only for package RenavigationExample
