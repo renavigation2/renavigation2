@@ -298,7 +298,7 @@ PODS:
     - React-Core (= 0.63.4)
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
-  - RenavigationConstraints (4.30.0):
+  - RenavigationConstraints (4.31.0):
     - React
   - RenavigationCore (4.27.0):
     - React
@@ -489,7 +489,7 @@ SPEC CHECKSUMS:
   React-RCTText: 5c51df3f08cb9dedc6e790161195d12bac06101c
   React-RCTVibration: ae4f914cfe8de7d4de95ae1ea6cc8f6315d73d9d
   ReactCommon: 73d79c7039f473b76db6ff7c6b159c478acbbb3b
-  RenavigationConstraints: d1f8c50a9c1b2b947d45934cae138b0efc70b8a6
+  RenavigationConstraints: 7d2e84224f048fcb3b4b73312d3c0efd31a5af65
   RenavigationCore: 5c456ff6f004db81d855c3c760d2ed69d860c2a1
   RenavigationModals: 673f99d9b8b0ea0f3877beaa777666407f5a5fe8
   RenavigationNavigation: 9da193dc4f18bf9a03801219fc60f197892b088d
