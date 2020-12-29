@@ -37,6 +37,9 @@ class RNRTabBarAppearance: UIView, RNRChild, RNRParent {
         if superview != nil {
             hasMovedToSuperview = true
             setup()
+        } else {
+            hasMovedToSuperview = false
+            isReady = false
         }
     }
 
