@@ -81,7 +81,6 @@ class RNRTabsContainer: UIView, UITabBarControllerDelegate, RNRParent {
         }
     }
 
-
     @objc
     override func didSetProps(_ changedProps: [String]!) {
         if tabBarController != nil {
@@ -185,8 +184,14 @@ class RNRTabsContainer: UIView, UITabBarControllerDelegate, RNRParent {
             addSubview(tabBarController!.view)
             tabBarController!.delegate = self
         }
-        hasMovedToSuperview = true
-        setup()
+        if superview != nil {
+            hasMovedToSuperview = true
+            setup()
+        } else {
+            invalidate()
+            hasMovedToSuperview = false
+            isReady = false
+        }
     }
 
     override func didMoveToWindow() {
@@ -235,8 +240,14 @@ class RNRTabsContainer: UIView, UITabBarControllerDelegate, RNRParent {
     }
 
     func invalidate() {
+        scenes.forEach { scene in
+            if scene is RNRTabScene {
+                (scene as! RNRTabScene).viewController.removeFromParent()
+            }
+        }
+        scenes = []
+        tabBarController?.view.removeFromSuperview()
         tabBarController?.viewControllers = []
         tabBarController?.delegate = nil
-        tabBarController = nil
     }
 }

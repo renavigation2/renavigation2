@@ -65,4 +65,12 @@ class RNRTabScene: UIView, RNRChild, RNRParent {
             setup()
         }
     }
+
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        if superview == nil {
+            hasMovedToSuperview = false
+            isReady = false
+        }
+    }
 }
