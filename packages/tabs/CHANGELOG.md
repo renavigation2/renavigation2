@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.31.3](https://github.com/renavigation2/renavigation2/compare/v4.31.2...v4.31.3) (2020-12-29)
+
+
+### Bug Fixes
+
+* **tabs:** Fixed issue with tabs not remounting ([6ab3801](https://github.com/renavigation2/renavigation2/commit/6ab38017345a79f745769505261615aec2aeba5b))
+
+
+
+
+
 # [4.24.0](https://github.com/renavigation2/renavigation2/compare/v4.23.1...v4.24.0) (2020-11-12)
 
 
