@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.31.4](https://github.com/renavigation2/renavigation2/compare/v4.31.3...v4.31.4) (2020-12-30)
+
+
+### Bug Fixes
+
+* **modals:** Fixed issue with lagging modals ([ae6f03b](https://github.com/renavigation2/renavigation2/commit/ae6f03bccb62c527f091d9971d8187710196a30f))
+
+
+
+
+
 ## [4.31.3](https://github.com/renavigation2/renavigation2/compare/v4.31.2...v4.31.3) (2020-12-29)
 
 
