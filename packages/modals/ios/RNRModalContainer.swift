@@ -27,8 +27,22 @@ class RNRModalContainer: UIView, RNRChild, RNRParent {
     }
 
     override func insertReactSubview(_ subview: UIView!, at atIndex: Int) {
-        subview.willMove(toSuperview: self)
+        propagateWillMove(subview, self)
         super.insertReactSubview(subview, at: atIndex)
+    }
+
+    func propagateWillMove(_ subview: UIView!, _ parent: UIView!) {
+        subview.willMove(toSuperview: parent)
+        subview.reactSubviews()?.forEach { subSubview in
+            propagateWillMove(subSubview, subview)
+        }
+    }
+
+    func propagateDidMove(_ subview: UIView!) {
+        subview.didMoveToSuperview()
+        subview.reactSubviews()?.forEach { subSubview in
+            propagateDidMove(subSubview)
+        }
     }
 
     override func reactSetFrame(_ frame: CGRect) {
@@ -49,6 +63,10 @@ class RNRModalContainer: UIView, RNRChild, RNRParent {
                 setupParent(parent!)
 
                 if !isPresented {
+                    // Fix for libraries like react-native-viewpager, re-propagate the didMoveToSuperview events
+                    reactSubviews()?.forEach { subview in
+                        propagateDidMove(subview)
+                    }
                     parent!.present(self)
                 }
             } else {
