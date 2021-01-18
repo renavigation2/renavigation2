@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.31.6](https://github.com/renavigation2/renavigation2/compare/v4.31.5...v4.31.6) (2021-01-18)
+
+
+### Bug Fixes
+
+* **modals:** Fixed modals not mounting because of previous fix ([e32665c](https://github.com/renavigation2/renavigation2/commit/e32665cd0c3229d61909da8785d2c37ad24b6895))
+
+
+
+
+
 ## [4.31.5](https://github.com/renavigation2/renavigation2/compare/v4.31.4...v4.31.5) (2021-01-18)
 
 **Note:** Version bump only for package RenavigationExample
