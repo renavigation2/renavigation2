@@ -3384,7 +3384,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@renavigation2/modals@^4.31.4, @renavigation2/modals@workspace:packages/modals":
+"@renavigation2/modals@^4.31.5, @renavigation2/modals@workspace:packages/modals":
   version: 0.0.0-use.local
   resolution: "@renavigation2/modals@workspace:packages/modals"
   dependencies:
@@ -4056,7 +4056,7 @@ __metadata:
     "@react-native-community/eslint-config": ^2.0.0
     "@renavigation2/constraints": ^4.31.2
     "@renavigation2/core": ^4.27.0
-    "@renavigation2/modals": ^4.31.4
+    "@renavigation2/modals": ^4.31.5
     "@renavigation2/navigation": ^4.26.2
     "@renavigation2/tabs": ^4.31.3
     "@types/jest": ^26.0.20
@@ -6719,22 +6719,24 @@ __metadata:
   linkType: hard
 
 "es-abstract@npm:^1.18.0-next.1":
-  version: 1.18.0-next.1
-  resolution: "es-abstract@npm:1.18.0-next.1"
+  version: 1.18.0-next.2
+  resolution: "es-abstract@npm:1.18.0-next.2"
   dependencies:
+    call-bind: ^1.0.2
     es-to-primitive: ^1.2.1
     function-bind: ^1.1.1
+    get-intrinsic: ^1.0.2
     has: ^1.0.3
     has-symbols: ^1.0.1
     is-callable: ^1.2.2
-    is-negative-zero: ^2.0.0
+    is-negative-zero: ^2.0.1
     is-regex: ^1.1.1
-    object-inspect: ^1.8.0
+    object-inspect: ^1.9.0
     object-keys: ^1.1.1
-    object.assign: ^4.1.1
-    string.prototype.trimend: ^1.0.1
-    string.prototype.trimstart: ^1.0.1
-  checksum: f1e37567e49a54c09050aa3371cac601a789441f4fa9730f2c2d386aadad547d6c303bb41e7f5cb5286b616104d6c13450f33b712f664939a09729dd5e45c963
+    object.assign: ^4.1.2
+    string.prototype.trimend: ^1.0.3
+    string.prototype.trimstart: ^1.0.3
+  checksum: bcfcb7a19a4eeb33a95314f1666d29314c87c4ae9ba278bce54f9afadf79302f6b3814df0a80c9648fe2c142843ce9b271bc9ba622567f54d453056dd6bced81
   languageName: node
   linkType: hard
 
@@ -9109,7 +9111,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"is-negative-zero@npm:^2.0.0":
+"is-negative-zero@npm:^2.0.1":
   version: 2.0.1
   resolution: "is-negative-zero@npm:2.0.1"
   checksum: e2160af9a6fad7027bbd513e1efe9a99c780bb6af688e61e6b71084b5893f976241ca081e1ed8c18222d391ea3c1c0771cd23ab322be107150b66faf03d6ecbd
@@ -15053,7 +15055,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"string.prototype.trimend@npm:^1.0.1":
+"string.prototype.trimend@npm:^1.0.1, string.prototype.trimend@npm:^1.0.3":
   version: 1.0.3
   resolution: "string.prototype.trimend@npm:1.0.3"
   dependencies:
@@ -15063,7 +15065,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"string.prototype.trimstart@npm:^1.0.1":
+"string.prototype.trimstart@npm:^1.0.1, string.prototype.trimstart@npm:^1.0.3":
   version: 1.0.3
   resolution: "string.prototype.trimstart@npm:1.0.3"
   dependencies:
