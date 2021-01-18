@@ -10,6 +10,7 @@
     "clean": "sh scripts/clean.sh",
     "lint": "lerna run lint --ignore RenavigationExample -- --max-warnings 0",
     "install": "patch-package",
+    "metro": "react-native start",
     "prepare": "lerna run prepare --concurrency 1",
     "postinstall": "sh scripts/postinstall.sh",
     "test": "lerna run test --ignore RenavigationExample --",
@@ -29,8 +30,8 @@
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
     "@commitlint/config-lerna-scopes": "^11.0.0",
-    "@types/react-native": "^0.63.43",
+    "@types/react-native": "^0.63.45",
     "commitlint": "^11.0.0",
-    "husky": "^4.3.6"
+    "husky": "^4.3.8"
   }
 }
