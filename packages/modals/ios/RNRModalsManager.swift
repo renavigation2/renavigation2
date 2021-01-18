@@ -15,19 +15,18 @@ class RNRModalsManager: RCTViewManager, RCTInvalidating {
         true
     }
 
-    func invalidate() {
-        DispatchQueue.main.sync { [self] in
-            modals?.invalidate()
-        }
-    }
-
     @objc func dismiss(_ node: NSNumber, viewNode: NSNumber) {
         DispatchQueue.main.async { [self] in
             (bridge.uiManager.view(
                     forReactTag: node
             ) as! RNRModals).dismiss(bridge.uiManager.view(
                     forReactTag: viewNode
-            ) as! RNRModalContainer)
+            ) as! RNRModal)
         }
+    }
+
+    func invalidate() {
+        modals?.invalidateAsync()
+        modals = nil
     }
 }

@@ -7,24 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C00D5379252970EA00046A0B /* RNRModalPresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00D5377252970EA00046A0B /* RNRModalPresentationStyle.swift */; };
-		C00D537A252970EA00046A0B /* RNRModalPresentationStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C00D5378252970EA00046A0B /* RNRModalPresentationStyle.m */; };
-		C03FB86D25298011007BECB6 /* RNRModalConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03FB86A25298011007BECB6 /* RNRModalConfigManager.swift */; };
-		C03FB86E25298011007BECB6 /* RNRModalConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C03FB86B25298011007BECB6 /* RNRModalConfigManager.m */; };
-		C03FB86F25298011007BECB6 /* RNRModalConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03FB86C25298011007BECB6 /* RNRModalConfig.swift */; };
-		C066092C25297493008D7898 /* RNRModalTransitionStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C066092A25297493008D7898 /* RNRModalTransitionStyle.m */; };
-		C066092D25297493008D7898 /* RNRModalTransitionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C066092B25297493008D7898 /* RNRModalTransitionStyle.swift */; };
-		C0660931252976B5008D7898 /* RNRModalStatusBarAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C066092F252976B5008D7898 /* RNRModalStatusBarAnimation.swift */; };
-		C0660932252976B5008D7898 /* RNRModalStatusBarAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = C0660930252976B5008D7898 /* RNRModalStatusBarAnimation.m */; };
-		C09FEF7024D1C0B800F79BC4 /* RNRModalContainerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C09FEF6924D1C0B800F79BC4 /* RNRModalContainerManager.m */; };
+		C09FEF7024D1C0B800F79BC4 /* RNRModalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C09FEF6924D1C0B800F79BC4 /* RNRModalManager.m */; };
 		C09FEF7124D1C0B800F79BC4 /* RNRModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FEF6A24D1C0B800F79BC4 /* RNRModalController.swift */; };
-		C09FEF7224D1C0B800F79BC4 /* RNRModalContainerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FEF6B24D1C0B800F79BC4 /* RNRModalContainerManager.swift */; };
+		C09FEF7224D1C0B800F79BC4 /* RNRModalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FEF6B24D1C0B800F79BC4 /* RNRModalManager.swift */; };
 		C09FEF7324D1C0B800F79BC4 /* RNRModalsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FEF6C24D1C0B800F79BC4 /* RNRModalsManager.swift */; };
 		C09FEF7424D1C0B800F79BC4 /* RNRModalsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C09FEF6D24D1C0B800F79BC4 /* RNRModalsManager.m */; };
 		C09FEF7524D1C0B900F79BC4 /* RNRModals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FEF6E24D1C0B800F79BC4 /* RNRModals.swift */; };
-		C09FEF7624D1C0B900F79BC4 /* RNRModalContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FEF6F24D1C0B800F79BC4 /* RNRModalContainer.swift */; };
-		C0CDB496252977A50023535D /* RNRModalStatusBarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CDB494252977A50023535D /* RNRModalStatusBarStyle.m */; };
-		C0CDB497252977A50023535D /* RNRModalStatusBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CDB495252977A50023535D /* RNRModalStatusBarStyle.swift */; };
+		C09FEF7624D1C0B900F79BC4 /* RNRModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FEF6F24D1C0B800F79BC4 /* RNRModal.swift */; };
+		C0EFAC0C25B4C9A500F7FA51 /* RNRModalConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EFAC0925B4C9A500F7FA51 /* RNRModalConfig.swift */; };
+		C0EFAC0D25B4C9A500F7FA51 /* RNRModalConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EFAC0A25B4C9A500F7FA51 /* RNRModalConfigManager.m */; };
+		C0EFAC0E25B4C9A500F7FA51 /* RNRModalConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EFAC0B25B4C9A500F7FA51 /* RNRModalConfigManager.swift */; };
+		C0EFAC1225B4C9B200F7FA51 /* RNRModalPresentationStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EFAC1025B4C9B200F7FA51 /* RNRModalPresentationStyle.m */; };
+		C0EFAC1325B4C9B200F7FA51 /* RNRModalPresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EFAC1125B4C9B200F7FA51 /* RNRModalPresentationStyle.swift */; };
+		C0EFAC1B25B4C9BE00F7FA51 /* RNRModalTransitionStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EFAC1525B4C9BE00F7FA51 /* RNRModalTransitionStyle.m */; };
+		C0EFAC1C25B4C9BE00F7FA51 /* RNRModalTransitionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EFAC1625B4C9BE00F7FA51 /* RNRModalTransitionStyle.swift */; };
+		C0EFAC1D25B4C9BE00F7FA51 /* RNRModalStatusBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EFAC1725B4C9BE00F7FA51 /* RNRModalStatusBarStyle.swift */; };
+		C0EFAC1E25B4C9BE00F7FA51 /* RNRModalStatusBarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EFAC1825B4C9BE00F7FA51 /* RNRModalStatusBarStyle.m */; };
+		C0EFAC1F25B4C9BE00F7FA51 /* RNRModalStatusBarAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EFAC1925B4C9BE00F7FA51 /* RNRModalStatusBarAnimation.m */; };
+		C0EFAC2025B4C9BE00F7FA51 /* RNRModalStatusBarAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EFAC1A25B4C9BE00F7FA51 /* RNRModalStatusBarAnimation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,24 +41,24 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRenavigationModals.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRenavigationModals.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C00D5377252970EA00046A0B /* RNRModalPresentationStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModalPresentationStyle.swift; sourceTree = "<group>"; };
-		C00D5378252970EA00046A0B /* RNRModalPresentationStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRModalPresentationStyle.m; sourceTree = "<group>"; };
-		C03FB86A25298011007BECB6 /* RNRModalConfigManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModalConfigManager.swift; sourceTree = "<group>"; };
-		C03FB86B25298011007BECB6 /* RNRModalConfigManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRModalConfigManager.m; sourceTree = "<group>"; };
-		C03FB86C25298011007BECB6 /* RNRModalConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModalConfig.swift; sourceTree = "<group>"; };
-		C066092A25297493008D7898 /* RNRModalTransitionStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRModalTransitionStyle.m; sourceTree = "<group>"; };
-		C066092B25297493008D7898 /* RNRModalTransitionStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModalTransitionStyle.swift; sourceTree = "<group>"; };
-		C066092F252976B5008D7898 /* RNRModalStatusBarAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModalStatusBarAnimation.swift; sourceTree = "<group>"; };
-		C0660930252976B5008D7898 /* RNRModalStatusBarAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRModalStatusBarAnimation.m; sourceTree = "<group>"; };
-		C09FEF6924D1C0B800F79BC4 /* RNRModalContainerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRModalContainerManager.m; sourceTree = "<group>"; };
+		C09FEF6924D1C0B800F79BC4 /* RNRModalManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRModalManager.m; sourceTree = "<group>"; };
 		C09FEF6A24D1C0B800F79BC4 /* RNRModalController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModalController.swift; sourceTree = "<group>"; };
-		C09FEF6B24D1C0B800F79BC4 /* RNRModalContainerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModalContainerManager.swift; sourceTree = "<group>"; };
+		C09FEF6B24D1C0B800F79BC4 /* RNRModalManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModalManager.swift; sourceTree = "<group>"; };
 		C09FEF6C24D1C0B800F79BC4 /* RNRModalsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModalsManager.swift; sourceTree = "<group>"; };
 		C09FEF6D24D1C0B800F79BC4 /* RNRModalsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRModalsManager.m; sourceTree = "<group>"; };
 		C09FEF6E24D1C0B800F79BC4 /* RNRModals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModals.swift; sourceTree = "<group>"; };
-		C09FEF6F24D1C0B800F79BC4 /* RNRModalContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModalContainer.swift; sourceTree = "<group>"; };
-		C0CDB494252977A50023535D /* RNRModalStatusBarStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRModalStatusBarStyle.m; sourceTree = "<group>"; };
-		C0CDB495252977A50023535D /* RNRModalStatusBarStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModalStatusBarStyle.swift; sourceTree = "<group>"; };
+		C09FEF6F24D1C0B800F79BC4 /* RNRModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModal.swift; sourceTree = "<group>"; };
+		C0EFAC0925B4C9A500F7FA51 /* RNRModalConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModalConfig.swift; sourceTree = "<group>"; };
+		C0EFAC0A25B4C9A500F7FA51 /* RNRModalConfigManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRModalConfigManager.m; sourceTree = "<group>"; };
+		C0EFAC0B25B4C9A500F7FA51 /* RNRModalConfigManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModalConfigManager.swift; sourceTree = "<group>"; };
+		C0EFAC1025B4C9B200F7FA51 /* RNRModalPresentationStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRModalPresentationStyle.m; sourceTree = "<group>"; };
+		C0EFAC1125B4C9B200F7FA51 /* RNRModalPresentationStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModalPresentationStyle.swift; sourceTree = "<group>"; };
+		C0EFAC1525B4C9BE00F7FA51 /* RNRModalTransitionStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRModalTransitionStyle.m; sourceTree = "<group>"; };
+		C0EFAC1625B4C9BE00F7FA51 /* RNRModalTransitionStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModalTransitionStyle.swift; sourceTree = "<group>"; };
+		C0EFAC1725B4C9BE00F7FA51 /* RNRModalStatusBarStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModalStatusBarStyle.swift; sourceTree = "<group>"; };
+		C0EFAC1825B4C9BE00F7FA51 /* RNRModalStatusBarStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRModalStatusBarStyle.m; sourceTree = "<group>"; };
+		C0EFAC1925B4C9BE00F7FA51 /* RNRModalStatusBarAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRModalStatusBarAnimation.m; sourceTree = "<group>"; };
+		C0EFAC1A25B4C9BE00F7FA51 /* RNRModalStatusBarAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRModalStatusBarAnimation.swift; sourceTree = "<group>"; };
 		F4FF95D5245B92E700C19C63 /* RenavigationModals-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RenavigationModals-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,25 +84,25 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				C03FB86C25298011007BECB6 /* RNRModalConfig.swift */,
-				C03FB86B25298011007BECB6 /* RNRModalConfigManager.m */,
-				C03FB86A25298011007BECB6 /* RNRModalConfigManager.swift */,
-				C09FEF6F24D1C0B800F79BC4 /* RNRModalContainer.swift */,
-				C09FEF6924D1C0B800F79BC4 /* RNRModalContainerManager.m */,
-				C09FEF6B24D1C0B800F79BC4 /* RNRModalContainerManager.swift */,
+				F4FF95D5245B92E700C19C63 /* RenavigationModals-Bridging-Header.h */,
+				C09FEF6F24D1C0B800F79BC4 /* RNRModal.swift */,
+				C0EFAC0925B4C9A500F7FA51 /* RNRModalConfig.swift */,
+				C0EFAC0A25B4C9A500F7FA51 /* RNRModalConfigManager.m */,
+				C0EFAC0B25B4C9A500F7FA51 /* RNRModalConfigManager.swift */,
 				C09FEF6A24D1C0B800F79BC4 /* RNRModalController.swift */,
+				C09FEF6924D1C0B800F79BC4 /* RNRModalManager.m */,
+				C09FEF6B24D1C0B800F79BC4 /* RNRModalManager.swift */,
+				C0EFAC1025B4C9B200F7FA51 /* RNRModalPresentationStyle.m */,
+				C0EFAC1125B4C9B200F7FA51 /* RNRModalPresentationStyle.swift */,
 				C09FEF6E24D1C0B800F79BC4 /* RNRModals.swift */,
 				C09FEF6D24D1C0B800F79BC4 /* RNRModalsManager.m */,
 				C09FEF6C24D1C0B800F79BC4 /* RNRModalsManager.swift */,
-				C00D5378252970EA00046A0B /* RNRModalPresentationStyle.m */,
-				C00D5377252970EA00046A0B /* RNRModalPresentationStyle.swift */,
-				C066092A25297493008D7898 /* RNRModalTransitionStyle.m */,
-				C066092B25297493008D7898 /* RNRModalTransitionStyle.swift */,
-				C0660930252976B5008D7898 /* RNRModalStatusBarAnimation.m */,
-				C066092F252976B5008D7898 /* RNRModalStatusBarAnimation.swift */,
-				C0CDB494252977A50023535D /* RNRModalStatusBarStyle.m */,
-				C0CDB495252977A50023535D /* RNRModalStatusBarStyle.swift */,
-				F4FF95D5245B92E700C19C63 /* RenavigationModals-Bridging-Header.h */,
+				C0EFAC1925B4C9BE00F7FA51 /* RNRModalStatusBarAnimation.m */,
+				C0EFAC1A25B4C9BE00F7FA51 /* RNRModalStatusBarAnimation.swift */,
+				C0EFAC1825B4C9BE00F7FA51 /* RNRModalStatusBarStyle.m */,
+				C0EFAC1725B4C9BE00F7FA51 /* RNRModalStatusBarStyle.swift */,
+				C0EFAC1525B4C9BE00F7FA51 /* RNRModalTransitionStyle.m */,
+				C0EFAC1625B4C9BE00F7FA51 /* RNRModalTransitionStyle.swift */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -164,24 +164,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0CDB496252977A50023535D /* RNRModalStatusBarStyle.m in Sources */,
-				C0CDB497252977A50023535D /* RNRModalStatusBarStyle.swift in Sources */,
+				C0EFAC2025B4C9BE00F7FA51 /* RNRModalStatusBarAnimation.swift in Sources */,
 				C09FEF7124D1C0B800F79BC4 /* RNRModalController.swift in Sources */,
-				C066092D25297493008D7898 /* RNRModalTransitionStyle.swift in Sources */,
-				C03FB86F25298011007BECB6 /* RNRModalConfig.swift in Sources */,
-				C09FEF7624D1C0B900F79BC4 /* RNRModalContainer.swift in Sources */,
-				C09FEF7224D1C0B800F79BC4 /* RNRModalContainerManager.swift in Sources */,
-				C03FB86D25298011007BECB6 /* RNRModalConfigManager.swift in Sources */,
+				C0EFAC1D25B4C9BE00F7FA51 /* RNRModalStatusBarStyle.swift in Sources */,
+				C0EFAC0D25B4C9A500F7FA51 /* RNRModalConfigManager.m in Sources */,
+				C09FEF7624D1C0B900F79BC4 /* RNRModal.swift in Sources */,
+				C0EFAC1C25B4C9BE00F7FA51 /* RNRModalTransitionStyle.swift in Sources */,
+				C0EFAC1F25B4C9BE00F7FA51 /* RNRModalStatusBarAnimation.m in Sources */,
+				C09FEF7224D1C0B800F79BC4 /* RNRModalManager.swift in Sources */,
+				C0EFAC1B25B4C9BE00F7FA51 /* RNRModalTransitionStyle.m in Sources */,
 				C09FEF7324D1C0B800F79BC4 /* RNRModalsManager.swift in Sources */,
-				C09FEF7024D1C0B800F79BC4 /* RNRModalContainerManager.m in Sources */,
-				C0660931252976B5008D7898 /* RNRModalStatusBarAnimation.swift in Sources */,
-				C03FB86E25298011007BECB6 /* RNRModalConfigManager.m in Sources */,
-				C066092C25297493008D7898 /* RNRModalTransitionStyle.m in Sources */,
+				C0EFAC1225B4C9B200F7FA51 /* RNRModalPresentationStyle.m in Sources */,
+				C0EFAC0C25B4C9A500F7FA51 /* RNRModalConfig.swift in Sources */,
+				C09FEF7024D1C0B800F79BC4 /* RNRModalManager.m in Sources */,
 				C09FEF7524D1C0B900F79BC4 /* RNRModals.swift in Sources */,
-				C00D5379252970EA00046A0B /* RNRModalPresentationStyle.swift in Sources */,
-				C0660932252976B5008D7898 /* RNRModalStatusBarAnimation.m in Sources */,
+				C0EFAC1E25B4C9BE00F7FA51 /* RNRModalStatusBarStyle.m in Sources */,
+				C0EFAC0E25B4C9A500F7FA51 /* RNRModalConfigManager.swift in Sources */,
+				C0EFAC1325B4C9B200F7FA51 /* RNRModalPresentationStyle.swift in Sources */,
 				C09FEF7424D1C0B800F79BC4 /* RNRModalsManager.m in Sources */,
-				C00D537A252970EA00046A0B /* RNRModalPresentationStyle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

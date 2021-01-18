@@ -1,4 +1,3 @@
-@objc(RNRModalController)
 class RNRModalController: UIViewController {
     var config: RNRModalConfig?
 
@@ -32,29 +31,33 @@ class RNRModalController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        if let v = view as? RNRModalContainer {
+        super.viewWillAppear(animated)
+        if let v = view as? RNRModal {
             v.willAppear()
         }
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        if let v = view as? RNRModalContainer {
+        super.viewWillDisappear(animated)
+        if let v = view as? RNRModal {
             v.didAppear()
         }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        if let v = view as? RNRModalContainer {
+        super.viewDidAppear(animated)
+        if let v = view as? RNRModal {
             v.willDisappear()
         }
     }
 
     override func viewDidDisappear(_ animated: Bool) {
-        if let v = view as? RNRModalContainer {
+        super.viewDidDisappear(animated)
+        if let v = view as? RNRModal {
             v.didDisappear()
-        }
-       if let v = view as? RNRModalContainer {
-            v.didDismiss()
+            if parent == nil && presentingViewController == nil {
+                v.didDismiss()
+            }
         }
     }
 }
