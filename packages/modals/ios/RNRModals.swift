@@ -14,7 +14,7 @@ class RNRModals: UIView, RNRParent {
     @objc var onWillShowView: RCTDirectEventBlock?
 
     override func insertReactSubview(_ subview: UIView!, at atIndex: Int) {
-        (subview as! RNRModal).parent = self
+        (subview as! RNRModal).willMove(toSuperview: self)
         modals.insert(subview as! RNRModal, at: atIndex)
     }
 
@@ -94,7 +94,7 @@ class RNRModals: UIView, RNRParent {
                 }
 
                 var animated = true
-                if modal.controller.config?.animated == -1 {
+                if modal.controller?.config?.animated == -1 {
                     animated = false
                 }
 
