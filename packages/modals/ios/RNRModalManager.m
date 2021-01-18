@@ -1,6 +1,6 @@
 #import "React/RCTViewManager.h"
 
-@interface RCT_EXTERN_MODULE(RNRModalContainerManager, RCTViewManager)
+@interface RCT_EXTERN_MODULE(RNRModalManager, RCTViewManager)
 
 RCT_EXPORT_VIEW_PROPERTY(onWillAppear, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onDidAppear, RCTDirectEventBlock)

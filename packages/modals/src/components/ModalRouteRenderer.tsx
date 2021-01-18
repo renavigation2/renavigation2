@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useRef, useCallback } from 'react'
-import { ModalContainer } from '../native/ModalContainer'
+import { Modal } from '../native/Modal'
 import {
   RouteObject,
   LifecycleEventType,
@@ -98,7 +98,7 @@ export const ModalRouteRenderer: React.FC<Props> = ({
           static: staticProp
         }}
       >
-        <ModalContainer
+        <Modal
           onWillAppear={onWillAppear}
           onDidAppear={onDidAppear}
           onWillDisappear={onWillDisappear}
@@ -107,7 +107,7 @@ export const ModalRouteRenderer: React.FC<Props> = ({
           ref={nativeRef}
         >
           {route.element}
-        </ModalContainer>
+        </Modal>
       </ModalLocationContext.Provider>
     </ModalLifecycleContext.Provider>
   )

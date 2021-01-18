@@ -1,15 +1,18 @@
 import RenavigationCore
 
-class RNRModalContainer: UIView, RNRChild, RNRParent {
+class RNRModal: UIView, RNRChild, RNRParent {
     var parent: RNRModals?
-    var viewController: RNRModalController = RNRModalController()
-    var uiManager: RCTUIManager?
+    var controller: RNRModalController? = RNRModalController()
+    var uiManager: AnyObject?
+    var bridge: AnyObject?
+    var touchHandler: AnyObject?
 
     var isReady = false
+    var isPresented = false
+    var isDismissed = false
     var hasMovedToSuperview = false
     var hasUpdatedReactSubviews = false
-    var isPresented = false
-    var fixedSize = false
+    var hasFixedSize = false
 
     @objc var onWillAppear: RCTDirectEventBlock?
     @objc var onDidAppear: RCTDirectEventBlock?
@@ -19,11 +22,22 @@ class RNRModalContainer: UIView, RNRChild, RNRParent {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        viewController.view = self
+        controller!.view = self
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func reactSetFrame(_ frame: CGRect) {
+    }
+
+    override func reactViewController() -> UIViewController {
+        controller!
+    }
+
+    override func reactSuperview() -> UIView! {
+        parent
     }
 
     override func insertReactSubview(_ subview: UIView!, at atIndex: Int) {
@@ -43,13 +57,6 @@ class RNRModalContainer: UIView, RNRChild, RNRParent {
         subview.reactSubviews()?.forEach { subSubview in
             propagateDidMove(subSubview)
         }
-    }
-
-    override func reactSetFrame(_ frame: CGRect) {
-    }
-
-    override func reactViewController() -> UIViewController! {
-        viewController
     }
 
     func updateSubview(_ subview: UIView) {
@@ -95,13 +102,28 @@ class RNRModalContainer: UIView, RNRChild, RNRParent {
         }
     }
 
+    override func didMoveToWindow() {
+        if window != nil {
+            if touchHandler == nil {
+                touchHandler = RCTTouchHandler(bridge: (bridge as! RCTBridge))
+            }
+            if let t = touchHandler as? RCTTouchHandler {
+                t.attach(to: self)
+            }
+        } else {
+            if let t = touchHandler as? RCTTouchHandler {
+                t.detach(from: self)
+            }
+        }
+    }
+
     override func layoutSubviews() {
-        if !fixedSize && uiManager != nil && (self as Any?) != nil && (self.bounds as Any?) != nil {
-            let height = self.bounds.size.height
-            let width = self.bounds.size.width
-            uiManager?.setSize(self.bounds.size, for: self)
-            if self.bounds.size.height == height && self.bounds.size.width == width {
-                fixedSize = true
+        if !hasFixedSize && uiManager != nil && (self as Any?) != nil && (bounds as Any?) != nil {
+            let height = bounds.size.height
+            let width = bounds.size.width
+            uiManager?.setSize(bounds.size, for: self)
+            if bounds.size.height == height && bounds.size.width == width {
+                hasFixedSize = true
             }
         }
         super.layoutSubviews()
@@ -135,5 +157,9 @@ class RNRModalContainer: UIView, RNRChild, RNRParent {
         if onDidDismiss != nil {
             onDidDismiss!([:])
         }
+    }
+
+    func invalidate() {
+        controller = nil
     }
 }
