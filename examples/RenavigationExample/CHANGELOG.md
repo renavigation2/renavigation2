@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.31.7](https://github.com/renavigation2/renavigation2/compare/v4.31.6...v4.31.7) (2021-01-20)
+
+
+### Bug Fixes
+
+* **modals:** Import RCTInvalidating ([35cc9bd](https://github.com/renavigation2/renavigation2/commit/35cc9bd2aad0968e61f8b7217fdb91e853bfc23b))
+
+
+
+
+
 ## [4.31.6](https://github.com/renavigation2/renavigation2/compare/v4.31.5...v4.31.6) (2021-01-18)
 
 
