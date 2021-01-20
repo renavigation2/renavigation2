@@ -1,6 +1,6 @@
 {
   "name": "@renavigation2/modals",
-  "version": "4.31.7",
+  "version": "4.31.8",
   "description": "Renavigation Modals",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
