@@ -3384,21 +3384,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@renavigation2/modals@npm:^4.31.7":
-  version: 4.31.7
-  resolution: "@renavigation2/modals@npm:4.31.7"
-  dependencies:
-    "@renavigation2/history": ^4.24.0
-    "@renavigation2/router": ^4.24.0
-    tiny-invariant: ^1.1.0
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-  checksum: 9102d08218e87f8136b511f2031be53cf335e23259803f0311a6e7709fce9e868ac2b8f041fd943913406eb7f46c3e7ad618271b78e0a5746c681ff71c5d0ef2
-  languageName: node
-  linkType: hard
-
-"@renavigation2/modals@workspace:packages/modals":
+"@renavigation2/modals@^4.31.7, @renavigation2/modals@workspace:packages/modals":
   version: 0.0.0-use.local
   resolution: "@renavigation2/modals@workspace:packages/modals"
   dependencies:

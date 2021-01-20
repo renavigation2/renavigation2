@@ -169,7 +169,9 @@ class RNRModals: UIView, RNRParent {
         isInvalidated = true
         for modal in modals {
             if modal.isPresented && modal.controller != nil {
-                modal.controller!.dismiss(animated: false)
+                modal.controller!.dismiss(animated: false, completion: {
+                    modal.controller = nil
+                })
             }
         }
         pendingDismiss.removeAll()

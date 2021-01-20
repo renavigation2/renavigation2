@@ -158,8 +158,4 @@ class RNRModal: UIView, RNRChild, RNRParent {
             onDidDismiss!([:])
         }
     }
-
-    func invalidate() {
-        controller = nil
-    }
 }
