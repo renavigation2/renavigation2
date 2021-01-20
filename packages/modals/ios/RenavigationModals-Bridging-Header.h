@@ -1,6 +1,7 @@
 #import <React/RCTBridgeModule.h>
 #import <React/RCTEventEmitter.h>
 #import <React/RCTTouchHandler.h>
+#import <React/RCTInvalidating.h>
 #import <React/RCTUIManager.h>
 #import <React/RCTUtils.h>
 #import <React/RCTView.h>
