@@ -302,7 +302,7 @@ PODS:
     - React
   - RenavigationCore (4.27.0):
     - React
-  - RenavigationModals (4.31.7):
+  - RenavigationModals (4.31.8):
     - React
     - RenavigationCore
   - RenavigationNavigation (4.26.2):
@@ -365,7 +365,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `./../../../node_modules/react-native//ReactCommon`)
   - RenavigationConstraints (from `../../../packages/constraints`)
   - RenavigationCore (from `../../../packages/core`)
-  - "RenavigationModals (from `../../../node_modules/@renavigation2/modals`)"
+  - RenavigationModals (from `../../../packages/modals`)
   - RenavigationNavigation (from `../../../packages/navigation`)
   - RenavigationTabs (from `../../../packages/tabs`)
   - Yoga (from `./../../../node_modules/react-native//ReactCommon/yoga`)
@@ -443,7 +443,7 @@ EXTERNAL SOURCES:
   RenavigationCore:
     :path: "../../../packages/core"
   RenavigationModals:
-    :path: "../../../node_modules/@renavigation2/modals"
+    :path: "../../../packages/modals"
   RenavigationNavigation:
     :path: "../../../packages/navigation"
   RenavigationTabs:
@@ -491,7 +491,7 @@ SPEC CHECKSUMS:
   ReactCommon: 73d79c7039f473b76db6ff7c6b159c478acbbb3b
   RenavigationConstraints: 92f45b5123257b88d9535039651dc974a9c1576e
   RenavigationCore: 5c456ff6f004db81d855c3c760d2ed69d860c2a1
-  RenavigationModals: 26c1634ca188fb4c980eb5bebdaaf7a878d000cc
+  RenavigationModals: bd8d094c9dbbdca82fc29e1034c9862b5d0aea03
   RenavigationNavigation: 9da193dc4f18bf9a03801219fc60f197892b088d
   RenavigationTabs: fcf8ca03a6414e97757d76d0f99b92f29905f67b
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6

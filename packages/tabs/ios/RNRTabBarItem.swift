@@ -1,6 +1,8 @@
 import RenavigationCore
 
 class RNRTabBarItem: UIView, RNRChild, RNRParent {
+    var _tabBarItem: UITabBarItem?
+
     var isReady = false
     var hasUpdatedReactSubviews = false
     var hasMovedToSuperview = false
@@ -93,7 +95,11 @@ class RNRTabBarItem: UIView, RNRChild, RNRParent {
     }
 
     func getTabBarItem() -> UITabBarItem {
-        let tabBarItem = UITabBarItem()
+        if _tabBarItem == nil  {
+            _tabBarItem = UITabBarItem()
+        }
+        let tabBarItem = _tabBarItem!
+
 
         if !hasSetDefaults {
             defaultSelectedImage = tabBarItem.selectedImage
