@@ -25,6 +25,7 @@
 		C004A7A42541CF9F005EAB8C /* RNRTabBarItemStateAppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004A7A12541CF9F005EAB8C /* RNRTabBarItemStateAppearanceManager.swift */; };
 		C004A7A52541CF9F005EAB8C /* RNRTabBarItemStateAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004A7A22541CF9F005EAB8C /* RNRTabBarItemStateAppearance.swift */; };
 		C004A7A62541CF9F005EAB8C /* RNRTabBarItemStateAppearanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C004A7A32541CF9F005EAB8C /* RNRTabBarItemStateAppearanceManager.m */; };
+		C06BDC6525B9DFF30086923C /* RNRTabSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06BDC6425B9DFF30086923C /* RNRTabSceneController.swift */; };
 		C0DEE462254281E600AAE5C8 /* RNRTabScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEE45F254281E600AAE5C8 /* RNRTabScene.swift */; };
 		C0DEE463254281E600AAE5C8 /* RNRTabSceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0DEE460254281E600AAE5C8 /* RNRTabSceneManager.m */; };
 		C0DEE464254281E600AAE5C8 /* RNRTabSceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEE461254281E600AAE5C8 /* RNRTabSceneManager.swift */; };
@@ -65,6 +66,7 @@
 		C004A7A12541CF9F005EAB8C /* RNRTabBarItemStateAppearanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRTabBarItemStateAppearanceManager.swift; sourceTree = "<group>"; };
 		C004A7A22541CF9F005EAB8C /* RNRTabBarItemStateAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRTabBarItemStateAppearance.swift; sourceTree = "<group>"; };
 		C004A7A32541CF9F005EAB8C /* RNRTabBarItemStateAppearanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRTabBarItemStateAppearanceManager.m; sourceTree = "<group>"; };
+		C06BDC6425B9DFF30086923C /* RNRTabSceneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRTabSceneController.swift; sourceTree = "<group>"; };
 		C0DEE45F254281E600AAE5C8 /* RNRTabScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRTabScene.swift; sourceTree = "<group>"; };
 		C0DEE460254281E600AAE5C8 /* RNRTabSceneManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRTabSceneManager.m; sourceTree = "<group>"; };
 		C0DEE461254281E600AAE5C8 /* RNRTabSceneManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNRTabSceneManager.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				C004A7752540CA25005EAB8C /* RNRTabBarManager.swift */,
 				C004A76D2540C48B005EAB8C /* RNRTabs.swift */,
 				C0DEE45F254281E600AAE5C8 /* RNRTabScene.swift */,
+				C06BDC6425B9DFF30086923C /* RNRTabSceneController.swift */,
 				C0DEE460254281E600AAE5C8 /* RNRTabSceneManager.m */,
 				C0DEE461254281E600AAE5C8 /* RNRTabSceneManager.swift */,
 				C004A77C2540CA93005EAB8C /* RNRTabsContainer.swift */,
@@ -185,6 +188,7 @@
 				C0DEE462254281E600AAE5C8 /* RNRTabScene.swift in Sources */,
 				C0DEE46C2543140D00AAE5C8 /* RNRTabBarItemManager.m in Sources */,
 				C0DEE464254281E600AAE5C8 /* RNRTabSceneManager.swift in Sources */,
+				C06BDC6525B9DFF30086923C /* RNRTabSceneController.swift in Sources */,
 				C004A7702540C48B005EAB8C /* RNRTabs.swift in Sources */,
 				C004A79D2541C821005EAB8C /* RNRTabBarItemAppearanceManager.m in Sources */,
 				C004A79E2541C821005EAB8C /* RNRTabBarItemAppearance.swift in Sources */,

@@ -2,7 +2,7 @@ import RenavigationCore
 
 class RNRTabScene: UIView, RNRChild, RNRParent {
     var parent: RNRTabsContainer?
-    var viewController = UIViewController()
+    var viewController = RNRTabSceneController()
 
     var isReady = false
     var hasMovedToSuperview = false
@@ -27,6 +27,9 @@ class RNRTabScene: UIView, RNRChild, RNRParent {
     func updateSubview(_ subview: UIView) {
         if isReady {
             setItem()
+        } else if parent != nil && window != nil {
+            hasMovedToSuperview = true
+            setup()
         }
     }
 
@@ -44,6 +47,8 @@ class RNRTabScene: UIView, RNRChild, RNRParent {
     func setItem() {
         let item = getChild(subviews[0])
         if item is RNRTabBarItem {
+            // forces the update of the tabBarItem
+            viewController.tabBarItem = nil
             viewController.tabBarItem = (item as! RNRTabBarItem).getTabBarItem()
         }
     }

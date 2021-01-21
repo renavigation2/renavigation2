@@ -198,6 +198,21 @@ class RNRTabsContainer: UIView, UITabBarControllerDelegate, RNRParent {
         super.didMoveToWindow()
         hasMovedToWindow = true
         setup()
+        if window != nil {
+            NotificationCenter.default.addObserver(self, selector: #selector(onWillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        } else {
+            NotificationCenter.default.removeObserver(self)
+        }
+    }
+
+    // The tab bar inherits a weird style when coming back from background mode, so we reset the style here
+    @objc
+    func onWillEnterForeground() {
+        scenes.forEach { view in
+            if let scene = view as? RNRTabScene {
+                scene.setItem()
+            }
+        }
     }
 
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
