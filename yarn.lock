@@ -3481,7 +3481,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@renavigation2/tabs@^4.31.3, @renavigation2/tabs@workspace:packages/tabs":
+"@renavigation2/tabs@^4.31.9, @renavigation2/tabs@workspace:packages/tabs":
   version: 0.0.0-use.local
   resolution: "@renavigation2/tabs@workspace:packages/tabs"
   dependencies:
@@ -4058,7 +4058,7 @@ __metadata:
     "@renavigation2/core": ^4.27.0
     "@renavigation2/modals": ^4.31.8
     "@renavigation2/navigation": ^4.26.2
-    "@renavigation2/tabs": ^4.31.3
+    "@renavigation2/tabs": ^4.31.9
     "@types/jest": ^26.0.20
     "@types/react": ^17.0.0
     "@types/react-native": ^0.63.46

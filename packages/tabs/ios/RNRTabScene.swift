@@ -27,7 +27,7 @@ class RNRTabScene: UIView, RNRChild, RNRParent {
     func updateSubview(_ subview: UIView) {
         if isReady {
             setItem()
-        } else if parent != nil && window != nil {
+        } else if parent != nil {
             hasMovedToSuperview = true
             setup()
         }
