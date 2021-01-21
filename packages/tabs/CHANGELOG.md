@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.31.10](https://github.com/renavigation2/renavigation2/compare/v4.31.9...v4.31.10) (2021-01-21)
+
+
+### Bug Fixes
+
+* **tabs:** Fixed some edge cases where the tab bar would not update ([f5f20a8](https://github.com/renavigation2/renavigation2/commit/f5f20a888fdb668371294ad9493da761184cd186))
+
+
+
+
+
 ## [4.31.9](https://github.com/renavigation2/renavigation2/compare/v4.31.8...v4.31.9) (2021-01-21)
 
 

@@ -12,7 +12,7 @@
     "**/.vscode/**",
     "**/.vscode/**"
   ],
-  "version": "4.31.9",
+  "version": "4.31.10",
   "npmClient": "yarn",
   "useWorkspaces": true,
   "command": {

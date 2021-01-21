@@ -1,6 +1,6 @@
 {
   "name": "@renavigation2/tabs",
-  "version": "4.31.9",
+  "version": "4.31.10",
   "description": "Renavigation Tabs",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
