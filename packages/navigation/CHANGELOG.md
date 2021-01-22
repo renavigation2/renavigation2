@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.32.0](https://github.com/renavigation2/renavigation2/compare/v4.31.10...v4.32.0) (2021-01-22)
+
+
+### Features
+
+* **navigation:** Added backgroundColor prop on NavigationBar component ([1e0a7ac](https://github.com/renavigation2/renavigation2/commit/1e0a7ac1eccd78ad691d67d126cf021b758ac7f0))
+
+
+
+
+
 ## [4.26.2](https://github.com/renavigation2/renavigation2/compare/v4.26.1...v4.26.2) (2020-11-20)
 
 

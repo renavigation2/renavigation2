@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.32.0](https://github.com/renavigation2/renavigation2/compare/v4.31.10...v4.32.0) (2021-01-22)
+
+
+### Bug Fixes
+
+* **core:** Fixed issue with search bar that would not return it to the correct position ([e6da692](https://github.com/renavigation2/renavigation2/commit/e6da692620ebe21d01e97523f7c20e4ea42b8a8c))
+
+
+
+
+
 ## [4.31.10](https://github.com/renavigation2/renavigation2/compare/v4.31.9...v4.31.10) (2021-01-21)
 
 
