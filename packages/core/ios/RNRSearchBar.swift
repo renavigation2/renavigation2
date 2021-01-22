@@ -55,6 +55,9 @@ class RNRSearchBar: UIView, RNRChild, RNRSearchBarProtocol, UISearchControllerDe
     var defaultScopeButtonTitles: [String]?
     var defaultShowsScopeBar: Bool?
 
+    // Track change for this prop, because setting it to default NO will still change the behavior
+    var hasShowsCancelButtonChanged = false
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.isHidden = true
@@ -206,10 +209,12 @@ class RNRSearchBar: UIView, RNRChild, RNRSearchBarProtocol, UISearchControllerDe
         }
 
         if showsCancelButton == -1 {
+            hasShowsCancelButtonChanged = true
             searchController.searchBar.showsCancelButton = false
         } else if showsCancelButton == 1 {
+            hasShowsCancelButtonChanged = true
             searchController.searchBar.showsCancelButton = true
-        } else {
+        } else if hasShowsCancelButtonChanged {
             searchController.searchBar.showsCancelButton = defaultShowsCancelButton!
         }
 
