@@ -274,7 +274,6 @@ class RNRNavigationItem: UIView, RNRChild, RNRParent {
                     if !subview.reactSubviews().isEmpty && (subview as! RNRNavigationBarContent).isReady {
                         navigationItem.titleView = subview.reactSubviews()[0]
                     }
-
                 }
             }
         }

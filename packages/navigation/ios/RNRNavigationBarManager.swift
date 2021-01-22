@@ -1,7 +1,7 @@
 @objc(RNRNavigationBarManager)
 class RNRNavigationBarManager: RCTViewManager {
     override func view() -> UIView! {
-        return RNRNavigationBar()
+        RNRNavigationBar()
     }
 
     override static func requiresMainQueueSetup() -> Bool {

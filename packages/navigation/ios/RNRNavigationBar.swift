@@ -10,6 +10,7 @@ class RNRNavigationBar: UIView, RNRChild, RNRParent {
     @objc var prefersLargeTitles: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var _isHidden: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var _tintColor: NSNumber? = nil
+    @objc var _backgroundColor: NSNumber? = nil
     @objc var barTintColor: NSNumber? = nil
     @objc var titleStyle: NSDictionary? = nil
     @objc var largeTitleStyle: NSDictionary? = nil
@@ -23,6 +24,7 @@ class RNRNavigationBar: UIView, RNRChild, RNRParent {
     var defaultPrefersLargeTitles: Bool?
     var defaultIsHidden: Bool?
     var defaultTintColor: UIColor?
+    var defaultBackgroundColor: UIColor?
     var defaultBarTintColor: UIColor?
     var defaultTitleTextAttributes: [NSAttributedString.Key : Any]?
     var defaultLargeTitleTextAttributes: [NSAttributedString.Key : Any]?
@@ -111,6 +113,7 @@ class RNRNavigationBar: UIView, RNRChild, RNRParent {
             }
             defaultIsHidden = navigationBar.isHidden
             defaultTintColor = navigationBar.tintColor
+            defaultBackgroundColor = navigationBar.backgroundColor
             defaultBarTintColor = navigationBar.barTintColor
             defaultTitleTextAttributes = navigationBar.titleTextAttributes
             if #available(iOS 11.0, *) {
@@ -240,6 +243,12 @@ class RNRNavigationBar: UIView, RNRChild, RNRParent {
             navigationBar.tintColor = RCTConvert.uiColor(_tintColor)
         } else {
             navigationBar.tintColor = defaultTintColor
+        }
+
+        if _backgroundColor != nil {
+            navigationBar.backgroundColor = RCTConvert.uiColor(_backgroundColor)
+        } else {
+            navigationBar.backgroundColor = defaultBackgroundColor
         }
 
         if barTintColor != nil {
