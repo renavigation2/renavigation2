@@ -203,10 +203,7 @@ export const MemoizedConnectedNavigationRoutes: React.FC<
   )
 }
 
-const ConnectedNavigationRoutes = memo(
-  MemoizedConnectedNavigationRoutes,
-  () => true
-)
+const ConnectedNavigationRoutes = memo(MemoizedConnectedNavigationRoutes)
 
 export const NavigationRoutes: React.FC<NavigationRoutesProps> = (props) => {
   const { navigator } = useContext(NavigationNavigatorContext)

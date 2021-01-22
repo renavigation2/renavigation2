@@ -15,6 +15,7 @@ export interface NavigationBarProps {
   prefersLargeTitles?: boolean
   hidden?: boolean
   tintColor?: ColorValue
+  backgroundColor?: ColorValue
   barTintColor?: ColorValue
   titleStyle?: Omit<TextStyle, 'textTransform'>
   largeTitleStyle?: Omit<TextStyle, 'textTransform'>
@@ -40,6 +41,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
   prefersLargeTitles,
   hidden,
   tintColor,
+  backgroundColor,
   barTintColor,
   titleStyle,
   largeTitleStyle,
@@ -68,6 +70,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
       prefersLargeTitles={processBoolean(prefersLargeTitles)}
       _isHidden={processBoolean(hidden)}
       _tintColor={processColor(tintColor)}
+      _backgroundColor={processColor(backgroundColor)}
       barTintColor={processColor(barTintColor)}
       titleStyle={titleStyle ? processTextStyle(titleStyle) : undefined}
       largeTitleStyle={
