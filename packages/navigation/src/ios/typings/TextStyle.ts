@@ -43,7 +43,7 @@ export interface TextStyle {
   firstLineHeadIndent?: number
   headIndent?: number
   tailIndent?: number
-  lineBreakMode?: 'clip' | 'head' | 'tail' | 'middle' | 'wordWrapping'
+  lineBreakMode?: 'clip' | 'head' | 'tail' | 'middle' | 'word-wrapping'
   minimumLineHeight?: number
   maximumLineHeight?: number
   lineHeightMultiple?: number
@@ -51,5 +51,5 @@ export interface TextStyle {
   hyphenationFactor?: number
   defaultTabInterval?: number
   allowsDefaultTighteningForTruncation?: boolean
-  lineBreakStrategy?: 'pushOut' | 'hangulWordPriority' | 'standard'
+  lineBreakStrategy?: 'push-out' | 'hangul-word-priority' | 'standard'
 }
