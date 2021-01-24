@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.33.0](https://github.com/renavigation2/renavigation2/compare/v4.32.0...v4.33.0) (2021-01-24)
+
+
+### Bug Fixes
+
+* **core:** Fixed issues with text field in search bar ([c5a422a](https://github.com/renavigation2/renavigation2/commit/c5a422af95529237e208d059cd8813aa08bdacb3))
+* **navigation:** Standardized text style options ([594260d](https://github.com/renavigation2/renavigation2/commit/594260d713dfce8fbe4e12cf1b6e8b27d38b9cdb))
+
+
+### Features
+
+* **core:** Added many props to search bar component ([4d16874](https://github.com/renavigation2/renavigation2/commit/4d16874642769a2118e5fc6c85308e3ccf24c4f5))
+
+
+
+
+
 # [4.32.0](https://github.com/renavigation2/renavigation2/compare/v4.31.10...v4.32.0) (2021-01-22)
 
 
