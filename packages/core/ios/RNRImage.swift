@@ -1,4 +1,6 @@
 class RNRImage: UIView, RNRChild, RNRImageProtocol {
+    var parent: RNRParent?
+
     var isReady: Bool = false
 
     @objc var source: UIImage?
@@ -16,6 +18,15 @@ class RNRImage: UIView, RNRChild, RNRImageProtocol {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
+        if newSuperview is RNRParent {
+            parent = (newSuperview as! RNRParent)
+        } else {
+            parent = nil
+        }
+    }
+
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         if superview != nil {
@@ -26,7 +37,9 @@ class RNRImage: UIView, RNRChild, RNRImageProtocol {
 
     @objc
     override func didSetProps(_ changedProps: [String]!) {
-        if superview != nil {
+        if parent != nil {
+            updateInParent(parent!, subview: self)
+        } else if superview != nil {
             updateInParent(superview!, subview: self)
         }
     }
@@ -52,9 +65,9 @@ class RNRImage: UIView, RNRChild, RNRImageProtocol {
         if renderingMode != nil {
             if renderingMode == "automatic" {
                 image = image.withRenderingMode(.automatic)
-            } else if renderingMode == "alwaysOriginal" {
+            } else if renderingMode == "always-original" {
                 image = image.withRenderingMode(.alwaysOriginal)
-            } else if renderingMode == "alwaysTemplate" {
+            } else if renderingMode == "always-template" {
                 image = image.withRenderingMode(.alwaysTemplate)
             }
         }

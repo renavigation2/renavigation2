@@ -5,7 +5,7 @@ export interface ProcessedAnimationOptions {
   animated?: ProcessedBoolean
   duration?: number
   delay?: number
-  curve?: 'easeInOut' | 'easeIn' | 'easeOut' | 'linear'
+  curve?: 'ease-in-out' | 'ease-in' | 'ease-out' | 'linear'
   damping?: number
   velocity?: number
 }

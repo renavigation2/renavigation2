@@ -6,11 +6,13 @@ public struct RNRTextStyle {
     public static func getStyles(_ styles: NSDictionary, defaultFontSize: CGFloat, defaultFontWeight: String) -> [NSAttributedString.Key : Any] {
         var finalStyle: [NSAttributedString.Key : Any] = [:]
         let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
+        var hasParagraphStyle = false
         var fontFamily: String = "system"
         var fontSize: CGFloat = defaultFontSize
         var fontWeight: String = defaultFontWeight
         var fontStyle: String = "normal"
         var fontVariant: [String]? = nil
+        var hasFontStyle = false
         var textDecorationLine: String? = nil
         var textDecorationStyle: String? = nil
         var textDecorationColor: UIColor? = nil
@@ -20,12 +22,16 @@ public struct RNRTextStyle {
             let key = k as! String
             if key == "fontFamily" {
                 fontFamily = RCTConvert.nsString(value)
+                hasFontStyle = true
             } else if key == "fontSize" {
                 fontSize = RCTConvert.cgFloat(value)
+                hasFontStyle = true
             } else if key == "fontWeight" {
                 fontWeight = RCTConvert.nsString(value)
+                hasFontStyle = true
             } else if key == "fontStyle" {
                 fontStyle = RCTConvert.nsString(value)
+                hasFontStyle = true
             } else if key == "fontVariant" {
                 let array = RCTConvert.nsArray(value)
                 fontVariant = []
@@ -34,6 +40,7 @@ public struct RNRTextStyle {
                         fontVariant?.append(RCTConvert.nsString(value))
                     })
                 }
+                hasFontStyle = true
             } else if key == "color" {
                 finalStyle[NSAttributedString.Key.foregroundColor] = RCTConvert.uiColor(value)
             } else if key == "backgroundColor" {
@@ -61,42 +68,58 @@ public struct RNRTextStyle {
             } else if key == "writingDirection" {
                 finalStyle[NSAttributedString.Key.writingDirection] = [RCTConvert.nsWritingDirection(value).rawValue]
                 paragraphStyle.baseWritingDirection = RCTConvert.nsWritingDirection(value)
+                hasParagraphStyle = true
             } else if key == "lineHeight" {
                 paragraphStyle.lineSpacing = RCTConvert.cgFloat(value)
+                hasParagraphStyle = true
             } else if key == "textAlign" {
                 paragraphStyle.alignment = RCTConvert.nsTextAlignment(value)
+                hasParagraphStyle = true
             } else if key == "paragraphSpacing" {
                 paragraphStyle.paragraphSpacing = RCTConvert.cgFloat(value)
+                hasParagraphStyle = true
             } else if key == "firstLineHeadIndent" {
                 paragraphStyle.firstLineHeadIndent = RCTConvert.cgFloat(value)
+                hasParagraphStyle = true
             } else if key == "headIndent" {
                 paragraphStyle.headIndent = RCTConvert.cgFloat(value)
+                hasParagraphStyle = true
             } else if key == "tailIndent" {
                 paragraphStyle.tailIndent = RCTConvert.cgFloat(value)
+                hasParagraphStyle = true
             } else if key == "lineBreakMode" {
                 paragraphStyle.lineBreakMode = RCTConvert.nsLineBreakMode(value)
+                hasParagraphStyle = true
             } else if key == "minimumLineHeight" {
                 paragraphStyle.minimumLineHeight = RCTConvert.cgFloat(value)
+                hasParagraphStyle = true
             } else if key == "maximumLineHeight" {
                 paragraphStyle.maximumLineHeight = RCTConvert.cgFloat(value)
+                hasParagraphStyle = true
             } else if key == "lineHeightMultiple" {
                 paragraphStyle.lineHeightMultiple = RCTConvert.cgFloat(value)
+                hasParagraphStyle = true
             } else if key == "paragraphSpacingBefore" {
                 paragraphStyle.paragraphSpacingBefore = RCTConvert.cgFloat(value)
+                hasParagraphStyle = true
             } else if key == "hyphenationFactor" {
                 paragraphStyle.hyphenationFactor = RCTConvert.float(value)
+                hasParagraphStyle = true
             } else if key == "defaultTabInterval" {
                 paragraphStyle.defaultTabInterval = RCTConvert.cgFloat(value)
+                hasParagraphStyle = true
             } else if key == "allowsDefaultTighteningForTruncation" {
+                hasParagraphStyle = true
                 if value as! Int == 1 {
                     paragraphStyle.allowsDefaultTighteningForTruncation = true
                 } else if value as! Int == -1 {
                     paragraphStyle.allowsDefaultTighteningForTruncation = false
                 }
             } else if key == "lineBreakStrategy" {
-                if value as! String == "pushOut" {
+                hasParagraphStyle = true
+                if value as! String == "push-out" {
                     paragraphStyle.lineBreakStrategy = NSParagraphStyle.LineBreakStrategy.pushOut
-                } else if value as! String == "hangulWordPriority" {
+                } else if value as! String == "hangul-word-priority" {
                     if #available(iOS 14.0, *) {
                         paragraphStyle.lineBreakStrategy = NSParagraphStyle.LineBreakStrategy.hangulWordPriority
                     }
@@ -125,23 +148,24 @@ public struct RNRTextStyle {
             }
         }
 
-        var font: UIFont
-        if fontFamily == "system" {
-            if fontWeight == "bold" && fontStyle == "normal" {
-                font = UIFont.boldSystemFont(ofSize: fontSize)
-            } else if fontWeight == "normal" && fontStyle == "italic" {
-                font = UIFont.italicSystemFont(ofSize: fontSize)
+        if hasFontStyle {
+            var font: UIFont
+            if fontFamily == "system" {
+                if fontWeight == "bold" && fontStyle == "normal" {
+                    font = UIFont.boldSystemFont(ofSize: fontSize)
+                } else if fontWeight == "normal" && fontStyle == "italic" {
+                    font = UIFont.italicSystemFont(ofSize: fontSize)
+                } else {
+                    font = UIFont.systemFont(ofSize: fontSize)
+                }
+                font = RCTFont.update(font, withFamily: font.familyName, size: fontSize as NSNumber, weight: fontWeight, style: fontStyle, variant: fontVariant, scaleMultiplier: 1)
             } else {
-                font = UIFont.systemFont(ofSize: fontSize)
+                font = UIFont(name: fontFamily, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
+                font = RCTFont.update(font, withFamily: fontFamily, size: fontSize as NSNumber, weight: fontWeight, style: fontStyle, variant: fontVariant, scaleMultiplier: 1)
             }
-            font = RCTFont.update(font, withFamily: font.familyName, size: fontSize as NSNumber, weight: fontWeight, style: fontStyle, variant: fontVariant, scaleMultiplier: 1)
-        } else {
-            font = UIFont(name: fontFamily, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
-            font = RCTFont.update(font, withFamily: fontFamily, size: fontSize as NSNumber, weight: fontWeight, style: fontStyle, variant: fontVariant, scaleMultiplier: 1)
+
+            finalStyle[NSAttributedString.Key.font] = font
         }
-
-
-        finalStyle[NSAttributedString.Key.font] = font
 
         if textDecorationColor != nil || textDecorationStyle != nil || textDecorationLine != nil {
             if textDecorationLine == "line-through" || textDecorationLine == "underline line-through" {
@@ -170,7 +194,9 @@ public struct RNRTextStyle {
             }
         }
 
-        finalStyle[NSAttributedString.Key.paragraphStyle] = paragraphStyle
+        if hasParagraphStyle {
+            finalStyle[NSAttributedString.Key.paragraphStyle] = paragraphStyle
+        }
 
         if shadow != nil {
             finalStyle[NSAttributedString.Key.shadow] = shadow
