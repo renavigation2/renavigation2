@@ -190,6 +190,22 @@ export const SearchBar: React.FC<SearchBarProps> = ({
     [onSearchBarChange, onSearchBarChangeText]
   )
 
+  const finalTextFieldStyle: any = textFieldStyle
+    ? processTextStyle(textFieldStyle)
+    : undefined
+
+  if (finalTextFieldStyle?.backgroundColor) {
+    finalTextFieldStyle.backgroundColor = processColor(
+      finalTextFieldStyle.backgroundColor
+    )
+  }
+
+  if (finalTextFieldStyle?.borderColor) {
+    finalTextFieldStyle.borderColor = processColor(
+      finalTextFieldStyle.borderColor
+    )
+  }
+
   let index = 0
   return (
     <RNRSearchBar
@@ -229,9 +245,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
       cancelButtonStyle={
         cancelButtonStyle ? processTextStyle(cancelButtonStyle) : undefined
       }
-      textFieldStyle={
-        textFieldStyle ? processTextStyle(textFieldStyle) : undefined
-      }
+      textFieldStyle={finalTextFieldStyle}
       textFieldClearsOnBeginEditing={processBoolean(
         textFieldClearsOnBeginEditing
       )}

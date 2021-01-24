@@ -75,8 +75,14 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
     var defaultTextFieldLeftViewMode: UITextField.ViewMode?
     var defaultTextFieldRightViewMode: UITextField.ViewMode?
     var defaultTextFieldClearsOnInsertion: Bool?
+    var defaultTextFieldLeftView: UIView?
+    var defaultTextFieldRightView: UIView?
+    var defaultTextFieldInputAccessoryView: UIView?
 
     var prevTextFieldAttributes: [NSAttributedString.Key : Any]?
+    var changedTextFieldLeftView = false
+    var changedTextFieldRightView = false
+    var changedTextFieldInputAccessoryView = false
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -177,7 +183,10 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
             defaultTextFieldMinimumFontSize = textField?.minimumFontSize
             defaultTextFieldLeftViewMode = textField?.leftViewMode
             defaultTextFieldRightViewMode = textField?.rightViewMode
-
+            defaultTextFieldClearsOnInsertion = textField?.clearsOnInsertion
+            defaultTextFieldLeftView = textField?.leftView
+            defaultTextFieldRightView = textField?.rightView
+            defaultTextFieldInputAccessoryView = textField?.inputAccessoryView
         }
 
         if isActive == -1 {
@@ -338,7 +347,21 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
             UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes(attributes, for: .normal)
         }
 
+        if textFieldBorderStyle == "none" {
+            textField?.borderStyle = .none
+        } else if textFieldBorderStyle == "bezel" {
+            textField?.borderStyle = .bezel
+        } else if textFieldClearButtonMode == "line" {
+            textField?.borderStyle = .line
+        } else if textFieldClearButtonMode == "rounded-rect" {
+            textField?.borderStyle = .roundedRect
+        } else if textField?.borderStyle != defaultTextFieldBorderStyle {
+            textField?.borderStyle = defaultTextFieldBorderStyle!
+        }
+
         if textFieldStyle != nil {
+            let backgroundColor = textFieldStyle!["backgroundColor"]
+            textFieldStyle!.setValue(nil, forKey: "backgroundColor")
             let attributes = RNRTextStyle.getStyles(textFieldStyle!, defaultFontSize: 17)
             prevTextFieldAttributes?.forEach { (key, _) in
                 if attributes[key] == nil {
@@ -359,12 +382,16 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
                 if textFieldStyle!["borderColor"] != nil {
                     textField?.layer.borderColor = RCTConvert.cgColor(textFieldStyle!["borderColor"])
                 }
-                if textFieldStyle!["backgroundColor"] != nil {
-                    textField?.layer.borderColor = RCTConvert.cgColor(textFieldStyle!["backgroundColor"])
+                if backgroundColor != nil {
+                    textField?.layer.backgroundColor = RCTConvert.cgColor(backgroundColor)
                 }
             } else {
-                if textFieldStyle!["backgroundColor"] != nil {
-                    textField?.backgroundColor = RCTConvert.uiColor(textFieldStyle!["backgroundColor"])
+                if backgroundColor != nil {
+                    textField?.layer.cornerRadius = 0
+                    textField?.layer.borderWidth = 0
+                    textField?.layer.borderColor = nil
+                    textField?.layer.backgroundColor = nil
+                    textField?.backgroundColor = RCTConvert.uiColor(backgroundColor)
                 }
             }
         }
@@ -379,18 +406,6 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
             textField?.clearButtonMode = .always
         } else if textField?.clearButtonMode != defaultTextFieldClearButtonMode {
             textField?.clearButtonMode = defaultTextFieldClearButtonMode!
-        }
-
-        if textFieldBorderStyle == "none" {
-            textField?.borderStyle = .none
-        } else if textFieldBorderStyle == "bezel" {
-            textField?.borderStyle = .bezel
-        } else if textFieldClearButtonMode == "line" {
-            textField?.borderStyle = .line
-        } else if textFieldClearButtonMode == "rounded-rect" {
-            textField?.borderStyle = .roundedRect
-        } else if textField?.borderStyle != defaultTextFieldBorderStyle {
-            textField?.borderStyle = defaultTextFieldBorderStyle!
         }
 
         if textFieldClearsOnBeginEditing == -1 {
@@ -486,21 +501,27 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
         setImage("selectedResultsListImage", for: UISearchBar.Icon.resultsList, state: UIControl.State.selected)
 
         if elementsIndices?["textFieldLeftView"] != -1 {
+            changedTextFieldLeftView = true
             textField?.leftView = reactSubviews()[elementsIndices!["textFieldLeftView"]!]
-        } else if textField?.leftView != nil {
-            textField?.leftView = nil
+        } else if textField?.leftView !== defaultTextFieldLeftView && changedTextFieldLeftView {
+            changedTextFieldLeftView = false
+            textField?.leftView = defaultTextFieldLeftView
         }
 
         if elementsIndices?["textFieldRightView"] != -1 {
+            changedTextFieldRightView = true
             textField?.rightView = reactSubviews()[elementsIndices!["textFieldRightView"]!]
-        } else if textField?.leftView != nil {
-            textField?.rightView = nil
+        } else if textField?.rightView != defaultTextFieldRightView && changedTextFieldRightView {
+            changedTextFieldRightView = false
+            textField?.rightView = defaultTextFieldRightView
         }
 
         if elementsIndices?["textFieldInputAccessoryView"] != -1 {
+            changedTextFieldInputAccessoryView = true
             textField?.inputAccessoryView = reactSubviews()[elementsIndices!["textFieldInputAccessoryView"]!]
-        } else if textField?.inputAccessoryView != nil {
-            textField?.inputAccessoryView = nil
+        } else if textField?.inputAccessoryView != defaultTextFieldInputAccessoryView && changedTextFieldInputAccessoryView {
+            changedTextFieldInputAccessoryView = false
+            textField?.inputAccessoryView = defaultTextFieldInputAccessoryView
         }
 
         if elementsIndices?["textFieldBackgroundImage"] != -1 {
