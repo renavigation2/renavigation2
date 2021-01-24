@@ -15,7 +15,7 @@ export interface ImageProps {
   source?: ImageURISource
   systemName?: string
   alignmentRectInsets?: EdgeInsets
-  renderingMode?: 'automatic' | 'alwaysOriginal' | 'alwaysTemplate'
+  renderingMode?: 'automatic' | 'always-original' | 'always-template'
   tintColor?: ColorValue
 }
 

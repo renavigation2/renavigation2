@@ -16,6 +16,7 @@ export * from './ios/typings/BlurEffect'
 export * from './ios/typings/ContentMode'
 export * from './ios/typings/EdgeInsets'
 export * from './ios/typings/Offset'
+export * from './ios/typings/TextFieldStyle'
 export * from './ios/typings/TextStyle'
 
 export * from './utils/processAnimationOptions'

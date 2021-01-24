@@ -146,9 +146,9 @@ class RNRMenu: UIView, RNRChild, RNRParent, RNRMenuProtocol {
                     finalIdentifier = UIMenu.Identifier.hide
                 } else if identifier == "quit" {
                     finalIdentifier = UIMenu.Identifier.quit
-                } else if identifier == "newScene" {
+                } else if identifier == "new-scene" {
                     finalIdentifier = UIMenu.Identifier.newScene
-                } else if identifier == "openRecent" {
+                } else if identifier == "open-recent" {
                     if #available(iOS 14.0, *) {
                         finalIdentifier = UIMenu.Identifier.openRecent
                     }
@@ -156,9 +156,9 @@ class RNRMenu: UIView, RNRChild, RNRParent, RNRMenuProtocol {
                     finalIdentifier = UIMenu.Identifier.close
                 } else if identifier == "print" {
                     finalIdentifier = UIMenu.Identifier.print
-                } else if identifier == "undoRedo" {
+                } else if identifier == "undo-redo" {
                     finalIdentifier = UIMenu.Identifier.undoRedo
-                } else if identifier == "standardEdit" {
+                } else if identifier == "standard-edit" {
                     finalIdentifier = UIMenu.Identifier.standardEdit
                 } else if identifier == "find" {
                     finalIdentifier = UIMenu.Identifier.find
@@ -166,19 +166,19 @@ class RNRMenu: UIView, RNRChild, RNRParent, RNRMenuProtocol {
                     finalIdentifier = UIMenu.Identifier.replace
                 } else if identifier == "share" {
                     finalIdentifier = UIMenu.Identifier.share
-                } else if identifier == "textStyle" {
+                } else if identifier == "text-style" {
                     finalIdentifier = UIMenu.Identifier.textStyle
                 } else if identifier == "spelling" {
                     finalIdentifier = UIMenu.Identifier.spelling
-                } else if identifier == "spellingPanel" {
+                } else if identifier == "spelling-panel" {
                     finalIdentifier = UIMenu.Identifier.spellingPanel
-                } else if identifier == "spellingOptions" {
+                } else if identifier == "spelling-options" {
                     finalIdentifier = UIMenu.Identifier.spellingOptions
                 } else if identifier == "substitutions" {
                     finalIdentifier = UIMenu.Identifier.substitutions
-                } else if identifier == "substitutionsPanel" {
+                } else if identifier == "substitutions-panel" {
                     finalIdentifier = UIMenu.Identifier.substitutionsPanel
-                } else if identifier == "substitutionOptions" {
+                } else if identifier == "substitution-options" {
                     finalIdentifier = UIMenu.Identifier.substitutionOptions
                 } else if identifier == "transformations" {
                     finalIdentifier = UIMenu.Identifier.transformations
@@ -192,15 +192,15 @@ class RNRMenu: UIView, RNRChild, RNRParent, RNRMenuProtocol {
                     finalIdentifier = UIMenu.Identifier.format
                 } else if identifier == "font" {
                     finalIdentifier = UIMenu.Identifier.font
-                } else if identifier == "textSize" {
+                } else if identifier == "text-size" {
                     finalIdentifier = UIMenu.Identifier.textSize
-                } else if identifier == "textColor" {
+                } else if identifier == "text-color" {
                     finalIdentifier = UIMenu.Identifier.textColor
-                } else if identifier == "textStylePasteboard" {
+                } else if identifier == "text-style-pasteboard" {
                     finalIdentifier = UIMenu.Identifier.textStylePasteboard
                 } else if identifier == "text" {
                     finalIdentifier = UIMenu.Identifier.text
-                } else if identifier == "writingDirection" {
+                } else if identifier == "writing-direction" {
                     finalIdentifier = UIMenu.Identifier.writingDirection
                 } else if identifier == "alignment" {
                     finalIdentifier = UIMenu.Identifier.alignment
@@ -208,9 +208,9 @@ class RNRMenu: UIView, RNRChild, RNRParent, RNRMenuProtocol {
                     finalIdentifier = UIMenu.Identifier.toolbar
                 } else if identifier == "fullscreen" {
                     finalIdentifier = UIMenu.Identifier.fullscreen
-                } else if identifier == "minimizeAndZoom" {
+                } else if identifier == "minimize-and-zoom" {
                     finalIdentifier = UIMenu.Identifier.minimizeAndZoom
-                } else if identifier == "bringAllToFront" {
+                } else if identifier == "bring-all-to-front" {
                     finalIdentifier = UIMenu.Identifier.bringAllToFront
                 } else if identifier == "root" {
                     finalIdentifier = UIMenu.Identifier.root

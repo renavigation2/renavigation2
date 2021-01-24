@@ -1,9 +1,10 @@
-class RNRSearchBar: UIView, RNRChild, RNRSearchBarProtocol, UISearchControllerDelegate, UISearchBarDelegate {
+class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchControllerDelegate, UISearchBarDelegate {
     var parent: RNRParent?
     var searchController: UISearchController = UISearchController(searchResultsController: nil)
 
     var isReady = false
 
+    @objc var elementsIndices: [String : Int]?
     @objc var isActive: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var dimsBackgroundDuringPresentation: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var obscuresBackgroundDuringPresentation: NSNumber = 0  // 0 = nil, 1 = true, -1 = false
@@ -13,6 +14,7 @@ class RNRSearchBar: UIView, RNRChild, RNRSearchBarProtocol, UISearchControllerDe
     @objc var text: String?
     @objc var prompt: String?
     @objc var placeholder: String?
+    @objc var placeholderColor: NSNumber?
     @objc var showsBookmarkButton: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var showsCancelButton: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var showsSearchResultsButton: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
@@ -24,6 +26,17 @@ class RNRSearchBar: UIView, RNRChild, RNRSearchBarProtocol, UISearchControllerDe
     @objc var scopeButtonTitles: NSArray?
     @objc var selectedScopeButtonIndex: Int = 0
     @objc var showsScopeBar: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
+    @objc var cancelButtonText: String?
+    @objc var cancelButtonStyle: NSDictionary?
+    @objc var textFieldStyle: NSDictionary?
+    @objc var textFieldClearButtonMode: String?
+    @objc var textFieldBorderStyle: String?
+    @objc var textFieldClearsOnBeginEditing: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
+    @objc var textFieldAdjustsFontSizeToFitWidth: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
+    @objc var textFieldMinimumFontSize: NSNumber?
+    @objc var textFieldLeftViewMode: NSString?
+    @objc var textFieldRightViewMode: NSString?
+    @objc var textFieldClearsOnInsertion: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var onWillPresentSearch: RCTDirectEventBlock?
     @objc var onDidPresentSearch: RCTDirectEventBlock?
     @objc var onWillDismissSearch: RCTDirectEventBlock?
@@ -54,9 +67,16 @@ class RNRSearchBar: UIView, RNRChild, RNRSearchBarProtocol, UISearchControllerDe
     var defaultIsTranslucent: Bool?
     var defaultScopeButtonTitles: [String]?
     var defaultShowsScopeBar: Bool?
+    var defaultTextFieldClearButtonMode: UITextField.ViewMode?
+    var defaultTextFieldBorderStyle: UITextField.BorderStyle?
+    var defaultTextFieldClearsOnBeginEditing: Bool?
+    var defaultTextFieldAdjustsFontSizeToFitWidth: Bool?
+    var defaultTextFieldMinimumFontSize: CGFloat?
+    var defaultTextFieldLeftViewMode: UITextField.ViewMode?
+    var defaultTextFieldRightViewMode: UITextField.ViewMode?
+    var defaultTextFieldClearsOnInsertion: Bool?
 
-    // Track change for this prop, because setting it to default NO will still change the behavior
-    var hasShowsCancelButtonChanged = false
+    var prevTextFieldAttributes: [NSAttributedString.Key : Any]?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -69,8 +89,19 @@ class RNRSearchBar: UIView, RNRChild, RNRSearchBarProtocol, UISearchControllerDe
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func insertReactSubview(_ subview: UIView!, at atIndex: Int) {
+        subview.willMove(toSuperview: self)
+        super.insertReactSubview(subview, at: atIndex)
+    }
+
     override func didUpdateReactSubviews() {
         if parent != nil {
+            updateInParent(parent!, subview: self)
+        }
+    }
+
+    func updateSubview(_ subview: UIView) {
+        if subview is RNRImage && parent != nil {
             updateInParent(parent!, subview: self)
         }
     }
@@ -96,11 +127,24 @@ class RNRSearchBar: UIView, RNRChild, RNRSearchBarProtocol, UISearchControllerDe
 
     override func didSetProps(_ changedProps: [String]!) {
         if parent != nil {
-            updateInParent(parent!, subview: self)
+            let otherProps = changedProps.filter { $0 != "text" }
+            if !otherProps.isEmpty {
+                updateInParent(parent!, subview: self)
+            } else {
+                if text != nil {
+                    if text != searchController.searchBar.text {
+                        searchController.searchBar.text = text as String?
+                    }
+                } else if searchController.searchBar.text != defaultText {
+                    searchController.searchBar.text = defaultText
+                }
+            }
         }
     }
 
     func setSearchBar() {
+        let textField = findTextField(searchController.searchBar)
+
         if !hasSetDefaults {
             hasSetDefaults = true
             defaultIsActive = searchController.isActive
@@ -126,21 +170,27 @@ class RNRSearchBar: UIView, RNRChild, RNRSearchBarProtocol, UISearchControllerDe
             defaultIsTranslucent = searchController.searchBar.isTranslucent
             defaultScopeButtonTitles = searchController.searchBar.scopeButtonTitles
             defaultShowsScopeBar = searchController.searchBar.showsScopeBar
+            defaultTextFieldClearButtonMode = textField?.clearButtonMode
+            defaultTextFieldBorderStyle = textField?.borderStyle
+            defaultTextFieldClearsOnBeginEditing = textField?.clearsOnBeginEditing
+            defaultTextFieldAdjustsFontSizeToFitWidth = textField?.adjustsFontSizeToFitWidth
+            defaultTextFieldMinimumFontSize = textField?.minimumFontSize
+            defaultTextFieldLeftViewMode = textField?.leftViewMode
+            defaultTextFieldRightViewMode = textField?.rightViewMode
+
         }
 
         if isActive == -1 {
             searchController.isActive = false
         } else if isActive == 1 {
             searchController.isActive = true
-        } else {
-            searchController.isActive = defaultIsActive!
         }
 
         if dimsBackgroundDuringPresentation == -1 {
             searchController.dimsBackgroundDuringPresentation = false
         } else if dimsBackgroundDuringPresentation == 1 {
             searchController.dimsBackgroundDuringPresentation = true
-        } else {
+        } else if searchController.dimsBackgroundDuringPresentation != defaultDimsBackgroundDuringPresentation {
             searchController.dimsBackgroundDuringPresentation = defaultDimsBackgroundDuringPresentation!
         }
 
@@ -149,7 +199,7 @@ class RNRSearchBar: UIView, RNRChild, RNRSearchBarProtocol, UISearchControllerDe
                 searchController.obscuresBackgroundDuringPresentation = false
             } else if obscuresBackgroundDuringPresentation == 1 {
                 searchController.obscuresBackgroundDuringPresentation = true
-            } else {
+            } else if searchController.obscuresBackgroundDuringPresentation != defaultObscuresBackgroundDuringPresentation {
                 searchController.obscuresBackgroundDuringPresentation = defaultObscuresBackgroundDuringPresentation!
             }
         }
@@ -158,7 +208,7 @@ class RNRSearchBar: UIView, RNRChild, RNRSearchBarProtocol, UISearchControllerDe
             searchController.hidesNavigationBarDuringPresentation = false
         } else if hidesNavigationBarDuringPresentation == 1 {
             searchController.hidesNavigationBarDuringPresentation = true
-        } else {
+        } else if searchController.hidesNavigationBarDuringPresentation != defaultHidesNavigationBarDuringPresentation {
             searchController.hidesNavigationBarDuringPresentation = defaultHidesNavigationBarDuringPresentation!
         }
 
@@ -167,7 +217,7 @@ class RNRSearchBar: UIView, RNRChild, RNRSearchBarProtocol, UISearchControllerDe
                 searchController.automaticallyShowsCancelButton = false
             } else if isActive == 1 {
                 searchController.automaticallyShowsCancelButton = true
-            } else {
+            } else if searchController.automaticallyShowsCancelButton != defaultAutomaticallyShowsCancelButton {
                 searchController.automaticallyShowsCancelButton = defaultAutomaticallyShowsCancelButton!
             }
         }
@@ -178,25 +228,25 @@ class RNRSearchBar: UIView, RNRChild, RNRSearchBarProtocol, UISearchControllerDe
             searchController.searchBar.barStyle = .black
         } else if barStyle == "black-translucent" {
             searchController.searchBar.barStyle = .blackTranslucent
-        } else {
+        } else if searchController.searchBar.barStyle != defaultBarStyle {
             searchController.searchBar.barStyle = defaultBarStyle!
         }
 
         if text != nil {
             searchController.searchBar.text = text as String?
-        } else {
+        } else if searchController.searchBar.text != defaultText {
             searchController.searchBar.text = defaultText
         }
 
         if prompt != nil {
             searchController.searchBar.prompt = prompt as String?
-        } else {
+        } else if searchController.searchBar.prompt != defaultPrompt {
             searchController.searchBar.prompt = defaultPrompt
         }
 
         if placeholder != nil {
             searchController.searchBar.placeholder = placeholder as String?
-        } else {
+        } else if searchController.searchBar.placeholder != defaultPlaceholder {
             searchController.searchBar.placeholder = defaultPlaceholder
         }
 
@@ -204,45 +254,39 @@ class RNRSearchBar: UIView, RNRChild, RNRSearchBarProtocol, UISearchControllerDe
             searchController.searchBar.showsBookmarkButton = false
         } else if showsBookmarkButton == 1 {
             searchController.searchBar.showsBookmarkButton = true
-        } else {
+        } else if searchController.searchBar.showsBookmarkButton != defaultShowsBookmarkButton {
             searchController.searchBar.showsBookmarkButton = defaultShowsBookmarkButton!
         }
 
         if showsCancelButton == -1 {
-            hasShowsCancelButtonChanged = true
             searchController.searchBar.showsCancelButton = false
         } else if showsCancelButton == 1 {
-            hasShowsCancelButtonChanged = true
             searchController.searchBar.showsCancelButton = true
-        } else if hasShowsCancelButtonChanged {
-            searchController.searchBar.showsCancelButton = defaultShowsCancelButton!
         }
 
         if showsSearchResultsButton == -1 {
             searchController.searchBar.showsSearchResultsButton = false
         } else if showsSearchResultsButton == 1 {
             searchController.searchBar.showsSearchResultsButton = true
-        } else {
-            searchController.searchBar.showsSearchResultsButton = defaultShowsSearchResultsButton!
         }
 
         if isSearchResultsButtonSelected == -1 {
             searchController.searchBar.isSearchResultsButtonSelected = false
         } else if isSearchResultsButtonSelected == 1 {
             searchController.searchBar.isSearchResultsButtonSelected = true
-        } else {
+        } else if searchController.searchBar.isSearchResultsButtonSelected != defaultIsSearchResultsButtonSelected {
             searchController.searchBar.isSearchResultsButtonSelected = defaultIsSearchResultsButtonSelected!
         }
 
         if _tintColor != nil {
             searchController.searchBar.tintColor = RCTConvert.uiColor(_tintColor)
-        } else {
+        } else if searchController.searchBar.tintColor != defaultTintColor {
             searchController.searchBar.tintColor = defaultTintColor
         }
 
         if barTintColor != nil {
             searchController.searchBar.barTintColor = RCTConvert.uiColor(barTintColor)
-        } else {
+        } else if searchController.searchBar.barTintColor != defaultBarTintColor {
             searchController.searchBar.barTintColor = defaultBarTintColor
         }
 
@@ -252,7 +296,7 @@ class RNRSearchBar: UIView, RNRChild, RNRSearchBarProtocol, UISearchControllerDe
             searchController.searchBar.searchBarStyle = .prominent
         } else if searchBarStyle == "minimal" {
             searchController.searchBar.searchBarStyle = .minimal
-        } else {
+        } else if searchController.searchBar.searchBarStyle != defaultSearchBarStyle {
             searchController.searchBar.searchBarStyle = defaultSearchBarStyle!
         }
 
@@ -260,13 +304,13 @@ class RNRSearchBar: UIView, RNRChild, RNRSearchBarProtocol, UISearchControllerDe
             searchController.searchBar.isTranslucent = false
         } else if isTranslucent == 1 {
             searchController.searchBar.isTranslucent = true
-        } else {
+        } else if searchController.searchBar.isTranslucent != defaultIsTranslucent {
             searchController.searchBar.isTranslucent = defaultIsTranslucent!
         }
 
         if scopeButtonTitles != nil {
             searchController.searchBar.scopeButtonTitles = (scopeButtonTitles as! [String])
-        } else {
+        } else if searchController.searchBar.scopeButtonTitles != defaultScopeButtonTitles {
             searchController.searchBar.scopeButtonTitles = defaultScopeButtonTitles
         }
 
@@ -276,15 +320,240 @@ class RNRSearchBar: UIView, RNRChild, RNRSearchBarProtocol, UISearchControllerDe
             searchController.searchBar.showsScopeBar = false
         } else if showsScopeBar == 1 {
             searchController.searchBar.showsScopeBar = true
-        } else {
+        } else if searchController.searchBar.showsScopeBar != defaultShowsScopeBar {
             searchController.searchBar.showsScopeBar = defaultShowsScopeBar!
         }
 
-        if reactSubviews() != nil && !reactSubviews()!.isEmpty {
-            searchController.view = reactSubviews()[0]
-        } else {
+        if cancelButtonText != nil {
+            searchController.searchBar.setValue(cancelButtonText, forKey: "cancelButtonText")
+        }
+
+        if cancelButtonStyle != nil {
+            let attributes = RNRTextStyle.getStyles(cancelButtonStyle!, defaultFontSize: 17)
+            UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes(attributes, for: .normal)
+        }
+
+        if cancelButtonStyle != nil {
+            let attributes = RNRTextStyle.getStyles(cancelButtonStyle!, defaultFontSize: 17)
+            UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes(attributes, for: .normal)
+        }
+
+        if textFieldStyle != nil {
+            let attributes = RNRTextStyle.getStyles(textFieldStyle!, defaultFontSize: 17)
+            prevTextFieldAttributes?.forEach { (key, _) in
+                if attributes[key] == nil {
+                    textField?.defaultTextAttributes.removeValue(forKey: key)
+                }
+            }
+            attributes.forEach { (key, value) in
+                textField?.defaultTextAttributes.updateValue(value, forKey: key)
+            }
+
+            if textFieldStyle!["borderRadius"] != nil || textFieldStyle!["borderWidth"] != nil || textFieldStyle!["borderColor"] != nil {
+                if textFieldStyle!["borderRadius"] != nil {
+                    textField?.layer.cornerRadius = RCTConvert.cgFloat(textFieldStyle!["borderRadius"])
+                }
+                if textFieldStyle!["borderWidth"] != nil {
+                    textField?.layer.borderWidth = RCTConvert.cgFloat(textFieldStyle!["borderWidth"])
+                }
+                if textFieldStyle!["borderColor"] != nil {
+                    textField?.layer.borderColor = RCTConvert.cgColor(textFieldStyle!["borderColor"])
+                }
+                if textFieldStyle!["backgroundColor"] != nil {
+                    textField?.layer.borderColor = RCTConvert.cgColor(textFieldStyle!["backgroundColor"])
+                }
+            } else {
+                if textFieldStyle!["backgroundColor"] != nil {
+                    textField?.backgroundColor = RCTConvert.uiColor(textFieldStyle!["backgroundColor"])
+                }
+            }
+        }
+
+        if textFieldClearButtonMode == "never" {
+            textField?.clearButtonMode = .never
+        } else if textFieldClearButtonMode == "while-editing" {
+            textField?.clearButtonMode = .whileEditing
+        } else if textFieldClearButtonMode == "unless-editing" {
+            textField?.clearButtonMode = .unlessEditing
+        } else if textFieldClearButtonMode == "always" {
+            textField?.clearButtonMode = .always
+        } else if textField?.clearButtonMode != defaultTextFieldClearButtonMode {
+            textField?.clearButtonMode = defaultTextFieldClearButtonMode!
+        }
+
+        if textFieldBorderStyle == "none" {
+            textField?.borderStyle = .none
+        } else if textFieldBorderStyle == "bezel" {
+            textField?.borderStyle = .bezel
+        } else if textFieldClearButtonMode == "line" {
+            textField?.borderStyle = .line
+        } else if textFieldClearButtonMode == "rounded-rect" {
+            textField?.borderStyle = .roundedRect
+        } else if textField?.borderStyle != defaultTextFieldBorderStyle {
+            textField?.borderStyle = defaultTextFieldBorderStyle!
+        }
+
+        if textFieldClearsOnBeginEditing == -1 {
+            textField?.clearsOnBeginEditing = false
+        } else if textFieldClearsOnBeginEditing == 1 {
+            textField?.clearsOnBeginEditing = true
+        } else if textField?.clearsOnBeginEditing != defaultTextFieldClearsOnBeginEditing {
+            textField?.clearsOnBeginEditing = defaultTextFieldClearsOnBeginEditing!
+        }
+
+        if textFieldAdjustsFontSizeToFitWidth == -1 {
+            textField?.adjustsFontSizeToFitWidth = false
+        } else if textFieldAdjustsFontSizeToFitWidth == 1 {
+            textField?.adjustsFontSizeToFitWidth = true
+        } else if textField?.adjustsFontSizeToFitWidth != defaultTextFieldAdjustsFontSizeToFitWidth {
+            textField?.adjustsFontSizeToFitWidth = defaultTextFieldAdjustsFontSizeToFitWidth!
+        }
+
+        if textFieldMinimumFontSize != nil {
+            textField?.minimumFontSize = RCTConvert.cgFloat(textFieldMinimumFontSize)
+        } else if textField?.minimumFontSize != defaultTextFieldMinimumFontSize {
+            textField?.minimumFontSize = defaultTextFieldMinimumFontSize!
+        }
+
+        if textFieldLeftViewMode == "unless-editing" {
+            textField?.leftViewMode = .unlessEditing
+        } else if textFieldLeftViewMode == "while-editing" {
+            textField?.leftViewMode = .whileEditing
+        } else if textFieldLeftViewMode == "never" {
+            textField?.leftViewMode = .never
+        } else if textFieldLeftViewMode == "always" {
+            textField?.leftViewMode = .always
+        } else if textField?.leftViewMode != defaultTextFieldLeftViewMode {
+            textField?.leftViewMode = defaultTextFieldLeftViewMode!
+        }
+
+        if textFieldRightViewMode == "unless-editing" {
+            textField?.rightViewMode = .unlessEditing
+        } else if textFieldRightViewMode == "while-editing" {
+            textField?.rightViewMode = .whileEditing
+        } else if textFieldRightViewMode == "never" {
+            textField?.rightViewMode = .never
+        } else if textFieldRightViewMode == "always" {
+            textField?.rightViewMode = .always
+        } else if textField?.rightViewMode != defaultTextFieldRightViewMode {
+            textField?.rightViewMode = defaultTextFieldRightViewMode!
+        }
+
+
+        if textFieldClearsOnInsertion == -1 {
+            textField?.clearsOnInsertion = false
+        } else if textFieldClearsOnInsertion == 1 {
+            textField?.clearsOnInsertion = true
+        } else if textField?.clearsOnInsertion != defaultTextFieldClearsOnInsertion {
+            textField?.clearsOnInsertion = defaultTextFieldClearsOnInsertion!
+        }
+
+        if placeholderColor != nil {
+            let color = RCTConvert.uiColor(placeholderColor)
+            if color != nil {
+                textField?.attributedPlaceholder = NSAttributedString(string: placeholder ?? "",
+                        attributes: [NSAttributedString.Key.foregroundColor: color!])
+            }
+        }
+
+        setImage("normalSearchImage", for: UISearchBar.Icon.search, state: UIControl.State.normal)
+        setImage("applicationSearchImage", for: UISearchBar.Icon.search, state: UIControl.State.application)
+        setImage("disabledSearchImage", for: UISearchBar.Icon.search, state: UIControl.State.disabled)
+        setImage("focusedSearchImage", for: UISearchBar.Icon.search, state: UIControl.State.focused)
+        setImage("highlightedSearchImage", for: UISearchBar.Icon.search, state: UIControl.State.highlighted)
+        setImage("reservedSearchImage", for: UISearchBar.Icon.search, state: UIControl.State.reserved)
+        setImage("selectedSearchImage", for: UISearchBar.Icon.search, state: UIControl.State.selected)
+        setImage("normalBookmarkImage", for: UISearchBar.Icon.bookmark, state: UIControl.State.normal)
+        setImage("applicationBookmarkImage", for: UISearchBar.Icon.bookmark, state: UIControl.State.application)
+        setImage("disabledBookmarkImage", for: UISearchBar.Icon.bookmark, state: UIControl.State.disabled)
+        setImage("focusedBookmarkImage", for: UISearchBar.Icon.bookmark, state: UIControl.State.focused)
+        setImage("highlightedBookmarkImage", for: UISearchBar.Icon.bookmark, state: UIControl.State.highlighted)
+        setImage("reservedBookmarkImage", for: UISearchBar.Icon.bookmark, state: UIControl.State.reserved)
+        setImage("selectedBookmarkImage", for: UISearchBar.Icon.bookmark, state: UIControl.State.selected)
+        setImage("normalClearImage", for: UISearchBar.Icon.clear, state: UIControl.State.normal)
+        setImage("applicationClearImage", for: UISearchBar.Icon.clear, state: UIControl.State.application)
+        setImage("disabledClearImage", for: UISearchBar.Icon.clear, state: UIControl.State.disabled)
+        setImage("focusedClearImage", for: UISearchBar.Icon.clear, state: UIControl.State.focused)
+        setImage("highlightedClearImage", for: UISearchBar.Icon.clear, state: UIControl.State.highlighted)
+        setImage("reservedClearImage", for: UISearchBar.Icon.clear, state: UIControl.State.reserved)
+        setImage("selectedClearImage", for: UISearchBar.Icon.clear, state: UIControl.State.selected)
+        setImage("normalResultsListImage", for: UISearchBar.Icon.resultsList, state: UIControl.State.normal)
+        setImage("applicationResultsListImage", for: UISearchBar.Icon.resultsList, state: UIControl.State.application)
+        setImage("disabledResultsListImage", for: UISearchBar.Icon.resultsList, state: UIControl.State.disabled)
+        setImage("focusedResultsListImage", for: UISearchBar.Icon.resultsList, state: UIControl.State.focused)
+        setImage("highlightedResultsListImage", for: UISearchBar.Icon.resultsList, state: UIControl.State.highlighted)
+        setImage("reservedResultsListImage", for: UISearchBar.Icon.resultsList, state: UIControl.State.reserved)
+        setImage("selectedResultsListImage", for: UISearchBar.Icon.resultsList, state: UIControl.State.selected)
+
+        if elementsIndices?["textFieldLeftView"] != -1 {
+            textField?.leftView = reactSubviews()[elementsIndices!["textFieldLeftView"]!]
+        } else if textField?.leftView != nil {
+            textField?.leftView = nil
+        }
+
+        if elementsIndices?["textFieldRightView"] != -1 {
+            textField?.rightView = reactSubviews()[elementsIndices!["textFieldRightView"]!]
+        } else if textField?.leftView != nil {
+            textField?.rightView = nil
+        }
+
+        if elementsIndices?["textFieldInputAccessoryView"] != -1 {
+            textField?.inputAccessoryView = reactSubviews()[elementsIndices!["textFieldInputAccessoryView"]!]
+        } else if textField?.inputAccessoryView != nil {
+            textField?.inputAccessoryView = nil
+        }
+
+        if elementsIndices?["textFieldBackgroundImage"] != -1 {
+            let subview = reactSubviews()[elementsIndices!["textFieldBackgroundImage"]!]
+            if subview is RNRImage {
+                textField?.background = (subview as! RNRImageProtocol).getImage()
+            }
+        } else if textField?.background != nil {
+            textField?.background = nil
+        }
+
+        if elementsIndices?["textFieldDisabledBackgroundImage"] != -1 {
+            let subview = reactSubviews()[elementsIndices!["textFieldDisabledBackgroundImage"]!]
+            if subview is RNRImage {
+                textField?.disabledBackground = (subview as! RNRImageProtocol).getImage()
+            }
+        } else if textField?.disabledBackground != nil {
+            textField?.disabledBackground = nil
+        }
+
+        if elementsIndices?["children"] != -1 {
+            searchController.view = reactSubviews()[elementsIndices!["children"]!]
+        } else if searchController.view != nil {
             searchController.view = nil
         }
+    }
+
+    func setImage(_ type: String, for icon: UISearchBar.Icon, state: UIControl.State) {
+        if elementsIndices?[type] != -1 {
+            let subview = reactSubviews()[elementsIndices![type]!]
+            if subview is RNRImage {
+                searchController.searchBar.setImage((subview as! RNRImageProtocol).getImage(), for: icon, state: state)
+            }
+        } else if searchController.view != nil {
+            searchController.searchBar.setImage(nil, for: icon, state: state)
+        }
+    }
+
+    func findTextField(_ subview: UIView) -> UITextField? {
+        if subview is UITextField {
+            return subview as? UITextField
+        }
+        var match: UITextField? = nil
+        if !subview.subviews.isEmpty {
+            for view in subview.subviews {
+                let result = findTextField(view)
+                if result != nil {
+                    match = result
+                    break
+                }
+            }
+        }
+        return match
     }
 
     func willPresentSearchController(_ searchController: UISearchController) {
@@ -337,7 +606,9 @@ class RNRSearchBar: UIView, RNRChild, RNRSearchBarProtocol, UISearchControllerDe
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if onSearchBarChange != nil {
-            onSearchBarChange!(["value": searchText])
+            if onSearchBarChange != nil {
+                onSearchBarChange!(["value": searchText])
+            }
         }
     }
 }

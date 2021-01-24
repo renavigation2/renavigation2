@@ -39,13 +39,13 @@ public class RNRAnimationOptions {
                     delay = nextDelay!
                 }
                 let nextCurve = RCTConvert.nsString(options!["curve"])
-                if nextCurve == "easeInOut" {
+                if nextCurve == "ease-in-out" {
                     useCurve = true
                     curve = UIView.AnimationOptions.curveEaseInOut
-                } else if nextCurve == "easeIn" {
+                } else if nextCurve == "ease-in" {
                     useCurve = true
                     curve = UIView.AnimationOptions.curveEaseIn
-                } else if nextCurve == "easeOut" {
+                } else if nextCurve == "ease-out" {
                     useCurve = true
                     curve = UIView.AnimationOptions.curveEaseOut
                 } else if nextCurve == "linear" {
