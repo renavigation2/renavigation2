@@ -14,6 +14,9 @@ import { TextStyle } from '../typings/TextStyle'
 const RNRSearchBar = requireNativeComponent<any>('RNRSearchBar')
 
 export type NativeSearchBarChangeEvent = NativeSyntheticEvent<{ value: string }>
+export type NativeSearchBarSelectedScopeChangeEvent = NativeSyntheticEvent<{
+  index: number
+}>
 
 export interface SearchBarProps {
   active?: boolean | null
@@ -66,9 +69,75 @@ export interface SearchBarProps {
   barTintColor?: ColorValue
   searchBarStyle?: 'default' | 'prominent' | 'minimal'
   translucent?: boolean | null
-  scopeButtonTitles?: [string]
+  scopeButtonTitles?: string[]
   selectedScopeButtonIndex?: number
   showsScopeBar?: boolean | null
+  selectedScopeBarButtonTitleStyle?: TextStyle
+  reservedScopeBarButtonTitleStyle?: TextStyle
+  highlightedScopeBarButtonTitleStyle?: TextStyle
+  focusedScopeBarButtonTitleStyle?: TextStyle
+  disabledScopeBarButtonTitleStyle?: TextStyle
+  applicationScopeBarButtonTitleStyle?: TextStyle
+  normalScopeBarButtonTitleStyle?: TextStyle
+  selectedScopeBarButtonBackgroundImage?: React.ReactElement<any> | null
+  reservedScopeBarButtonBackgroundImage?: React.ReactElement<any> | null
+  highlightedScopeBarButtonBackgroundImage?: React.ReactElement<any> | null
+  focusedScopeBarButtonBackgroundImage?: React.ReactElement<any> | null
+  disabledScopeBarButtonBackgroundImage?: React.ReactElement<any> | null
+  applicationScopeBarButtonBackgroundImage?: React.ReactElement<any> | null
+  normalScopeBarButtonBackgroundImage?: React.ReactElement<any> | null
+  selectedLeftSelectedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  selectedLeftReservedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  selectedLeftHighlightedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  selectedLeftFocusedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  selectedLeftDisabledRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  selectedLeftApplicationRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  selectedLeftNormalRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  reservedLeftSelectedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  reservedLeftReservedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  reservedLeftHighlightedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  reservedLeftFocusedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  reservedLeftDisabledRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  reservedLeftApplicationRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  reservedLeftNormalRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  highlightedLeftSelectedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  highlightedLeftReservedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  highlightedLeftHighlightedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  highlightedLeftFocusedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  highlightedLeftDisabledRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  highlightedLeftApplicationRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  highlightedLeftNormalRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  focusedLeftSelectedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  focusedLeftReservedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  focusedLeftHighlightedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  focusedLeftFocusedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  focusedLeftDisabledRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  focusedLeftApplicationRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  focusedLeftNormalRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  disabledLeftSelectedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  disabledLeftReservedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  disabledLeftHighlightedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  disabledLeftFocusedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  disabledLeftDisabledRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  disabledLeftApplicationRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  disabledLeftNormalRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  applicationLeftSelectedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  applicationLeftReservedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  applicationLeftHighlightedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  applicationLeftFocusedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  applicationLeftDisabledRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  applicationLeftApplicationRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  applicationLeftNormalRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  normalLeftSelectedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  normalLeftReservedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  normalLeftHighlightedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  normalLeftFocusedRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  normalLeftDisabledRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  normalLeftApplicationRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  normalLeftNormalRightScopeBarButtonDividerImage?: React.ReactElement<any> | null
+  onSelectedScopeButtonChange?: (
+    e: NativeSearchBarSelectedScopeChangeEvent
+  ) => void
   cancelButtonText?: string
   cancelButtonStyle?: TextStyle
   textFieldStyle?: TextStyle & TextFieldStyle
@@ -158,6 +227,69 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   scopeButtonTitles,
   selectedScopeButtonIndex,
   showsScopeBar,
+  selectedScopeBarButtonTitleStyle,
+  reservedScopeBarButtonTitleStyle,
+  highlightedScopeBarButtonTitleStyle,
+  focusedScopeBarButtonTitleStyle,
+  disabledScopeBarButtonTitleStyle,
+  applicationScopeBarButtonTitleStyle,
+  normalScopeBarButtonTitleStyle,
+  selectedScopeBarButtonBackgroundImage,
+  reservedScopeBarButtonBackgroundImage,
+  highlightedScopeBarButtonBackgroundImage,
+  focusedScopeBarButtonBackgroundImage,
+  disabledScopeBarButtonBackgroundImage,
+  applicationScopeBarButtonBackgroundImage,
+  normalScopeBarButtonBackgroundImage,
+  selectedLeftSelectedRightScopeBarButtonDividerImage,
+  selectedLeftReservedRightScopeBarButtonDividerImage,
+  selectedLeftHighlightedRightScopeBarButtonDividerImage,
+  selectedLeftFocusedRightScopeBarButtonDividerImage,
+  selectedLeftDisabledRightScopeBarButtonDividerImage,
+  selectedLeftApplicationRightScopeBarButtonDividerImage,
+  selectedLeftNormalRightScopeBarButtonDividerImage,
+  reservedLeftSelectedRightScopeBarButtonDividerImage,
+  reservedLeftReservedRightScopeBarButtonDividerImage,
+  reservedLeftHighlightedRightScopeBarButtonDividerImage,
+  reservedLeftFocusedRightScopeBarButtonDividerImage,
+  reservedLeftDisabledRightScopeBarButtonDividerImage,
+  reservedLeftApplicationRightScopeBarButtonDividerImage,
+  reservedLeftNormalRightScopeBarButtonDividerImage,
+  highlightedLeftSelectedRightScopeBarButtonDividerImage,
+  highlightedLeftReservedRightScopeBarButtonDividerImage,
+  highlightedLeftHighlightedRightScopeBarButtonDividerImage,
+  highlightedLeftFocusedRightScopeBarButtonDividerImage,
+  highlightedLeftDisabledRightScopeBarButtonDividerImage,
+  highlightedLeftApplicationRightScopeBarButtonDividerImage,
+  highlightedLeftNormalRightScopeBarButtonDividerImage,
+  focusedLeftSelectedRightScopeBarButtonDividerImage,
+  focusedLeftReservedRightScopeBarButtonDividerImage,
+  focusedLeftHighlightedRightScopeBarButtonDividerImage,
+  focusedLeftFocusedRightScopeBarButtonDividerImage,
+  focusedLeftDisabledRightScopeBarButtonDividerImage,
+  focusedLeftApplicationRightScopeBarButtonDividerImage,
+  focusedLeftNormalRightScopeBarButtonDividerImage,
+  disabledLeftSelectedRightScopeBarButtonDividerImage,
+  disabledLeftReservedRightScopeBarButtonDividerImage,
+  disabledLeftHighlightedRightScopeBarButtonDividerImage,
+  disabledLeftFocusedRightScopeBarButtonDividerImage,
+  disabledLeftDisabledRightScopeBarButtonDividerImage,
+  disabledLeftApplicationRightScopeBarButtonDividerImage,
+  disabledLeftNormalRightScopeBarButtonDividerImage,
+  applicationLeftSelectedRightScopeBarButtonDividerImage,
+  applicationLeftReservedRightScopeBarButtonDividerImage,
+  applicationLeftHighlightedRightScopeBarButtonDividerImage,
+  applicationLeftFocusedRightScopeBarButtonDividerImage,
+  applicationLeftDisabledRightScopeBarButtonDividerImage,
+  applicationLeftApplicationRightScopeBarButtonDividerImage,
+  applicationLeftNormalRightScopeBarButtonDividerImage,
+  normalLeftSelectedRightScopeBarButtonDividerImage,
+  normalLeftReservedRightScopeBarButtonDividerImage,
+  normalLeftHighlightedRightScopeBarButtonDividerImage,
+  normalLeftFocusedRightScopeBarButtonDividerImage,
+  normalLeftDisabledRightScopeBarButtonDividerImage,
+  normalLeftApplicationRightScopeBarButtonDividerImage,
+  normalLeftNormalRightScopeBarButtonDividerImage,
   cancelButtonText,
   cancelButtonStyle,
   textFieldStyle,
@@ -241,6 +373,41 @@ export const SearchBar: React.FC<SearchBarProps> = ({
       scopeButtonTitles={scopeButtonTitles}
       selectedScopeButtonIndex={selectedScopeButtonIndex}
       showsScopeBar={processBoolean(showsScopeBar)}
+      selectedScopeBarButtonTitleStyle={
+        selectedScopeBarButtonTitleStyle
+          ? processTextStyle(selectedScopeBarButtonTitleStyle)
+          : undefined
+      }
+      reservedScopeBarButtonTitleStyle={
+        reservedScopeBarButtonTitleStyle
+          ? processTextStyle(reservedScopeBarButtonTitleStyle)
+          : undefined
+      }
+      highlightedScopeBarButtonTitleStyle={
+        highlightedScopeBarButtonTitleStyle
+          ? processTextStyle(highlightedScopeBarButtonTitleStyle)
+          : undefined
+      }
+      focusedScopeBarButtonTitleStyle={
+        focusedScopeBarButtonTitleStyle
+          ? processTextStyle(focusedScopeBarButtonTitleStyle)
+          : undefined
+      }
+      disabledScopeBarButtonTitleStyle={
+        disabledScopeBarButtonTitleStyle
+          ? processTextStyle(disabledScopeBarButtonTitleStyle)
+          : undefined
+      }
+      applicationScopeBarButtonTitleStyle={
+        applicationScopeBarButtonTitleStyle
+          ? processTextStyle(applicationScopeBarButtonTitleStyle)
+          : undefined
+      }
+      normalScopeBarButtonTitleStyle={
+        normalScopeBarButtonTitleStyle
+          ? processTextStyle(normalScopeBarButtonTitleStyle)
+          : undefined
+      }
       cancelButtonText={cancelButtonText}
       cancelButtonStyle={
         cancelButtonStyle ? processTextStyle(cancelButtonStyle) : undefined
@@ -299,6 +466,174 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         textFieldDisabledBackgroundImage: textFieldDisabledBackgroundImage
           ? index++
           : -1,
+        selectedScopeBarButtonBackgroundImage: selectedScopeBarButtonBackgroundImage
+          ? index++
+          : -1,
+        reservedScopeBarButtonBackgroundImage: reservedScopeBarButtonBackgroundImage
+          ? index++
+          : -1,
+        highlightedScopeBarButtonBackgroundImage: highlightedScopeBarButtonBackgroundImage
+          ? index++
+          : -1,
+        focusedScopeBarButtonBackgroundImage: focusedScopeBarButtonBackgroundImage
+          ? index++
+          : -1,
+        disabledScopeBarButtonBackgroundImage: disabledScopeBarButtonBackgroundImage
+          ? index++
+          : -1,
+        applicationScopeBarButtonBackgroundImage: applicationScopeBarButtonBackgroundImage
+          ? index++
+          : -1,
+        normalScopeBarButtonBackgroundImage: normalScopeBarButtonBackgroundImage
+          ? index++
+          : -1,
+        selectedLeftSelectedRightScopeBarButtonDividerImage: selectedLeftSelectedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        selectedLeftReservedRightScopeBarButtonDividerImage: selectedLeftReservedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        selectedLeftHighlightedRightScopeBarButtonDividerImage: selectedLeftHighlightedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        selectedLeftFocusedRightScopeBarButtonDividerImage: selectedLeftFocusedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        selectedLeftDisabledRightScopeBarButtonDividerImage: selectedLeftDisabledRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        selectedLeftApplicationRightScopeBarButtonDividerImage: selectedLeftApplicationRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        selectedLeftNormalRightScopeBarButtonDividerImage: selectedLeftNormalRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        reservedLeftSelectedRightScopeBarButtonDividerImage: reservedLeftSelectedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        reservedLeftReservedRightScopeBarButtonDividerImage: reservedLeftReservedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        reservedLeftHighlightedRightScopeBarButtonDividerImage: reservedLeftHighlightedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        reservedLeftFocusedRightScopeBarButtonDividerImage: reservedLeftFocusedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        reservedLeftDisabledRightScopeBarButtonDividerImage: reservedLeftDisabledRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        reservedLeftApplicationRightScopeBarButtonDividerImage: reservedLeftApplicationRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        reservedLeftNormalRightScopeBarButtonDividerImage: reservedLeftNormalRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        highlightedLeftSelectedRightScopeBarButtonDividerImage: highlightedLeftSelectedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        highlightedLeftReservedRightScopeBarButtonDividerImage: highlightedLeftReservedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        highlightedLeftHighlightedRightScopeBarButtonDividerImage: highlightedLeftHighlightedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        highlightedLeftFocusedRightScopeBarButtonDividerImage: highlightedLeftFocusedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        highlightedLeftDisabledRightScopeBarButtonDividerImage: highlightedLeftDisabledRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        highlightedLeftApplicationRightScopeBarButtonDividerImage: highlightedLeftApplicationRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        highlightedLeftNormalRightScopeBarButtonDividerImage: highlightedLeftNormalRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        focusedLeftSelectedRightScopeBarButtonDividerImage: focusedLeftSelectedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        focusedLeftReservedRightScopeBarButtonDividerImage: focusedLeftReservedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        focusedLeftHighlightedRightScopeBarButtonDividerImage: focusedLeftHighlightedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        focusedLeftFocusedRightScopeBarButtonDividerImage: focusedLeftFocusedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        focusedLeftDisabledRightScopeBarButtonDividerImage: focusedLeftDisabledRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        focusedLeftApplicationRightScopeBarButtonDividerImage: focusedLeftApplicationRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        focusedLeftNormalRightScopeBarButtonDividerImage: focusedLeftNormalRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        disabledLeftSelectedRightScopeBarButtonDividerImage: disabledLeftSelectedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        disabledLeftReservedRightScopeBarButtonDividerImage: disabledLeftReservedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        disabledLeftHighlightedRightScopeBarButtonDividerImage: disabledLeftHighlightedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        disabledLeftFocusedRightScopeBarButtonDividerImage: disabledLeftFocusedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        disabledLeftDisabledRightScopeBarButtonDividerImage: disabledLeftDisabledRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        disabledLeftApplicationRightScopeBarButtonDividerImage: disabledLeftApplicationRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        disabledLeftNormalRightScopeBarButtonDividerImage: disabledLeftNormalRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        applicationLeftSelectedRightScopeBarButtonDividerImage: applicationLeftSelectedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        applicationLeftReservedRightScopeBarButtonDividerImage: applicationLeftReservedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        applicationLeftHighlightedRightScopeBarButtonDividerImage: applicationLeftHighlightedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        applicationLeftFocusedRightScopeBarButtonDividerImage: applicationLeftFocusedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        applicationLeftDisabledRightScopeBarButtonDividerImage: applicationLeftDisabledRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        applicationLeftApplicationRightScopeBarButtonDividerImage: applicationLeftApplicationRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        applicationLeftNormalRightScopeBarButtonDividerImage: applicationLeftNormalRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        normalLeftSelectedRightScopeBarButtonDividerImage: normalLeftSelectedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        normalLeftReservedRightScopeBarButtonDividerImage: normalLeftReservedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        normalLeftHighlightedRightScopeBarButtonDividerImage: normalLeftHighlightedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        normalLeftFocusedRightScopeBarButtonDividerImage: normalLeftFocusedRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        normalLeftDisabledRightScopeBarButtonDividerImage: normalLeftDisabledRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        normalLeftApplicationRightScopeBarButtonDividerImage: normalLeftApplicationRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
+        normalLeftNormalRightScopeBarButtonDividerImage: normalLeftNormalRightScopeBarButtonDividerImage
+          ? index++
+          : -1,
         children: children ? index++ : -1
       }}
     >
@@ -335,6 +670,62 @@ export const SearchBar: React.FC<SearchBarProps> = ({
       {textFieldInputAccessoryView}
       {textFieldBackgroundImage}
       {textFieldDisabledBackgroundImage}
+      {selectedScopeBarButtonBackgroundImage}
+      {reservedScopeBarButtonBackgroundImage}
+      {highlightedScopeBarButtonBackgroundImage}
+      {focusedScopeBarButtonBackgroundImage}
+      {disabledScopeBarButtonBackgroundImage}
+      {applicationScopeBarButtonBackgroundImage}
+      {normalScopeBarButtonBackgroundImage}
+      {selectedLeftSelectedRightScopeBarButtonDividerImage}
+      {selectedLeftReservedRightScopeBarButtonDividerImage}
+      {selectedLeftHighlightedRightScopeBarButtonDividerImage}
+      {selectedLeftFocusedRightScopeBarButtonDividerImage}
+      {selectedLeftDisabledRightScopeBarButtonDividerImage}
+      {selectedLeftApplicationRightScopeBarButtonDividerImage}
+      {selectedLeftNormalRightScopeBarButtonDividerImage}
+      {reservedLeftSelectedRightScopeBarButtonDividerImage}
+      {reservedLeftReservedRightScopeBarButtonDividerImage}
+      {reservedLeftHighlightedRightScopeBarButtonDividerImage}
+      {reservedLeftFocusedRightScopeBarButtonDividerImage}
+      {reservedLeftDisabledRightScopeBarButtonDividerImage}
+      {reservedLeftApplicationRightScopeBarButtonDividerImage}
+      {reservedLeftNormalRightScopeBarButtonDividerImage}
+      {highlightedLeftSelectedRightScopeBarButtonDividerImage}
+      {highlightedLeftReservedRightScopeBarButtonDividerImage}
+      {highlightedLeftHighlightedRightScopeBarButtonDividerImage}
+      {highlightedLeftFocusedRightScopeBarButtonDividerImage}
+      {highlightedLeftDisabledRightScopeBarButtonDividerImage}
+      {highlightedLeftApplicationRightScopeBarButtonDividerImage}
+      {highlightedLeftNormalRightScopeBarButtonDividerImage}
+      {focusedLeftSelectedRightScopeBarButtonDividerImage}
+      {focusedLeftReservedRightScopeBarButtonDividerImage}
+      {focusedLeftHighlightedRightScopeBarButtonDividerImage}
+      {focusedLeftFocusedRightScopeBarButtonDividerImage}
+      {focusedLeftDisabledRightScopeBarButtonDividerImage}
+      {focusedLeftApplicationRightScopeBarButtonDividerImage}
+      {focusedLeftNormalRightScopeBarButtonDividerImage}
+      {disabledLeftSelectedRightScopeBarButtonDividerImage}
+      {disabledLeftReservedRightScopeBarButtonDividerImage}
+      {disabledLeftHighlightedRightScopeBarButtonDividerImage}
+      {disabledLeftFocusedRightScopeBarButtonDividerImage}
+      {disabledLeftDisabledRightScopeBarButtonDividerImage}
+      {disabledLeftApplicationRightScopeBarButtonDividerImage}
+      {disabledLeftNormalRightScopeBarButtonDividerImage}
+      {applicationLeftSelectedRightScopeBarButtonDividerImage}
+      {applicationLeftReservedRightScopeBarButtonDividerImage}
+      {applicationLeftHighlightedRightScopeBarButtonDividerImage}
+      {applicationLeftFocusedRightScopeBarButtonDividerImage}
+      {applicationLeftDisabledRightScopeBarButtonDividerImage}
+      {applicationLeftApplicationRightScopeBarButtonDividerImage}
+      {applicationLeftNormalRightScopeBarButtonDividerImage}
+      {normalLeftSelectedRightScopeBarButtonDividerImage}
+      {normalLeftReservedRightScopeBarButtonDividerImage}
+      {normalLeftHighlightedRightScopeBarButtonDividerImage}
+      {normalLeftFocusedRightScopeBarButtonDividerImage}
+      {normalLeftDisabledRightScopeBarButtonDividerImage}
+      {normalLeftApplicationRightScopeBarButtonDividerImage}
+      {normalLeftNormalRightScopeBarButtonDividerImage}
       {children}
     </RNRSearchBar>
   )
