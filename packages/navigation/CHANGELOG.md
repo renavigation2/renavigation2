@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.34.0](https://github.com/renavigation2/renavigation2/compare/v4.33.0...v4.34.0) (2021-01-26)
+
+
+### Bug Fixes
+
+* **navigation:** Fixed issue with navigation reset crashing the app ([a16a4b1](https://github.com/renavigation2/renavigation2/commit/a16a4b1c3c5f13a3fe70a4b73f7e3768cc7072b1))
+
+
+
+
+
 # [4.33.0](https://github.com/renavigation2/renavigation2/compare/v4.32.0...v4.33.0) (2021-01-24)
 
 

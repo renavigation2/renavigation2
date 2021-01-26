@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.34.0](https://github.com/renavigation2/renavigation2/compare/v4.33.0...v4.34.0) (2021-01-26)
+
+
+### Bug Fixes
+
+* **core:** Standardized prop names ([c5ed6e8](https://github.com/renavigation2/renavigation2/commit/c5ed6e84511028597988268b5c24a1bd0c769195))
+* **navigation:** Fixed issue with navigation reset crashing the app ([a16a4b1](https://github.com/renavigation2/renavigation2/commit/a16a4b1c3c5f13a3fe70a4b73f7e3768cc7072b1))
+
+
+### Features
+
+* **core:** Added many options for the search bar scopes ([a0fbc9e](https://github.com/renavigation2/renavigation2/commit/a0fbc9eaa7e929b427d02719045fa65087e1fd06))
+
+
+
+
+
 # [4.33.0](https://github.com/renavigation2/renavigation2/compare/v4.32.0...v4.33.0) (2021-01-24)
 
 
