@@ -108,8 +108,8 @@ class RNRMenu: UIView, RNRChild, RNRParent, RNRMenuProtocol {
             shouldUpdate = false
 
             var image: UIImage? = nil
-            if elementsIndices?["image"] != -1 {
-                if let subview = reactSubviews()[elementsIndices!["image"]!] as? RNRImageProtocol {
+            if elementsIndices?["image"] != nil && elementsIndices?["image"] != -1 {
+                if let subview = reactSubviews()?[elementsIndices!["image"]!] as? RNRImageProtocol {
                     image = subview.getImage()
                 }
             }

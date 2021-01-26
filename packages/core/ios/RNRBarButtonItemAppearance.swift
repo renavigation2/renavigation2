@@ -69,26 +69,26 @@ class RNRBarButtonItemAppearance: UIView, RNRChild, RNRParent, RNRBarButtonItemA
             barButtonItemAppearance.configureWithDefault(for: .done)
         }
 
-        if elementsIndices?["normal"] != -1 {
-            if let subview = reactSubviews()[elementsIndices!["normal"]!] as? RNRBarButtonItemStateAppearance {
+        if elementsIndices?["normal"] != nil && elementsIndices?["normal"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["normal"]!] as? RNRBarButtonItemStateAppearance {
                 subview.setBarButtonItemStateAppearance(barButtonItemAppearance.normal)
             }
         }
 
-        if elementsIndices?["highlighted"] != -1 {
-            if let subview = reactSubviews()[elementsIndices!["highlighted"]!] as? RNRBarButtonItemStateAppearance {
+        if elementsIndices?["highlighted"] != nil && elementsIndices?["highlighted"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["highlighted"]!] as? RNRBarButtonItemStateAppearance {
                 subview.setBarButtonItemStateAppearance(barButtonItemAppearance.highlighted)
             }
         }
 
-        if elementsIndices?["disabled"] != -1 {
-            if let subview = reactSubviews()[elementsIndices!["disabled"]!] as? RNRBarButtonItemStateAppearance {
+        if elementsIndices?["disabled"] != nil && elementsIndices?["disabled"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["disabled"]!] as? RNRBarButtonItemStateAppearance {
                 subview.setBarButtonItemStateAppearance(barButtonItemAppearance.disabled)
             }
         }
 
-        if elementsIndices?["focused"] != -1 {
-            if let subview = reactSubviews()[elementsIndices!["focused"]!] as? RNRBarButtonItemStateAppearance {
+        if elementsIndices?["focused"] != nil && elementsIndices?["focused"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["focused"]!] as? RNRBarButtonItemStateAppearance {
                 subview.setBarButtonItemStateAppearance(barButtonItemAppearance.focused)
             }
         }

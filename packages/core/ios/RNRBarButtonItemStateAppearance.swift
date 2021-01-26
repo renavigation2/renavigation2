@@ -82,8 +82,8 @@ class RNRBarButtonItemStateAppearance: UIView, RNRChild, RNRParent, RNRBarButton
             barButtonItemStateAppearance.backgroundImagePositionAdjustment = UIOffset()
         }
 
-        if elementsIndices?["backgroundImage"] != -1 {
-            if let subview = reactSubviews()[elementsIndices!["backgroundImage"]!] as? RNRImageProtocol {
+        if elementsIndices?["backgroundImage"] != nil && elementsIndices?["backgroundImage"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["backgroundImage"]!] as? RNRImageProtocol {
                 barButtonItemStateAppearance.backgroundImage = subview.getImage()
             }
         } else {

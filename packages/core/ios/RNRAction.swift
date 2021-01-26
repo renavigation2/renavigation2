@@ -81,8 +81,8 @@ class RNRAction: UIView, RNRChild, RNRParent, RNRActionProtocol {
         }
         shouldUpdate = false
         var image: UIImage?
-        if elementsIndices?["image"] != -1 {
-            if let subview = reactSubviews()[elementsIndices!["image"]!] as? RNRImageProtocol {
+        if elementsIndices?["image"] != nil && elementsIndices?["image"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["image"]!] as? RNRImageProtocol {
                 image = subview.getImage()
             }
         } else {
