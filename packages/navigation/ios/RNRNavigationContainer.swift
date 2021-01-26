@@ -15,9 +15,6 @@ class RNRNavigationContainer: UIView, UINavigationControllerDelegate, RNRChild, 
     override func insertReactSubview(_ subview: UIView!, at atIndex: Int) {
         (subview as! RNRNavigationScene).willMove(toSuperview: self)
         scenes.insert(subview as! RNRNavigationScene, at: atIndex)
-        if !(subview as! RNRNavigationScene).isPresented && (subview as! RNRNavigationScene).isReady && navigationController != nil {
-            present(subview as! RNRNavigationScene)
-        }
     }
 
     override func removeReactSubview(_ subview: UIView!) {
@@ -37,6 +34,11 @@ class RNRNavigationContainer: UIView, UINavigationControllerDelegate, RNRChild, 
 
     override func didUpdateReactSubviews() {
         hasUpdatedReactSubviews = true
+        if !isReady {
+            setup()
+        } else {
+            presentScenes()
+        }
         setup()
     }
 
@@ -98,13 +100,17 @@ class RNRNavigationContainer: UIView, UINavigationControllerDelegate, RNRChild, 
         navigationController?.popToViewController(view.viewController, animated: animated)
     }
 
-    func present(_ scene: RNRNavigationScene) {
-        if !scene.isPresented && scene.isReady {
-            scene.isPresented = true
-            let animated = scene.animated == -1 ? false : true
+    func presentScenes() {
+        let newScenes = scenes.filter { !$0.isPresented }
+        var reset = true
+        newScenes.forEach { scene in
+            if scene.animated != -1 {
+                reset = false
+            }
             scene.updateNavigationBarItem()
-            navigationController!.pushViewController(scene.reactViewController(), animated: animated)
+            scene.isPresented = true
         }
+        navigationController?.setViewControllers(scenes.map { $0.viewController }, animated: reset ? false : true)
     }
 
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {

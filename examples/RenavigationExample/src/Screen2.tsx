@@ -86,7 +86,7 @@ export const Screen2: React.FC<Props> = ({}) => {
       navigationItem={
         <NavigationItem
           title="Screen 2"
-          largeTitleDisplayMode="never"
+          largeTitleDisplayMode="always"
           rightBarButtonItems={[
             <BarButtonItem
               key="1"
