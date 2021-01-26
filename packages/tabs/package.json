@@ -30,7 +30,7 @@
     "watch": "nodemon -L -e ts,tsx,js,jsx --watch src --exec bob build"
   },
   "peerDependencies": {
-    "@renavigation2/core": "^4.27.0",
+    "@renavigation2/core": "^4.33.0",
     "react": "*",
     "react-native": "*"
   },
@@ -45,8 +45,8 @@
     "@types/react": "^17.0.0",
     "@types/react-native": "0.63.46",
     "@types/react-test-renderer": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.14.0",
-    "@typescript-eslint/parser": "^4.14.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
     "babel-preset-jest": "^26.6.2",
     "eslint": "^7.18.0",
     "eslint-config-prettier": "^7.2.0",
