@@ -1,6 +1,6 @@
 {
   "name": "RenavigationExample",
-  "version": "4.34.1",
+  "version": "4.34.2",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -13,7 +13,7 @@
   "dependencies": {
     "@renavigation2/constraints": "^4.31.2",
     "@renavigation2/core": "^4.34.1",
-    "@renavigation2/modals": "^4.31.8",
+    "@renavigation2/modals": "^4.34.2",
     "@renavigation2/navigation": "^4.34.0",
     "@renavigation2/tabs": "^4.31.10",
     "react": "^17.0.1",

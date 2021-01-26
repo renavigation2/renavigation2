@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.34.2](https://github.com/renavigation2/renavigation2/compare/v4.34.1...v4.34.2) (2021-01-26)
+
+
+### Bug Fixes
+
+* **modals:** Fixed unbalanced calls to begin/end appearance transitions ([c850157](https://github.com/renavigation2/renavigation2/commit/c85015774622b7aa055e1d721986243bdf9ae856))
+
+
+
+
+
 ## [4.31.8](https://github.com/renavigation2/renavigation2/compare/v4.31.7...v4.31.8) (2021-01-20)
 
 
