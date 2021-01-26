@@ -2,6 +2,7 @@
 
 @interface RCT_EXTERN_MODULE(RNRActionManager, RCTViewManager)
 
+RCT_EXPORT_VIEW_PROPERTY(elementsIndices, NSDictionary)
 RCT_EXPORT_VIEW_PROPERTY(disabled, NSNumber)
 RCT_EXPORT_VIEW_PROPERTY(destructive, NSNumber)
 RCT_EXPORT_VIEW_PROPERTY(_hidden, NSNumber)

@@ -6,6 +6,7 @@ class RNRMenu: UIView, RNRChild, RNRParent, RNRMenuProtocol {
     var isReady = false
     var hasUpdatedReactSubviews = false
 
+    @objc var elementsIndices: [String : Int]?
     @objc var identifier: String?
     @objc var title: String?
     @objc var destructive: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
@@ -106,14 +107,16 @@ class RNRMenu: UIView, RNRChild, RNRParent, RNRMenuProtocol {
         if shouldUpdate {
             shouldUpdate = false
 
-            var image: UIImage?
+            var image: UIImage? = nil
+            if elementsIndices?["image"] != -1 {
+                if let subview = reactSubviews()[elementsIndices!["image"]!] as? RNRImageProtocol {
+                    image = subview.getImage()
+                }
+            }
+
             var children: [UIMenuElement] = []
             reactSubviews().enumerated().forEach { (index, subview) in
-                if index == 0 { // image
-                    if subview is RNRImageProtocol {
-                        image = (subview as! RNRImageProtocol).getImage()
-                    }
-                } else {
+                if elementsIndices?["children"] != nil && index >= elementsIndices!["children"]! {
                     if subview is RNRMenu {
                         children.append((subview as! RNRMenu).getMenu())
                     } else if subview is RNRAction {

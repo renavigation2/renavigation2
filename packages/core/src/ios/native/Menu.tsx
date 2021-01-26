@@ -2,7 +2,6 @@ import React from 'react'
 import { requireNativeComponent } from 'react-native'
 import { processBoolean } from '../../utils/processBoolean'
 import { StyleSheet } from '../../utils/StyleSheet'
-import { EmptyComponent } from './EmptyComponent'
 
 const RNRMenu = requireNativeComponent<any>('RNRMenu')
 
@@ -70,6 +69,7 @@ export const Menu: React.FC<MenuProps> = ({
   loading,
   ...props
 }) => {
+  let index = 0
   return (
     <RNRMenu
       style={StyleSheet.absoluteHidden}
@@ -80,8 +80,12 @@ export const Menu: React.FC<MenuProps> = ({
       displayInline={processBoolean(displayInline)}
       loading={processBoolean(loading)}
       {...props}
+      elementsIndices={{
+        image: image ? index++ : -1,
+        children: children ? index++ : -1
+      }}
     >
-      {image ? image : <EmptyComponent />}
+      {image}
       {children}
     </RNRMenu>
   )

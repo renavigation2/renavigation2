@@ -5,6 +5,7 @@ class RNRAction: UIView, RNRChild, RNRParent, RNRActionProtocol {
     var isReady = false
     var hasUpdatedReactSubviews = false
 
+    @objc var elementsIndices: [String : Int]?
     @objc var disabled: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var destructive: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var _hidden: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
@@ -80,12 +81,12 @@ class RNRAction: UIView, RNRChild, RNRParent, RNRActionProtocol {
         }
         shouldUpdate = false
         var image: UIImage?
-        reactSubviews().enumerated().forEach { (index, subview) in
-            if index == 0 { // image
-                if subview is RNRImageProtocol {
-                    image = (subview as! RNRImageProtocol).getImage()
-                }
+        if elementsIndices?["image"] != -1 {
+            if let subview = reactSubviews()[elementsIndices!["image"]!] as? RNRImageProtocol {
+                image = subview.getImage()
             }
+        } else {
+            image = nil
         }
 
         var attrs: UIMenuElement.Attributes = []
@@ -120,7 +121,7 @@ class RNRAction: UIView, RNRChild, RNRParent, RNRActionProtocol {
             attributes: attrs,
             state: _state,
             handler: { [self] action in
-                (self.uiManager?.bridge.module(for: RNRCoreEventManager.self) as? RNRCoreEventManager)?
+                (uiManager?.bridge.module(for: RNRCoreEventManager.self) as? RNRCoreEventManager)?
                         .sendViewPressEvent(self.reactTag)
             }
         )
