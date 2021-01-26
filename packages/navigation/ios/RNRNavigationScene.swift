@@ -62,7 +62,7 @@ class RNRNavigationScene: UIView, RNRChild, RNRParent{
             if ready {
                 isReady = true
                 if navigationContainer!.isReady {
-                    navigationContainer!.present(self)
+                    navigationContainer!.presentScenes()
                 } else {
                     setupParent(navigationContainer!)
                 }

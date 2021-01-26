@@ -3326,7 +3326,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@renavigation2/core@^4.32.0, @renavigation2/core@workspace:packages/core":
+"@renavigation2/core@^4.33.0, @renavigation2/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@renavigation2/core@workspace:packages/core"
   dependencies:
@@ -3420,7 +3420,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@renavigation2/navigation@^4.32.0, @renavigation2/navigation@workspace:packages/navigation":
+"@renavigation2/navigation@^4.33.0, @renavigation2/navigation@workspace:packages/navigation":
   version: 0.0.0-use.local
   resolution: "@renavigation2/navigation@workspace:packages/navigation"
   dependencies:
@@ -4055,9 +4055,9 @@ __metadata:
     "@babel/runtime": ^7.12.5
     "@react-native-community/eslint-config": ^2.0.0
     "@renavigation2/constraints": ^4.31.2
-    "@renavigation2/core": ^4.32.0
+    "@renavigation2/core": ^4.33.0
     "@renavigation2/modals": ^4.31.8
-    "@renavigation2/navigation": ^4.32.0
+    "@renavigation2/navigation": ^4.33.0
     "@renavigation2/tabs": ^4.31.10
     "@types/jest": ^26.0.20
     "@types/react": ^17.0.0
