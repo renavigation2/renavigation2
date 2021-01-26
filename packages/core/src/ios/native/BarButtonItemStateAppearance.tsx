@@ -4,7 +4,6 @@ import { processTextStyle } from '../../utils/processTextStyle'
 import { StyleSheet } from '../../utils/StyleSheet'
 import { Offset } from '../typings/Offset'
 import { TextStyle } from '../typings/TextStyle'
-import { EmptyComponent } from './EmptyComponent'
 
 const RNRBarButtonItemStateAppearance = requireNativeComponent<any>(
   'RNRBarButtonItemStateAppearance'
@@ -24,6 +23,7 @@ export const BarButtonItemStateAppearance: React.FC<BarButtonItemStateAppearance
   backgroundImage,
   ...props
 }) => {
+  let index = 0
   return (
     <RNRBarButtonItemStateAppearance
       style={StyleSheet.absoluteHidden}
@@ -32,8 +32,11 @@ export const BarButtonItemStateAppearance: React.FC<BarButtonItemStateAppearance
       titlePositionAdjustment={titlePositionAdjustment}
       backgroundImagePositionAdjustment={backgroundImagePositionAdjustment}
       {...props}
+      elementsIndices={{
+        backgroundImage: backgroundImage ? index++ : -1
+      }}
     >
-      {backgroundImage ? backgroundImage : <EmptyComponent />}
+      {backgroundImage}
     </RNRBarButtonItemStateAppearance>
   )
 }

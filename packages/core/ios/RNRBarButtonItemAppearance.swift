@@ -4,6 +4,7 @@ class RNRBarButtonItemAppearance: UIView, RNRChild, RNRParent, RNRBarButtonItemA
     var isReady = false
     var hasUpdatedReactSubviews = false
 
+    @objc var elementsIndices: [String : Int]?
     @objc var configure: String?
 
     override init(frame: CGRect) {
@@ -68,23 +69,27 @@ class RNRBarButtonItemAppearance: UIView, RNRChild, RNRParent, RNRBarButtonItemA
             barButtonItemAppearance.configureWithDefault(for: .done)
         }
 
-        reactSubviews().enumerated().forEach { (index, subview) in
-            if index == 0 { // normal
-                if subview is RNRBarButtonItemStateAppearance {
-                    (subview as! RNRBarButtonItemStateAppearance).setBarButtonItemStateAppearance(barButtonItemAppearance.normal)
-                }
-            } else if index == 1 { // highlighted
-                if subview is RNRBarButtonItemStateAppearance {
-                    (subview as! RNRBarButtonItemStateAppearance).setBarButtonItemStateAppearance(barButtonItemAppearance.highlighted)
-                }
-            } else if index == 2 { // disabled
-                if subview is RNRBarButtonItemStateAppearance {
-                    (subview as! RNRBarButtonItemStateAppearance).setBarButtonItemStateAppearance(barButtonItemAppearance.disabled)
-                }
-            } else if index == 3 { // focused
-                if subview is RNRBarButtonItemStateAppearance {
-                    (subview as! RNRBarButtonItemStateAppearance).setBarButtonItemStateAppearance(barButtonItemAppearance.focused)
-                }
+        if elementsIndices?["normal"] != -1 {
+            if let subview = reactSubviews()[elementsIndices!["normal"]!] as? RNRBarButtonItemStateAppearance {
+                subview.setBarButtonItemStateAppearance(barButtonItemAppearance.normal)
+            }
+        }
+
+        if elementsIndices?["highlighted"] != -1 {
+            if let subview = reactSubviews()[elementsIndices!["highlighted"]!] as? RNRBarButtonItemStateAppearance {
+                subview.setBarButtonItemStateAppearance(barButtonItemAppearance.highlighted)
+            }
+        }
+
+        if elementsIndices?["disabled"] != -1 {
+            if let subview = reactSubviews()[elementsIndices!["disabled"]!] as? RNRBarButtonItemStateAppearance {
+                subview.setBarButtonItemStateAppearance(barButtonItemAppearance.disabled)
+            }
+        }
+
+        if elementsIndices?["focused"] != -1 {
+            if let subview = reactSubviews()[elementsIndices!["focused"]!] as? RNRBarButtonItemStateAppearance {
+                subview.setBarButtonItemStateAppearance(barButtonItemAppearance.focused)
             }
         }
 

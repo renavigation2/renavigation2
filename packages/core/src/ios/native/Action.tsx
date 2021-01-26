@@ -3,7 +3,6 @@ import { findNodeHandle, requireNativeComponent } from 'react-native'
 import { processBoolean } from '../../utils/processBoolean'
 import { StyleSheet } from '../../utils/StyleSheet'
 import { CoreEventManager } from './CoreEventManager'
-import { EmptyComponent } from './EmptyComponent'
 
 const RNRAction = requireNativeComponent<any>('RNRAction')
 
@@ -45,7 +44,7 @@ export const Action: React.FC<ActionProps> = ({
       subscription.remove()
     }
   }, [onPress])
-
+  let index = 0
   return (
     <RNRAction
       ref={ref as any}
@@ -59,8 +58,11 @@ export const Action: React.FC<ActionProps> = ({
       identifier={identifier}
       discoverabilityTitle={discoverabilityTitle}
       {...props}
+      elementsIndices={{
+        image: image ? index++ : -1
+      }}
     >
-      {image ? image : <EmptyComponent />}
+      {image}
     </RNRAction>
   )
 }

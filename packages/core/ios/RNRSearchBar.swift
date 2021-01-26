@@ -11,6 +11,7 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
     @objc var hidesNavigationBarDuringPresentation: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var automaticallyShowsCancelButton: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var barStyle: String?
+    @objc var _overrideUserInterfaceStyle: String?
     @objc var text: String?
     @objc var prompt: String?
     @objc var placeholder: String?
@@ -27,15 +28,20 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
     @objc var selectedScopeButtonIndex: Int = 0
     @objc var showsScopeBar: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var onSelectedScopeButtonChange: RCTDirectEventBlock?
-    @objc var selectedScopeBarButtonTitleStyle: NSDictionary?
-    @objc var reservedScopeBarButtonTitleStyle: NSDictionary?
-    @objc var highlightedScopeBarButtonTitleStyle: NSDictionary?
-    @objc var focusedScopeBarButtonTitleStyle: NSDictionary?
-    @objc var disabledScopeBarButtonTitleStyle: NSDictionary?
-    @objc var applicationScopeBarButtonTitleStyle: NSDictionary?
-    @objc var normalScopeBarButtonTitleStyle: NSDictionary?
+    @objc var scopeBarButtonTitleStyle: NSDictionary?
+    @objc var scopeBarButtonTitleStyleApplication: NSDictionary?
+    @objc var scopeBarButtonTitleStyleDisabled: NSDictionary?
+    @objc var scopeBarButtonTitleStyleFocused: NSDictionary?
+    @objc var scopeBarButtonTitleStyleHighlighted: NSDictionary?
+    @objc var scopeBarButtonTitleStyleReserved: NSDictionary?
+    @objc var scopeBarButtonTitleStyleSelected: NSDictionary?
+    @objc var scopeBarSelectedSegmentTintColor: NSNumber?
+    @objc var scopeBarBackgroundColor: NSNumber?
+    @objc var scopeBarEnabled: NSNumber = 1 // 0 = nil, 1 = true, -1 = false
+    @objc var scopeBarOverrideUserInterfaceStyle: String?
     @objc var cancelButtonText: String?
     @objc var cancelButtonStyle: NSDictionary?
+    @objc var cancelButtonOverrideUserInterfaceStyle: String?
     @objc var textFieldStyle: NSDictionary?
     @objc var textFieldClearButtonMode: String?
     @objc var textFieldBorderStyle: String?
@@ -45,6 +51,7 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
     @objc var textFieldLeftViewMode: NSString?
     @objc var textFieldRightViewMode: NSString?
     @objc var textFieldClearsOnInsertion: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
+    @objc var textFieldOverrideUserInterfaceStyle: String?
     @objc var onWillPresentSearch: RCTDirectEventBlock?
     @objc var onDidPresentSearch: RCTDirectEventBlock?
     @objc var onWillDismissSearch: RCTDirectEventBlock?
@@ -75,6 +82,8 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
     var defaultIsTranslucent: Bool?
     var defaultScopeButtonTitles: [String]?
     var defaultShowsScopeBar: Bool?
+    var defaultScopeBarSelectedSegmentTintColor: UIColor?
+    var defaultScopeBarBackgroundColor: UIColor?
     var defaultTextFieldClearButtonMode: UITextField.ViewMode?
     var defaultTextFieldBorderStyle: UITextField.BorderStyle?
     var defaultTextFieldClearsOnBeginEditing: Bool?
@@ -86,6 +95,9 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
     var defaultTextFieldLeftView: UIView?
     var defaultTextFieldRightView: UIView?
     var defaultTextFieldInputAccessoryView: UIView?
+
+    var hasSetCancelButtonDefaults = false
+    var defaultCancelButtonText: String?
 
     var prevTextFieldAttributes: [NSAttributedString.Key : Any]?
     var changedTextFieldLeftView = false
@@ -158,6 +170,8 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
 
     func setSearchBar() {
         let textField = findTextField(searchController.searchBar)
+        let cancelButton = findCancelButton(searchController.searchBar)
+        let segmentedControl = findSegmentedControl(searchController.searchBar)
 
         if !hasSetDefaults {
             hasSetDefaults = true
@@ -184,6 +198,10 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
             defaultIsTranslucent = searchController.searchBar.isTranslucent
             defaultScopeButtonTitles = searchController.searchBar.scopeButtonTitles
             defaultShowsScopeBar = searchController.searchBar.showsScopeBar
+            defaultScopeBarBackgroundColor = segmentedControl?.backgroundColor
+            if #available(iOS 13.0, *) {
+                defaultScopeBarSelectedSegmentTintColor = segmentedControl?.selectedSegmentTintColor
+            }
             defaultTextFieldClearButtonMode = textField?.clearButtonMode
             defaultTextFieldBorderStyle = textField?.borderStyle
             defaultTextFieldClearsOnBeginEditing = textField?.clearsOnBeginEditing
@@ -195,6 +213,11 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
             defaultTextFieldLeftView = textField?.leftView
             defaultTextFieldRightView = textField?.rightView
             defaultTextFieldInputAccessoryView = textField?.inputAccessoryView
+        }
+
+        if !hasSetCancelButtonDefaults && cancelButton != nil {
+            hasSetCancelButtonDefaults = true
+            defaultCancelButtonText = cancelButton?.title(for: .normal)
         }
 
         if isActive == -1 {
@@ -239,46 +262,46 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
             }
         }
 
-        if selectedScopeBarButtonTitleStyle != nil {
-            searchController.searchBar.setScopeBarButtonTitleTextAttributes(RNRTextStyle.getStyles(selectedScopeBarButtonTitleStyle!, defaultFontSize: 13, defaultFontWeight: "500"), for: .selected)
+        if scopeBarButtonTitleStyle != nil {
+            searchController.searchBar.setScopeBarButtonTitleTextAttributes(RNRTextStyle.getStyles(scopeBarButtonTitleStyle!, defaultFontSize: 13), for: .normal)
         } else {
-            searchController.searchBar.setScopeBarButtonTitleTextAttributes(nil, for: .selected)
+            searchController.searchBar.setScopeBarButtonTitleTextAttributes(nil, for: .normal)
         }
 
-        if reservedScopeBarButtonTitleStyle != nil {
-            searchController.searchBar.setScopeBarButtonTitleTextAttributes(RNRTextStyle.getStyles(reservedScopeBarButtonTitleStyle!, defaultFontSize: 13), for: .reserved)
-        } else {
-            searchController.searchBar.setScopeBarButtonTitleTextAttributes(nil, for: .reserved)
-        }
-
-        if highlightedScopeBarButtonTitleStyle != nil {
-            searchController.searchBar.setScopeBarButtonTitleTextAttributes(RNRTextStyle.getStyles(highlightedScopeBarButtonTitleStyle!, defaultFontSize: 13), for: .highlighted)
-        } else {
-            searchController.searchBar.setScopeBarButtonTitleTextAttributes(nil, for: .highlighted)
-        }
-
-        if focusedScopeBarButtonTitleStyle != nil {
-            searchController.searchBar.setScopeBarButtonTitleTextAttributes(RNRTextStyle.getStyles(focusedScopeBarButtonTitleStyle!, defaultFontSize: 13), for: .focused)
-        } else {
-            searchController.searchBar.setScopeBarButtonTitleTextAttributes(nil, for: .focused)
-        }
-
-        if disabledScopeBarButtonTitleStyle != nil {
-            searchController.searchBar.setScopeBarButtonTitleTextAttributes(RNRTextStyle.getStyles(disabledScopeBarButtonTitleStyle!, defaultFontSize: 13), for: .disabled)
-        } else {
-            searchController.searchBar.setScopeBarButtonTitleTextAttributes(nil, for: .disabled)
-        }
-
-        if applicationScopeBarButtonTitleStyle != nil {
-            searchController.searchBar.setScopeBarButtonTitleTextAttributes(RNRTextStyle.getStyles(applicationScopeBarButtonTitleStyle!, defaultFontSize: 13), for: .application)
+        if scopeBarButtonTitleStyleApplication != nil {
+            searchController.searchBar.setScopeBarButtonTitleTextAttributes(RNRTextStyle.getStyles(scopeBarButtonTitleStyleApplication!, defaultFontSize: 13), for: .application)
         } else {
             searchController.searchBar.setScopeBarButtonTitleTextAttributes(nil, for: .application)
         }
 
-        if normalScopeBarButtonTitleStyle != nil {
-            searchController.searchBar.setScopeBarButtonTitleTextAttributes(RNRTextStyle.getStyles(normalScopeBarButtonTitleStyle!, defaultFontSize: 13), for: .normal)
+        if scopeBarButtonTitleStyleDisabled != nil {
+            searchController.searchBar.setScopeBarButtonTitleTextAttributes(RNRTextStyle.getStyles(scopeBarButtonTitleStyleDisabled!, defaultFontSize: 13), for: .disabled)
         } else {
-            searchController.searchBar.setScopeBarButtonTitleTextAttributes(nil, for: .normal)
+            searchController.searchBar.setScopeBarButtonTitleTextAttributes(nil, for: .disabled)
+        }
+
+        if scopeBarButtonTitleStyleFocused != nil {
+            searchController.searchBar.setScopeBarButtonTitleTextAttributes(RNRTextStyle.getStyles(scopeBarButtonTitleStyleFocused!, defaultFontSize: 13), for: .focused)
+        } else {
+            searchController.searchBar.setScopeBarButtonTitleTextAttributes(nil, for: .focused)
+        }
+
+        if scopeBarButtonTitleStyleHighlighted != nil {
+            searchController.searchBar.setScopeBarButtonTitleTextAttributes(RNRTextStyle.getStyles(scopeBarButtonTitleStyleHighlighted!, defaultFontSize: 13), for: .highlighted)
+        } else {
+            searchController.searchBar.setScopeBarButtonTitleTextAttributes(nil, for: .highlighted)
+        }
+
+        if scopeBarButtonTitleStyleReserved != nil {
+            searchController.searchBar.setScopeBarButtonTitleTextAttributes(RNRTextStyle.getStyles(scopeBarButtonTitleStyleReserved!, defaultFontSize: 13), for: .reserved)
+        } else {
+            searchController.searchBar.setScopeBarButtonTitleTextAttributes(nil, for: .reserved)
+        }
+
+        if scopeBarButtonTitleStyleSelected != nil {
+            searchController.searchBar.setScopeBarButtonTitleTextAttributes(RNRTextStyle.getStyles(scopeBarButtonTitleStyleSelected!, defaultFontSize: 13, defaultFontWeight: "500"), for: .selected)
+        } else {
+            searchController.searchBar.setScopeBarButtonTitleTextAttributes(nil, for: .selected)
         }
 
         if barStyle == "default" {
@@ -289,6 +312,16 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
             searchController.searchBar.barStyle = .blackTranslucent
         } else if searchController.searchBar.barStyle != defaultBarStyle {
             searchController.searchBar.barStyle = defaultBarStyle!
+        }
+
+        if #available(iOS 13.0, *) {
+            if _overrideUserInterfaceStyle == "dark" {
+                searchController.searchBar.overrideUserInterfaceStyle = .dark
+            } else if _overrideUserInterfaceStyle == "light" {
+                searchController.searchBar.overrideUserInterfaceStyle = .light
+            } else {
+                searchController.searchBar.overrideUserInterfaceStyle = .unspecified
+            }
         }
 
         if text != nil {
@@ -383,18 +416,29 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
             searchController.searchBar.showsScopeBar = defaultShowsScopeBar!
         }
 
-        if cancelButtonText != nil {
-            searchController.searchBar.setValue(cancelButtonText, forKey: "cancelButtonText")
-        }
+        if cancelButton != nil {
+            if cancelButtonText != nil {
+                cancelButton?.setTitle(cancelButtonText, for: .normal)
+            } else {
+                cancelButton?.setTitle(defaultCancelButtonText, for: .normal)
+            }
 
-        if cancelButtonStyle != nil {
-            let attributes = RNRTextStyle.getStyles(cancelButtonStyle!, defaultFontSize: 17)
-            UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes(attributes, for: .normal)
-        }
+            if cancelButtonStyle != nil {
+                let attributedString = NSAttributedString(string: cancelButtonText != nil ? cancelButtonText! : cancelButton!.title(for: .normal) ?? "", attributes: RNRTextStyle.getStyles(cancelButtonStyle!, defaultFontSize: 17))
+                cancelButton?.setAttributedTitle(attributedString, for: .normal)
+            } else {
+                cancelButton?.setAttributedTitle(nil, for: .normal)
+            }
 
-        if cancelButtonStyle != nil {
-            let attributes = RNRTextStyle.getStyles(cancelButtonStyle!, defaultFontSize: 17)
-            UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes(attributes, for: .normal)
+            if #available(iOS 13.0, *) {
+                if cancelButtonOverrideUserInterfaceStyle == "dark" {
+                    cancelButton?.overrideUserInterfaceStyle = .dark
+                } else if cancelButtonOverrideUserInterfaceStyle == "light" {
+                    cancelButton?.overrideUserInterfaceStyle = .light
+                } else {
+                    cancelButton?.overrideUserInterfaceStyle = .unspecified
+                }
+            }
         }
 
         if textFieldBorderStyle == "none" {
@@ -513,100 +557,145 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
             textField?.clearsOnInsertion = defaultTextFieldClearsOnInsertion!
         }
 
-        if placeholderColor != nil {
-            let color = RCTConvert.uiColor(placeholderColor)
-            if color != nil {
-                textField?.attributedPlaceholder = NSAttributedString(string: placeholder ?? "",
-                        attributes: [NSAttributedString.Key.foregroundColor: color!])
+        if #available(iOS 13.0, *) {
+            if textFieldOverrideUserInterfaceStyle == "dark" {
+                textField?.overrideUserInterfaceStyle = .dark
+            } else if textFieldOverrideUserInterfaceStyle == "light" {
+                textField?.overrideUserInterfaceStyle = .light
+            } else {
+                textField?.overrideUserInterfaceStyle = .unspecified
             }
         }
 
-        setImage("normalSearchImage", for: .search, state: .normal)
-        setImage("applicationSearchImage", for: .search, state: .application)
-        setImage("disabledSearchImage", for: .search, state: .disabled)
-        setImage("focusedSearchImage", for: .search, state: .focused)
-        setImage("highlightedSearchImage", for: .search, state: .highlighted)
-        setImage("reservedSearchImage", for: .search, state: .reserved)
-        setImage("selectedSearchImage", for: .search, state: .selected)
-        setImage("normalBookmarkImage", for: .bookmark, state: .normal)
-        setImage("applicationBookmarkImage", for: .bookmark, state: .application)
-        setImage("disabledBookmarkImage", for: .bookmark, state: .disabled)
-        setImage("focusedBookmarkImage", for: .bookmark, state: .focused)
-        setImage("highlightedBookmarkImage", for: .bookmark, state: .highlighted)
-        setImage("reservedBookmarkImage", for: .bookmark, state: .reserved)
-        setImage("selectedBookmarkImage", for: .bookmark, state: .selected)
-        setImage("normalClearImage", for: .clear, state: .normal)
-        setImage("applicationClearImage", for: .clear, state: .application)
-        setImage("disabledClearImage", for: .clear, state: .disabled)
-        setImage("focusedClearImage", for: .clear, state: .focused)
-        setImage("highlightedClearImage", for: .clear, state: .highlighted)
-        setImage("reservedClearImage", for: .clear, state: .reserved)
-        setImage("selectedClearImage", for: .clear, state: .selected)
-        setImage("normalResultsListImage", for: .resultsList, state: .normal)
-        setImage("applicationResultsListImage", for: .resultsList, state: .application)
-        setImage("disabledResultsListImage", for: .resultsList, state: .disabled)
-        setImage("focusedResultsListImage", for: .resultsList, state: .focused)
-        setImage("highlightedResultsListImage", for: .resultsList, state: .highlighted)
-        setImage("reservedResultsListImage", for: .resultsList, state: .reserved)
-        setImage("selectedResultsListImage", for: .resultsList, state: .selected)
+        if placeholderColor != nil {
+            let color = RCTConvert.uiColor(placeholderColor)
+            if color != nil {
+                textField?.attributedPlaceholder = NSAttributedString(string: placeholder ?? defaultPlaceholder ?? "",
+                        attributes: [NSAttributedString.Key.foregroundColor: color!])
+            }
+        } else {
+            textField?.attributedPlaceholder = NSAttributedString(string: placeholder ?? defaultPlaceholder ?? "", attributes: [:])
+        }
 
-        setScopeBarButtonBackgroundImage("selectedScopeBarButtonBackgroundImage", for: .selected)
-        setScopeBarButtonBackgroundImage("reservedScopeBarButtonBackgroundImage", for: .reserved)
-        setScopeBarButtonBackgroundImage("highlightedScopeBarButtonBackgroundImage", for: .highlighted)
-        setScopeBarButtonBackgroundImage("focusedScopeBarButtonBackgroundImage", for: .focused)
-        setScopeBarButtonBackgroundImage("disabledScopeBarButtonBackgroundImage", for: .disabled)
-        setScopeBarButtonBackgroundImage("applicationScopeBarButtonBackgroundImage", for: .application)
-        setScopeBarButtonBackgroundImage("normalScopeBarButtonBackgroundImage", for: .normal)
 
-        setScopeBarButtonDividerImage("selectedLeftSelectedRightScopeBarButtonDividerImage", forLeftSegmentState: .selected, rightSegmentState: .selected)
-        setScopeBarButtonDividerImage("selectedLeftReservedRightScopeBarButtonDividerImage", forLeftSegmentState: .selected, rightSegmentState: .reserved)
-        setScopeBarButtonDividerImage("selectedLeftHighlightedRightScopeBarButtonDividerImage", forLeftSegmentState: .selected, rightSegmentState: .highlighted)
-        setScopeBarButtonDividerImage("selectedLeftFocusedRightScopeBarButtonDividerImage", forLeftSegmentState: .selected, rightSegmentState: .focused)
-        setScopeBarButtonDividerImage("selectedLeftDisabledRightScopeBarButtonDividerImage", forLeftSegmentState: .selected, rightSegmentState: .disabled)
-        setScopeBarButtonDividerImage("selectedLeftApplicationRightScopeBarButtonDividerImage", forLeftSegmentState: .selected, rightSegmentState: .application)
-        setScopeBarButtonDividerImage("selectedLeftNormalRightScopeBarButtonDividerImage", forLeftSegmentState: .selected, rightSegmentState: .normal)
-        setScopeBarButtonDividerImage("reservedLeftSelectedRightScopeBarButtonDividerImage", forLeftSegmentState: .reserved, rightSegmentState: .selected)
-        setScopeBarButtonDividerImage("reservedLeftReservedRightScopeBarButtonDividerImage", forLeftSegmentState: .reserved, rightSegmentState: .reserved)
-        setScopeBarButtonDividerImage("reservedLeftHighlightedRightScopeBarButtonDividerImage", forLeftSegmentState: .reserved, rightSegmentState: .highlighted)
-        setScopeBarButtonDividerImage("reservedLeftFocusedRightScopeBarButtonDividerImage", forLeftSegmentState: .reserved, rightSegmentState: .focused)
-        setScopeBarButtonDividerImage("reservedLeftDisabledRightScopeBarButtonDividerImage", forLeftSegmentState: .reserved, rightSegmentState: .disabled)
-        setScopeBarButtonDividerImage("reservedLeftApplicationRightScopeBarButtonDividerImage", forLeftSegmentState: .reserved, rightSegmentState: .application)
-        setScopeBarButtonDividerImage("reservedLeftNormalRightScopeBarButtonDividerImage", forLeftSegmentState: .reserved, rightSegmentState: .normal)
-        setScopeBarButtonDividerImage("highlightedLeftSelectedRightScopeBarButtonDividerImage", forLeftSegmentState: .highlighted, rightSegmentState: .selected)
-        setScopeBarButtonDividerImage("highlightedLeftReservedRightScopeBarButtonDividerImage", forLeftSegmentState: .highlighted, rightSegmentState: .reserved)
-        setScopeBarButtonDividerImage("highlightedLeftHighlightedRightScopeBarButtonDividerImage", forLeftSegmentState: .highlighted, rightSegmentState: .highlighted)
-        setScopeBarButtonDividerImage("highlightedLeftFocusedRightScopeBarButtonDividerImage", forLeftSegmentState: .highlighted, rightSegmentState: .focused)
-        setScopeBarButtonDividerImage("highlightedLeftDisabledRightScopeBarButtonDividerImage", forLeftSegmentState: .highlighted, rightSegmentState: .disabled)
-        setScopeBarButtonDividerImage("highlightedLeftApplicationRightScopeBarButtonDividerImage", forLeftSegmentState: .highlighted, rightSegmentState: .application)
-        setScopeBarButtonDividerImage("highlightedLeftNormalRightScopeBarButtonDividerImage", forLeftSegmentState: .highlighted, rightSegmentState: .normal)
-        setScopeBarButtonDividerImage("focusedLeftSelectedRightScopeBarButtonDividerImage", forLeftSegmentState: .focused, rightSegmentState: .selected)
-        setScopeBarButtonDividerImage("focusedLeftReservedRightScopeBarButtonDividerImage", forLeftSegmentState: .focused, rightSegmentState: .reserved)
-        setScopeBarButtonDividerImage("focusedLeftHighlightedRightScopeBarButtonDividerImage", forLeftSegmentState: .focused, rightSegmentState: .highlighted)
-        setScopeBarButtonDividerImage("focusedLeftFocusedRightScopeBarButtonDividerImage", forLeftSegmentState: .focused, rightSegmentState: .focused)
-        setScopeBarButtonDividerImage("focusedLeftDisabledRightScopeBarButtonDividerImage", forLeftSegmentState: .focused, rightSegmentState: .disabled)
-        setScopeBarButtonDividerImage("focusedLeftApplicationRightScopeBarButtonDividerImage", forLeftSegmentState: .focused, rightSegmentState: .application)
-        setScopeBarButtonDividerImage("focusedLeftNormalRightScopeBarButtonDividerImage", forLeftSegmentState: .focused, rightSegmentState: .normal)
-        setScopeBarButtonDividerImage("disabledLeftSelectedRightScopeBarButtonDividerImage", forLeftSegmentState: .disabled, rightSegmentState: .selected)
-        setScopeBarButtonDividerImage("disabledLeftReservedRightScopeBarButtonDividerImage", forLeftSegmentState: .disabled, rightSegmentState: .reserved)
-        setScopeBarButtonDividerImage("disabledLeftHighlightedRightScopeBarButtonDividerImage", forLeftSegmentState: .disabled, rightSegmentState: .highlighted)
-        setScopeBarButtonDividerImage("disabledLeftFocusedRightScopeBarButtonDividerImage", forLeftSegmentState: .disabled, rightSegmentState: .focused)
-        setScopeBarButtonDividerImage("disabledLeftDisabledRightScopeBarButtonDividerImage", forLeftSegmentState: .disabled, rightSegmentState: .disabled)
-        setScopeBarButtonDividerImage("disabledLeftApplicationRightScopeBarButtonDividerImage", forLeftSegmentState: .disabled, rightSegmentState: .application)
-        setScopeBarButtonDividerImage("disabledLeftNormalRightScopeBarButtonDividerImage", forLeftSegmentState: .disabled, rightSegmentState: .normal)
-        setScopeBarButtonDividerImage("applicationLeftSelectedRightScopeBarButtonDividerImage", forLeftSegmentState: .application, rightSegmentState: .selected)
-        setScopeBarButtonDividerImage("applicationLeftReservedRightScopeBarButtonDividerImage", forLeftSegmentState: .application, rightSegmentState: .reserved)
-        setScopeBarButtonDividerImage("applicationLeftHighlightedRightScopeBarButtonDividerImage", forLeftSegmentState: .application, rightSegmentState: .highlighted)
-        setScopeBarButtonDividerImage("applicationLeftFocusedRightScopeBarButtonDividerImage", forLeftSegmentState: .application, rightSegmentState: .focused)
-        setScopeBarButtonDividerImage("applicationLeftDisabledRightScopeBarButtonDividerImage", forLeftSegmentState: .application, rightSegmentState: .disabled)
-        setScopeBarButtonDividerImage("applicationLeftApplicationRightScopeBarButtonDividerImage", forLeftSegmentState: .application, rightSegmentState: .application)
-        setScopeBarButtonDividerImage("applicationLeftNormalRightScopeBarButtonDividerImage", forLeftSegmentState: .application, rightSegmentState: .normal)
-        setScopeBarButtonDividerImage("normalLeftSelectedRightScopeBarButtonDividerImage", forLeftSegmentState: .normal, rightSegmentState: .selected)
-        setScopeBarButtonDividerImage("normalLeftReservedRightScopeBarButtonDividerImage", forLeftSegmentState: .normal, rightSegmentState: .reserved)
-        setScopeBarButtonDividerImage("normalLeftHighlightedRightScopeBarButtonDividerImage", forLeftSegmentState: .normal, rightSegmentState: .highlighted)
-        setScopeBarButtonDividerImage("normalLeftFocusedRightScopeBarButtonDividerImage", forLeftSegmentState: .normal, rightSegmentState: .focused)
-        setScopeBarButtonDividerImage("normalLeftDisabledRightScopeBarButtonDividerImage", forLeftSegmentState: .normal, rightSegmentState: .disabled)
-        setScopeBarButtonDividerImage("normalLeftApplicationRightScopeBarButtonDividerImage", forLeftSegmentState: .normal, rightSegmentState: .application)
-        setScopeBarButtonDividerImage("normalLeftNormalRightScopeBarButtonDividerImage", forLeftSegmentState: .normal, rightSegmentState: .normal)
+        if #available(iOS 13.0, *) {
+            if scopeBarSelectedSegmentTintColor != nil {
+                segmentedControl?.selectedSegmentTintColor = RCTConvert.uiColor(scopeBarSelectedSegmentTintColor)
+            } else if segmentedControl?.selectedSegmentTintColor != defaultScopeBarSelectedSegmentTintColor {
+                segmentedControl?.selectedSegmentTintColor = defaultScopeBarSelectedSegmentTintColor
+            }
+        }
+
+        if scopeBarBackgroundColor != nil {
+            segmentedControl?.backgroundColor = RCTConvert.uiColor(scopeBarBackgroundColor)
+        } else if segmentedControl?.backgroundColor != defaultScopeBarBackgroundColor {
+            segmentedControl?.backgroundColor = defaultScopeBarBackgroundColor
+        }
+
+        if scopeBarEnabled == 1 {
+            segmentedControl?.isEnabled = true
+        } else if scopeBarEnabled == -1 {
+            segmentedControl?.isEnabled = false
+        } else {
+            segmentedControl?.isEnabled = true
+        }
+
+        if #available(iOS 13.0, *) {
+            if scopeBarOverrideUserInterfaceStyle == "dark" {
+                segmentedControl?.overrideUserInterfaceStyle = .dark
+            } else if scopeBarOverrideUserInterfaceStyle == "light" {
+                segmentedControl?.overrideUserInterfaceStyle = .light
+            } else {
+                segmentedControl?.overrideUserInterfaceStyle = .unspecified
+            }
+        }
+        
+        setImage("searchImage", for: .search, state: .normal)
+        setImage("searchImageApplication", for: .search, state: .application)
+        setImage("searchImageDisabled", for: .search, state: .disabled)
+        setImage("searchImageFocused", for: .search, state: .focused)
+        setImage("searchImageHighlighted", for: .search, state: .highlighted)
+        setImage("searchImageReserved", for: .search, state: .reserved)
+        setImage("searchImageSelected", for: .search, state: .selected)
+        setImage("bookmarkImage", for: .bookmark, state: .normal)
+        setImage("bookmarkImageApplication", for: .bookmark, state: .application)
+        setImage("bookmarkImageDisabled", for: .bookmark, state: .disabled)
+        setImage("bookmarkImageFocused", for: .bookmark, state: .focused)
+        setImage("bookmarkImageHighlighted", for: .bookmark, state: .highlighted)
+        setImage("bookmarkImageReserved", for: .bookmark, state: .reserved)
+        setImage("bookmarkImageSelected", for: .bookmark, state: .selected)
+        setImage("clearImage", for: .clear, state: .normal)
+        setImage("clearImageApplication", for: .clear, state: .application)
+        setImage("clearImageDisabled", for: .clear, state: .disabled)
+        setImage("clearImageFocused", for: .clear, state: .focused)
+        setImage("clearImageHighlighted", for: .clear, state: .highlighted)
+        setImage("clearImageReserved", for: .clear, state: .reserved)
+        setImage("clearImageSelected", for: .clear, state: .selected)
+        setImage("resultsListImage", for: .resultsList, state: .normal)
+        setImage("resultsListImageApplication", for: .resultsList, state: .application)
+        setImage("resultsListImageDisabled", for: .resultsList, state: .disabled)
+        setImage("resultsListImageFocused", for: .resultsList, state: .focused)
+        setImage("resultsListImageHighlighted", for: .resultsList, state: .highlighted)
+        setImage("resultsListImageReserved", for: .resultsList, state: .reserved)
+        setImage("resultsListImageSelected", for: .resultsList, state: .selected)
+
+        setScopeBarButtonBackgroundImage("scopeBarButtonBackgroundImage", for: .normal)
+        setScopeBarButtonBackgroundImage("scopeBarButtonBackgroundImageApplication", for: .application)
+        setScopeBarButtonBackgroundImage("scopeBarButtonBackgroundImageDisabled", for: .disabled)
+        setScopeBarButtonBackgroundImage("scopeBarButtonBackgroundImageFocused", for: .focused)
+        setScopeBarButtonBackgroundImage("scopeBarButtonBackgroundImageHighlighted", for: .highlighted)
+        setScopeBarButtonBackgroundImage("scopeBarButtonBackgroundImageReserved", for: .reserved)
+        setScopeBarButtonBackgroundImage("scopeBarButtonBackgroundImageSelected", for: .selected)
+
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageSelectedLeftSelectedRight", forLeftSegmentState: .selected, rightSegmentState: .selected)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageSelectedLeftReservedRight", forLeftSegmentState: .selected, rightSegmentState: .reserved)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageSelectedLeftHighlightedRight", forLeftSegmentState: .selected, rightSegmentState: .highlighted)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageSelectedLeftFocusedRight", forLeftSegmentState: .selected, rightSegmentState: .focused)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageSelectedLeftDisabledRight", forLeftSegmentState: .selected, rightSegmentState: .disabled)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageSelectedLeftApplicationRight", forLeftSegmentState: .selected, rightSegmentState: .application)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageSelectedLeftNormalRight", forLeftSegmentState: .selected, rightSegmentState: .normal)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageReservedLeftSelectedRight", forLeftSegmentState: .reserved, rightSegmentState: .selected)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageReservedLeftReservedRight", forLeftSegmentState: .reserved, rightSegmentState: .reserved)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageReservedLeftHighlightedRight", forLeftSegmentState: .reserved, rightSegmentState: .highlighted)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageReservedLeftFocusedRight", forLeftSegmentState: .reserved, rightSegmentState: .focused)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageReservedLeftDisabledRight", forLeftSegmentState: .reserved, rightSegmentState: .disabled)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageReservedLeftApplicationRight", forLeftSegmentState: .reserved, rightSegmentState: .application)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageReservedLeftNormalRight", forLeftSegmentState: .reserved, rightSegmentState: .normal)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageHighlightedLeftSelectedRight", forLeftSegmentState: .highlighted, rightSegmentState: .selected)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageHighlightedLeftReservedRight", forLeftSegmentState: .highlighted, rightSegmentState: .reserved)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageHighlightedLeftHighlightedRight", forLeftSegmentState: .highlighted, rightSegmentState: .highlighted)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageHighlightedLeftFocusedRight", forLeftSegmentState: .highlighted, rightSegmentState: .focused)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageHighlightedLeftDisabledRight", forLeftSegmentState: .highlighted, rightSegmentState: .disabled)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageHighlightedLeftApplicationRight", forLeftSegmentState: .highlighted, rightSegmentState: .application)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageHighlightedLeftNormalRight", forLeftSegmentState: .highlighted, rightSegmentState: .normal)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageFocusedLeftSelectedRight", forLeftSegmentState: .focused, rightSegmentState: .selected)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageFocusedLeftReservedRight", forLeftSegmentState: .focused, rightSegmentState: .reserved)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageFocusedLeftHighlightedRight", forLeftSegmentState: .focused, rightSegmentState: .highlighted)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageFocusedLeftFocusedRight", forLeftSegmentState: .focused, rightSegmentState: .focused)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageFocusedLeftDisabledRight", forLeftSegmentState: .focused, rightSegmentState: .disabled)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageFocusedLeftApplicationRight", forLeftSegmentState: .focused, rightSegmentState: .application)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageFocusedLeftNormalRight", forLeftSegmentState: .focused, rightSegmentState: .normal)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageDisabledLeftSelectedRight", forLeftSegmentState: .disabled, rightSegmentState: .selected)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageDisabledLeftReservedRight", forLeftSegmentState: .disabled, rightSegmentState: .reserved)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageDisabledLeftHighlightedRight", forLeftSegmentState: .disabled, rightSegmentState: .highlighted)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageDisabledLeftFocusedRight", forLeftSegmentState: .disabled, rightSegmentState: .focused)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageDisabledLeftDisabledRight", forLeftSegmentState: .disabled, rightSegmentState: .disabled)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageDisabledLeftApplicationRight", forLeftSegmentState: .disabled, rightSegmentState: .application)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageDisabledLeftNormalRight", forLeftSegmentState: .disabled, rightSegmentState: .normal)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageApplicationLeftSelectedRight", forLeftSegmentState: .application, rightSegmentState: .selected)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageApplicationLeftReservedRight", forLeftSegmentState: .application, rightSegmentState: .reserved)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageApplicationLeftHighlightedRight", forLeftSegmentState: .application, rightSegmentState: .highlighted)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageApplicationLeftFocusedRight", forLeftSegmentState: .application, rightSegmentState: .focused)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageApplicationLeftDisabledRight", forLeftSegmentState: .application, rightSegmentState: .disabled)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageApplicationLeftApplicationRight", forLeftSegmentState: .application, rightSegmentState: .application)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageApplicationLeftNormalRight", forLeftSegmentState: .application, rightSegmentState: .normal)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageNormalLeftSelectedRight", forLeftSegmentState: .normal, rightSegmentState: .selected)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageNormalLeftReservedRight", forLeftSegmentState: .normal, rightSegmentState: .reserved)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageNormalLeftHighlightedRight", forLeftSegmentState: .normal, rightSegmentState: .highlighted)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageNormalLeftFocusedRight", forLeftSegmentState: .normal, rightSegmentState: .focused)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageNormalLeftDisabledRight", forLeftSegmentState: .normal, rightSegmentState: .disabled)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageNormalLeftApplicationRight", forLeftSegmentState: .normal, rightSegmentState: .application)
+        setScopeBarButtonDividerImage("scopeBarButtonDividerImageNormalLeftNormalRight", forLeftSegmentState: .normal, rightSegmentState: .normal)
 
         if elementsIndices?["textFieldLeftView"] != -1 {
             changedTextFieldLeftView = true
@@ -633,18 +722,16 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
         }
 
         if elementsIndices?["textFieldBackgroundImage"] != -1 {
-            let subview = reactSubviews()[elementsIndices!["textFieldBackgroundImage"]!]
-            if subview is RNRImage {
-                textField?.background = (subview as! RNRImageProtocol).getImage()
+            if let subview = reactSubviews()[elementsIndices!["textFieldBackgroundImage"]!] as? RNRImage {
+                textField?.background = subview.getImage()
             }
         } else if textField?.background != nil {
             textField?.background = nil
         }
 
-        if elementsIndices?["textFieldDisabledBackgroundImage"] != -1 {
-            let subview = reactSubviews()[elementsIndices!["textFieldDisabledBackgroundImage"]!]
-            if subview is RNRImage {
-                textField?.disabledBackground = (subview as! RNRImageProtocol).getImage()
+        if elementsIndices?["textFieldBackgroundImageDisabled"] != -1 {
+            if let subview = reactSubviews()[elementsIndices!["textFieldBackgroundImageDisabled"]!] as? RNRImage {
+                textField?.disabledBackground = subview.getImage()
             }
         } else if textField?.disabledBackground != nil {
             textField?.disabledBackground = nil
@@ -659,33 +746,30 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
 
     func setImage(_ type: String, for icon: UISearchBar.Icon, state: UIControl.State) {
         if elementsIndices?[type] != -1 {
-            let subview = reactSubviews()[elementsIndices![type]!]
-            if subview is RNRImage {
-                searchController.searchBar.setImage((subview as! RNRImageProtocol).getImage(), for: icon, state: state)
+            if let subview = reactSubviews()[elementsIndices![type]!] as? RNRImage {
+                searchController.searchBar.setImage(subview.getImage(), for: icon, state: state)
             }
-        } else if searchController.view != nil {
+        } else {
             searchController.searchBar.setImage(nil, for: icon, state: state)
         }
     }
 
     func setScopeBarButtonBackgroundImage(_ type: String, for state: UIControl.State) {
         if elementsIndices?[type] != -1 {
-            let subview = reactSubviews()[elementsIndices![type]!]
-            if subview is RNRImage {
-                searchController.searchBar.setScopeBarButtonBackgroundImage((subview as! RNRImageProtocol).getImage(), for: state)
+            if let subview = reactSubviews()[elementsIndices![type]!] as? RNRImage {
+                searchController.searchBar.setScopeBarButtonBackgroundImage(subview.getImage(), for: state)
             }
-        } else if searchController.view != nil {
+        } else {
             searchController.searchBar.setScopeBarButtonBackgroundImage(nil, for: state)
         }
     }
 
     func setScopeBarButtonDividerImage(_ type: String, forLeftSegmentState: UIControl.State, rightSegmentState: UIControl.State) {
         if elementsIndices?[type] != -1 {
-            let subview = reactSubviews()[elementsIndices![type]!]
-            if subview is RNRImage {
-                searchController.searchBar.setScopeBarButtonDividerImage((subview as! RNRImageProtocol).getImage(), forLeftSegmentState: forLeftSegmentState, rightSegmentState: rightSegmentState)
+            if let subview = reactSubviews()[elementsIndices![type]!] as? RNRImage {
+                searchController.searchBar.setScopeBarButtonDividerImage(subview.getImage(), forLeftSegmentState: forLeftSegmentState, rightSegmentState: rightSegmentState)
             }
-        } else if searchController.view != nil {
+        } else {
             searchController.searchBar.setScopeBarButtonDividerImage(nil, forLeftSegmentState: forLeftSegmentState, rightSegmentState: rightSegmentState)
         }
     }
@@ -698,6 +782,40 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
         if !subview.subviews.isEmpty {
             for view in subview.subviews {
                 let result = findTextField(view)
+                if result != nil {
+                    match = result
+                    break
+                }
+            }
+        }
+        return match
+    }
+
+    func findCancelButton(_ subview: UIView) -> UIButton? {
+        if subview is UIButton {
+            return subview as? UIButton
+        }
+        var match: UIButton? = nil
+        if !subview.subviews.isEmpty {
+            for view in subview.subviews {
+                let result = findCancelButton(view)
+                if result != nil {
+                    match = result
+                    break
+                }
+            }
+        }
+        return match
+    }
+
+    func findSegmentedControl(_ subview: UIView) -> UISegmentedControl? {
+        if subview is UISegmentedControl {
+            return subview as? UISegmentedControl
+        }
+        var match: UISegmentedControl? = nil
+        if !subview.subviews.isEmpty {
+            for view in subview.subviews {
+                let result = findSegmentedControl(view)
                 if result != nil {
                     match = result
                     break

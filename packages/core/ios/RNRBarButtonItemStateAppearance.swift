@@ -4,6 +4,7 @@ class RNRBarButtonItemStateAppearance: UIView, RNRChild, RNRParent, RNRBarButton
     var isReady = false
     var hasUpdatedReactSubviews = false
 
+    @objc var elementsIndices: [String : Int]?
     @objc var titleStyle: NSDictionary?
     @objc var titlePositionAdjustment: NSDictionary?
     @objc var backgroundImagePositionAdjustment: NSDictionary?
@@ -81,14 +82,12 @@ class RNRBarButtonItemStateAppearance: UIView, RNRChild, RNRParent, RNRBarButton
             barButtonItemStateAppearance.backgroundImagePositionAdjustment = UIOffset()
         }
 
-        reactSubviews().enumerated().forEach { (index, subview) in
-            if index == 0 { // backgroundImage
-                if subview is RNRImageProtocol {
-                    barButtonItemStateAppearance.backgroundImage = (subview as! RNRImageProtocol).getImage()
-                } else {
-                    barButtonItemStateAppearance.backgroundImage = nil
-                }
+        if elementsIndices?["backgroundImage"] != -1 {
+            if let subview = reactSubviews()[elementsIndices!["backgroundImage"]!] as? RNRImageProtocol {
+                barButtonItemStateAppearance.backgroundImage = subview.getImage()
             }
+        } else {
+            barButtonItemStateAppearance.backgroundImage = nil
         }
     }
 }

@@ -1,7 +1,6 @@
 import React from 'react'
 import { requireNativeComponent } from 'react-native'
 import { StyleSheet } from '../../utils/StyleSheet'
-import { EmptyComponent } from './EmptyComponent'
 
 const RNRBarButtonItemAppearance = requireNativeComponent<any>(
   'RNRBarButtonItemAppearance'
@@ -19,16 +18,23 @@ const BarButtonItemAppearanceComponent: React.FC<
     configure?: 'plain' | 'done'
   }
 > = ({ normal, highlighted, disabled, focused, ...props }) => {
+  let index = 0
   return (
     <RNRBarButtonItemAppearance
       style={StyleSheet.absoluteHidden}
       pointerEvents="none"
       {...props}
+      elementsIndices={{
+        normal: normal ? index++ : -1,
+        highlighted: highlighted ? index++ : -1,
+        disabled: disabled ? index++ : -1,
+        focused: focused ? index++ : -1
+      }}
     >
-      {normal ? normal : <EmptyComponent />}
-      {highlighted ? highlighted : <EmptyComponent />}
-      {disabled ? disabled : <EmptyComponent />}
-      {focused ? focused : <EmptyComponent />}
+      {normal}
+      {highlighted}
+      {disabled}
+      {focused}
     </RNRBarButtonItemAppearance>
   )
 }

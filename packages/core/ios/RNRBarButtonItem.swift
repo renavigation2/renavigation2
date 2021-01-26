@@ -5,6 +5,7 @@ class RNRBarButtonItem: UIView, RNRChild, RNRParent, RNRBarButtonItemProtocol {
     var isReady = false
     var hasUpdatedReactSubviews = false
 
+    @objc var elementsIndices: [String : Int]?
     @objc var hasPrompt: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var fixedSpace: NSNumber?
     @objc var flexibleSpace: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
@@ -13,30 +14,30 @@ class RNRBarButtonItem: UIView, RNRChild, RNRParent, RNRBarButtonItemProtocol {
     @objc var imageInsets: NSDictionary?
     @objc var landscapeImagePhoneInsets: NSDictionary?
     @objc var largeContentSizeImageInsets: NSDictionary?
-    @objc var normalTitleStyle: NSDictionary?
-    @objc var focusedTitleStyle: NSDictionary?
-    @objc var disabledTitleStyle: NSDictionary?
-    @objc var highlightedTitleStyle: NSDictionary?
+    @objc var titleStyle: NSDictionary?
+    @objc var titleStyleFocused: NSDictionary?
+    @objc var titleStyleDisabled: NSDictionary?
+    @objc var titleStyleHighlighted: NSDictionary?
     @objc var _style: String?
     @objc var width: NSNumber?
     @objc var possibleTitles: NSArray?
     @objc var _tintColor: NSNumber?
-    @objc var defaultBackgroundVerticalPositionAdjustment: NSNumber?
-    @objc var compactBackgroundVerticalPositionAdjustment: NSNumber?
-    @objc var defaultPromptBackgroundVerticalPositionAdjustment: NSNumber?
-    @objc var compactPromptBackgroundVerticalPositionAdjustment: NSNumber?
-    @objc var defaultTitlePositionAdjustment: NSDictionary?
-    @objc var compactTitlePositionAdjustment: NSDictionary?
-    @objc var defaultPromptTitlePositionAdjustment: NSDictionary?
-    @objc var compactPromptTitlePositionAdjustment: NSDictionary?
-    @objc var defaultBackButtonTitlePositionAdjustment: NSDictionary?
-    @objc var compactBackButtonTitlePositionAdjustment: NSDictionary?
-    @objc var defaultPromptBackButtonTitlePositionAdjustment: NSDictionary?
-    @objc var compactPromptBackButtonTitlePositionAdjustment: NSDictionary?
-    @objc var defaultBackButtonBackgroundVerticalPositionAdjustment: NSNumber?
-    @objc var compactBackButtonBackgroundVerticalPositionAdjustment: NSNumber?
-    @objc var defaultPromptBackButtonBackgroundVerticalPositionAdjustment: NSNumber?
-    @objc var compactPromptBackButtonBackgroundVerticalPositionAdjustment: NSNumber?
+    @objc var backgroundVerticalPositionAdjustment: NSNumber?
+    @objc var backgroundVerticalPositionAdjustmentCompact: NSNumber?
+    @objc var backgroundVerticalPositionAdjustmentDefaultPrompt: NSNumber?
+    @objc var backgroundVerticalPositionAdjustmentCompactPrompt: NSNumber?
+    @objc var titlePositionAdjustment: NSDictionary?
+    @objc var titlePositionAdjustmentCompact: NSDictionary?
+    @objc var titlePositionAdjustmentDefaultPrompt: NSDictionary?
+    @objc var titlePositionAdjustmentCompactPrompt: NSDictionary?
+    @objc var backButtonTitlePositionAdjustment: NSDictionary?
+    @objc var backButtonTitlePositionAdjustmentCompact: NSDictionary?
+    @objc var backButtonTitlePositionAdjustmentDefaultPrompt: NSDictionary?
+    @objc var backButtonTitlePositionAdjustmentCompactPrompt: NSDictionary?
+    @objc var backButtonBackgroundVerticalPositionAdjustment: NSNumber?
+    @objc var backButtonBackgroundVerticalPositionAdjustmentCompact: NSNumber?
+    @objc var backButtonBackgroundVerticalPositionAdjustmentDefaultPrompt: NSNumber?
+    @objc var backButtonBackgroundVerticalPositionAdjustmentCompactPrompt: NSNumber?
 
     var hasSetDefaults = false
     var hasSetPromptDefaults = false
@@ -45,30 +46,30 @@ class RNRBarButtonItem: UIView, RNRChild, RNRParent, RNRBarButtonItemProtocol {
     var defaultImageInsets: UIEdgeInsets?
     var defaultLandscapeImagePhoneInsets: UIEdgeInsets?
     var defaultLargeContentSizeImageInsets: UIEdgeInsets?
-    var defaultNormalTitleStyle: [NSAttributedString.Key : Any]?
-    var defaultFocusedTitleStyle: [NSAttributedString.Key : Any]?
-    var defaultDisabledTitleStyle: [NSAttributedString.Key : Any]?
-    var defaultHighlightedTitleStyle: [NSAttributedString.Key : Any]?
+    var defaultTitleStyle: [NSAttributedString.Key : Any]?
+    var defaultTitleStyleFocused: [NSAttributedString.Key : Any]?
+    var defaultTitleStyleDisabled: [NSAttributedString.Key : Any]?
+    var defaultTitleStyleHighlighted: [NSAttributedString.Key : Any]?
     var defaultStyle: UIBarButtonItem.Style?
     var defaultWidth: CGFloat?
     var defaultPossibleTitles: Set<String>?
     var defaultTintColor: UIColor?
-    var defaultDefaultBackgroundVerticalPositionAdjustment: CGFloat?
-    var defaultCompactBackgroundVerticalPositionAdjustment: CGFloat?
-    var defaultDefaultPromptBackgroundVerticalPositionAdjustment: CGFloat?
-    var defaultCompactPromptBackgroundVerticalPositionAdjustment: CGFloat?
-    var defaultDefaultTitlePositionAdjustment: UIOffset?
-    var defaultCompactTitlePositionAdjustment: UIOffset?
-    var defaultDefaultPromptTitlePositionAdjustment: UIOffset?
-    var defaultCompactPromptTitlePositionAdjustment: UIOffset?
-    var defaultDefaultBackButtonTitlePositionAdjustment: UIOffset?
-    var defaultCompactBackButtonTitlePositionAdjustment: UIOffset?
-    var defaultDefaultPromptBackButtonTitlePositionAdjustment: UIOffset?
-    var defaultCompactPromptBackButtonTitlePositionAdjustment: UIOffset?
-    var defaultDefaultBackButtonBackgroundVerticalPositionAdjustment: CGFloat?
-    var defaultCompactBackButtonBackgroundVerticalPositionAdjustment: CGFloat?
-    var defaultDefaultPromptBackButtonBackgroundVerticalPositionAdjustment: CGFloat?
-    var defaultCompactPromptBackButtonBackgroundVerticalPositionAdjustment: CGFloat?
+    var defaultBackgroundVerticalPositionAdjustment: CGFloat?
+    var defaultBackgroundVerticalPositionAdjustmentCompact: CGFloat?
+    var defaultBackgroundVerticalPositionAdjustmentDefaultPrompt: CGFloat?
+    var defaultBackgroundVerticalPositionAdjustmentCompactPrompt: CGFloat?
+    var defaultTitlePositionAdjustment: UIOffset?
+    var defaultTitlePositionAdjustmentCompact: UIOffset?
+    var defaultTitlePositionAdjustmentDefaultPrompt: UIOffset?
+    var defaultTitlePositionAdjustmentCompactPrompt: UIOffset?
+    var defaultBackButtonTitlePositionAdjustment: UIOffset?
+    var defaultBackButtonTitlePositionAdjustmentCompact: UIOffset?
+    var defaultBackButtonTitlePositionAdjustmentDefaultPrompt: UIOffset?
+    var defaultBackButtonTitlePositionAdjustmentCompactPrompt: UIOffset?
+    var defaultBackButtonBackgroundVerticalPositionAdjustment: CGFloat?
+    var defaultBackButtonBackgroundVerticalPositionAdjustmentCompact: CGFloat?
+    var defaultBackButtonBackgroundVerticalPositionAdjustmentDefaultPrompt: CGFloat?
+    var defaultBackButtonBackgroundVerticalPositionAdjustmentCompactPrompt: CGFloat?
 
     var currentFixedSpace: NSNumber? = nil
     var currentFlexibleSpace: Bool? = nil
@@ -138,34 +139,35 @@ class RNRBarButtonItem: UIView, RNRChild, RNRParent, RNRBarButtonItemProtocol {
             if #available(iOS 11.0, *) {
                 defaultLargeContentSizeImageInsets = barButtonItem.largeContentSizeImageInsets
             }
-            defaultNormalTitleStyle = barButtonItem.titleTextAttributes(for: .normal)
-            defaultFocusedTitleStyle = barButtonItem.titleTextAttributes(for: .focused)
-            defaultDisabledTitleStyle = barButtonItem.titleTextAttributes(for: .disabled)
-            defaultHighlightedTitleStyle = barButtonItem.titleTextAttributes(for: .highlighted)
+            defaultTitleStyle = barButtonItem.titleTextAttributes(for: .normal)
+            defaultTitleStyleFocused = barButtonItem.titleTextAttributes(for: .focused)
+            defaultTitleStyleDisabled = barButtonItem.titleTextAttributes(for: .disabled)
+            defaultTitleStyleHighlighted = barButtonItem.titleTextAttributes(for: .highlighted)
             defaultStyle = barButtonItem.style
             defaultWidth = barButtonItem.width
             defaultPossibleTitles = barButtonItem.possibleTitles
             defaultTintColor = barButtonItem.tintColor
-            defaultDefaultBackgroundVerticalPositionAdjustment = barButtonItem.backgroundVerticalPositionAdjustment(for: .default)
-            defaultCompactBackgroundVerticalPositionAdjustment = barButtonItem.backgroundVerticalPositionAdjustment(for: .compact)
-            defaultDefaultTitlePositionAdjustment = barButtonItem.titlePositionAdjustment(for: .default)
-            defaultCompactTitlePositionAdjustment = barButtonItem.titlePositionAdjustment(for: .compact)
-            defaultDefaultBackButtonTitlePositionAdjustment = barButtonItem.backButtonTitlePositionAdjustment(for: .default)
-            defaultCompactBackButtonTitlePositionAdjustment = barButtonItem.backButtonTitlePositionAdjustment(for: .compact)
-            defaultDefaultBackButtonBackgroundVerticalPositionAdjustment = barButtonItem.backButtonBackgroundVerticalPositionAdjustment(for: .default)
-            defaultCompactBackButtonBackgroundVerticalPositionAdjustment = barButtonItem.backButtonBackgroundVerticalPositionAdjustment(for: .compact)
+
+            defaultBackgroundVerticalPositionAdjustment = barButtonItem.backgroundVerticalPositionAdjustment(for: .default)
+            defaultBackgroundVerticalPositionAdjustmentCompact = barButtonItem.backgroundVerticalPositionAdjustment(for: .compact)
+            defaultTitlePositionAdjustment = barButtonItem.titlePositionAdjustment(for: .default)
+            defaultTitlePositionAdjustmentCompact = barButtonItem.titlePositionAdjustment(for: .compact)
+            defaultBackButtonTitlePositionAdjustment = barButtonItem.backButtonTitlePositionAdjustment(for: .default)
+            defaultBackButtonTitlePositionAdjustmentCompact = barButtonItem.backButtonTitlePositionAdjustment(for: .compact)
+            defaultBackButtonBackgroundVerticalPositionAdjustment = barButtonItem.backButtonBackgroundVerticalPositionAdjustment(for: .default)
+            defaultBackButtonBackgroundVerticalPositionAdjustmentCompact = barButtonItem.backButtonBackgroundVerticalPositionAdjustment(for: .compact)
         }
 
         if hasPrompt == 1 && !hasSetPromptDefaults {
             hasSetPromptDefaults = true
-            defaultDefaultPromptBackgroundVerticalPositionAdjustment = barButtonItem.backgroundVerticalPositionAdjustment(for: .defaultPrompt)
-            defaultCompactPromptBackgroundVerticalPositionAdjustment = barButtonItem.backgroundVerticalPositionAdjustment(for: .compactPrompt)
-            defaultDefaultPromptTitlePositionAdjustment = barButtonItem.titlePositionAdjustment(for: .defaultPrompt)
-            defaultCompactPromptTitlePositionAdjustment = barButtonItem.titlePositionAdjustment(for: .compactPrompt)
-            defaultDefaultPromptBackButtonTitlePositionAdjustment = barButtonItem.backButtonTitlePositionAdjustment(for: .defaultPrompt)
-            defaultCompactPromptBackButtonTitlePositionAdjustment = barButtonItem.backButtonTitlePositionAdjustment(for: .compactPrompt)
-            defaultDefaultPromptBackButtonBackgroundVerticalPositionAdjustment = barButtonItem.backButtonBackgroundVerticalPositionAdjustment(for: .defaultPrompt)
-            defaultCompactPromptBackButtonBackgroundVerticalPositionAdjustment = barButtonItem.backButtonBackgroundVerticalPositionAdjustment(for: .compactPrompt)
+            defaultBackgroundVerticalPositionAdjustmentDefaultPrompt = barButtonItem.backgroundVerticalPositionAdjustment(for: .defaultPrompt)
+            defaultBackgroundVerticalPositionAdjustmentCompactPrompt = barButtonItem.backgroundVerticalPositionAdjustment(for: .compactPrompt)
+            defaultTitlePositionAdjustmentDefaultPrompt = barButtonItem.titlePositionAdjustment(for: .defaultPrompt)
+            defaultTitlePositionAdjustmentCompactPrompt = barButtonItem.titlePositionAdjustment(for: .compactPrompt)
+            defaultBackButtonTitlePositionAdjustmentDefaultPrompt = barButtonItem.backButtonTitlePositionAdjustment(for: .defaultPrompt)
+            defaultBackButtonTitlePositionAdjustmentCompactPrompt = barButtonItem.backButtonTitlePositionAdjustment(for: .compactPrompt)
+            defaultBackButtonBackgroundVerticalPositionAdjustmentDefaultPrompt = barButtonItem.backButtonBackgroundVerticalPositionAdjustment(for: .defaultPrompt)
+            defaultBackButtonBackgroundVerticalPositionAdjustmentCompactPrompt = barButtonItem.backButtonBackgroundVerticalPositionAdjustment(for: .compactPrompt)
         }
 
         if #available(iOS 14.0, *) {
@@ -228,28 +230,28 @@ class RNRBarButtonItem: UIView, RNRChild, RNRParent, RNRBarButtonItemProtocol {
             }
         }
 
-        if normalTitleStyle != nil {
-            barButtonItem.setTitleTextAttributes(RNRTextStyle.getStyles(normalTitleStyle!, defaultFontSize: 34, defaultFontWeight: "bold"), for: .normal)
+        if titleStyle != nil {
+            barButtonItem.setTitleTextAttributes(RNRTextStyle.getStyles(titleStyle!, defaultFontSize: 34, defaultFontWeight: "bold"), for: .normal)
         } else {
-            barButtonItem.setTitleTextAttributes(defaultNormalTitleStyle, for: .normal)
+            barButtonItem.setTitleTextAttributes(defaultTitleStyle, for: .normal)
         }
 
-        if focusedTitleStyle != nil {
-            barButtonItem.setTitleTextAttributes(RNRTextStyle.getStyles(focusedTitleStyle!, defaultFontSize: 34, defaultFontWeight: "bold"), for: .focused)
+        if titleStyleFocused != nil {
+            barButtonItem.setTitleTextAttributes(RNRTextStyle.getStyles(titleStyleFocused!, defaultFontSize: 34, defaultFontWeight: "bold"), for: .focused)
         } else {
-            barButtonItem.setTitleTextAttributes(defaultFocusedTitleStyle, for: .focused)
+            barButtonItem.setTitleTextAttributes(defaultTitleStyleFocused, for: .focused)
         }
 
-        if disabledTitleStyle != nil {
-            barButtonItem.setTitleTextAttributes(RNRTextStyle.getStyles(disabledTitleStyle!, defaultFontSize: 34, defaultFontWeight: "bold"), for: .disabled)
+        if titleStyleDisabled != nil {
+            barButtonItem.setTitleTextAttributes(RNRTextStyle.getStyles(titleStyleDisabled!, defaultFontSize: 34, defaultFontWeight: "bold"), for: .disabled)
         } else {
-            barButtonItem.setTitleTextAttributes(defaultDisabledTitleStyle, for: .disabled)
+            barButtonItem.setTitleTextAttributes(defaultTitleStyleDisabled, for: .disabled)
         }
 
-        if highlightedTitleStyle != nil {
-            barButtonItem.setTitleTextAttributes(RNRTextStyle.getStyles(highlightedTitleStyle!, defaultFontSize: 34, defaultFontWeight: "bold"), for: .highlighted)
+        if titleStyleHighlighted != nil {
+            barButtonItem.setTitleTextAttributes(RNRTextStyle.getStyles(titleStyleHighlighted!, defaultFontSize: 34, defaultFontWeight: "bold"), for: .highlighted)
         } else {
-            barButtonItem.setTitleTextAttributes(defaultHighlightedTitleStyle, for: .highlighted)
+            barButtonItem.setTitleTextAttributes(defaultTitleStyleHighlighted, for: .highlighted)
         }
 
         if _style == "plain" {
@@ -278,374 +280,208 @@ class RNRBarButtonItem: UIView, RNRChild, RNRParent, RNRBarButtonItemProtocol {
             barButtonItem.tintColor = defaultTintColor
         }
 
-        if defaultBackgroundVerticalPositionAdjustment != nil {
-            barButtonItem.setBackgroundVerticalPositionAdjustment(defaultBackgroundVerticalPositionAdjustment as! CGFloat, for: .default)
+        if backgroundVerticalPositionAdjustment != nil {
+            barButtonItem.setBackgroundVerticalPositionAdjustment(backgroundVerticalPositionAdjustment as! CGFloat, for: .default)
         } else {
-            barButtonItem.setBackgroundVerticalPositionAdjustment(defaultDefaultBackgroundVerticalPositionAdjustment!, for: .default)
+            barButtonItem.setBackgroundVerticalPositionAdjustment(defaultBackgroundVerticalPositionAdjustment!, for: .default)
         }
 
-        if compactBackgroundVerticalPositionAdjustment != nil {
-            barButtonItem.setBackgroundVerticalPositionAdjustment(compactBackgroundVerticalPositionAdjustment as! CGFloat, for: .compact)
+        if backgroundVerticalPositionAdjustmentCompact != nil {
+            barButtonItem.setBackgroundVerticalPositionAdjustment(backgroundVerticalPositionAdjustmentCompact as! CGFloat, for: .compact)
         } else {
-            barButtonItem.setBackgroundVerticalPositionAdjustment(defaultCompactBackgroundVerticalPositionAdjustment!, for: .compact)
+            barButtonItem.setBackgroundVerticalPositionAdjustment(defaultBackgroundVerticalPositionAdjustmentCompact!, for: .compact)
         }
 
         if hasPrompt == 1 {
-            if defaultPromptBackgroundVerticalPositionAdjustment != nil {
-                barButtonItem.setBackgroundVerticalPositionAdjustment(defaultPromptBackgroundVerticalPositionAdjustment as! CGFloat, for: .defaultPrompt)
+            if backgroundVerticalPositionAdjustmentDefaultPrompt != nil {
+                barButtonItem.setBackgroundVerticalPositionAdjustment(backgroundVerticalPositionAdjustmentDefaultPrompt as! CGFloat, for: .defaultPrompt)
             } else {
-                barButtonItem.setBackgroundVerticalPositionAdjustment(defaultDefaultPromptBackgroundVerticalPositionAdjustment!, for: .defaultPrompt)
+                barButtonItem.setBackgroundVerticalPositionAdjustment(defaultBackgroundVerticalPositionAdjustmentDefaultPrompt!, for: .defaultPrompt)
             }
 
-            if compactPromptBackgroundVerticalPositionAdjustment != nil {
-                barButtonItem.setBackgroundVerticalPositionAdjustment(compactPromptBackgroundVerticalPositionAdjustment as! CGFloat, for: .compactPrompt)
+            if backgroundVerticalPositionAdjustmentCompactPrompt != nil {
+                barButtonItem.setBackgroundVerticalPositionAdjustment(backgroundVerticalPositionAdjustmentCompactPrompt as! CGFloat, for: .compactPrompt)
             } else {
-                barButtonItem.setBackgroundVerticalPositionAdjustment(defaultCompactPromptBackgroundVerticalPositionAdjustment!, for: .compactPrompt)
+                barButtonItem.setBackgroundVerticalPositionAdjustment(defaultBackgroundVerticalPositionAdjustmentCompactPrompt!, for: .compactPrompt)
             }
         }
 
-        if defaultTitlePositionAdjustment != nil {
-            barButtonItem.setTitlePositionAdjustment(RNROffset.getOffset(defaultTitlePositionAdjustment!) ?? defaultDefaultTitlePositionAdjustment!, for: .default)
+        if titlePositionAdjustment != nil {
+            barButtonItem.setTitlePositionAdjustment(RNROffset.getOffset(titlePositionAdjustment!) ?? defaultTitlePositionAdjustment!, for: .default)
         } else {
-            barButtonItem.setTitlePositionAdjustment(defaultDefaultTitlePositionAdjustment!, for: .default)
+            barButtonItem.setTitlePositionAdjustment(defaultTitlePositionAdjustment!, for: .default)
         }
 
-        if compactTitlePositionAdjustment != nil {
-            barButtonItem.setTitlePositionAdjustment(RNROffset.getOffset(compactTitlePositionAdjustment!) ?? defaultCompactTitlePositionAdjustment!, for: .compact)
+        if titlePositionAdjustmentCompact != nil {
+            barButtonItem.setTitlePositionAdjustment(RNROffset.getOffset(titlePositionAdjustmentCompact!) ?? defaultTitlePositionAdjustmentCompact!, for: .compact)
         } else {
-            barButtonItem.setTitlePositionAdjustment(defaultCompactTitlePositionAdjustment!, for: .compact)
+            barButtonItem.setTitlePositionAdjustment(defaultTitlePositionAdjustmentCompact!, for: .compact)
         }
 
         if hasPrompt == 1 {
-            if defaultPromptTitlePositionAdjustment != nil {
-                barButtonItem.setTitlePositionAdjustment(RNROffset.getOffset(defaultPromptTitlePositionAdjustment!) ?? defaultDefaultPromptTitlePositionAdjustment!, for: .defaultPrompt)
+            if titlePositionAdjustmentDefaultPrompt != nil {
+                barButtonItem.setTitlePositionAdjustment(RNROffset.getOffset(titlePositionAdjustmentDefaultPrompt!) ?? defaultTitlePositionAdjustmentDefaultPrompt!, for: .defaultPrompt)
             } else {
-                barButtonItem.setTitlePositionAdjustment(defaultDefaultPromptTitlePositionAdjustment!, for: .defaultPrompt)
+                barButtonItem.setTitlePositionAdjustment(defaultTitlePositionAdjustmentDefaultPrompt!, for: .defaultPrompt)
             }
 
-            if compactPromptTitlePositionAdjustment != nil {
-                barButtonItem.setTitlePositionAdjustment(RNROffset.getOffset(compactPromptTitlePositionAdjustment!) ?? defaultCompactPromptTitlePositionAdjustment!, for: .compactPrompt)
+            if titlePositionAdjustmentCompactPrompt != nil {
+                barButtonItem.setTitlePositionAdjustment(RNROffset.getOffset(titlePositionAdjustmentCompactPrompt!) ?? defaultTitlePositionAdjustmentCompactPrompt!, for: .compactPrompt)
             } else {
-                barButtonItem.setTitlePositionAdjustment(defaultCompactPromptTitlePositionAdjustment!, for: .compactPrompt)
+                barButtonItem.setTitlePositionAdjustment(defaultTitlePositionAdjustmentCompactPrompt!, for: .compactPrompt)
             }
         }
 
-        if defaultBackButtonTitlePositionAdjustment != nil {
-            barButtonItem.setBackButtonTitlePositionAdjustment(RNROffset.getOffset(defaultBackButtonTitlePositionAdjustment!) ?? defaultDefaultBackButtonTitlePositionAdjustment!, for: .default)
+        if backButtonTitlePositionAdjustment != nil {
+            barButtonItem.setBackButtonTitlePositionAdjustment(RNROffset.getOffset(backButtonTitlePositionAdjustment!) ?? defaultBackButtonTitlePositionAdjustment!, for: .default)
         } else {
-            barButtonItem.setBackButtonTitlePositionAdjustment(defaultDefaultBackButtonTitlePositionAdjustment!, for: .default)
+            barButtonItem.setBackButtonTitlePositionAdjustment(defaultBackButtonTitlePositionAdjustment!, for: .default)
         }
 
-        if compactBackButtonTitlePositionAdjustment != nil {
-            barButtonItem.setBackButtonTitlePositionAdjustment(RNROffset.getOffset(compactBackButtonTitlePositionAdjustment!) ?? defaultCompactBackButtonTitlePositionAdjustment!, for: .compact)
+        if backButtonTitlePositionAdjustmentCompact != nil {
+            barButtonItem.setBackButtonTitlePositionAdjustment(RNROffset.getOffset(backButtonTitlePositionAdjustmentCompact!) ?? defaultBackButtonTitlePositionAdjustment!, for: .compact)
         } else {
-            barButtonItem.setBackButtonTitlePositionAdjustment(defaultCompactBackButtonTitlePositionAdjustment!, for: .compact)
+            barButtonItem.setBackButtonTitlePositionAdjustment(defaultBackButtonTitlePositionAdjustment!, for: .compact)
         }
 
         if hasPrompt == 1 {
-            if defaultPromptBackButtonTitlePositionAdjustment != nil {
-                barButtonItem.setBackButtonTitlePositionAdjustment(RNROffset.getOffset(defaultPromptBackButtonTitlePositionAdjustment!) ?? defaultDefaultPromptBackButtonTitlePositionAdjustment!, for: .defaultPrompt)
+            if backButtonTitlePositionAdjustmentDefaultPrompt != nil {
+                barButtonItem.setBackButtonTitlePositionAdjustment(RNROffset.getOffset(backButtonTitlePositionAdjustmentDefaultPrompt!) ?? defaultBackButtonTitlePositionAdjustmentDefaultPrompt!, for: .defaultPrompt)
             } else {
-                barButtonItem.setBackButtonTitlePositionAdjustment(defaultDefaultPromptBackButtonTitlePositionAdjustment!, for: .defaultPrompt)
+                barButtonItem.setBackButtonTitlePositionAdjustment(defaultBackButtonTitlePositionAdjustmentDefaultPrompt!, for: .defaultPrompt)
             }
 
-            if compactPromptBackButtonTitlePositionAdjustment != nil {
-                barButtonItem.setBackButtonTitlePositionAdjustment(RNROffset.getOffset(compactPromptBackButtonTitlePositionAdjustment!) ?? defaultCompactPromptBackButtonTitlePositionAdjustment!, for: .compactPrompt)
+            if backButtonTitlePositionAdjustmentCompactPrompt != nil {
+                barButtonItem.setBackButtonTitlePositionAdjustment(RNROffset.getOffset(backButtonTitlePositionAdjustmentCompactPrompt!) ?? defaultBackButtonTitlePositionAdjustmentCompactPrompt!, for: .compactPrompt)
             } else {
-                barButtonItem.setBackButtonTitlePositionAdjustment(defaultCompactPromptBackButtonTitlePositionAdjustment!, for: .compactPrompt)
+                barButtonItem.setBackButtonTitlePositionAdjustment(defaultBackButtonTitlePositionAdjustmentCompactPrompt!, for: .compactPrompt)
             }
         }
 
-        if defaultBackButtonBackgroundVerticalPositionAdjustment != nil {
-            barButtonItem.setBackButtonBackgroundVerticalPositionAdjustment(defaultBackButtonBackgroundVerticalPositionAdjustment as! CGFloat, for: .default)
+        if backButtonBackgroundVerticalPositionAdjustment != nil {
+            barButtonItem.setBackButtonBackgroundVerticalPositionAdjustment(backButtonBackgroundVerticalPositionAdjustment as! CGFloat, for: .default)
         } else {
-            barButtonItem.setBackButtonBackgroundVerticalPositionAdjustment(defaultDefaultBackButtonBackgroundVerticalPositionAdjustment!, for: .default)
+            barButtonItem.setBackButtonBackgroundVerticalPositionAdjustment(defaultBackButtonBackgroundVerticalPositionAdjustment!, for: .default)
         }
 
-        if compactBackButtonBackgroundVerticalPositionAdjustment != nil {
-            barButtonItem.setBackButtonBackgroundVerticalPositionAdjustment(compactBackButtonBackgroundVerticalPositionAdjustment as! CGFloat, for: .compact)
+        if backButtonBackgroundVerticalPositionAdjustmentCompact != nil {
+            barButtonItem.setBackButtonBackgroundVerticalPositionAdjustment(backButtonBackgroundVerticalPositionAdjustmentCompact as! CGFloat, for: .compact)
         } else {
-            barButtonItem.setBackButtonBackgroundVerticalPositionAdjustment(defaultCompactBackButtonBackgroundVerticalPositionAdjustment!, for: .compact)
+            barButtonItem.setBackButtonBackgroundVerticalPositionAdjustment(defaultBackButtonBackgroundVerticalPositionAdjustmentCompact!, for: .compact)
         }
 
         if hasPrompt == 1 {
-            if defaultPromptBackButtonBackgroundVerticalPositionAdjustment != nil {
-                barButtonItem.setBackButtonBackgroundVerticalPositionAdjustment(defaultPromptBackButtonBackgroundVerticalPositionAdjustment as! CGFloat, for: .defaultPrompt)
+            if backButtonBackgroundVerticalPositionAdjustmentDefaultPrompt != nil {
+                barButtonItem.setBackButtonBackgroundVerticalPositionAdjustment(backButtonBackgroundVerticalPositionAdjustmentDefaultPrompt as! CGFloat, for: .defaultPrompt)
             } else {
-                barButtonItem.setBackButtonBackgroundVerticalPositionAdjustment(defaultDefaultPromptBackButtonBackgroundVerticalPositionAdjustment!, for: .defaultPrompt)
+                barButtonItem.setBackButtonBackgroundVerticalPositionAdjustment(defaultBackButtonBackgroundVerticalPositionAdjustmentDefaultPrompt!, for: .defaultPrompt)
             }
 
-            if compactPromptBackButtonBackgroundVerticalPositionAdjustment != nil {
-                barButtonItem.setBackButtonBackgroundVerticalPositionAdjustment(compactPromptBackButtonBackgroundVerticalPositionAdjustment as! CGFloat, for: .compactPrompt)
+            if backButtonBackgroundVerticalPositionAdjustmentCompactPrompt != nil {
+                barButtonItem.setBackButtonBackgroundVerticalPositionAdjustment(backButtonBackgroundVerticalPositionAdjustmentCompactPrompt as! CGFloat, for: .compactPrompt)
             } else {
-                barButtonItem.setBackButtonBackgroundVerticalPositionAdjustment(defaultCompactPromptBackButtonBackgroundVerticalPositionAdjustment!, for: .compactPrompt)
+                barButtonItem.setBackButtonBackgroundVerticalPositionAdjustment(defaultBackButtonBackgroundVerticalPositionAdjustmentCompactPrompt!, for: .compactPrompt)
             }
         }
 
-        reactSubviews().enumerated().forEach { (index, subview) in
-            if index == 0 { // primaryAction
-                if #available(iOS 14.0, *) {
-                    if subview is RNRActionProtocol {
-                        barButtonItem.primaryAction = (subview as! RNRActionProtocol).getAction()
-                    } else {
-                        barButtonItem.primaryAction = nil
-                    }
+        if #available(iOS 14.0, *) {
+            if elementsIndices?["primaryAction"] != -1 {
+                if let subview = reactSubviews()[elementsIndices!["primaryAction"]!] as? RNRActionProtocol {
+                    barButtonItem.primaryAction = subview.getAction()
                 }
-            } else if index == 1 { // menu
-                if #available(iOS 14.0, *) {
-                    if subview is RNRMenuProtocol {
-                        barButtonItem.menu = (subview as! RNRMenuProtocol).getMenu()
-                    } else {
-                        barButtonItem.menu = nil
-                    }
+            } else {
+                barButtonItem.primaryAction = nil
+            }
+
+            if elementsIndices?["menu"] != -1 {
+                if let subview = reactSubviews()[elementsIndices!["menu"]!] as? RNRMenuProtocol {
+                    barButtonItem.menu = subview.getMenu()
                 }
-            } else if index == 2 { // image
-                if subview is RNRImageProtocol {
-                    barButtonItem.image = (subview as! RNRImageProtocol).getImage()
-                } else {
-                    barButtonItem.image = nil
-                }
-            } else if index == 3 { // landscapeImagePhone
-                if subview is RNRImageProtocol {
-                    barButtonItem.landscapeImagePhone = (subview as! RNRImageProtocol).getImage()
-                } else {
-                    barButtonItem.landscapeImagePhone = nil
-                }
-            } else if index == 4 { // largeContentSizeImage
-                if #available(iOS 11.0, *) {
-                    if subview is RNRImageProtocol {
-                        barButtonItem.largeContentSizeImage = (subview as! RNRImageProtocol).getImage()
-                    } else {
-                        barButtonItem.largeContentSizeImage = nil
-                    }
-                }
-            } else if index == 5 { // normalDefaultBackgroundImage
-                if subview is RNRImageProtocol {
-                    barButtonItem.setBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .normal, barMetrics: .default)
-                } else {
-                    barButtonItem.setBackgroundImage(nil, for: .normal, barMetrics: .default)
-                }
-            } else if index == 6 { // normalCompactBackgroundImage
-                if subview is RNRImageProtocol {
-                    barButtonItem.setBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .normal, barMetrics: .compact)
-                } else {
-                    barButtonItem.setBackgroundImage(nil, for: .normal, barMetrics: .compact)
-                }
-            } else if index == 7 { // focusedDefaultBackgroundImage
-                if subview is RNRImageProtocol {
-                    barButtonItem.setBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .focused, barMetrics: .default)
-                } else {
-                    barButtonItem.setBackgroundImage(nil, for: .focused, barMetrics: .default)
-                }
-            } else if index == 8 { // focusedCompactBackgroundImage
-                if subview is RNRImageProtocol {
-                    barButtonItem.setBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .focused, barMetrics: .compact)
-                } else {
-                    barButtonItem.setBackgroundImage(nil, for: .focused, barMetrics: .compact)
-                }
-            } else if index == 9 { // disabledDefaultBackgroundImage
-                if subview is RNRImageProtocol {
-                    barButtonItem.setBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .disabled, barMetrics: .default)
-                } else {
-                    barButtonItem.setBackgroundImage(nil, for: .disabled, barMetrics: .default)
-                }
-            } else if index == 10 { // disabledCompactBackgroundImage
-                if subview is RNRImageProtocol {
-                    barButtonItem.setBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .disabled, barMetrics: .compact)
-                } else {
-                    barButtonItem.setBackgroundImage(nil, for: .disabled, barMetrics: .compact)
-                }
-            } else if index == 11 { // highlightedDefaultBackgroundImage
-                if subview is RNRImageProtocol {
-                    barButtonItem.setBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .highlighted, barMetrics: .default)
-                } else {
-                    barButtonItem.setBackgroundImage(nil, for: .highlighted, barMetrics: .default)
-                }
-            } else if index == 12 { // highlightedCompactBackgroundImage
-                if subview is RNRImageProtocol {
-                    barButtonItem.setBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .highlighted, barMetrics: .compact)
-                } else {
-                    barButtonItem.setBackgroundImage(nil, for: .highlighted, barMetrics: .compact)
-                }
-            } else if index == 13 { // normalDefaultBackButtonBackgroundImage
-                if subview is RNRImageProtocol {
-                    barButtonItem.setBackButtonBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .normal, barMetrics: .default)
-                } else {
-                    barButtonItem.setBackButtonBackgroundImage(nil, for: .normal, barMetrics: .default)
-                }
-            } else if index == 14 { // normalCompactBackButtonBackgroundImage
-                if subview is RNRImageProtocol {
-                    barButtonItem.setBackButtonBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .normal, barMetrics: .compact)
-                } else {
-                    barButtonItem.setBackButtonBackgroundImage(nil, for: .normal, barMetrics: .compact)
-                }
-            } else if index == 15 { // focusedDefaultBackButtonBackgroundImage
-                if subview is RNRImageProtocol {
-                    barButtonItem.setBackButtonBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .focused, barMetrics: .default)
-                } else {
-                    barButtonItem.setBackButtonBackgroundImage(nil, for: .focused, barMetrics: .default)
-                }
-            } else if index == 16 { // focusedCompactBackButtonBackgroundImage
-                if subview is RNRImageProtocol {
-                    barButtonItem.setBackButtonBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .focused, barMetrics: .compact)
-                } else {
-                    barButtonItem.setBackButtonBackgroundImage(nil, for: .focused, barMetrics: .compact)
-                }
-            } else if index == 17 { // disabledDefaultBackButtonBackgroundImage
-                if subview is RNRImageProtocol {
-                    barButtonItem.setBackButtonBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .disabled, barMetrics: .default)
-                } else {
-                    barButtonItem.setBackButtonBackgroundImage(nil, for: .disabled, barMetrics: .default)
-                }
-            } else if index == 18 { // disabledCompactBackButtonBackgroundImage
-                if subview is RNRImageProtocol {
-                    barButtonItem.setBackButtonBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .disabled, barMetrics: .compact)
-                } else {
-                    barButtonItem.setBackButtonBackgroundImage(nil, for: .disabled, barMetrics: .compact)
-                }
-            } else if index == 19 { // highlightedDefaultBackButtonBackgroundImage
-                if subview is RNRImageProtocol {
-                    barButtonItem.setBackButtonBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .highlighted, barMetrics: .default)
-                } else {
-                    barButtonItem.setBackButtonBackgroundImage(nil, for: .highlighted, barMetrics: .default)
-                }
-            } else if index == 20 { // highlightedCompactBackButtonBackgroundImage
-                if subview is RNRImageProtocol {
-                    barButtonItem.setBackButtonBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .highlighted, barMetrics: .compact)
-                } else {
-                    barButtonItem.setBackButtonBackgroundImage(nil, for: .highlighted, barMetrics: .compact)
-                }
-            } else if index == 21 { // normalDefaultPromptBackgroundImage
-                if hasPrompt == 1 {
-                    if subview is RNRImageProtocol {
-                        barButtonItem.setBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .normal, barMetrics: .defaultPrompt)
-                    } else {
-                        barButtonItem.setBackgroundImage(nil, for: .normal, barMetrics: .defaultPrompt)
-                    }
-                }
-            } else if index == 22 { // normalCompactPromptBackgroundImage
-                if hasPrompt == 1 {
-                    if subview is RNRImageProtocol {
-                        barButtonItem.setBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .normal, barMetrics: .compactPrompt)
-                    } else {
-                        barButtonItem.setBackgroundImage(nil, for: .normal, barMetrics: .compactPrompt)
-                    }
-                }
-            } else if index == 23 { // focusedDefaultPromptBackgroundImage
-                if hasPrompt == 1 {
-                    if subview is RNRImageProtocol {
-                        barButtonItem.setBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .focused, barMetrics: .defaultPrompt)
-                    } else {
-                        barButtonItem.setBackgroundImage(nil, for: .focused, barMetrics: .defaultPrompt)
-                    }
-                }
-            } else if index == 24 { // focusedCompactPromptBackgroundImage
-                if hasPrompt == 1 {
-                    if subview is RNRImageProtocol {
-                        barButtonItem.setBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .focused, barMetrics: .compactPrompt)
-                    } else {
-                        barButtonItem.setBackgroundImage(nil, for: .focused, barMetrics: .compactPrompt)
-                    }
-                }
-            } else if index == 25 { // disabledDefaultPromptBackgroundImage
-                if hasPrompt == 1 {
-                    if subview is RNRImageProtocol {
-                        barButtonItem.setBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .disabled, barMetrics: .defaultPrompt)
-                    } else {
-                        barButtonItem.setBackgroundImage(nil, for: .disabled, barMetrics: .defaultPrompt)
-                    }
-                }
-            } else if index == 26 { // disabledCompactPromptBackgroundImage
-                if hasPrompt == 1 {
-                    if subview is RNRImageProtocol {
-                        barButtonItem.setBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .disabled, barMetrics: .compactPrompt)
-                    } else {
-                        barButtonItem.setBackgroundImage(nil, for: .disabled, barMetrics: .compactPrompt)
-                    }
-                }
-            } else if index == 27 { // highlightedDefaultPromptBackgroundImage
-                if hasPrompt == 1 {
-                    if subview is RNRImageProtocol {
-                        barButtonItem.setBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .highlighted, barMetrics: .defaultPrompt)
-                    } else {
-                        barButtonItem.setBackgroundImage(nil, for: .highlighted, barMetrics: .defaultPrompt)
-                    }
-                }
-            } else if index == 28 { // highlightedCompactPromptBackgroundImage
-                if hasPrompt == 1 {
-                    if subview is RNRImageProtocol {
-                        barButtonItem.setBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .highlighted, barMetrics: .compactPrompt)
-                    } else {
-                        barButtonItem.setBackgroundImage(nil, for: .highlighted, barMetrics: .compactPrompt)
-                    }
-                }
-            } else if index == 29 { // normalDefaultPromptBackButtonBackgroundImage
-                if hasPrompt == 1 {
-                    if subview is RNRImageProtocol {
-                        barButtonItem.setBackButtonBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .normal, barMetrics: .defaultPrompt)
-                    } else {
-                        barButtonItem.setBackButtonBackgroundImage(nil, for: .normal, barMetrics: .defaultPrompt)
-                    }
-                }
-            } else if index == 30 { // normalCompactPromptBackButtonBackgroundImage
-                if hasPrompt == 1 {
-                    if subview is RNRImageProtocol {
-                        barButtonItem.setBackButtonBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .normal, barMetrics: .compactPrompt)
-                    } else {
-                        barButtonItem.setBackButtonBackgroundImage(nil, for: .normal, barMetrics: .compactPrompt)
-                    }
-                }
-            } else if index == 31 { // focusedDefaultPromptBackButtonBackgroundImage
-                if hasPrompt == 1 {
-                    if subview is RNRImageProtocol {
-                        barButtonItem.setBackButtonBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .focused, barMetrics: .defaultPrompt)
-                    } else {
-                        barButtonItem.setBackButtonBackgroundImage(nil, for: .focused, barMetrics: .defaultPrompt)
-                    }
-                }
-            } else if index == 32 { // focusedCompactPromptBackButtonBackgroundImage
-                if hasPrompt == 1 {
-                    if subview is RNRImageProtocol {
-                        barButtonItem.setBackButtonBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .focused, barMetrics: .compactPrompt)
-                    } else {
-                        barButtonItem.setBackButtonBackgroundImage(nil, for: .focused, barMetrics: .compactPrompt)
-                    }
-                }
-            } else if index == 33 { // disabledDefaultPromptBackButtonBackgroundImage
-                if hasPrompt == 1 {
-                    if subview is RNRImageProtocol {
-                        barButtonItem.setBackButtonBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .disabled, barMetrics: .defaultPrompt)
-                    } else {
-                        barButtonItem.setBackButtonBackgroundImage(nil, for: .disabled, barMetrics: .defaultPrompt)
-                    }
-                }
-            } else if index == 34 { // disabledCompactPromptBackButtonBackgroundImage
-                if hasPrompt == 1 {
-                    if subview is RNRImageProtocol {
-                        barButtonItem.setBackButtonBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .disabled, barMetrics: .compactPrompt)
-                    } else {
-                        barButtonItem.setBackButtonBackgroundImage(nil, for: .disabled, barMetrics: .compactPrompt)
-                    }
-                }
-            } else if index == 35 { // highlightedDefaultPromptBackButtonBackgroundImage
-                if hasPrompt == 1 {
-                    if subview is RNRImageProtocol {
-                        barButtonItem.setBackButtonBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .highlighted, barMetrics: .defaultPrompt)
-                    } else {
-                        barButtonItem.setBackButtonBackgroundImage(nil, for: .highlighted, barMetrics: .defaultPrompt)
-                    }
-                }
-            } else if index == 36 { // highlightedCompactPromptBackButtonBackgroundImage
-                if hasPrompt == 1 {
-                    if subview is RNRImageProtocol {
-                        barButtonItem.setBackButtonBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .highlighted, barMetrics: .compactPrompt)
-                    } else {
-                        barButtonItem.setBackButtonBackgroundImage(nil, for: .highlighted, barMetrics: .compactPrompt)
-                    }
-                }
+            } else {
+                barButtonItem.menu = nil
             }
         }
+
+        if elementsIndices?["image"] != -1 {
+            if let subview = reactSubviews()[elementsIndices!["image"]!] as? RNRImageProtocol {
+                barButtonItem.image = subview.getImage()
+            }
+        } else {
+            barButtonItem.image = nil
+        }
+
+        if elementsIndices?["landscapeImagePhone"] != -1 {
+            if let subview = reactSubviews()[elementsIndices!["landscapeImagePhone"]!] as? RNRImageProtocol {
+                barButtonItem.landscapeImagePhone = subview.getImage()
+            }
+        } else {
+            barButtonItem.landscapeImagePhone = nil
+        }
+
+        if #available(iOS 11.0, *) {
+            if elementsIndices?["largeContentSizeImage"] != -1 {
+                if let subview = reactSubviews()[elementsIndices!["largeContentSizeImage"]!] as? RNRImageProtocol {
+                    barButtonItem.largeContentSizeImage = subview.getImage()
+                }
+            } else {
+                barButtonItem.largeContentSizeImage = nil
+            }
+        }
+
+        setBackButtonBackgroundImage("backButtonBackgroundImage", for: .normal, barMetrics: .default)
+        setBackButtonBackgroundImage("backButtonBackgroundImageCompact", for: .normal, barMetrics: .compact)
+        setBackButtonBackgroundImage("backButtonBackgroundImageCompactDisabled", for: .disabled, barMetrics: .compact)
+        setBackButtonBackgroundImage("backButtonBackgroundImageCompactFocused", for: .focused, barMetrics: .compact)
+        setBackButtonBackgroundImage("backButtonBackgroundImageCompactHighlighted", for: .highlighted, barMetrics: .compact)
+        setBackButtonBackgroundImage("backButtonBackgroundImageCompactPrompt", for: .normal, barMetrics: .compactPrompt)
+        setBackButtonBackgroundImage("backButtonBackgroundImageCompactPromptDisabled", for: .disabled, barMetrics: .compactPrompt)
+        setBackButtonBackgroundImage("backButtonBackgroundImageCompactPromptFocused", for: .focused, barMetrics: .compactPrompt)
+        setBackButtonBackgroundImage("backButtonBackgroundImageCompactPromptHighlighted", for: .highlighted, barMetrics: .compactPrompt)
+        setBackButtonBackgroundImage("backButtonBackgroundImageDefaultPrompt", for: .normal, barMetrics: .defaultPrompt)
+        setBackButtonBackgroundImage("backButtonBackgroundImageDefaultPromptDisabled", for: .disabled, barMetrics: .defaultPrompt)
+        setBackButtonBackgroundImage("backButtonBackgroundImageDefaultPromptFocused", for: .focused, barMetrics: .defaultPrompt)
+        setBackButtonBackgroundImage("backButtonBackgroundImageDefaultPromptHighlighted", for: .highlighted, barMetrics: .defaultPrompt)
+        setBackButtonBackgroundImage("backButtonBackgroundImageDisabled", for: .disabled, barMetrics: .default)
+        setBackButtonBackgroundImage("backButtonBackgroundImageFocused", for: .focused, barMetrics: .default)
+        setBackButtonBackgroundImage("backButtonBackgroundImageHighlighted", for: .highlighted, barMetrics: .default)
+
+        setBackgroundImage("backgroundImage", for: .normal, barMetrics: .default)
+        setBackgroundImage("backgroundImageCompact", for: .normal, barMetrics: .compact)
+        setBackgroundImage("backgroundImageCompactDisabled", for: .disabled, barMetrics: .compact)
+        setBackgroundImage("backgroundImageCompactFocused", for: .focused, barMetrics: .compact)
+        setBackgroundImage("backgroundImageCompactHighlighted", for: .highlighted, barMetrics: .compact)
+        setBackgroundImage("backgroundImageCompactPrompt", for: .normal, barMetrics: .compactPrompt)
+        setBackgroundImage("backgroundImageCompactPromptDisabled", for: .disabled, barMetrics: .compactPrompt)
+        setBackgroundImage("backgroundImageCompactPromptFocused", for: .focused, barMetrics: .compactPrompt)
+        setBackgroundImage("backgroundImageCompactPromptHighlighted", for: .highlighted, barMetrics: .compactPrompt)
+        setBackgroundImage("backgroundImageDefaultPrompt", for: .normal, barMetrics: .defaultPrompt)
+        setBackgroundImage("backgroundImageDefaultPromptDisabled", for: .disabled, barMetrics: .defaultPrompt)
+        setBackgroundImage("backgroundImageDefaultPromptFocused", for: .focused, barMetrics: .defaultPrompt)
+        setBackgroundImage("backgroundImageDefaultPromptHighlighted", for: .highlighted, barMetrics: .defaultPrompt)
+        setBackgroundImage("backgroundImageDisabled", for: .disabled, barMetrics: .default)
+        setBackgroundImage("backgroundImageFocused", for: .focused, barMetrics: .default)
+        setBackgroundImage("backgroundImageHighlighted", for: .highlighted, barMetrics: .default)
 
         return barButtonItem
+    }
+
+    func setBackgroundImage(_ type: String, for state: UIControl.State, barMetrics: UIBarMetrics) {
+        if elementsIndices?[type] != -1 {
+            if let subview = reactSubviews()[elementsIndices![type]!] as? RNRImage {
+                barButtonItem.setBackgroundImage(subview.getImage(), for: state, barMetrics: barMetrics)
+            }
+        } else {
+            barButtonItem.setBackgroundImage(nil, for: state, barMetrics: barMetrics)
+        }
+    }
+
+    func setBackButtonBackgroundImage(_ type: String, for state: UIControl.State, barMetrics: UIBarMetrics) {
+        if elementsIndices?[type] != -1 {
+            if let subview = reactSubviews()[elementsIndices![type]!] as? RNRImage {
+                barButtonItem.setBackButtonBackgroundImage(subview.getImage(), for: state, barMetrics: barMetrics)
+            }
+        } else {
+            barButtonItem.setBackButtonBackgroundImage(nil, for: state, barMetrics: barMetrics)
+        }
     }
 }
