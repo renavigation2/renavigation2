@@ -385,16 +385,16 @@ class RNRBarButtonItem: UIView, RNRChild, RNRParent, RNRBarButtonItemProtocol {
         }
 
         if #available(iOS 14.0, *) {
-            if elementsIndices?["primaryAction"] != -1 {
-                if let subview = reactSubviews()[elementsIndices!["primaryAction"]!] as? RNRActionProtocol {
+            if elementsIndices?["primaryAction"] != nil && elementsIndices?["primaryAction"] != -1 {
+                if let subview = reactSubviews()?[elementsIndices!["primaryAction"]!] as? RNRActionProtocol {
                     barButtonItem.primaryAction = subview.getAction()
                 }
             } else {
                 barButtonItem.primaryAction = nil
             }
 
-            if elementsIndices?["menu"] != -1 {
-                if let subview = reactSubviews()[elementsIndices!["menu"]!] as? RNRMenuProtocol {
+            if elementsIndices?["menu"] != nil && elementsIndices?["menu"] != -1 {
+                if let subview = reactSubviews()?[elementsIndices!["menu"]!] as? RNRMenuProtocol {
                     barButtonItem.menu = subview.getMenu()
                 }
             } else {
@@ -402,16 +402,16 @@ class RNRBarButtonItem: UIView, RNRChild, RNRParent, RNRBarButtonItemProtocol {
             }
         }
 
-        if elementsIndices?["image"] != -1 {
-            if let subview = reactSubviews()[elementsIndices!["image"]!] as? RNRImageProtocol {
+        if elementsIndices?["image"] != nil && elementsIndices?["image"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["image"]!] as? RNRImageProtocol {
                 barButtonItem.image = subview.getImage()
             }
         } else {
             barButtonItem.image = nil
         }
 
-        if elementsIndices?["landscapeImagePhone"] != -1 {
-            if let subview = reactSubviews()[elementsIndices!["landscapeImagePhone"]!] as? RNRImageProtocol {
+        if elementsIndices?["landscapeImagePhone"] != nil && elementsIndices?["landscapeImagePhone"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["landscapeImagePhone"]!] as? RNRImageProtocol {
                 barButtonItem.landscapeImagePhone = subview.getImage()
             }
         } else {
@@ -419,8 +419,8 @@ class RNRBarButtonItem: UIView, RNRChild, RNRParent, RNRBarButtonItemProtocol {
         }
 
         if #available(iOS 11.0, *) {
-            if elementsIndices?["largeContentSizeImage"] != -1 {
-                if let subview = reactSubviews()[elementsIndices!["largeContentSizeImage"]!] as? RNRImageProtocol {
+            if elementsIndices?["largeContentSizeImage"] != nil && elementsIndices?["largeContentSizeImage"] != -1 {
+                if let subview = reactSubviews()?[elementsIndices!["largeContentSizeImage"]!] as? RNRImageProtocol {
                     barButtonItem.largeContentSizeImage = subview.getImage()
                 }
             } else {
@@ -467,7 +467,7 @@ class RNRBarButtonItem: UIView, RNRChild, RNRParent, RNRBarButtonItemProtocol {
 
     func setBackgroundImage(_ type: String, for state: UIControl.State, barMetrics: UIBarMetrics) {
         if elementsIndices?[type] != -1 {
-            if let subview = reactSubviews()[elementsIndices![type]!] as? RNRImage {
+            if let subview = reactSubviews()?[elementsIndices![type]!] as? RNRImage {
                 barButtonItem.setBackgroundImage(subview.getImage(), for: state, barMetrics: barMetrics)
             }
         } else {
@@ -477,7 +477,7 @@ class RNRBarButtonItem: UIView, RNRChild, RNRParent, RNRBarButtonItemProtocol {
 
     func setBackButtonBackgroundImage(_ type: String, for state: UIControl.State, barMetrics: UIBarMetrics) {
         if elementsIndices?[type] != -1 {
-            if let subview = reactSubviews()[elementsIndices![type]!] as? RNRImage {
+            if let subview = reactSubviews()?[elementsIndices![type]!] as? RNRImage {
                 barButtonItem.setBackButtonBackgroundImage(subview.getImage(), for: state, barMetrics: barMetrics)
             }
         } else {

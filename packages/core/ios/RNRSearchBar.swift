@@ -697,48 +697,48 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
         setScopeBarButtonDividerImage("scopeBarButtonDividerImageNormalLeftApplicationRight", forLeftSegmentState: .normal, rightSegmentState: .application)
         setScopeBarButtonDividerImage("scopeBarButtonDividerImageNormalLeftNormalRight", forLeftSegmentState: .normal, rightSegmentState: .normal)
 
-        if elementsIndices?["textFieldLeftView"] != -1 {
+        if elementsIndices?["textFieldLeftView"] != nil && elementsIndices?["textFieldLeftView"] != -1 {
             changedTextFieldLeftView = true
-            textField?.leftView = reactSubviews()[elementsIndices!["textFieldLeftView"]!]
+            textField?.leftView = reactSubviews()?[elementsIndices!["textFieldLeftView"]!]
         } else if textField?.leftView !== defaultTextFieldLeftView && changedTextFieldLeftView {
             changedTextFieldLeftView = false
             textField?.leftView = defaultTextFieldLeftView
         }
 
-        if elementsIndices?["textFieldRightView"] != -1 {
+        if elementsIndices?["textFieldRightView"] != nil && elementsIndices?["textFieldRightView"] != -1 {
             changedTextFieldRightView = true
-            textField?.rightView = reactSubviews()[elementsIndices!["textFieldRightView"]!]
+            textField?.rightView = reactSubviews()?[elementsIndices!["textFieldRightView"]!]
         } else if textField?.rightView != defaultTextFieldRightView && changedTextFieldRightView {
             changedTextFieldRightView = false
             textField?.rightView = defaultTextFieldRightView
         }
 
-        if elementsIndices?["textFieldInputAccessoryView"] != -1 {
+        if elementsIndices?["textFieldInputAccessoryView"] != nil && elementsIndices?["textFieldInputAccessoryView"] != -1 {
             changedTextFieldInputAccessoryView = true
-            textField?.inputAccessoryView = reactSubviews()[elementsIndices!["textFieldInputAccessoryView"]!]
+            textField?.inputAccessoryView = reactSubviews()?[elementsIndices!["textFieldInputAccessoryView"]!]
         } else if textField?.inputAccessoryView != defaultTextFieldInputAccessoryView && changedTextFieldInputAccessoryView {
             changedTextFieldInputAccessoryView = false
             textField?.inputAccessoryView = defaultTextFieldInputAccessoryView
         }
 
-        if elementsIndices?["textFieldBackgroundImage"] != -1 {
-            if let subview = reactSubviews()[elementsIndices!["textFieldBackgroundImage"]!] as? RNRImage {
+        if elementsIndices?["textFieldBackgroundImage"] != nil && elementsIndices?["textFieldBackgroundImage"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["textFieldBackgroundImage"]!] as? RNRImage {
                 textField?.background = subview.getImage()
             }
         } else if textField?.background != nil {
             textField?.background = nil
         }
 
-        if elementsIndices?["textFieldBackgroundImageDisabled"] != -1 {
-            if let subview = reactSubviews()[elementsIndices!["textFieldBackgroundImageDisabled"]!] as? RNRImage {
+        if elementsIndices?["textFieldBackgroundImageDisabled"] != nil && elementsIndices?["textFieldBackgroundImageDisabled"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["textFieldBackgroundImageDisabled"]!] as? RNRImage {
                 textField?.disabledBackground = subview.getImage()
             }
         } else if textField?.disabledBackground != nil {
             textField?.disabledBackground = nil
         }
 
-        if elementsIndices?["children"] != -1 {
-            searchController.view = reactSubviews()[elementsIndices!["children"]!]
+        if elementsIndices?["children"] != nil && elementsIndices?["children"] != -1 {
+            searchController.view = reactSubviews()?[elementsIndices!["children"]!]
         } else if searchController.view != nil {
             searchController.view = nil
         }
@@ -746,7 +746,7 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
 
     func setImage(_ type: String, for icon: UISearchBar.Icon, state: UIControl.State) {
         if elementsIndices?[type] != -1 {
-            if let subview = reactSubviews()[elementsIndices![type]!] as? RNRImage {
+            if let subview = reactSubviews()?[elementsIndices![type]!] as? RNRImage {
                 searchController.searchBar.setImage(subview.getImage(), for: icon, state: state)
             }
         } else {
@@ -756,7 +756,7 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
 
     func setScopeBarButtonBackgroundImage(_ type: String, for state: UIControl.State) {
         if elementsIndices?[type] != -1 {
-            if let subview = reactSubviews()[elementsIndices![type]!] as? RNRImage {
+            if let subview = reactSubviews()?[elementsIndices![type]!] as? RNRImage {
                 searchController.searchBar.setScopeBarButtonBackgroundImage(subview.getImage(), for: state)
             }
         } else {
@@ -766,7 +766,7 @@ class RNRSearchBar: UIView, RNRParent, RNRChild, RNRSearchBarProtocol, UISearchC
 
     func setScopeBarButtonDividerImage(_ type: String, forLeftSegmentState: UIControl.State, rightSegmentState: UIControl.State) {
         if elementsIndices?[type] != -1 {
-            if let subview = reactSubviews()[elementsIndices![type]!] as? RNRImage {
+            if let subview = reactSubviews()?[elementsIndices![type]!] as? RNRImage {
                 searchController.searchBar.setScopeBarButtonDividerImage(subview.getImage(), forLeftSegmentState: forLeftSegmentState, rightSegmentState: rightSegmentState)
             }
         } else {
