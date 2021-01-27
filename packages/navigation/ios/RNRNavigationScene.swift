@@ -88,7 +88,9 @@ class RNRNavigationScene: UIView, RNRChild, RNRParent{
     func updateRefreshControl(_ refreshControl: RNRRefreshControlProtocol?) {
         if #available(iOS 10.0, *) {
             if refreshControl != nil {
-                findScrollView()?.refreshControl = refreshControl?.getRefreshControl()
+                if findScrollView()?.refreshControl == nil || findScrollView()?.refreshControl != refreshControl?.getRefreshControl() {
+                    findScrollView()?.refreshControl = refreshControl?.createRefreshControl()
+                }
             } else {
                 findScrollView()?.refreshControl = nil
             }
