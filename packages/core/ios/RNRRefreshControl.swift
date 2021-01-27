@@ -1,6 +1,6 @@
 class RNRRefreshControl: UIView, RNRChild, RNRRefreshControlProtocol {
     var parent: RNRParent?
-    var refreshControl: UIRefreshControl = UIRefreshControl()
+    var refreshControl: UIRefreshControl?
 
     var isReady = false
 
@@ -23,31 +23,30 @@ class RNRRefreshControl: UIView, RNRChild, RNRRefreshControlProtocol {
         super.willMove(toSuperview: newSuperview)
         if newSuperview != nil {
             parent = (newSuperview as! RNRParent)
-            setup()
+            isReady = true
+
+            if !parent!.isReady {
+                setupParent(parent!)
+            } else {
+                updateInParent(parent!, subview: self)
+            }
         }
     }
 
     func setup() {
-        if !isReady && parent != nil {
+        if parent != nil && refreshControl != nil {
             let childrenReady = areChildrenReady(subviews)
             if childrenReady {
-                isReady = true
-                refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+                refreshControl!.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
 
                 if refreshControlTintColor != nil {
-                    refreshControl.tintColor = RCTConvert.uiColor(refreshControlTintColor!)
+                    refreshControl!.tintColor = RCTConvert.uiColor(refreshControlTintColor!)
                 }
 
                 updateTitle()
 
                 if refreshing == 1 {
-                    refreshControl.beginRefreshing()
-                }
-
-                if !parent!.isReady {
-                    setupParent(parent!)
-                } else {
-                    updateInParent(parent!, subview: self)
+                    refreshControl!.beginRefreshing()
                 }
             }
         }
@@ -60,9 +59,9 @@ class RNRRefreshControl: UIView, RNRChild, RNRRefreshControlProtocol {
             if titleColor != nil {
                 attributedTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: RCTConvert.uiColor(titleColor!) as Any, range: range)
             }
-            refreshControl.attributedTitle = attributedTitle
+            refreshControl?.attributedTitle = attributedTitle
         } else {
-            refreshControl.attributedTitle = nil
+            refreshControl?.attributedTitle = nil
         }
     }
 
@@ -79,19 +78,25 @@ class RNRRefreshControl: UIView, RNRChild, RNRRefreshControlProtocol {
                     updateTitle()
                 } else if key == "refreshing" {
                     if refreshing == 1 {
-                        refreshControl.beginRefreshing()
+                        refreshControl?.beginRefreshing()
                     } else {
-                        refreshControl.endRefreshing()
+                        refreshControl?.endRefreshing()
                     }
                 } else if key == "refreshControlTintColor" {
-                    refreshControl.tintColor = RCTConvert.uiColor(refreshControlTintColor)
+                    refreshControl?.tintColor = RCTConvert.uiColor(refreshControlTintColor)
                 }
             })
             updateInParent(parent!, subview: self)
         }
     }
 
-    func getRefreshControl() -> UIRefreshControl {
+    func getRefreshControl() -> UIRefreshControl? {
         refreshControl
+    }
+
+    func createRefreshControl() -> UIRefreshControl {
+        refreshControl = UIRefreshControl()
+        setup()
+        return refreshControl!
     }
 }
