@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.34.3](https://github.com/renavigation2/renavigation2/compare/v4.34.2...v4.34.3) (2021-01-27)
+
+
+### Bug Fixes
+
+* **navigation:** Fixed refresh control not working when replacing the scroll view with a new one ([5cc688c](https://github.com/renavigation2/renavigation2/commit/5cc688c27b18ccef838c83ae234ef23f0acb9932))
+
+
+
+
+
 # [4.34.0](https://github.com/renavigation2/renavigation2/compare/v4.33.0...v4.34.0) (2021-01-26)
 
 
