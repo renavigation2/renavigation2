@@ -302,7 +302,7 @@ PODS:
     - React
   - RenavigationCore (4.34.1):
     - React
-  - RenavigationModals (4.31.8):
+  - RenavigationModals (4.34.2):
     - React
     - RenavigationCore
   - RenavigationNavigation (4.34.0):
@@ -491,7 +491,7 @@ SPEC CHECKSUMS:
   ReactCommon: 73d79c7039f473b76db6ff7c6b159c478acbbb3b
   RenavigationConstraints: 92f45b5123257b88d9535039651dc974a9c1576e
   RenavigationCore: cd9e96260d8111af2f2a6d699610e6d2a979696a
-  RenavigationModals: bd8d094c9dbbdca82fc29e1034c9862b5d0aea03
+  RenavigationModals: 67ea746a8ab57efe841676e6cd8a0e1549f5c9c1
   RenavigationNavigation: 3a14cecbcad844031676b4f7f448d8666a0e242c
   RenavigationTabs: be19f62ae39a59c305be018d3269f2d76932e33c
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
