@@ -1,8 +1,8 @@
 #!/bin/sh
 
 update () {
-    npx ncu --packageFile "$1/package.json" -u -x path-to-regexp
-    npx ncu --packageFile "$1/package.json" -u --dep dev -x path-to-regexp
+    ncu --packageManager npm --packageFile "$1/package.json" -u -x path-to-regexp
+    ncu --packageManager npm --packageFile "$1/package.json" -u --dep dev -x path-to-regexp
 }
 
 yarn workspaces list --json | while read package; do
@@ -14,5 +14,4 @@ done
 yarn clean -y
 rm yarn.lock
 yarn install
-
 yarn set version latest

@@ -15,23 +15,23 @@
     "postinstall": "sh scripts/postinstall.sh",
     "test": "lerna run test --ignore RenavigationExample --",
     "typescript": "lerna run typescript --ignore RenavigationExample --",
-    "update-dependencies": "sh scripts/update-dependencies.sh",
+    "upgrade": "sh scripts/upgrade.sh",
     "version": "yarn install",
     "watch": "sh scripts/watch.sh"
   },
   "dependencies": {
     "codecov": "^3.8.1",
-    "concurrently": "^5.3.0",
-    "lerna": "^3.22.1",
-    "npm-check-updates": "^11.1.0",
-    "patch-package": "^6.2.2",
-    "react-native": "^0.63.4"
+    "concurrently": "^6.0.2",
+    "lerna": "^4.0.0",
+    "npm-check-updates": "^11.5.1",
+    "patch-package": "^6.4.7",
+    "react-native": "^0.64.0"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^11.0.0",
-    "@commitlint/config-lerna-scopes": "^11.0.0",
-    "@types/react-native": "^0.63.46",
-    "commitlint": "^11.0.0",
-    "husky": "^4.3.8"
+    "@commitlint/config-conventional": "^12.1.1",
+    "@commitlint/config-lerna-scopes": "^12.1.1",
+    "@types/react-native": "^0.64.4",
+    "commitlint": "^12.1.1",
+    "husky": "^6.0.0"
   }
 }
