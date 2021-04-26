@@ -6,6 +6,7 @@ class RNRNavigationBar: UIView, RNRChild, RNRParent {
     var isReady = false
     var hasUpdatedReactSubviews = false
 
+    @objc var elementsIndices: [String : Int]?
     @objc var isTranslucent: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var prefersLargeTitles: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var _isHidden: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
@@ -49,7 +50,7 @@ class RNRNavigationBar: UIView, RNRChild, RNRParent {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.isHidden = true
+        isHidden = true
     }
 
     required init?(coder: NSCoder) {
@@ -75,8 +76,16 @@ class RNRNavigationBar: UIView, RNRChild, RNRParent {
     }
 
     func setup() {
+        if reactSubviews() == nil && !hasUpdatedReactSubviews {
+            hasUpdatedReactSubviews = true
+        }
         if !isReady && hasUpdatedReactSubviews && parent != nil {
-            let childrenReady = areChildrenReady(reactSubviews())
+            var childrenReady: Bool
+            if reactSubviews() == nil {
+                childrenReady = true
+            } else {
+                childrenReady = areChildrenReady(reactSubviews())
+            }
             if childrenReady {
                 isReady = true
                 if !parent!.isReady {
@@ -137,79 +146,91 @@ class RNRNavigationBar: UIView, RNRChild, RNRParent {
             }
         }
 
-        reactSubviews().enumerated().forEach { (index, subview) in
-            if index == 0 { // backIndicatorImage
-                if subview is RNRImageProtocol {
-                    navigationBar.backIndicatorImage = (subview as! RNRImageProtocol).getImage()
-                } else {
-                    navigationBar.backIndicatorImage = defaultBackIndicatorImage
+        if elementsIndices?["backIndicatorImage"] != nil && elementsIndices?["backIndicatorImage"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["backIndicatorImage"]!] as? RNRImageProtocol {
+                navigationBar.backIndicatorImage = subview.getImage()
+            }
+        } else {
+            navigationBar.backIndicatorImage = defaultBackIndicatorImage
+        }
+
+        if elementsIndices?["backIndicatorTransitionMaskImage"] != nil && elementsIndices?["backIndicatorTransitionMaskImage"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["backIndicatorTransitionMaskImage"]!] as? RNRImageProtocol {
+                navigationBar.backIndicatorTransitionMaskImage = subview.getImage()
+            }
+        } else {
+            navigationBar.backIndicatorTransitionMaskImage = defaultBackIndicatorTransitionMaskImage
+        }
+
+        if elementsIndices?["shadowImage"] != nil && elementsIndices?["shadowImage"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["shadowImage"]!] as? RNRImageProtocol {
+                navigationBar.shadowImage = subview.getImage()
+            }
+        } else {
+            navigationBar.shadowImage = defaultShadowImage
+        }
+
+        if elementsIndices?["defaultBackgroundImage"] != nil && elementsIndices?["defaultBackgroundImage"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["defaultBackgroundImage"]!] as? RNRImageProtocol {
+                navigationBar.setBackgroundImage(subview.getImage(), for: .default)
+            }
+        } else {
+            navigationBar.setBackgroundImage(defaultDefaultBackgroundImage, for: .default)
+        }
+
+        if elementsIndices?["defaultPromptBackgroundImage"] != nil && elementsIndices?["defaultPromptBackgroundImage"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["defaultPromptBackgroundImage"]!] as? RNRImageProtocol {
+                navigationBar.setBackgroundImage(subview.getImage(), for: .defaultPrompt)
+            }
+        } else {
+            navigationBar.setBackgroundImage(defaultDefaultPromptBackgroundImage, for: .defaultPrompt)
+        }
+
+        if elementsIndices?["compactBackgroundImage"] != nil && elementsIndices?["compactBackgroundImage"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["compactBackgroundImage"]!] as? RNRImageProtocol {
+                navigationBar.setBackgroundImage(subview.getImage(), for: .compact)
+            }
+        } else {
+            navigationBar.setBackgroundImage(defaultCompactBackgroundImage, for: .compact)
+        }
+
+        if elementsIndices?["compactPromptBackgroundImage"] != nil && elementsIndices?["compactPromptBackgroundImage"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["compactPromptBackgroundImage"]!] as? RNRImageProtocol {
+                navigationBar.setBackgroundImage(subview.getImage(), for: .compactPrompt)
+            }
+        } else {
+            navigationBar.setBackgroundImage(defaultCompactPromptBackgroundImage, for: .compactPrompt)
+        }
+
+        if #available(iOS 13.0, *) {
+            if elementsIndices?["standardAppearance"] != nil && elementsIndices?["standardAppearance"] != -1 {
+                if let subview = reactSubviews()?[elementsIndices!["standardAppearance"]!] as? RNRNavigationBarAppearance {
+                    changedStandardAppearance = true
+                    navigationBar.standardAppearance = subview.getNavigationBarAppearance()
                 }
-            } else if index == 1 { // backIndicatorTransitionMaskImage
-                if subview is RNRImageProtocol {
-                    navigationBar.backIndicatorTransitionMaskImage = (subview as! RNRImageProtocol).getImage()
-                } else {
-                    navigationBar.backIndicatorTransitionMaskImage = defaultBackIndicatorTransitionMaskImage
+            } else {
+                changedStandardAppearance = false
+                navigationBar.standardAppearance = defaultStandardAppearance! as! UINavigationBarAppearance
+            }
+
+            if elementsIndices?["compactAppearance"] != nil && elementsIndices?["compactAppearance"] != -1 {
+                if let subview = reactSubviews()?[elementsIndices!["compactAppearance"]!] as? RNRNavigationBarAppearance {
+                    changedCompactAppearance = true
+                    navigationBar.compactAppearance = subview.getNavigationBarAppearance()
                 }
-            } else if index == 2 { // shadowImage
-                if subview is RNRImageProtocol {
-                    navigationBar.shadowImage = (subview as! RNRImageProtocol).getImage()
-                } else {
-                    navigationBar.shadowImage = defaultShadowImage
+            } else {
+                changedCompactAppearance = false
+                navigationBar.compactAppearance = defaultCompactAppearance as? UINavigationBarAppearance
+            }
+
+            if elementsIndices?["scrollEdgeAppearance"] != nil && elementsIndices?["scrollEdgeAppearance"] != -1 {
+                if let subview = reactSubviews()?[elementsIndices!["scrollEdgeAppearance"]!] as? RNRNavigationBarAppearance {
+                    changedScrollEdgeAppearance = true
+                    navigationBar.scrollEdgeAppearance = subview.getNavigationBarAppearance()
                 }
-            } else if index == 3 { // defaultBackgroundImage
-                if subview is RNRImageProtocol {
-                    navigationBar.setBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .default)
-                } else {
-                    navigationBar.setBackgroundImage(defaultDefaultBackgroundImage, for: .default)
-                }
-            } else if index == 4 { // defaultPromptBackgroundImage
-                if subview is RNRImageProtocol {
-                    navigationBar.setBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .defaultPrompt)
-                } else {
-                    navigationBar.setBackgroundImage(defaultDefaultPromptBackgroundImage, for: .defaultPrompt)
-                }
-            } else if index == 5 { // compactBackgroundImage
-                if subview is RNRImageProtocol {
-                    navigationBar.setBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .compact)
-                } else {
-                    navigationBar.setBackgroundImage(defaultCompactBackgroundImage, for: .compact)
-                }
-            } else if index == 6 { // compactPromptBackgroundImage
-                if subview is RNRImageProtocol {
-                    navigationBar.setBackgroundImage((subview as! RNRImageProtocol).getImage(), for: .compactPrompt)
-                } else {
-                    navigationBar.setBackgroundImage(defaultCompactPromptBackgroundImage, for: .compactPrompt)
-                }
-            } else if index == 7 { // standardAppearance
-                if #available(iOS 13.0, *) {
-                    if subview is RNRNavigationBarAppearance {
-                        changedStandardAppearance = true
-                        navigationBar.standardAppearance = (subview as! RNRNavigationBarAppearance).getNavigationBarAppearance()
-                    } else if changedStandardAppearance {
-                        changedStandardAppearance = false
-                        navigationBar.standardAppearance = defaultStandardAppearance! as! UINavigationBarAppearance
-                    }
-                }
-            } else if index == 8 { // compactAppearance
-                if #available(iOS 13.0, *) {
-                    if subview is RNRNavigationBarAppearance {
-                        changedCompactAppearance = true
-                        navigationBar.compactAppearance = (subview as! RNRNavigationBarAppearance).getNavigationBarAppearance()
-                    } else if changedCompactAppearance {
-                        changedCompactAppearance = false
-                        navigationBar.compactAppearance = defaultCompactAppearance as? UINavigationBarAppearance
-                    }
-                }
-            } else if index == 8 { // scrollEdgeAppearance
-                if #available(iOS 13.0, *) {
-                    if subview is RNRNavigationBarAppearance {
-                        changedScrollEdgeAppearance = true
-                        navigationBar.scrollEdgeAppearance = (subview as! RNRNavigationBarAppearance).getNavigationBarAppearance()
-                    } else if changedScrollEdgeAppearance {
-                        changedScrollEdgeAppearance = false
-                        navigationBar.scrollEdgeAppearance = defaultScrollEdgeAppearance as? UINavigationBarAppearance
-                    }
-                }
+            } else {
+                changedScrollEdgeAppearance = false
+                navigationBar.scrollEdgeAppearance = defaultScrollEdgeAppearance as? UINavigationBarAppearance
             }
         }
 

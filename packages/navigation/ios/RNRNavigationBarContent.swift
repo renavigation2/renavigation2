@@ -9,7 +9,7 @@ class RNRNavigationBarContent: UIView, RNRChild, RNRParent {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.isHidden = true
+        isHidden = true
     }
 
     required init?(coder: NSCoder) {
