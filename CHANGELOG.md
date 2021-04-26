@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.34.4](https://github.com/renavigation2/renavigation2/compare/v4.34.3...v4.34.4) (2021-04-26)
+
+
+### Bug Fixes
+
+* **navigation:** Fixed issue with scenes not being ready when presenting ([b14ee36](https://github.com/renavigation2/renavigation2/commit/b14ee36c66e1e2ce52fe410e93dd35f233434930))
+
+
+
+
+
 ## [4.34.3](https://github.com/renavigation2/renavigation2/compare/v4.34.2...v4.34.3) (2021-01-27)
 
 

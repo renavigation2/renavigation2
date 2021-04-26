@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.34.4](https://github.com/renavigation2/renavigation2/compare/v4.34.3...v4.34.4) (2021-04-26)
+
+**Note:** Version bump only for package RenavigationExample
+
+
+
+
+
 ## [4.34.3](https://github.com/renavigation2/renavigation2/compare/v4.34.2...v4.34.3) (2021-01-27)
 
 
