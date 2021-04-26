@@ -2,6 +2,7 @@
 
 @interface RCT_EXTERN_MODULE(RNRNavigationBarManager, RCTViewManager)
 
+RCT_EXPORT_VIEW_PROPERTY(elementsIndices, NSDictionary)
 RCT_EXPORT_VIEW_PROPERTY(isTranslucent, NSNumber)
 RCT_EXPORT_VIEW_PROPERTY(prefersLargeTitles, NSNumber)
 RCT_EXPORT_VIEW_PROPERTY(_isHidden, NSNumber)

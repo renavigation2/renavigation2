@@ -6,6 +6,7 @@ class RNRNavigationBarAppearance: UIView, RNRChild, RNRParent {
     var isReady = false
     var hasUpdatedReactSubviews = false
 
+    @objc var elementsIndices: [String : Int]?
     @objc var backgroundEffect: String?
     @objc var _backgroundColor: NSNumber? = nil
     @objc var backgroundImageContentMode: String?
@@ -17,7 +18,7 @@ class RNRNavigationBarAppearance: UIView, RNRChild, RNRParent {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.isHidden = true
+        isHidden = true
     }
 
     required init?(coder: NSCoder) {
@@ -109,35 +110,46 @@ class RNRNavigationBarAppearance: UIView, RNRChild, RNRParent {
 
         var backIndicatorImage: UIImage?
         var backIndicatorTransitionMaskImage: UIImage?
-        reactSubviews().enumerated().forEach { (index, subview) in
-            if index == 0 { // backgroundImage
-                if subview is RNRImageProtocol {
-                    navigationBarAppearance.backgroundImage = (subview as! RNRImageProtocol).getImage()
-                }
-            } else if index == 1 { // shadowImage
-                if subview is RNRImageProtocol {
-                    navigationBarAppearance.shadowImage = (subview as! RNRImageProtocol).getImage()
-                }
-            } else if index == 2 { // backIndicatorImage
-                if subview is RNRImageProtocol {
-                    backIndicatorImage = (subview as! RNRImageProtocol).getImage()
-                }
-            } else if index == 3 { // backIndicatorTransitionMaskImage
-                if subview is RNRImageProtocol {
-                    backIndicatorTransitionMaskImage = (subview as! RNRImageProtocol).getImage()
-                }
-            } else if index == 4 { // buttonAppearance
-                if subview is RNRBarButtonItemAppearanceProtocol {
-                    navigationBarAppearance.buttonAppearance = (subview as! RNRBarButtonItemAppearanceProtocol).getBarButtonItemAppearance()
-                }
-            } else if index == 5 { // doneButtonAppearance
-                if subview is RNRBarButtonItemAppearanceProtocol {
-                    navigationBarAppearance.doneButtonAppearance = (subview as! RNRBarButtonItemAppearanceProtocol).getBarButtonItemAppearance()
-                }
-            } else if index == 6 { // backButtonAppearance
-                if subview is RNRBarButtonItemAppearanceProtocol {
-                    navigationBarAppearance.backButtonAppearance = (subview as! RNRBarButtonItemAppearanceProtocol).getBarButtonItemAppearance()
-                }
+
+        if elementsIndices?["backgroundImage"] != nil && elementsIndices?["backgroundImage"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["backgroundImage"]!] as? RNRImageProtocol {
+                navigationBarAppearance.backgroundImage = subview.getImage()
+            }
+        }
+
+        if elementsIndices?["shadowImage"] != nil && elementsIndices?["shadowImage"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["shadowImage"]!] as? RNRImageProtocol {
+                navigationBarAppearance.shadowImage = subview.getImage()
+            }
+        }
+
+        if elementsIndices?["backIndicatorImage"] != nil && elementsIndices?["backIndicatorImage"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["backIndicatorImage"]!] as? RNRImageProtocol {
+                backIndicatorImage = subview.getImage()
+            }
+        }
+
+        if elementsIndices?["backIndicatorTransitionMaskImage"] != nil && elementsIndices?["backIndicatorTransitionMaskImage"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["backIndicatorTransitionMaskImage"]!] as? RNRImageProtocol {
+                backIndicatorTransitionMaskImage = subview.getImage()
+            }
+        }
+
+        if elementsIndices?["buttonAppearance"] != nil && elementsIndices?["buttonAppearance"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["buttonAppearance"]!] as? RNRBarButtonItemAppearanceProtocol {
+                navigationBarAppearance.buttonAppearance = subview.getBarButtonItemAppearance()
+            }
+        }
+
+        if elementsIndices?["doneButtonAppearance"] != nil && elementsIndices?["doneButtonAppearance"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["doneButtonAppearance"]!] as? RNRBarButtonItemAppearanceProtocol {
+                navigationBarAppearance.doneButtonAppearance = subview.getBarButtonItemAppearance()
+            }
+        }
+
+        if elementsIndices?["backButtonAppearance"] != nil && elementsIndices?["backButtonAppearance"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["backButtonAppearance"]!] as? RNRBarButtonItemAppearanceProtocol {
+                navigationBarAppearance.backButtonAppearance = subview.getBarButtonItemAppearance()
             }
         }
 

@@ -2,6 +2,7 @@
 
 @interface RCT_EXTERN_MODULE(RNRNavigationBarAppearanceManager, RCTViewManager)
 
+RCT_EXPORT_VIEW_PROPERTY(elementsIndices, NSDictionary)
 RCT_EXPORT_VIEW_PROPERTY(backgroundEffect, NSString)
 RCT_EXPORT_VIEW_PROPERTY(_backgroundColor, NSNumber)
 RCT_EXPORT_VIEW_PROPERTY(backgroundImageContentMode, NSString)

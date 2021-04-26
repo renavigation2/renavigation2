@@ -1,5 +1,4 @@
 import {
-  EmptyComponent,
   processBoolean,
   StyleSheet,
   Contexts,
@@ -59,6 +58,7 @@ export const NavigationItem: React.FC<NavigationItemProps> = ({
   searchBar,
   ...props
 }) => {
+  let index = 0
   return (
     <Contexts.HasPromptContext.Provider value={!!prompt}>
       <RNRNavigationItem
@@ -77,40 +77,45 @@ export const NavigationItem: React.FC<NavigationItemProps> = ({
           hidesSearchBarWhenScrolling
         )}
         {...props}
+        elementsIndices={{
+          titleView: titleView ? index++ : -1,
+          leftBarButtonItem: leftBarButtonItem ? index++ : -1,
+          leftBarButtonItems: leftBarButtonItems ? index++ : -1,
+          leftContent: leftContent ? index++ : -1,
+          backBarButtonItem: backBarButtonItem ? index++ : -1,
+          rightBarButtonItem: rightBarButtonItem ? index++ : -1,
+          rightBarButtonItems: rightBarButtonItems ? index++ : -1,
+          rightContent: rightContent ? index++ : -1,
+          standardAppearance: standardAppearance ? index++ : -1,
+          compactAppearance: compactAppearance ? index++ : -1,
+          scrollEdgeAppearance: scrollEdgeAppearance ? index++ : -1,
+          refreshControl: refreshControl ? index++ : -1,
+          searchBar: searchBar ? index++ : -1
+        }}
       >
         {titleView ? (
           <NavigationBarContent>{titleView}</NavigationBarContent>
-        ) : (
-          <EmptyComponent />
-        )}
-        {leftBarButtonItem ? leftBarButtonItem : <EmptyComponent />}
+        ) : null}
+        {leftBarButtonItem}
         {leftBarButtonItems ? (
           <BarButtonItems>{leftBarButtonItems}</BarButtonItems>
-        ) : (
-          <EmptyComponent />
-        )}
+        ) : null}
         {leftContent ? (
           <NavigationBarContent>{leftContent}</NavigationBarContent>
-        ) : (
-          <EmptyComponent />
-        )}
-        {backBarButtonItem ? backBarButtonItem : <EmptyComponent />}
-        {rightBarButtonItem ? rightBarButtonItem : <EmptyComponent />}
+        ) : null}
+        {backBarButtonItem}
+        {rightBarButtonItem}
         {rightBarButtonItems ? (
           <BarButtonItems>{rightBarButtonItems}</BarButtonItems>
-        ) : (
-          <EmptyComponent />
-        )}
+        ) : null}
         {rightContent ? (
           <NavigationBarContent>{rightContent}</NavigationBarContent>
-        ) : (
-          <EmptyComponent />
-        )}
-        {standardAppearance ? standardAppearance : <EmptyComponent />}
-        {compactAppearance ? compactAppearance : <EmptyComponent />}
-        {scrollEdgeAppearance ? scrollEdgeAppearance : <EmptyComponent />}
-        {refreshControl ? refreshControl : <EmptyComponent />}
-        {searchBar ? searchBar : <EmptyComponent />}
+        ) : null}
+        {standardAppearance}
+        {compactAppearance}
+        {scrollEdgeAppearance}
+        {refreshControl}
+        {searchBar}
       </RNRNavigationItem>
     </Contexts.HasPromptContext.Provider>
   )

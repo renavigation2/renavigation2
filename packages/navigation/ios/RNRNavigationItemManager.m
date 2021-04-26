@@ -2,6 +2,7 @@
 
 @interface RCT_EXTERN_MODULE(RNRNavigationItemManager, RCTViewManager)
 
+RCT_EXPORT_VIEW_PROPERTY(elementsIndices, NSDictionary)
 RCT_EXPORT_VIEW_PROPERTY(title, NSString)
 RCT_EXPORT_VIEW_PROPERTY(leftItemsSupplementBackButton, NSNumber)
 RCT_EXPORT_VIEW_PROPERTY(largeTitleDisplayMode, NSString)

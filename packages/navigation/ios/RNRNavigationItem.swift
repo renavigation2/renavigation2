@@ -6,6 +6,7 @@ class RNRNavigationItem: UIView, RNRChild, RNRParent {
     var isReady = false
     var hasUpdatedReactSubviews = false
 
+    @objc var elementsIndices: [String : Int]?
     @objc var title: String? = nil
     @objc var leftItemsSupplementBackButton: NSNumber = 0 // 0 = nil, 1 = true, -1 = false
     @objc var largeTitleDisplayMode: String?
@@ -24,7 +25,7 @@ class RNRNavigationItem: UIView, RNRChild, RNRParent {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.isHidden = true
+        isHidden = true
     }
 
     required init?(coder: NSCoder) {
@@ -76,9 +77,8 @@ class RNRNavigationItem: UIView, RNRChild, RNRParent {
     }
 
     func getRefreshControl() -> RNRRefreshControlProtocol? {
-        let subviews = reactSubviews()
-        if subviews != nil && subviews!.indices.contains(11) {
-            if let view = subviews![11] as? RNRRefreshControlProtocol {
+        if elementsIndices?["refreshControl"] != nil && elementsIndices?["refreshControl"] != -1 {
+            if let view = reactSubviews()?[elementsIndices!["refreshControl"]!] as? RNRRefreshControlProtocol {
                 return view
             }
         }
@@ -160,122 +160,131 @@ class RNRNavigationItem: UIView, RNRChild, RNRParent {
 
         var hasLeftContent = false
         var hasRightContent = false
-        reactSubviews().enumerated().forEach { (index, subview) in
-            if index == 1 { // leftButton
-                if subview is RNRBarButtonItemProtocol {
-                    hasLeftContent = true
+
+        if elementsIndices?["leftBarButtonItem"] != nil && elementsIndices?["leftBarButtonItem"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["leftBarButtonItem"]!] as? RNRBarButtonItemProtocol {
+                hasLeftContent = true
+                navigationItem.leftBarButtonItem = nil
+                navigationItem.leftBarButtonItem = subview.getBarButtonItem()
+            }
+        } else {
+            navigationItem.leftBarButtonItem = nil
+        }
+
+        if elementsIndices?["leftBarButtonItems"] != nil && elementsIndices?["leftBarButtonItems"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["leftBarButtonItems"]!] as? RNRBarButtonItemsProtocol {
+                hasLeftContent = true
+                navigationItem.leftBarButtonItems = nil
+                navigationItem.leftBarButtonItems = subview.getBarButtonItems()
+            }
+        } else {
+            navigationItem.leftBarButtonItems = nil
+        }
+
+        if !hasLeftContent {
+            if elementsIndices?["leftContent"] != nil && elementsIndices?["leftContent"] != -1 {
+                if let subview = reactSubviews()?[elementsIndices!["leftContent"]!] as? RNRNavigationBarContent {
                     navigationItem.leftBarButtonItem = nil
-                    navigationItem.leftBarButtonItem = (subview as! RNRBarButtonItemProtocol).getBarButtonItem()
-                } else {
-                    navigationItem.leftBarButtonItem = nil
-                }
-            } else if index == 2 { // leftButtons
-                if subview is RNRBarButtonItemsProtocol {
-                    hasLeftContent = true
-                    navigationItem.leftBarButtonItems = nil
-                    navigationItem.leftBarButtonItems = (subview as! RNRBarButtonItemsProtocol).getBarButtonItems()
-                } else if !hasLeftContent {
-                    navigationItem.leftBarButtonItem = nil
-                }
-            } else if index == 3 { // leftContent
-                if !hasLeftContent {
-                    if subview is RNREmptyComponentProtocol {
-                        navigationItem.leftBarButtonItem = nil
-                    } else {
-                        navigationItem.leftBarButtonItem = nil
-                        if !subview.reactSubviews().isEmpty && (subview as! RNRNavigationBarContent).isReady {
-                            let leftBarButtonItem = UIBarButtonItem()
-                            leftBarButtonItem.customView = subview.reactSubviews()[0]
-                            navigationItem.leftBarButtonItem = leftBarButtonItem
-                        }
+                    if !subview.reactSubviews().isEmpty && subview.isReady {
+                        let leftBarButtonItem = UIBarButtonItem()
+                        leftBarButtonItem.customView = subview.reactSubviews()[0]
+                        navigationItem.leftBarButtonItem = leftBarButtonItem
                     }
                 }
-            } else if index == 4 { // backButton
-                if subview is RNRBarButtonItemProtocol {
-                    navigationItem.backBarButtonItem = nil
-                    navigationItem.backBarButtonItem = (subview as! RNRBarButtonItemProtocol).getBarButtonItem()
-                } else {
-                    navigationItem.backBarButtonItem = nil
-                }
-            } else if index == 5 { // rightButton
-                if subview is RNRBarButtonItemProtocol {
-                    hasRightContent = true
+            } else {
+                navigationItem.leftBarButtonItem = nil
+            }
+        }
+
+        if elementsIndices?["backBarButtonItem"] != nil && elementsIndices?["backBarButtonItem"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["backBarButtonItem"]!] as? RNRBarButtonItemProtocol {
+                navigationItem.backBarButtonItem = nil
+                navigationItem.backBarButtonItem = subview.getBarButtonItem()
+            }
+        } else {
+            navigationItem.backBarButtonItem = nil
+        }
+
+        if elementsIndices?["rightBarButtonItem"] != nil && elementsIndices?["rightBarButtonItem"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["rightBarButtonItem"]!] as? RNRBarButtonItemProtocol {
+                hasRightContent = true
+                navigationItem.rightBarButtonItem = nil
+                navigationItem.rightBarButtonItem = subview.getBarButtonItem()
+            }
+        } else {
+            navigationItem.rightBarButtonItem = nil
+        }
+
+        if elementsIndices?["rightBarButtonItems"] != nil && elementsIndices?["rightBarButtonItems"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["rightBarButtonItems"]!] as? RNRBarButtonItemsProtocol {
+                hasRightContent = true
+                navigationItem.rightBarButtonItems = nil
+                navigationItem.rightBarButtonItems = subview.getBarButtonItems()
+            }
+        } else {
+            navigationItem.rightBarButtonItems = nil
+        }
+
+        if !hasRightContent {
+            if elementsIndices?["rightContent"] != nil && elementsIndices?["rightContent"] != -1 {
+                if let subview = reactSubviews()?[elementsIndices!["rightContent"]!] as? RNRNavigationBarContent {
                     navigationItem.rightBarButtonItem = nil
-                    navigationItem.rightBarButtonItem = (subview as! RNRBarButtonItemProtocol).getBarButtonItem()
-                } else {
-                    navigationItem.rightBarButtonItem = nil
-                }
-            } else if index == 6 { // rightButtons
-                if subview is RNRBarButtonItemsProtocol {
-                    hasRightContent = true
-                    navigationItem.rightBarButtonItems = nil
-                    navigationItem.rightBarButtonItems = (subview as! RNRBarButtonItemsProtocol).getBarButtonItems()
-                } else if !hasRightContent {
-                    navigationItem.rightBarButtonItems = nil
-                }
-            } else if index == 7 { // rightContent
-                if !hasRightContent {
-                    if subview is RNREmptyComponentProtocol {
-                        navigationItem.rightBarButtonItem = nil
-                    } else {
-                        navigationItem.rightBarButtonItem = nil
-                        if !subview.reactSubviews().isEmpty && (subview as! RNRNavigationBarContent).isReady {
-                            let rightBarButtonItem = UIBarButtonItem()
-                            rightBarButtonItem.customView = subview.reactSubviews()[0]
-                            navigationItem.rightBarButtonItem = rightBarButtonItem
-                        }
+                    if !subview.reactSubviews().isEmpty && subview.isReady {
+                        let rightBarButtonItem = UIBarButtonItem()
+                        rightBarButtonItem.customView = subview.reactSubviews()[0]
+                        navigationItem.rightBarButtonItem = rightBarButtonItem
                     }
                 }
-            } else if index == 8 { // standardAppearance
-                if #available(iOS 13.0, *) {
-                    if subview is RNRNavigationBarAppearance {
-                        navigationItem.standardAppearance = nil
-                        navigationItem.standardAppearance = (subview as! RNRNavigationBarAppearance).getNavigationBarAppearance()
-                    } else {
-                        navigationItem.standardAppearance = nil
-                    }
+            } else {
+                navigationItem.rightBarButtonItem = nil
+            }
+        }
+
+        if #available(iOS 13.0, *) {
+            if elementsIndices?["standardAppearance"] != nil && elementsIndices?["standardAppearance"] != -1 {
+                if let subview = reactSubviews()?[elementsIndices!["standardAppearance"]!] as? RNRNavigationBarAppearance {
+                    navigationItem.standardAppearance = nil
+                    navigationItem.standardAppearance = subview.getNavigationBarAppearance()
                 }
-            } else if index == 9 { // compactAppearance
-                if #available(iOS 13.0, *) {
-                    if subview is RNRNavigationBarAppearance {
-                        navigationItem.compactAppearance = nil
-                        navigationItem.compactAppearance = (subview as! RNRNavigationBarAppearance).getNavigationBarAppearance()
-                    } else {
-                        navigationItem.compactAppearance = nil
-                    }
-                }
-            } else if index == 10 { // scrollEdgeAppearance
-                if #available(iOS 13.0, *) {
-                    if subview is RNRNavigationBarAppearance {
-                        navigationItem.scrollEdgeAppearance = nil
-                        navigationItem.scrollEdgeAppearance = (subview as! RNRNavigationBarAppearance).getNavigationBarAppearance()
-                    } else {
-                        navigationItem.scrollEdgeAppearance = nil
-                    }
-                }
-            } else if index == 11 { // refreshControl
-                // Refresh control is not handled here
-            } else if index == 12 { // searchBar
-                if #available(iOS 11, *) {
-                    if subview is RNRSearchBarProtocol {
-                        (subview as! RNRSearchBarProtocol).setSearchBar()
-                        navigationItem.searchController = (subview as! RNRSearchBarProtocol).searchController
-                    } else {
-                        navigationItem.searchController = nil
-                    }
-                }
+            } else {
+                navigationItem.standardAppearance = nil
             }
 
-            // Do title last, not sure if this had an impact but it can't hurt
-            if index == 0 { // titleView
-                if subview is RNREmptyComponentProtocol {
-                    navigationItem.titleView = nil
-                } else {
-                    if !subview.reactSubviews().isEmpty && (subview as! RNRNavigationBarContent).isReady {
-                        navigationItem.titleView = subview.reactSubviews()[0]
-                    }
+            if elementsIndices?["compactAppearance"] != nil && elementsIndices?["compactAppearance"] != -1 {
+                if let subview = reactSubviews()?[elementsIndices!["compactAppearance"]!] as? RNRNavigationBarAppearance {
+                    navigationItem.compactAppearance = nil
+                    navigationItem.compactAppearance = subview.getNavigationBarAppearance()
                 }
+            } else {
+                navigationItem.compactAppearance = nil
             }
+
+            if elementsIndices?["scrollEdgeAppearance"] != nil && elementsIndices?["scrollEdgeAppearance"] != -1 {
+                if let subview = reactSubviews()?[elementsIndices!["scrollEdgeAppearance"]!] as? RNRNavigationBarAppearance {
+                    navigationItem.scrollEdgeAppearance = nil
+                    navigationItem.scrollEdgeAppearance = subview.getNavigationBarAppearance()
+                }
+            } else {
+                navigationItem.scrollEdgeAppearance = nil
+            }
+
+            if elementsIndices?["searchBar"] != nil && elementsIndices?["searchBar"] != -1 {
+                if let subview = reactSubviews()?[elementsIndices!["searchBar"]!] as? RNRSearchBarProtocol {
+                    subview.setSearchBar()
+                    navigationItem.searchController = subview.searchController
+                }
+            } else {
+                navigationItem.searchController = nil
+            }
+        }
+
+        // Do title last, not sure if this had an impact but it can't hurt
+        if elementsIndices?["titleView"] != nil && elementsIndices?["titleView"] != -1 {
+            if let subview = reactSubviews()?[elementsIndices!["titleView"]!] as? RNRNavigationBarContent {
+                navigationItem.titleView = subview.reactSubviews()[0]
+            }
+        } else {
+            navigationItem.titleView = nil
         }
     }
 }

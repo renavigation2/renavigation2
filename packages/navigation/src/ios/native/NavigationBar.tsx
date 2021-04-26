@@ -1,5 +1,4 @@
 import {
-  EmptyComponent,
   processBoolean,
   processTextStyle,
   StyleSheet,
@@ -61,6 +60,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
   scrollEdgeAppearance,
   ...props
 }) => {
+  let index = 0
   return (
     <RNRNavigationBar
       style={StyleSheet.absoluteHidden}
@@ -88,29 +88,36 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
       compactPromptTitleVerticalPositionAdjustment={
         compactPromptTitleVerticalPositionAdjustment
       }
+      elementsIndices={{
+        backIndicatorImage: backIndicatorImage ? index++ : -1,
+        backIndicatorTransitionMaskImage: backIndicatorTransitionMaskImage
+          ? index++
+          : -1,
+        shadowImage: shadowImage ? index++ : -1,
+        defaultBackgroundImage: defaultBackgroundImage ? index++ : -1,
+        defaultPromptBackgroundImage: defaultPromptBackgroundImage
+          ? index++
+          : -1,
+        compactBackgroundImage: compactBackgroundImage ? index++ : -1,
+        compactPromptBackgroundImage: compactPromptBackgroundImage
+          ? index++
+          : -1,
+        standardAppearance: standardAppearance ? index++ : -1,
+        compactAppearance: compactAppearance ? index++ : -1,
+        scrollEdgeAppearance: scrollEdgeAppearance ? index++ : -1,
+        children: children ? index++ : -1
+      }}
     >
-      {backIndicatorImage ? backIndicatorImage : <EmptyComponent />}
-      {backIndicatorTransitionMaskImage ? (
-        backIndicatorTransitionMaskImage
-      ) : (
-        <EmptyComponent />
-      )}
-      {shadowImage ? shadowImage : <EmptyComponent />}
-      {defaultBackgroundImage ? defaultBackgroundImage : <EmptyComponent />}
-      {defaultPromptBackgroundImage ? (
-        defaultPromptBackgroundImage
-      ) : (
-        <EmptyComponent />
-      )}
-      {compactBackgroundImage ? compactBackgroundImage : <EmptyComponent />}
-      {compactPromptBackgroundImage ? (
-        compactPromptBackgroundImage
-      ) : (
-        <EmptyComponent />
-      )}
-      {standardAppearance ? standardAppearance : <EmptyComponent />}
-      {compactAppearance ? compactAppearance : <EmptyComponent />}
-      {scrollEdgeAppearance ? scrollEdgeAppearance : <EmptyComponent />}
+      {backIndicatorImage}
+      {backIndicatorTransitionMaskImage}
+      {shadowImage}
+      {defaultBackgroundImage}
+      {defaultPromptBackgroundImage}
+      {compactBackgroundImage}
+      {compactPromptBackgroundImage}
+      {standardAppearance}
+      {compactAppearance}
+      {scrollEdgeAppearance}
       {children}
     </RNRNavigationBar>
   )

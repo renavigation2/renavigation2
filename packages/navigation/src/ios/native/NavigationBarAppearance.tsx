@@ -1,7 +1,6 @@
 import {
   BlurEffect,
   ContentMode,
-  EmptyComponent,
   Offset,
   processTextStyle,
   StyleSheet,
@@ -55,6 +54,7 @@ const NavigationBarAppearanceComponent: React.FC<
   backButtonAppearance,
   ...props
 }) => {
+  let index = 0
   return (
     <RNRNavigationBarAppearance
       style={StyleSheet.absoluteHidden}
@@ -69,18 +69,25 @@ const NavigationBarAppearanceComponent: React.FC<
         largeTitleStyle ? processTextStyle(largeTitleStyle) : undefined
       }
       {...props}
+      elementsIndices={{
+        backgroundImage: backgroundImage ? index++ : -1,
+        shadowImage: shadowImage ? index++ : -1,
+        backIndicatorImage: backIndicatorImage ? index++ : -1,
+        backIndicatorTransitionMaskImage: backIndicatorTransitionMaskImage
+          ? index++
+          : -1,
+        buttonAppearance: buttonAppearance ? index++ : -1,
+        doneButtonAppearance: doneButtonAppearance ? index++ : -1,
+        backButtonAppearance: backButtonAppearance ? index++ : -1
+      }}
     >
-      {backgroundImage ? backgroundImage : <EmptyComponent />}
-      {shadowImage ? shadowImage : <EmptyComponent />}
-      {backIndicatorImage ? backIndicatorImage : <EmptyComponent />}
-      {backIndicatorTransitionMaskImage ? (
-        backIndicatorTransitionMaskImage
-      ) : (
-        <EmptyComponent />
-      )}
-      {buttonAppearance ? buttonAppearance : <EmptyComponent />}
-      {doneButtonAppearance ? doneButtonAppearance : <EmptyComponent />}
-      {backButtonAppearance ? backButtonAppearance : <EmptyComponent />}
+      {backgroundImage}
+      {shadowImage}
+      {backIndicatorImage}
+      {backIndicatorTransitionMaskImage}
+      {buttonAppearance}
+      {doneButtonAppearance}
+      {backButtonAppearance}
     </RNRNavigationBarAppearance>
   )
 }

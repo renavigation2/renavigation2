@@ -85,7 +85,7 @@ class RNRNavigation: UIView, RNRParent {
             defaultIsInteractivePopGestureEnabled = navigationController.interactivePopGestureRecognizer?.isEnabled
         }
 
-        reactSubviews().enumerated().forEach { (index, subview) in
+        reactSubviews()?.enumerated().forEach { (index, subview) in
             if index == 0 {
                 if subview is RNRNavigationBar {
                     (subview as! RNRNavigationBar).setNavigationBar(navigationController.navigationBar)
