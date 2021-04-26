@@ -101,7 +101,7 @@ class RNRNavigationContainer: UIView, UINavigationControllerDelegate, RNRChild, 
     }
 
     func presentScenes() {
-        let newScenes = scenes.filter { !$0.isPresented }
+        let newScenes = scenes.filter { !$0.isPresented && $0.isReady }
         var reset = true
         newScenes.forEach { scene in
             if scene.animated != -1 {
@@ -110,7 +110,7 @@ class RNRNavigationContainer: UIView, UINavigationControllerDelegate, RNRChild, 
             scene.updateNavigationBarItem()
             scene.isPresented = true
         }
-        navigationController?.setViewControllers(scenes.map { $0.viewController }, animated: reset ? false : true)
+        navigationController?.setViewControllers(scenes.filter { $0.isReady }.map { $0.viewController }, animated: reset ? false : true)
     }
 
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
