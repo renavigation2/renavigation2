@@ -39,6 +39,7 @@
   ],
   "settings": {
     "javascript.format.enable": false,
-    "javascript.validate.enable": false
+    "javascript.validate.enable": false,
+    "typescript.tsdk": "renavigation/node_modules/typescript/lib"
   }
 }

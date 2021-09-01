@@ -21,24 +21,19 @@ export interface TabBarItemStateAppearanceProps {
   badgeTitlePositionAdjustment?: Offset
 }
 
-export const TabBarItemStateAppearance: React.FC<TabBarItemStateAppearanceProps> = ({
-  iconColor,
-  badgeBackgroundColor,
-  titleStyle,
-  badgeStyle,
-  ...props
-}) => {
-  return (
-    <RNRTabBarItemStateAppearance
-      style={StyleSheet.absoluteHidden}
-      pointerEvents="none"
-      iconColor={iconColor ? processColor(iconColor) : undefined}
-      badgeBackgroundColor={
-        badgeBackgroundColor ? processColor(badgeBackgroundColor) : undefined
-      }
-      titleStyle={titleStyle ? processTextStyle(titleStyle) : undefined}
-      badgeStyle={badgeStyle ? processTextStyle(badgeStyle) : undefined}
-      {...props}
-    />
-  )
-}
+export const TabBarItemStateAppearance: React.FC<TabBarItemStateAppearanceProps> =
+  ({ iconColor, badgeBackgroundColor, titleStyle, badgeStyle, ...props }) => {
+    return (
+      <RNRTabBarItemStateAppearance
+        style={StyleSheet.absoluteHidden}
+        pointerEvents="none"
+        iconColor={iconColor ? processColor(iconColor) : undefined}
+        badgeBackgroundColor={
+          badgeBackgroundColor ? processColor(badgeBackgroundColor) : undefined
+        }
+        titleStyle={titleStyle ? processTextStyle(titleStyle) : undefined}
+        badgeStyle={badgeStyle ? processTextStyle(badgeStyle) : undefined}
+        {...props}
+      />
+    )
+  }

@@ -498,171 +498,124 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         scopeBarButtonBackgroundImage: scopeBarButtonBackgroundImage
           ? index++
           : -1,
-        scopeBarButtonBackgroundImageApplication: scopeBarButtonBackgroundImageApplication
-          ? index++
-          : -1,
-        scopeBarButtonBackgroundImageDisabled: scopeBarButtonBackgroundImageDisabled
-          ? index++
-          : -1,
-        scopeBarButtonBackgroundImageFocused: scopeBarButtonBackgroundImageFocused
-          ? index++
-          : -1,
-        scopeBarButtonBackgroundImageHighlighted: scopeBarButtonBackgroundImageHighlighted
-          ? index++
-          : -1,
-        scopeBarButtonBackgroundImageReserved: scopeBarButtonBackgroundImageReserved
-          ? index++
-          : -1,
-        scopeBarButtonBackgroundImageSelected: scopeBarButtonBackgroundImageSelected
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageSelectedLeftSelectedRight: scopeBarButtonDividerImageSelectedLeftSelectedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageSelectedLeftReservedRight: scopeBarButtonDividerImageSelectedLeftReservedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageSelectedLeftHighlightedRight: scopeBarButtonDividerImageSelectedLeftHighlightedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageSelectedLeftFocusedRight: scopeBarButtonDividerImageSelectedLeftFocusedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageSelectedLeftDisabledRight: scopeBarButtonDividerImageSelectedLeftDisabledRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageSelectedLeftApplicationRight: scopeBarButtonDividerImageSelectedLeftApplicationRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageSelectedLeftNormalRight: scopeBarButtonDividerImageSelectedLeftNormalRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageReservedLeftSelectedRight: scopeBarButtonDividerImageReservedLeftSelectedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageReservedLeftReservedRight: scopeBarButtonDividerImageReservedLeftReservedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageReservedLeftHighlightedRight: scopeBarButtonDividerImageReservedLeftHighlightedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageReservedLeftFocusedRight: scopeBarButtonDividerImageReservedLeftFocusedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageReservedLeftDisabledRight: scopeBarButtonDividerImageReservedLeftDisabledRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageReservedLeftApplicationRight: scopeBarButtonDividerImageReservedLeftApplicationRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageReservedLeftNormalRight: scopeBarButtonDividerImageReservedLeftNormalRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageHighlightedLeftSelectedRight: scopeBarButtonDividerImageHighlightedLeftSelectedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageHighlightedLeftReservedRight: scopeBarButtonDividerImageHighlightedLeftReservedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageHighlightedLeftHighlightedRight: scopeBarButtonDividerImageHighlightedLeftHighlightedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageHighlightedLeftFocusedRight: scopeBarButtonDividerImageHighlightedLeftFocusedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageHighlightedLeftDisabledRight: scopeBarButtonDividerImageHighlightedLeftDisabledRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageHighlightedLeftApplicationRight: scopeBarButtonDividerImageHighlightedLeftApplicationRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageHighlightedLeftNormalRight: scopeBarButtonDividerImageHighlightedLeftNormalRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageFocusedLeftSelectedRight: scopeBarButtonDividerImageFocusedLeftSelectedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageFocusedLeftReservedRight: scopeBarButtonDividerImageFocusedLeftReservedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageFocusedLeftHighlightedRight: scopeBarButtonDividerImageFocusedLeftHighlightedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageFocusedLeftFocusedRight: scopeBarButtonDividerImageFocusedLeftFocusedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageFocusedLeftDisabledRight: scopeBarButtonDividerImageFocusedLeftDisabledRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageFocusedLeftApplicationRight: scopeBarButtonDividerImageFocusedLeftApplicationRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageFocusedLeftNormalRight: scopeBarButtonDividerImageFocusedLeftNormalRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageDisabledLeftSelectedRight: scopeBarButtonDividerImageDisabledLeftSelectedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageDisabledLeftReservedRight: scopeBarButtonDividerImageDisabledLeftReservedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageDisabledLeftHighlightedRight: scopeBarButtonDividerImageDisabledLeftHighlightedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageDisabledLeftFocusedRight: scopeBarButtonDividerImageDisabledLeftFocusedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageDisabledLeftDisabledRight: scopeBarButtonDividerImageDisabledLeftDisabledRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageDisabledLeftApplicationRight: scopeBarButtonDividerImageDisabledLeftApplicationRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageDisabledLeftNormalRight: scopeBarButtonDividerImageDisabledLeftNormalRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageApplicationLeftSelectedRight: scopeBarButtonDividerImageApplicationLeftSelectedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageApplicationLeftReservedRight: scopeBarButtonDividerImageApplicationLeftReservedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageApplicationLeftHighlightedRight: scopeBarButtonDividerImageApplicationLeftHighlightedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageApplicationLeftFocusedRight: scopeBarButtonDividerImageApplicationLeftFocusedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageApplicationLeftDisabledRight: scopeBarButtonDividerImageApplicationLeftDisabledRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageApplicationLeftApplicationRight: scopeBarButtonDividerImageApplicationLeftApplicationRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageApplicationLeftNormalRight: scopeBarButtonDividerImageApplicationLeftNormalRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageNormalLeftSelectedRight: scopeBarButtonDividerImageNormalLeftSelectedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageNormalLeftReservedRight: scopeBarButtonDividerImageNormalLeftReservedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageNormalLeftHighlightedRight: scopeBarButtonDividerImageNormalLeftHighlightedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageNormalLeftFocusedRight: scopeBarButtonDividerImageNormalLeftFocusedRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageNormalLeftDisabledRight: scopeBarButtonDividerImageNormalLeftDisabledRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageNormalLeftApplicationRight: scopeBarButtonDividerImageNormalLeftApplicationRight
-          ? index++
-          : -1,
-        scopeBarButtonDividerImageNormalLeftNormalRight: scopeBarButtonDividerImageNormalLeftNormalRight
-          ? index++
-          : -1,
+        scopeBarButtonBackgroundImageApplication:
+          scopeBarButtonBackgroundImageApplication ? index++ : -1,
+        scopeBarButtonBackgroundImageDisabled:
+          scopeBarButtonBackgroundImageDisabled ? index++ : -1,
+        scopeBarButtonBackgroundImageFocused:
+          scopeBarButtonBackgroundImageFocused ? index++ : -1,
+        scopeBarButtonBackgroundImageHighlighted:
+          scopeBarButtonBackgroundImageHighlighted ? index++ : -1,
+        scopeBarButtonBackgroundImageReserved:
+          scopeBarButtonBackgroundImageReserved ? index++ : -1,
+        scopeBarButtonBackgroundImageSelected:
+          scopeBarButtonBackgroundImageSelected ? index++ : -1,
+        scopeBarButtonDividerImageSelectedLeftSelectedRight:
+          scopeBarButtonDividerImageSelectedLeftSelectedRight ? index++ : -1,
+        scopeBarButtonDividerImageSelectedLeftReservedRight:
+          scopeBarButtonDividerImageSelectedLeftReservedRight ? index++ : -1,
+        scopeBarButtonDividerImageSelectedLeftHighlightedRight:
+          scopeBarButtonDividerImageSelectedLeftHighlightedRight ? index++ : -1,
+        scopeBarButtonDividerImageSelectedLeftFocusedRight:
+          scopeBarButtonDividerImageSelectedLeftFocusedRight ? index++ : -1,
+        scopeBarButtonDividerImageSelectedLeftDisabledRight:
+          scopeBarButtonDividerImageSelectedLeftDisabledRight ? index++ : -1,
+        scopeBarButtonDividerImageSelectedLeftApplicationRight:
+          scopeBarButtonDividerImageSelectedLeftApplicationRight ? index++ : -1,
+        scopeBarButtonDividerImageSelectedLeftNormalRight:
+          scopeBarButtonDividerImageSelectedLeftNormalRight ? index++ : -1,
+        scopeBarButtonDividerImageReservedLeftSelectedRight:
+          scopeBarButtonDividerImageReservedLeftSelectedRight ? index++ : -1,
+        scopeBarButtonDividerImageReservedLeftReservedRight:
+          scopeBarButtonDividerImageReservedLeftReservedRight ? index++ : -1,
+        scopeBarButtonDividerImageReservedLeftHighlightedRight:
+          scopeBarButtonDividerImageReservedLeftHighlightedRight ? index++ : -1,
+        scopeBarButtonDividerImageReservedLeftFocusedRight:
+          scopeBarButtonDividerImageReservedLeftFocusedRight ? index++ : -1,
+        scopeBarButtonDividerImageReservedLeftDisabledRight:
+          scopeBarButtonDividerImageReservedLeftDisabledRight ? index++ : -1,
+        scopeBarButtonDividerImageReservedLeftApplicationRight:
+          scopeBarButtonDividerImageReservedLeftApplicationRight ? index++ : -1,
+        scopeBarButtonDividerImageReservedLeftNormalRight:
+          scopeBarButtonDividerImageReservedLeftNormalRight ? index++ : -1,
+        scopeBarButtonDividerImageHighlightedLeftSelectedRight:
+          scopeBarButtonDividerImageHighlightedLeftSelectedRight ? index++ : -1,
+        scopeBarButtonDividerImageHighlightedLeftReservedRight:
+          scopeBarButtonDividerImageHighlightedLeftReservedRight ? index++ : -1,
+        scopeBarButtonDividerImageHighlightedLeftHighlightedRight:
+          scopeBarButtonDividerImageHighlightedLeftHighlightedRight
+            ? index++
+            : -1,
+        scopeBarButtonDividerImageHighlightedLeftFocusedRight:
+          scopeBarButtonDividerImageHighlightedLeftFocusedRight ? index++ : -1,
+        scopeBarButtonDividerImageHighlightedLeftDisabledRight:
+          scopeBarButtonDividerImageHighlightedLeftDisabledRight ? index++ : -1,
+        scopeBarButtonDividerImageHighlightedLeftApplicationRight:
+          scopeBarButtonDividerImageHighlightedLeftApplicationRight
+            ? index++
+            : -1,
+        scopeBarButtonDividerImageHighlightedLeftNormalRight:
+          scopeBarButtonDividerImageHighlightedLeftNormalRight ? index++ : -1,
+        scopeBarButtonDividerImageFocusedLeftSelectedRight:
+          scopeBarButtonDividerImageFocusedLeftSelectedRight ? index++ : -1,
+        scopeBarButtonDividerImageFocusedLeftReservedRight:
+          scopeBarButtonDividerImageFocusedLeftReservedRight ? index++ : -1,
+        scopeBarButtonDividerImageFocusedLeftHighlightedRight:
+          scopeBarButtonDividerImageFocusedLeftHighlightedRight ? index++ : -1,
+        scopeBarButtonDividerImageFocusedLeftFocusedRight:
+          scopeBarButtonDividerImageFocusedLeftFocusedRight ? index++ : -1,
+        scopeBarButtonDividerImageFocusedLeftDisabledRight:
+          scopeBarButtonDividerImageFocusedLeftDisabledRight ? index++ : -1,
+        scopeBarButtonDividerImageFocusedLeftApplicationRight:
+          scopeBarButtonDividerImageFocusedLeftApplicationRight ? index++ : -1,
+        scopeBarButtonDividerImageFocusedLeftNormalRight:
+          scopeBarButtonDividerImageFocusedLeftNormalRight ? index++ : -1,
+        scopeBarButtonDividerImageDisabledLeftSelectedRight:
+          scopeBarButtonDividerImageDisabledLeftSelectedRight ? index++ : -1,
+        scopeBarButtonDividerImageDisabledLeftReservedRight:
+          scopeBarButtonDividerImageDisabledLeftReservedRight ? index++ : -1,
+        scopeBarButtonDividerImageDisabledLeftHighlightedRight:
+          scopeBarButtonDividerImageDisabledLeftHighlightedRight ? index++ : -1,
+        scopeBarButtonDividerImageDisabledLeftFocusedRight:
+          scopeBarButtonDividerImageDisabledLeftFocusedRight ? index++ : -1,
+        scopeBarButtonDividerImageDisabledLeftDisabledRight:
+          scopeBarButtonDividerImageDisabledLeftDisabledRight ? index++ : -1,
+        scopeBarButtonDividerImageDisabledLeftApplicationRight:
+          scopeBarButtonDividerImageDisabledLeftApplicationRight ? index++ : -1,
+        scopeBarButtonDividerImageDisabledLeftNormalRight:
+          scopeBarButtonDividerImageDisabledLeftNormalRight ? index++ : -1,
+        scopeBarButtonDividerImageApplicationLeftSelectedRight:
+          scopeBarButtonDividerImageApplicationLeftSelectedRight ? index++ : -1,
+        scopeBarButtonDividerImageApplicationLeftReservedRight:
+          scopeBarButtonDividerImageApplicationLeftReservedRight ? index++ : -1,
+        scopeBarButtonDividerImageApplicationLeftHighlightedRight:
+          scopeBarButtonDividerImageApplicationLeftHighlightedRight
+            ? index++
+            : -1,
+        scopeBarButtonDividerImageApplicationLeftFocusedRight:
+          scopeBarButtonDividerImageApplicationLeftFocusedRight ? index++ : -1,
+        scopeBarButtonDividerImageApplicationLeftDisabledRight:
+          scopeBarButtonDividerImageApplicationLeftDisabledRight ? index++ : -1,
+        scopeBarButtonDividerImageApplicationLeftApplicationRight:
+          scopeBarButtonDividerImageApplicationLeftApplicationRight
+            ? index++
+            : -1,
+        scopeBarButtonDividerImageApplicationLeftNormalRight:
+          scopeBarButtonDividerImageApplicationLeftNormalRight ? index++ : -1,
+        scopeBarButtonDividerImageNormalLeftSelectedRight:
+          scopeBarButtonDividerImageNormalLeftSelectedRight ? index++ : -1,
+        scopeBarButtonDividerImageNormalLeftReservedRight:
+          scopeBarButtonDividerImageNormalLeftReservedRight ? index++ : -1,
+        scopeBarButtonDividerImageNormalLeftHighlightedRight:
+          scopeBarButtonDividerImageNormalLeftHighlightedRight ? index++ : -1,
+        scopeBarButtonDividerImageNormalLeftFocusedRight:
+          scopeBarButtonDividerImageNormalLeftFocusedRight ? index++ : -1,
+        scopeBarButtonDividerImageNormalLeftDisabledRight:
+          scopeBarButtonDividerImageNormalLeftDisabledRight ? index++ : -1,
+        scopeBarButtonDividerImageNormalLeftApplicationRight:
+          scopeBarButtonDividerImageNormalLeftApplicationRight ? index++ : -1,
+        scopeBarButtonDividerImageNormalLeftNormalRight:
+          scopeBarButtonDividerImageNormalLeftNormalRight ? index++ : -1,
         children: children ? index++ : -1
       }}
     >

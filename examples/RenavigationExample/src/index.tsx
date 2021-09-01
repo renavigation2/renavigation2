@@ -54,7 +54,7 @@ export function useSetTabBarHidden(): Dispatch<SetStateAction<boolean>> {
   return useContext(SetTabBarHiddenContext)!
 }
 
-export const App: React.FC<Props> = ({}) => {
+const App: React.FC<Props> = ({}) => {
   const [tabBarHidden, setTabBarHidden] = useState(false)
   return (
     <SetTabBarHiddenContext.Provider value={setTabBarHidden}>

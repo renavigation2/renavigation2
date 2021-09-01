@@ -2,7 +2,7 @@ import RenavigationCore
 
 class RNRNavigationBarContent: UIView, RNRChild, RNRParent {
     var parent: RNRNavigationItem?
-    var uiManager: RCTUIManager?
+    var uiManager: AnyObject?
 
     var isReady = false
     var hasUpdatedReactSubviews = false

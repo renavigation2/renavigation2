@@ -1,5 +1,5 @@
 class RNRNavigationItemTitleViewFittingCompressed: UIView {
-    var uiManager: RCTUIManager?
+    var uiManager: AnyObject?
 
     override init(frame: CGRect) {
         super.init(frame: frame)

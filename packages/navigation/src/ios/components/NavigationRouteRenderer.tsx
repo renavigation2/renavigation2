@@ -81,10 +81,10 @@ export const NavigationRouteRenderer: React.FC<Props> = ({
     trigger('willDisappear')
   }, [trigger])
   const onDidDisappear = useCallback(() => trigger('didDisappear'), [trigger])
-  const onDidDismiss = useCallback(() => onDidDismissCallback(location), [
-    onDidDismissCallback,
-    location
-  ])
+  const onDidDismiss = useCallback(
+    () => onDidDismissCallback(location),
+    [onDidDismissCallback, location]
+  )
 
   const lifecycleContext = useMemo(() => ({ subscribe }), [subscribe])
 

@@ -25,10 +25,8 @@ export const ModalRouteRenderer: React.FC<Props> = ({
   nativeRef,
   onDidDismiss: onDidDismissCallback
 }) => {
-  const {
-    onDidDismiss: onDidDismissResolversCallback,
-    onDidPresent
-  } = useContext(ModalsActionsResolversContext)!
+  const { onDidDismiss: onDidDismissResolversCallback, onDidPresent } =
+    useContext(ModalsActionsResolversContext)!
   const { navigator, static: staticProp } = useContext(ModalsNavigatorContext)
 
   const action = useRef<Action>()

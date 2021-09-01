@@ -283,10 +283,10 @@ export async function createPersistentMemoryHistory<
       go(1)
     },
     listen(listener) {
-      return listeners.push((listener as any) as Listener<S>)
+      return listeners.push(listener as any as Listener<S>)
     },
     block(blocker) {
-      return blockers.push((blocker as any) as Blocker<S>)
+      return blockers.push(blocker as any as Blocker<S>)
     }
   }
 
