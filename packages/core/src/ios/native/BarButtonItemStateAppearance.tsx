@@ -16,27 +16,28 @@ export interface BarButtonItemStateAppearanceProps {
   backgroundImage?: React.ReactElement<any> | null
 }
 
-export const BarButtonItemStateAppearance: React.FC<BarButtonItemStateAppearanceProps> = ({
-  titleStyle,
-  titlePositionAdjustment,
-  backgroundImagePositionAdjustment,
-  backgroundImage,
-  ...props
-}) => {
-  let index = 0
-  return (
-    <RNRBarButtonItemStateAppearance
-      style={StyleSheet.absoluteHidden}
-      pointerEvents="none"
-      titleStyle={titleStyle ? processTextStyle(titleStyle) : undefined}
-      titlePositionAdjustment={titlePositionAdjustment}
-      backgroundImagePositionAdjustment={backgroundImagePositionAdjustment}
-      {...props}
-      elementsIndices={{
-        backgroundImage: backgroundImage ? index++ : -1
-      }}
-    >
-      {backgroundImage}
-    </RNRBarButtonItemStateAppearance>
-  )
-}
+export const BarButtonItemStateAppearance: React.FC<BarButtonItemStateAppearanceProps> =
+  ({
+    titleStyle,
+    titlePositionAdjustment,
+    backgroundImagePositionAdjustment,
+    backgroundImage,
+    ...props
+  }) => {
+    let index = 0
+    return (
+      <RNRBarButtonItemStateAppearance
+        style={StyleSheet.absoluteHidden}
+        pointerEvents="none"
+        titleStyle={titleStyle ? processTextStyle(titleStyle) : undefined}
+        titlePositionAdjustment={titlePositionAdjustment}
+        backgroundImagePositionAdjustment={backgroundImagePositionAdjustment}
+        {...props}
+        elementsIndices={{
+          backgroundImage: backgroundImage ? index++ : -1
+        }}
+      >
+        {backgroundImage}
+      </RNRBarButtonItemStateAppearance>
+    )
+  }

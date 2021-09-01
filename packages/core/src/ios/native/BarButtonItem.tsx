@@ -162,48 +162,36 @@ export const BarButtonItem: React.FC<BarButtonItemProps> = ({
         backButtonBackgroundImageCompact: backButtonBackgroundImageCompact
           ? index++
           : -1,
-        backButtonBackgroundImageCompactDisabled: backButtonBackgroundImageCompactDisabled
-          ? index++
-          : -1,
-        backButtonBackgroundImageCompactFocused: backButtonBackgroundImageCompactFocused
-          ? index++
-          : -1,
-        backButtonBackgroundImageCompactHighlighted: backButtonBackgroundImageCompactHighlighted
-          ? index++
-          : -1,
-        backButtonBackgroundImageCompactPrompt: backButtonBackgroundImageCompactPrompt
-          ? index++
-          : -1,
-        backButtonBackgroundImageCompactPromptDisabled: backButtonBackgroundImageCompactPromptDisabled
-          ? index++
-          : -1,
-        backButtonBackgroundImageCompactPromptFocused: backButtonBackgroundImageCompactPromptFocused
-          ? index++
-          : -1,
-        backButtonBackgroundImageCompactPromptHighlighted: backButtonBackgroundImageCompactPromptHighlighted
-          ? index++
-          : -1,
+        backButtonBackgroundImageCompactDisabled:
+          backButtonBackgroundImageCompactDisabled ? index++ : -1,
+        backButtonBackgroundImageCompactFocused:
+          backButtonBackgroundImageCompactFocused ? index++ : -1,
+        backButtonBackgroundImageCompactHighlighted:
+          backButtonBackgroundImageCompactHighlighted ? index++ : -1,
+        backButtonBackgroundImageCompactPrompt:
+          backButtonBackgroundImageCompactPrompt ? index++ : -1,
+        backButtonBackgroundImageCompactPromptDisabled:
+          backButtonBackgroundImageCompactPromptDisabled ? index++ : -1,
+        backButtonBackgroundImageCompactPromptFocused:
+          backButtonBackgroundImageCompactPromptFocused ? index++ : -1,
+        backButtonBackgroundImageCompactPromptHighlighted:
+          backButtonBackgroundImageCompactPromptHighlighted ? index++ : -1,
         backButtonBackgroundImageDisabled: backButtonBackgroundImageDisabled
           ? index++
           : -1,
         backButtonBackgroundImageFocused: backButtonBackgroundImageFocused
           ? index++
           : -1,
-        backButtonBackgroundImageHighlighted: backButtonBackgroundImageHighlighted
-          ? index++
-          : -1,
-        backButtonBackgroundImageDefaultPrompt: backButtonBackgroundImageDefaultPrompt
-          ? index++
-          : -1,
-        backButtonBackgroundImageDefaultPromptDisabled: backButtonBackgroundImageDefaultPromptDisabled
-          ? index++
-          : -1,
-        backButtonBackgroundImageDefaultPromptFocused: backButtonBackgroundImageDefaultPromptFocused
-          ? index++
-          : -1,
-        backButtonBackgroundImageDefaultPromptHighlighted: backButtonBackgroundImageDefaultPromptHighlighted
-          ? index++
-          : -1,
+        backButtonBackgroundImageHighlighted:
+          backButtonBackgroundImageHighlighted ? index++ : -1,
+        backButtonBackgroundImageDefaultPrompt:
+          backButtonBackgroundImageDefaultPrompt ? index++ : -1,
+        backButtonBackgroundImageDefaultPromptDisabled:
+          backButtonBackgroundImageDefaultPromptDisabled ? index++ : -1,
+        backButtonBackgroundImageDefaultPromptFocused:
+          backButtonBackgroundImageDefaultPromptFocused ? index++ : -1,
+        backButtonBackgroundImageDefaultPromptHighlighted:
+          backButtonBackgroundImageDefaultPromptHighlighted ? index++ : -1,
         backgroundImage: backgroundImage ? index++ : -1,
         backgroundImageCompact: backgroundImageCompact ? index++ : -1,
         backgroundImageCompactDisabled: backgroundImageCompactDisabled
@@ -218,27 +206,23 @@ export const BarButtonItem: React.FC<BarButtonItemProps> = ({
         backgroundImageCompactPrompt: backgroundImageCompactPrompt
           ? index++
           : -1,
-        backgroundImageCompactPromptDisabled: backgroundImageCompactPromptDisabled
-          ? index++
-          : -1,
+        backgroundImageCompactPromptDisabled:
+          backgroundImageCompactPromptDisabled ? index++ : -1,
         backgroundImageCompactPromptFocused: backgroundImageCompactPromptFocused
           ? index++
           : -1,
-        backgroundImageCompactPromptHighlighted: backgroundImageCompactPromptHighlighted
-          ? index++
-          : -1,
+        backgroundImageCompactPromptHighlighted:
+          backgroundImageCompactPromptHighlighted ? index++ : -1,
         backgroundImageDefaultPrompt: backgroundImageDefaultPrompt
           ? index++
           : -1,
-        backgroundImageDefaultPromptDisabled: backgroundImageDefaultPromptDisabled
-          ? index++
-          : -1,
+        backgroundImageDefaultPromptDisabled:
+          backgroundImageDefaultPromptDisabled ? index++ : -1,
         backgroundImageDefaultPromptFocused: backgroundImageDefaultPromptFocused
           ? index++
           : -1,
-        backgroundImageDefaultPromptHighlighted: backgroundImageDefaultPromptHighlighted
-          ? index++
-          : -1,
+        backgroundImageDefaultPromptHighlighted:
+          backgroundImageDefaultPromptHighlighted ? index++ : -1,
         backgroundImageDisabled: backgroundImageDisabled ? index++ : -1,
         backgroundImageFocused: backgroundImageFocused ? index++ : -1,
         backgroundImageHighlighted: backgroundImageHighlighted ? index++ : -1
